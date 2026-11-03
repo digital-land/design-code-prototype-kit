@@ -1,0 +1,1928 @@
+{
+  "extraction": {
+    "source": "app/data/sources/East Riding Full Design Code - April 2025.pdf",
+    "source-version": "2a",
+    "chapters": [
+      "3"
+    ],
+    "extracted-date": "2026-10-16",
+    "method": "Text transcribed from page images and checked word by word against the PDF text layer. Development types, outline application matters and local plan policies for each rule are from Appendix D (Table 20), read from the positions of its dots; they match the highlighted keys on each rule. Glossary terms are the words underlined or linked to Appendix A on each page. Supporting documents are matched to their Appendix B entries by the links in each footer box. Figure captions and pages are checked against Appendix C. Page numbers are printed page numbers.",
+    "schema": "app/data/schema.md"
+  },
+  "design-code": {
+    "reference": "east-riding-design-code",
+    "name": "East Riding Design Code",
+    "organisation": "local-authority:ERY",
+    "description": "The East Riding Design Code has been prepared to clarify design expectations and improve the quality of new development across the whole of the East Riding of Yorkshire.",
+    "vision": "Green, inclusive and distinctive places, which connect landscape, people, place and nature. New development in the East Riding will celebrate the diversity of the built and natural environment and its heritage to create healthy and sustainable places for the communities of today and tomorrow.",
+    "status": "adopted",
+    "document-type": "supplementary-planning-document",
+    "adopted-date": "2025-04",
+    "last-updated-date": "2025-09",
+    "version": "2a",
+    "coverage": "The whole of the East Riding of Yorkshire",
+    "coverage-geography": "statistical-geography:E06000011",
+    "prepared-by": [
+      "AECOM"
+    ],
+    "credits": "Illustrations by Harper Perry Ltd; Illustrations by Joseph Cox, FORM Studio",
+    "local-plan": "East Riding Local Plan 2025",
+    "document-url": "",
+    "documentation-url": "",
+    "extraction-notes": "document-url is empty: the source URL of the PDF is not given in the document. The file in this prototype is named \"April 2025\" but page 2 shows it is Version 2a (September 2025). adopted-date is the month given for \"Version 2: Adoption\"; the exact adoption date is not stated. \"Prepared by AECOM\" is inferred from AECOM appearing in the credits on page 2 alongside the illustrators; the document does not say \"prepared by\".",
+    "design-code-type": "authority-wide"
+  },
+  "design-code-versions": [
+    {
+      "reference": "2",
+      "design-code": "east-riding-design-code",
+      "date": "2025-04",
+      "description": "Adoption"
+    },
+    {
+      "reference": "2a",
+      "design-code": "east-riding-design-code",
+      "date": "2025-09",
+      "description": "Minor updates"
+    }
+  ],
+  "design-code-chapters": [
+    {
+      "reference": "3",
+      "design-code": "east-riding-design-code",
+      "name": "Codes and Guidance: Environment",
+      "intro-text": "Land within a site must meet multiple requirements. Consideration should be given early in the design process as to how biodiversity net gain, green infrastructure, drainage, public open space, and movement corridors can work together to make the best use of land within the site. Environmental concerns are as important for large strategic sites as they are for extensions to existing developments.",
+      "key-values": [
+        "east-riding-design-code:landscape-led",
+        "east-riding-design-code:sustainable"
+      ],
+      "compliance-documents": [
+        "Design and Access Statement",
+        "Site Plan",
+        "Layout Plan",
+        "Tree Survey",
+        "Biodiversity Survey and Report",
+        "Landscaping Scheme",
+        "Green Infrastructure Plan",
+        "Drainage Plan",
+        "Elevation Plan (G4)",
+        "Transport Statement/Assessment",
+        "Travel Plan"
+      ],
+      "page-number": 33,
+      "extraction-notes": "Only \"Landscape led\" and \"Sustainable\" are highlighted under Key Values on the chapter page; the other three values are shown faded. The chapter opening spread has no printed page numbers; 33 is from the contents page. Name taken from the contents page (\"Codes and Guidance: Environment\"); the chapter page itself reads \"Codes And Guidance: Environment\". \"Design and Access Statement\" in the compliance list is not underlined but links to its glossary entry.",
+      "glossary-terms": [
+        "east-riding-design-code:biodiversity-net-gain",
+        "east-riding-design-code:green-infrastructure",
+        "east-riding-design-code:public-open-space",
+        "east-riding-design-code:design-and-access-statement"
+      ]
+    }
+  ],
+  "design-code-sections": [
+    {
+      "reference": "3.1",
+      "design-code-chapter": "3",
+      "name": "Green Infrastructure",
+      "intro-text": "Green infrastructure provides multiple benefits using nature-based solutions. It helps nature to thrive creating prosperous communities and beautiful places that improve our connection with nature and contribute to well-being and healthier lifestyles. It supports natural habitats and biodiversity, improves water quality and creates resilience to climate change. It is important that green infrastructure is designed to maximise these benefits throughout the site.",
+      "place-types": [],
+      "supporting-documents": [
+        {
+          "supporting-document": "green-infrastructure-planning-and-design-guide",
+          "listed-as": "Green Infrastructure Planning and Design Guide"
+        },
+        {
+          "supporting-document": "urban-greening-factor-for-england-user-guide",
+          "listed-as": "Urban Greening Factor for England User Guide"
+        },
+        {
+          "supporting-document": "building-with-nature-standards-framework",
+          "listed-as": "Building with Nature Standards Framework (BwN 2.0)"
+        }
+      ],
+      "local-plan-policies": [
+        "ENV1",
+        "ENV5",
+        "S9"
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:green-infrastructure",
+        "east-riding-design-code:biodiversity"
+      ],
+      "page-number": 35,
+      "extraction-notes": "The place type key (TC IN ON NC V C SD) is in the banner's text layer but is not visible on the page, so no place types are highlighted. The \"Policy\" links in the footer box go to a separate file, \"Appendix D Policy Matrix April 2025 2a.pdf\", which is not in this repository."
+    },
+    {
+      "reference": "3.2",
+      "design-code-chapter": "3",
+      "name": "Biodiversity",
+      "intro-text": "Biodiversity is essential for a healthy environment that is resilient to climate change and supports healthier environments for people.\n\nPolicy requires that biodiversity net gain (BNG) be achieved with new development. It is important that this is done in a way that integrates with blue and green infrastructure, public open space and movement networks.",
+      "place-types": [],
+      "supporting-documents": [
+        {
+          "supporting-document": "statutory-biodiversity-metric-user-guide",
+          "listed-as": "Statutory Biodiversity Metric User Guide"
+        }
+      ],
+      "local-plan-policies": [
+        "ENV1",
+        "ENV4",
+        "S9"
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:biodiversity",
+        "east-riding-design-code:biodiversity-net-gain",
+        "east-riding-design-code:green-infrastructure",
+        "east-riding-design-code:public-open-space",
+        "east-riding-design-code:movement-network"
+      ],
+      "page-number": 37,
+      "extraction-notes": "The section box lists Policy ENV4, but Appendix D links G2 to ENV1, ENV5 and S9 and not ENV4. Both are recorded as printed; one of them may be an error in the source. The place type key (TC IN ON NC V C SD) is in the banner's text layer but is not visible on the page, so no place types are highlighted. The \"Policy\" links in the footer box go to a separate file, \"Appendix D Policy Matrix April 2025 2a.pdf\", which is not in this repository."
+    },
+    {
+      "reference": "3.3",
+      "design-code-chapter": "3",
+      "name": "Trees and Hedgerows",
+      "intro-text": "Trees and Hedgerows are a significant part of the natural environment. They contribute greatly to a high-quality built environment, providing multiple benefits. Planting trees along streets helps slow down cars protecting more vulnerable users, helps improve air quality, and reduce noise levels. Trees also help mitigate climate change effects by capturing and storing atmospheric carbon, managing rainwater, reducing flood risk and minimising urban heat effects. Trees create beautiful landscapes that provide a place for recreation and relaxation.",
+      "place-types": [],
+      "supporting-documents": [
+        {
+          "supporting-document": "trees-planning-and-development",
+          "listed-as": "Trees, Planning and Development: A Guide for Delivery"
+        },
+        {
+          "supporting-document": "trees-in-hard-landscapes",
+          "listed-as": "Trees in Hard Landscapes"
+        },
+        {
+          "supporting-document": "first-steps-in-trees-and-new-developments",
+          "listed-as": "First Steps in Trees and New Developments"
+        }
+      ],
+      "local-plan-policies": [
+        "ENV1",
+        "ENV4",
+        "ENV5"
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:landscape"
+      ],
+      "page-number": 39,
+      "extraction-notes": "Section title is \"Trees and Hedgerows\" on the section banner and in Appendix D, but \"Trees And Hedges\" on the contents pages. The section box lists Policy ENV4, which Appendix D does not link to any rule in this section; Appendix D links G3, C1 and C2 to ENV2 A3 and ENV2 A4, and ENV2 is not in the section box. Recorded as printed. In the footer box, \"First Steps in Trees and New Developments\" links to PDF page 70 (Chapter 9) rather than to Appendix B; the other documents link to Appendix B. The place type key (TC IN ON NC V C SD) is in the banner's text layer but is not visible on the page, so no place types are highlighted. The \"Policy\" links in the footer box go to a separate file, \"Appendix D Policy Matrix April 2025 2a.pdf\", which is not in this repository."
+    },
+    {
+      "reference": "3.4",
+      "design-code-chapter": "3",
+      "name": "Sustainable Drainage",
+      "intro-text": "Sustainable Drainage Systems (SuDS) help mitigate flood risk, moderate microclimate, benefit ecology and biodiversity, and provide water quality benefits alongside conserving water. Whilst providing these functions, SuDS which are integrated into the site can also contribute to creating great places and enhance and influence the character of a development and area.",
+      "place-types": [],
+      "supporting-documents": [
+        {
+          "supporting-document": "sustainable-drainage-systems-and-surface-water-drainage-for-new-developments",
+          "listed-as": "Sustainable Drainage Systems (SuDS) and Surface Water Drainage for New Developments"
+        },
+        {
+          "supporting-document": "the-suds-manual",
+          "listed-as": "The SuDS Manual"
+        },
+        {
+          "supporting-document": "sustainable-drainage-system-design-guidance",
+          "listed-as": "Sustainable Drainage Systems (SuDS) Design Guidance"
+        }
+      ],
+      "local-plan-policies": [
+        "ENV1",
+        "ENV4",
+        "ENV6",
+        "S9"
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:sustainable-drainage-systems",
+        "east-riding-design-code:microclimate",
+        "east-riding-design-code:biodiversity",
+        "east-riding-design-code:character"
+      ],
+      "page-number": 41,
+      "end-page-number": 44,
+      "extraction-notes": "The section runs over two spreads: printed pages 41-42 (code C5 and Table 3) and 43-44 (\"Sustainable Drainage (Glossary)\", Table 4). The section box lists Policy ENV4, but Appendix D links C5 to ENV2 A5 rather than ENV4. Recorded as printed. The place type key (TC IN ON NC V C SD) is in the banner's text layer but is not visible on the page, so no place types are highlighted. The \"Policy\" links in the footer box go to a separate file, \"Appendix D Policy Matrix April 2025 2a.pdf\", which is not in this repository."
+    },
+    {
+      "reference": "3.5",
+      "design-code-chapter": "3",
+      "name": "Renewable Energy",
+      "intro-text": "The impacts of climate change are being felt globally. Integrating renewable and efficient energy supplies are one-way new development can seek to mitigate some of the environmental impact it has.\n\nRenewable energy can be delivered in many ways and at different scales. The heating and energy sources needed for a site must be considered in the early stages of development and integrated into proposals in a way which respects the context and character of the surrounding area.",
+      "place-types": [],
+      "supporting-documents": [
+        {
+          "supporting-document": "adapting-historic-buildings-for-energy-and-carbon-efficiency",
+          "listed-as": "Adapting Historic Buildings for Energy and Carbon Efficiency"
+        },
+        {
+          "supporting-document": "climate-change-strategy-2022-2030",
+          "listed-as": "Climate Change Strategy 2022-2030"
+        },
+        {
+          "supporting-document": "sustainable-traditional-buildings-alliance",
+          "listed-as": "Sustainable Traditional Buildings Alliance"
+        }
+      ],
+      "local-plan-policies": [
+        "ENV1"
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:renewable-energy",
+        "east-riding-design-code:scale",
+        "east-riding-design-code:context",
+        "east-riding-design-code:character"
+      ],
+      "page-number": 45,
+      "extraction-notes": "\"one-way\" is spelled as printed. The place type key (TC IN ON NC V C SD) is in the banner's text layer but is not visible on the page, so no place types are highlighted. The \"Policy\" links in the footer box go to a separate file, \"Appendix D Policy Matrix April 2025 2a.pdf\", which is not in this repository."
+    }
+  ],
+  "design-code-definitions": [
+    {
+      "reference": "3.1-definition-1",
+      "design-code-section": "3.1",
+      "term": "Green infrastructure (GI)",
+      "text": "A network of multi-functional green and blue spaces and other natural features, urban and rural, which is capable of delivering a wide range of environmental, economic, health and wellbeing benefits for nature, climate, local and wider communities and prosperity.",
+      "source": "NPPF 2024",
+      "glossary-terms": [
+        "east-riding-design-code:green-infrastructure"
+      ],
+      "page-number": 35,
+      "extraction-notes": "Printed as \"DEFINITION: Green infrastructure (GI): … (NPPF 2024)\" in italics. This wording differs from the Appendix A definition of green infrastructure."
+    }
+  ],
+  "design-code-notes": [
+    {
+      "reference": "3.5-note-1",
+      "design-code-section": "3.5",
+      "heading": "NOTE",
+      "text": "Some types of insultation retrofit and renewable energy production will not be suitable for use in conservation areas and on listed buildings. Further information on renewable energy and heritage assets, and on adapting historic buildings for energy efficiency can be found on the Historic England website.",
+      "links": [],
+      "glossary-terms": [
+        "east-riding-design-code:renewable-energy",
+        "east-riding-design-code:conservation-area",
+        "east-riding-design-code:listed-building",
+        "east-riding-design-code:heritage"
+      ],
+      "page-number": 46,
+      "extraction-notes": "\"insultation\" is as printed (checked on a 3x render of the page). \"Historic England website\" is not a link."
+    }
+  ],
+  "design-code-rules": [
+    {
+      "reference": "G1",
+      "design-code": "east-riding-design-code",
+      "type": "key-guidance",
+      "title": "Maximising Green Infrastructure Value",
+      "design-code-section": "3.1",
+      "requirement-text": "Designing green infrastructure to perform multiple functions will deliver schemes that make efficient use of land and are cost effective. Combining recreation, movement, drainage and enhancing biodiversity in the same space will maximise benefits and make the best use of space available.\n\nA well-connected and multifunctional green infrastructure system should be integrated holistically into the landscape design. This should incorporate:\n\n- public open spaces (see Chapter 5);\n- movement network (see Chapter 4 and Chapter 7);\n- SuDS network (see section 3.4 Sustainable Drainage);\n- wildlife habitat network (see section 3.2 Biodiversity), and;\n- development edges, to blend seamlessly with green infrastructure outside of the site.\n\n(For a more comprehensive list see table 9 of the East Riding Local Plan.)\n\nGreen infrastructure should be designed to integrate existing neighbouring areas and future developments. Public open spaces and streets should include new trees and landscaping elements that complement and enhance existing features while mitigating any negative impacts caused by the new development.\n\nConnecting green infrastructure will maximise benefits, create resilience and provide continuous corridors for wildlife and movement of people.\n\nThe green infrastructure system should connect existing and proposed natural and semi-natural spaces, including:\n\n- open spaces;\n- wooded areas;\n- tree belts and hedgerows;\n- wildlife habitats;\n- green corridors;\n- SuDS and water bodies.\n\nFurther information on integrating quality green infrastructure into development can be found in Building with Nature.\n\nThe National Urban Greening Factor should be met as follows:\n\n- 0.3 for commercial development;\n- 0.4 for residential development, and;\n- 0.5 for residential greenfield development.\n\nGuidance on using the urban greening factor is set out in Natural England’s Green Infrastructure Framework. For the urban greening factor, the evidence of calculations should be submitted with applications.",
+      "guidance-text": "",
+      "development-types": [
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "nature",
+        "public-space"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "landscaping",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-B15",
+        "ENV1-B17",
+        "ENV1-B18",
+        "ENV5-A1",
+        "ENV5-A2",
+        "S9-A",
+        "S9-B"
+      ],
+      "supporting-documents": [
+        {
+          "supporting-document": "building-with-nature-standards-framework",
+          "listed-as": "Building with Nature"
+        }
+      ],
+      "links": [
+        {
+          "text": "National Urban Greening Factor",
+          "url": "https://designatedsites.naturalengland.org.uk/GreenInfrastructure/DesignGuide.aspx",
+          "supporting-document": "green-infrastructure-planning-and-design-guide"
+        },
+        {
+          "text": "Natural England’s Green Infrastructure Framework",
+          "url": "https://designatedsites.naturalengland.org.uk/greeninfrastructure/home.aspx"
+        }
+      ],
+      "design-code-tables": [],
+      "cross-references": [
+        {
+          "type": "chapter",
+          "reference": "5",
+          "listed-as": "see Chapter 5"
+        },
+        {
+          "type": "chapter",
+          "reference": "4",
+          "listed-as": "see Chapter 4"
+        },
+        {
+          "type": "chapter",
+          "reference": "7",
+          "listed-as": "Chapter 7"
+        },
+        {
+          "type": "section",
+          "reference": "3.4",
+          "listed-as": "see section 3.4 Sustainable Drainage"
+        },
+        {
+          "type": "section",
+          "reference": "3.2",
+          "listed-as": "see section 3.2 Biodiversity"
+        }
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:green-infrastructure",
+        "east-riding-design-code:biodiversity",
+        "east-riding-design-code:landscape",
+        "east-riding-design-code:public-open-space",
+        "east-riding-design-code:movement-network",
+        "east-riding-design-code:green-corridor",
+        "east-riding-design-code:sustainable-drainage-systems"
+      ],
+      "page-number": 35,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. \"National Urban Greening Factor\" links to the Green Infrastructure Planning and Design Guide, as printed. \"table 9 of the East Riding Local Plan\" refers to the Local Plan, not this document, so it is not a cross-reference. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "G2",
+      "design-code": "east-riding-design-code",
+      "type": "key-guidance",
+      "title": "Creating a Biodiversity Network",
+      "design-code-section": "3.2",
+      "requirement-text": "To improve biodiversity on site, a network should be created, that connects existing and proposed wildlife habitats. These should be integrated into the green and blue infrastructure network.\n\nThroughout the whole site, including public and private spaces, development should:\n\n- retain, protect and enhance existing natural features such as trees, hedgerows, wildflower meadows and water courses;\n- protect and create wildlife habitats and corridors through whole sites, connecting to green infrastructure outside of the site boundary (see section 3.1 Green Infrastructure);\n- use existing hedgerows, amending any gaps, to define boundaries and create wildlife corridors linking these to other wildlife habitats;\n- include native trees and plants in landscaping schemes;\n- enhance resilience by including climate-resistant trees and plants in landscaping schemes;\n- use retained trees and include additional trees in car parking, communal areas inside blocks and into streets;\n- integrate sustainable drainage plans with landscaping and use the SuDS solutions designed into the site to promote biodiversity;\n- Consider integrating green walls and green roofs;\n- Consider use of brown roofs;\n- include locally appropriate wildflower and species-rich planting;\n- include integrated bat and swift bricks supplemented with species specific nest boxes where appropriate. The use of generic bird boxes is discouraged.\n\nBiodiversity Net Gain (BNG) metrics must be submitted with applications to comply with policy.",
+      "guidance-text": "",
+      "development-types": [
+        "east-riding-design-code:1-2-units",
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "nature"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "landscaping",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-B15",
+        "ENV1-B17",
+        "ENV5-A1",
+        "ENV5-A2",
+        "ENV5-C",
+        "S9-A",
+        "S9-B"
+      ],
+      "supporting-documents": [],
+      "links": [],
+      "design-code-tables": [],
+      "cross-references": [
+        {
+          "type": "section",
+          "reference": "3.1",
+          "listed-as": "see section 3.1 Green Infrastructure"
+        }
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:biodiversity",
+        "east-riding-design-code:green-infrastructure",
+        "east-riding-design-code:block",
+        "east-riding-design-code:sustainable-drainage-systems",
+        "east-riding-design-code:biodiversity-net-gain"
+      ],
+      "page-number": 37,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "G3",
+      "design-code": "east-riding-design-code",
+      "type": "key-guidance",
+      "title": "Retaining and Increasing Trees and Hedgerows",
+      "design-code-section": "3.3",
+      "requirement-text": "Trees and hedgerows should be retained and their provision should be increased wherever possible, for their holistic benefits to the function and performance of both the built and natural environment, as well as physical and mental wellbeing.\n\nTree planting should reflect native and climate resistant species (see The Trees and Design Action Group, TDAG, for further information).",
+      "guidance-text": "",
+      "development-types": [
+        "east-riding-design-code:1-2-units",
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "nature"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "landscaping",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-B15",
+        "ENV1-B17",
+        "ENV1-B18",
+        "ENV2-A3",
+        "ENV2-A4"
+      ],
+      "supporting-documents": [],
+      "links": [
+        {
+          "text": "The Trees and Design Action Group, TDAG",
+          "url": "https://www.tdag.org.uk/"
+        }
+      ],
+      "design-code-tables": [],
+      "cross-references": [],
+      "glossary-terms": [],
+      "page-number": 39,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "C1",
+      "design-code": "east-riding-design-code",
+      "type": "code",
+      "title": "Tree Retention Requirements",
+      "design-code-section": "3.3",
+      "requirement-text": "Existing category A and B trees within the development site must be retained.",
+      "guidance-text": "In addition to Category A and B trees, Category C trees should be retained where possible to support biodiversity (see section 3.2 Biodiversity). The removal of any trees must be justified within the supporting documents.",
+      "development-types": [
+        "east-riding-design-code:1-2-units",
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "nature"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "landscaping",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-B15",
+        "ENV1-B17",
+        "ENV1-B18",
+        "ENV2-A3",
+        "ENV2-A4"
+      ],
+      "supporting-documents": [],
+      "links": [],
+      "design-code-tables": [],
+      "cross-references": [
+        {
+          "type": "section",
+          "reference": "3.2",
+          "listed-as": "see section 3.2 Biodiversity"
+        }
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:biodiversity"
+      ],
+      "page-number": 39,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "C2",
+      "design-code": "east-riding-design-code",
+      "type": "code",
+      "title": "Replacing Removed Trees",
+      "design-code-section": "3.3",
+      "requirement-text": "When there is the need to remove existing trees (of any category) they must be replaced on-site on a 1:2 ratio.",
+      "guidance-text": "Replacement trees should be planted no later than the next available planting season upon completion of the relevant phase of development.\n\nThe size of tree planted will depend on species selection and location. On streets, extra heavy or heavy standard trees will be the most suitable size for replacement trees. Please contact the local planning authority for pre-application advice if further information is required.",
+      "development-types": [
+        "east-riding-design-code:1-2-units",
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "nature"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "landscaping",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-B15",
+        "ENV1-B17",
+        "ENV1-B18",
+        "ENV2-A3",
+        "ENV2-A4"
+      ],
+      "supporting-documents": [],
+      "links": [],
+      "design-code-tables": [],
+      "cross-references": [],
+      "glossary-terms": [],
+      "page-number": 39,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "C3",
+      "design-code": "east-riding-design-code",
+      "type": "code",
+      "title": "Trees in the Public Realm",
+      "design-code-section": "3.3",
+      "requirement-text": "A minimum of 75% of new trees planted as part of landscaping proposals must be within the public realm.",
+      "guidance-text": "Planting within the public realm, including public streets, will ensure the retention and management of trees throughout their lifespan. The position of new trees and hedgerows can help strengthen existing green infrastructure and provide new.",
+      "development-types": [
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "nature",
+        "public-space"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "landscaping",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-B15",
+        "ENV1-B17",
+        "ENV1-B18",
+        "ENV5-A"
+      ],
+      "supporting-documents": [],
+      "links": [],
+      "design-code-tables": [],
+      "cross-references": [],
+      "glossary-terms": [
+        "east-riding-design-code:public-realm",
+        "east-riding-design-code:green-infrastructure"
+      ],
+      "page-number": 39,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. Appendix D gives \"ENV5 A\" with no criterion number, unlike the other ENV5 references. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "C4",
+      "design-code": "east-riding-design-code",
+      "type": "code",
+      "title": "Tree-Lined Streets",
+      "design-code-section": "3.3",
+      "requirement-text": "New streets must be tree-lined.",
+      "guidance-text": "Trees should be planted on streets in a way which will protect their future growth as well as the surrounding highway infrastructure. See the TDAG guidance on street trees.",
+      "development-types": [
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "nature",
+        "movement"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "means-of-access",
+        "landscaping"
+      ],
+      "local-plan-policies": [
+        "ENV1-B16"
+      ],
+      "supporting-documents": [
+        {
+          "supporting-document": "trees-in-hard-landscapes",
+          "listed-as": "TDAG guidance on street trees"
+        }
+      ],
+      "links": [
+        {
+          "text": "TDAG guidance on street trees",
+          "url": "https://www.tdag.org.uk/trees-in-hard-landscapes.html",
+          "supporting-document": "trees-in-hard-landscapes"
+        }
+      ],
+      "design-code-tables": [],
+      "cross-references": [],
+      "glossary-terms": [],
+      "page-number": 39,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "C5",
+      "design-code": "east-riding-design-code",
+      "type": "code",
+      "title": "Integrating Sustainable Drainage",
+      "design-code-section": "3.4",
+      "requirement-text": "Sustainable Drainage Systems (SuDS) must be embedded in the site layout and be fully integrated within the green infrastructure system.",
+      "guidance-text": "The SuDS should be incorporated into individual plots, streets, public open spaces and wildlife networks. The design of SuDS should also:\n\n- take advantage of the site’s natural topography to minimise the need for mechanical measures;\n- effectively manage run-off;\n- enhance natural filtration and infiltration to improve water quality and;\n- include provisions for water storage for irrigation to reduce the demand for additional water supply.\n\nThere are different methods for including SuDS in a development. Which method is most appropriate will depend on the type of development, scale of development and ground conditions. Where possible, SuDS should be designed to maximise biodiversity value. Table 3 sets out some possible SuDS methods.\n\nOn sites with nutrient neutrality issues SuDS may not be appropriate. A site-specific approach based on mitigation guidance should be taken.",
+      "development-types": [
+        "east-riding-design-code:householder",
+        "east-riding-design-code:1-2-units",
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "climate",
+        "nature"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "landscaping",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-B15",
+        "ENV1-B18",
+        "ENV2-A5",
+        "ENV6-D",
+        "ENV1-B17",
+        "S9-A",
+        "S9-B"
+      ],
+      "supporting-documents": [],
+      "links": [],
+      "design-code-tables": [
+        "table-3"
+      ],
+      "cross-references": [
+        {
+          "type": "table",
+          "reference": "table-3",
+          "listed-as": "Table 3"
+        }
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:sustainable-drainage-systems",
+        "east-riding-design-code:layout",
+        "east-riding-design-code:green-infrastructure",
+        "east-riding-design-code:public-open-space",
+        "east-riding-design-code:wildlife-network",
+        "east-riding-design-code:scale",
+        "east-riding-design-code:biodiversity"
+      ],
+      "page-number": 41,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. Policies are in the order printed in Appendix D (ENV1 B17 appears after ENV6 D). features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "G4",
+      "design-code": "east-riding-design-code",
+      "type": "key-guidance",
+      "title": "Energy Efficiency in Existing Buildings",
+      "design-code-section": "3.5",
+      "requirement-text": "Domestic properties in the East Riding account for approximately 18% of the county’s greenhouse gas emissions. For development taking place in existing buildings the retrofitting of insulation and technology to make the buildings as energy efficient as possible is recommended.",
+      "guidance-text": "",
+      "development-types": [
+        "east-riding-design-code:householder",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "climate"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "appearance",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-A2",
+        "ENV1-B9",
+        "ENV1-B18",
+        "ENV1-B19",
+        "ENV1-C"
+      ],
+      "supporting-documents": [],
+      "links": [],
+      "design-code-tables": [],
+      "cross-references": [],
+      "glossary-terms": [],
+      "page-number": 45,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. The chapter's \"Where To Demonstrate Compliance\" list includes \"Elevation Plan (G4)\", which refers to this item. features are proposed from the rule's wording and need confirming."
+    },
+    {
+      "reference": "C6",
+      "design-code": "east-riding-design-code",
+      "type": "code",
+      "title": "On-Site Renewable Energy Requirement",
+      "design-code-section": "3.5",
+      "requirement-text": "At least one form of on-site renewable energy must be delivered where development includes new buildings.",
+      "guidance-text": "The inclusion of on-site renewable energy is part of the councils Climate Change Strategy 2022-2030 to reduce carbon emissions in the authority. This can be done on an individual plot basis or using larger scale solutions to provide heating and energy across a site. When installing renewable technology, it is important that they fit in with the surrounding context and do not look overbearing, are screened from view. and do not cause noise pollution. It is also important to ensure individual buildings are designed to be as energy efficient as possible to make the best use of the energy needed to run them.\n\nPhotovoltaic Panels (PV) should be designed holistically with the building form. On roofs that front a street, or are considered visually prominent one or more of the following methods should be used:\n\n- photovoltaic tiles, bonded with the surrounding roof tiling;\n- PV’s set into the roof structure where this does not dominate the roof plane.\n\nWhere not on visually prominent roofs, methods of fixing other than those listed above can be considered.\n\nSolar Water Heating should be considered in addition to Photovoltaic Panels.\n\nAir Source Heat Pumps should be located where they are not visually prominent from outside of the plot of the building they are connected with. As the screening of heat pumps can impact their use it is recommended they are placed to the side or rear of a building where possible.\n\nThe location of pumps in relation to the windows of neighbouring properties, due to noise pollution, should also be considered.\n\nGround Source Heat Pumps should be considered as an alternative to air source heat pumps to minimise visual impact.\n\nCommunity heat networks redistribute heat from one place to others and are an efficient way of heating many places from waste heat or a centralised low carbon source.\n\nSmall wind energy systems should only be considered where they can be screened from view and do not cause noise pollution.",
+      "development-types": [
+        "east-riding-design-code:1-2-units",
+        "east-riding-design-code:3-9-units",
+        "east-riding-design-code:10-plus-units",
+        "east-riding-design-code:mixed-use",
+        "east-riding-design-code:flats",
+        "east-riding-design-code:agricultural",
+        "east-riding-design-code:industrial-storage-and-distribution",
+        "east-riding-design-code:commercial"
+      ],
+      "place-types": [],
+      "features": [
+        "climate"
+      ],
+      "features-status": "proposed",
+      "outline-application-matters": [
+        "appearance",
+        "layout"
+      ],
+      "local-plan-policies": [
+        "ENV1-A2",
+        "ENV1-A3",
+        "ENV1-B5",
+        "ENV1-B9",
+        "ENV1-B18",
+        "ENV1-B19",
+        "ENV1-C"
+      ],
+      "supporting-documents": [
+        {
+          "supporting-document": "climate-change-strategy-2022-2030",
+          "listed-as": "Climate Change Strategy 2022-2030"
+        }
+      ],
+      "links": [],
+      "design-code-tables": [],
+      "cross-references": [],
+      "glossary-terms": [
+        "east-riding-design-code:renewable-energy",
+        "east-riding-design-code:scale",
+        "east-riding-design-code:context",
+        "east-riding-design-code:view"
+      ],
+      "page-number": 45,
+      "extraction-notes": "title is written for the prototype from the rule's own text; the PDF gives codes and key guidance no titles. place-types is empty because Appendix D marks no place types for this item. \"screened from view. and\" and \"councils\" (without an apostrophe) are as printed. features are proposed from the rule's wording and need confirming."
+    }
+  ],
+  "design-code-tables": [
+    {
+      "reference": "table-3",
+      "design-code-section": "3.4",
+      "number": 3,
+      "name": "SuDS methods and suitability to development type and location (C5)",
+      "design-code-rules": [
+        "C5"
+      ],
+      "columns": [
+        {
+          "reference": "suds-method",
+          "name": "SUDS METHOD",
+          "type": "text"
+        },
+        {
+          "reference": "commercial",
+          "name": "Commercial",
+          "group": "SUITABILITY",
+          "type": "dot"
+        },
+        {
+          "reference": "residential",
+          "name": "Residential",
+          "group": "SUITABILITY",
+          "type": "dot"
+        },
+        {
+          "reference": "plot",
+          "name": "Plot",
+          "group": "LOCATION",
+          "type": "dot"
+        },
+        {
+          "reference": "street",
+          "name": "Street",
+          "group": "LOCATION",
+          "type": "dot"
+        },
+        {
+          "reference": "public-open-space",
+          "name": "Public Open Space",
+          "group": "LOCATION",
+          "type": "dot"
+        }
+      ],
+      "rows": [
+        {
+          "suds-method": "Rainwater harvesting",
+          "commercial": true,
+          "residential": true,
+          "plot": true,
+          "street": false,
+          "public-open-space": false
+        },
+        {
+          "suds-method": "Water Butts",
+          "commercial": false,
+          "residential": true,
+          "plot": true,
+          "street": false,
+          "public-open-space": false
+        },
+        {
+          "suds-method": "Green roofs and walls",
+          "commercial": true,
+          "residential": true,
+          "plot": true,
+          "street": false,
+          "public-open-space": false
+        },
+        {
+          "suds-method": "Soakaways",
+          "commercial": true,
+          "residential": true,
+          "plot": true,
+          "street": false,
+          "public-open-space": false
+        },
+        {
+          "suds-method": "Permeable surfaces and pavements",
+          "commercial": true,
+          "residential": true,
+          "plot": true,
+          "street": true,
+          "public-open-space": true
+        },
+        {
+          "suds-method": "Infiltration basins",
+          "commercial": true,
+          "residential": true,
+          "plot": false,
+          "street": false,
+          "public-open-space": true
+        },
+        {
+          "suds-method": "Ponds",
+          "commercial": true,
+          "residential": true,
+          "plot": false,
+          "street": false,
+          "public-open-space": true
+        },
+        {
+          "suds-method": "Wetlands",
+          "commercial": true,
+          "residential": true,
+          "plot": false,
+          "street": false,
+          "public-open-space": true
+        },
+        {
+          "suds-method": "Swales",
+          "commercial": true,
+          "residential": true,
+          "plot": false,
+          "street": true,
+          "public-open-space": true
+        },
+        {
+          "suds-method": "Tree pits",
+          "commercial": true,
+          "residential": true,
+          "plot": false,
+          "street": true,
+          "public-open-space": true
+        },
+        {
+          "suds-method": "Bioretention systems and rain gardens",
+          "commercial": true,
+          "residential": true,
+          "plot": true,
+          "street": true,
+          "public-open-space": true
+        },
+        {
+          "suds-method": "Attenuation storage tanks",
+          "commercial": true,
+          "residential": true,
+          "plot": false,
+          "street": true,
+          "public-open-space": true
+        }
+      ],
+      "footnotes": "",
+      "glossary-terms": [
+        "east-riding-design-code:tree-pit"
+      ],
+      "page-number": 41,
+      "extraction-notes": "Dots were read from the page image. This table is not in Appendix D."
+    },
+    {
+      "reference": "table-4",
+      "design-code-section": "3.4",
+      "number": 4,
+      "name": "Glossary of SuDS methods and their benefits",
+      "design-code-rules": [],
+      "columns": [
+        {
+          "reference": "suds-method",
+          "name": "SuDS METHOD",
+          "type": "text"
+        },
+        {
+          "reference": "description",
+          "name": "DESCRIPTION",
+          "type": "text"
+        },
+        {
+          "reference": "benefits",
+          "name": "BENEFITS INCLUDE",
+          "type": "list"
+        }
+      ],
+      "rows": [
+        {
+          "suds-method": "Attenuation storage tanks",
+          "description": "Below ground structures that store water temporarily before infiltration, slow release or connect with rainwater harvesting systems.",
+          "benefits": [
+            "Can store a high volume of water",
+            "Installed underground for efficient use of space",
+            "Can be linked with other SuDS"
+          ]
+        },
+        {
+          "suds-method": "Bioretention systems and rain gardens",
+          "description": "Shallow planters that pond temporarily and filter the water through vegetation and soil before infiltration or storage. Can be constructed in private gardens, along streets or other public spaces. Rain Gardens are smaller, simple bioretention systems, normally associated with individual properties.",
+          "benefits": [
+            "A range of scales possible",
+            "Visual amenity and biodiversity benefits",
+            "Slow flow and clean water"
+          ]
+        },
+        {
+          "suds-method": "Brown roofs",
+          "description": "A roof covered in local soil which is allowed to self seed with local vegetation.",
+          "benefits": [
+            "Ecological benefits",
+            "Reduce pollution, noise and energy usage"
+          ]
+        },
+        {
+          "suds-method": "Green roofs and walls",
+          "description": "Roofs or walls covered by vegetation that help retain, attenuate and treat runoff.",
+          "benefits": [
+            "Do not need additional land",
+            "Visual and ecological benefits",
+            "Reduce pollution, noise and energy usage",
+            "Can provide some the same health benefits as gardens"
+          ]
+        },
+        {
+          "suds-method": "Infiltration basins",
+          "description": "Dry and shallow basins that can store large amounts of water during events allowing for sediments to settle before infiltration.",
+          "benefits": [
+            "Can be part of multifunctional spaces for recreation",
+            "Can include shrubs and trees to improve biodiversity and visual amenity. Planting also helps clean water",
+            "Keeps rainfall on-site helping to reduce runoff and prevent flooding"
+          ]
+        },
+        {
+          "suds-method": "Permeable/pervious surfaces and pavements",
+          "description": "Gaps between surface materials allow for the infiltration of water to an underlying layer before infiltration to ground. There are different types of permeable surfaces including paving, gravel and woodchip. Pervious pavements are suitable for pedestrians and vehicle use",
+          "benefits": [
+            "Reduce and slow run-off",
+            "Low maintenance",
+            "Allow for activity on surface",
+            "A choice of materials to fit with the visual amenity of the area"
+          ]
+        },
+        {
+          "suds-method": "Ponds",
+          "description": "Permanent pools with vegetation, that store runoff temporarily for attenuation and treatment, allowing sediments to settle.",
+          "benefits": [
+            "Can vary in scale",
+            "Can add to visual amenity",
+            "Can incorporate planting to boost biodiversity"
+          ]
+        },
+        {
+          "suds-method": "Rainwater harvesting",
+          "description": "Systems that collect rainwater within the boundaries of a property to use on-site.",
+          "benefits": [
+            "Use for toilet flushing, irrigation and watering reducing demand for potable water",
+            "Keeps rainfall on-site helping to reduce runoff and prevent flooding"
+          ]
+        },
+        {
+          "suds-method": "Soakaways",
+          "description": "Hollow underground structures filled with draining material, such as gravel, allow for water collection and slow infiltration. Low maintenance and suitable for gardens.",
+          "benefits": [
+            "Slow the flow of water",
+            "Do not occupy surface space",
+            "Can be integrated into garden design"
+          ]
+        },
+        {
+          "suds-method": "Swales",
+          "description": "Shallow, vegetated channels which provide temporary storage, infiltration and conveyance of water.",
+          "benefits": [
+            "Ideal for use along streets and in car parks and other permeable and impermeable surfaces as part of landscaping scheme to improve visual amenity.",
+            "Clean surface water run off",
+            "Biodiversity benefits (when combined with trees and species rich plants"
+          ]
+        },
+        {
+          "suds-method": "Tree pits",
+          "description": "Tree pits can be provided along streets and car parking to collect and attenuate runoff.",
+          "benefits": [
+            "Visual amenity and biodiversity benefits",
+            "Can be combined well with other SuDS",
+            "Collect, clean and infiltrate surface water run off"
+          ]
+        },
+        {
+          "suds-method": "Water butts",
+          "description": "A smaller scale method of rainwater harvesting. Water butts can be attached to down pipes and used for watering gardens.",
+          "benefits": [
+            "Affordable, simple to build, install and maintain",
+            "Reduces need for fresh water for gardening"
+          ]
+        },
+        {
+          "suds-method": "Wetlands",
+          "description": "Ponds densely covered with vegetation with shallow areas that allow the plants that are rooted in the bottom to grow enhancing water treatment.",
+          "benefits": [
+            "Visual amenity",
+            "Slows flow and cleans water",
+            "High ecological value"
+          ]
+        }
+      ],
+      "footnotes": "",
+      "glossary-terms": [
+        "east-riding-design-code:sustainable-drainage-systems",
+        "east-riding-design-code:scale",
+        "east-riding-design-code:biodiversity",
+        "east-riding-design-code:tree-pit",
+        "east-riding-design-code:surface-water-runoff"
+      ],
+      "page-number": 43,
+      "end-page-number": 44,
+      "extraction-notes": "Rows run down page 43 (Attenuation storage tanks to Permeable/pervious surfaces and pavements) and then page 44 (Ponds to Wetlands). Not linked to a specific code. Wording is as printed, including \"some the same health benefits\" and the unclosed bracket in the Swales row. \"surface water run off\" in the Swales row is not underlined but links to the glossary entry \"Surface water runoff\"."
+    }
+  ],
+  "design-code-figures": [
+    {
+      "reference": "figure-19",
+      "design-code-section": "3.1",
+      "number": 19,
+      "caption": "Examples of green infrastructure opportunities",
+      "panel-headings": [],
+      "labels": [
+        {
+          "text": "street trees"
+        },
+        {
+          "text": "connection with edge"
+        },
+        {
+          "text": "SuDS at movement network"
+        },
+        {
+          "text": "connected wooded area"
+        },
+        {
+          "text": "green public open space"
+        }
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:sustainable-drainage-systems",
+        "east-riding-design-code:movement-network",
+        "east-riding-design-code:public-open-space"
+      ],
+      "image": "",
+      "page-number": 36
+    },
+    {
+      "reference": "figure-20",
+      "design-code-section": "3.2",
+      "number": 20,
+      "caption": "Before and after development highlighting biodiversity enhancements",
+      "panel-headings": [
+        "BEFORE",
+        "AFTER"
+      ],
+      "labels": [
+        {
+          "text": "species rich hedge",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "native tree",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "existing field",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "natural pond",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "existing hedge",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "protected hedge",
+          "panel": "AFTER"
+        },
+        {
+          "text": "enhanced field wildflower meadow",
+          "panel": "AFTER"
+        },
+        {
+          "text": "retained tree",
+          "panel": "AFTER"
+        },
+        {
+          "text": "enhanced pond",
+          "panel": "AFTER"
+        },
+        {
+          "text": "retained hedge",
+          "panel": "AFTER"
+        }
+      ],
+      "glossary-terms": [],
+      "image": "/public/images/design-codes/east-riding-biodiversity-before-after.png",
+      "page-number": 38,
+      "extraction-notes": "\"enhanced field wildflower meadow\" is one label printed over two lines."
+    },
+    {
+      "reference": "figure-21",
+      "design-code-section": "3.3",
+      "number": 21,
+      "caption": "Youth Photography Competition winning entry ‘Reflective Walk’ by Katie Thompson",
+      "panel-headings": [],
+      "labels": [],
+      "glossary-terms": [],
+      "image": "",
+      "page-number": 40,
+      "extraction-notes": "A photograph with no labels."
+    },
+    {
+      "reference": "figure-22",
+      "design-code-section": "3.4",
+      "number": 22,
+      "caption": "Potential SuDS methods for new development",
+      "panel-headings": [],
+      "labels": [
+        {
+          "text": "GREEN ROOF"
+        },
+        {
+          "text": "POND"
+        },
+        {
+          "text": "SWALE"
+        },
+        {
+          "text": "BIORETENTION"
+        }
+      ],
+      "glossary-terms": [],
+      "image": "/public/images/design-codes/east-riding-figure-22.png",
+      "page-number": 42,
+      "extraction-notes": "Appendix C gives the caption with a full stop (\"…for new development.\"); the caption on the page has none."
+    },
+    {
+      "reference": "figure-23",
+      "design-code-section": "3.5",
+      "number": 23,
+      "caption": "Potential on-site renewable energy options",
+      "panel-headings": [],
+      "labels": [
+        {
+          "text": "back roof - PV panels"
+        },
+        {
+          "text": "water butt"
+        },
+        {
+          "text": "heat pump"
+        }
+      ],
+      "glossary-terms": [],
+      "image": "",
+      "page-number": 46
+    },
+    {
+      "reference": "figure-24",
+      "design-code-section": "3.5",
+      "number": 24,
+      "caption": "Precedent images illustrating on-site renewable energy incorporation",
+      "panel-headings": [],
+      "labels": [],
+      "glossary-terms": [],
+      "image": "",
+      "page-number": 46,
+      "extraction-notes": "Two photographs (a heat pump and roof solar panels) with no labels."
+    }
+  ],
+  "glossary-terms": [
+    {
+      "reference": "east-riding-design-code:biodiversity",
+      "design-code": "east-riding-design-code",
+      "term": "Biodiversity",
+      "definition": "The term given to the variety of life on earth, encompassing all life, from the smallest micro-organisms to the largest mammals and plants.",
+      "page-number": 137,
+      "extraction-notes": "The hyphen in \"micro-organisms\" falls at a line end in the PDF; it is kept because no line-end hyphen in this PDF splits a single word."
+    },
+    {
+      "reference": "east-riding-design-code:biodiversity-net-gain",
+      "design-code": "east-riding-design-code",
+      "term": "Biodiversity Net Gain (BNG)",
+      "definition": "Biodiversity Net Gain (BNG) is a principle that aims to leave biodiversity in a better state than before. This approach ensures that any development activity results in an overall increase in biodiversity, rather than just mitigating the impacts of the development.",
+      "page-number": 137
+    },
+    {
+      "reference": "east-riding-design-code:block",
+      "design-code": "east-riding-design-code",
+      "term": "Block",
+      "definition": "A block is a defined area of land within a settlement that is bounded by streets or other physical boundaries. It is the basic unit of urban land use and typically consists of a collection of buildings.",
+      "page-number": 137
+    },
+    {
+      "reference": "east-riding-design-code:character",
+      "design-code": "east-riding-design-code",
+      "term": "Character",
+      "definition": "Character refers to the distinctive and unique qualities that define the identity, atmosphere, and overall feel of a specific area or locality. It encompasses a combination of physical, cultural, historical, and social attributes that give a place its sense of personality, charm, and authenticity.",
+      "page-number": 137
+    },
+    {
+      "reference": "east-riding-design-code:conservation-area",
+      "design-code": "east-riding-design-code",
+      "term": "Conservation area",
+      "definition": "An area of special architectural or historic interest, the character or appearance of which it is desirable to preserve or enhance. There are over 100 conservation areas in the East Riding. These are shown on the Policies Map.",
+      "page-number": 137
+    },
+    {
+      "reference": "east-riding-design-code:context",
+      "design-code": "east-riding-design-code",
+      "term": "Context",
+      "definition": "Context refers to the physical, cultural, historical, and social conditions and elements that surround and influence a particular location or environment.",
+      "page-number": 137
+    },
+    {
+      "reference": "east-riding-design-code:design-and-access-statement",
+      "design-code": "east-riding-design-code",
+      "term": "Design and Access Statement (DAS)",
+      "definition": "A Design and Access Statement (DAS) is a document that accompanies planning applications for development proposals in the United Kingdom. It provides a comprehensive explanation and justification of the design principles, rationale, and considerations underlying the proposed development, as well as how the design addresses access requirements and enhances inclusivity.",
+      "page-number": 138
+    },
+    {
+      "reference": "east-riding-design-code:green-corridor",
+      "design-code": "east-riding-design-code",
+      "term": "Green corridor",
+      "definition": "A type of open space that includes linear features of open character including towpaths, riverbanks, cycle ways and disused railway lines. They are strategically planned and managed to facilitate ecological connectivity, biodiversity conservation, and sustainable urban development.",
+      "page-number": 139
+    },
+    {
+      "reference": "east-riding-design-code:green-infrastructure",
+      "design-code": "east-riding-design-code",
+      "term": "Green infrastructure",
+      "definition": "A network of new and existing multi-functional green space, both rural and urban, which is capable of delivering a wide range of environmental and quality of life benefits for local communities. Includes such as parks, forests, wetlands, green spaces, and water bodies, as well as engineered systems such as green roofs, permeable pavements, rain gardens, and bioswales.",
+      "page-number": 139,
+      "extraction-notes": "\"Includes such as\" is as printed."
+    },
+    {
+      "reference": "east-riding-design-code:heritage",
+      "design-code": "east-riding-design-code",
+      "term": "Heritage",
+      "definition": "Heritage refers to the legacy of physical artifacts and intangible attributes inherited from past generations, maintained in the present, and preserved for the benefit of future generations.",
+      "page-number": 139
+    },
+    {
+      "reference": "east-riding-design-code:landscape",
+      "design-code": "east-riding-design-code",
+      "term": "Landscape",
+      "definition": "Landscape refers to the visible features of an area of land, including natural elements such as terrain, vegetation, bodies of water, and climate, as well as human-made elements such as buildings, roads, and infrastructure.",
+      "page-number": 140
+    },
+    {
+      "reference": "east-riding-design-code:layout",
+      "design-code": "east-riding-design-code",
+      "term": "Layout",
+      "definition": "Layout refers to the spatial arrangement or organisation of various elements within a settlement or site. This includes the distribution of buildings, land uses, transportation networks, public spaces, infrastructure and amenities.",
+      "page-number": 140
+    },
+    {
+      "reference": "east-riding-design-code:listed-building",
+      "design-code": "east-riding-design-code",
+      "term": "Listed building",
+      "definition": "A listed building is a structure or building that has been officially designated as having special architectural, historical, or cultural significance. There are three categories of listing in the UK: Grade I (buildings of exceptional interest), Grade II* (particularly important buildings of more than special interest), and Grade II (buildings of special interest).",
+      "page-number": 140
+    },
+    {
+      "reference": "east-riding-design-code:microclimate",
+      "design-code": "east-riding-design-code",
+      "term": "Microclimate",
+      "definition": "A microclimate refers to the climate conditions that prevail within a relatively small or localised area, such as a garden, park, street, or building courtyard.",
+      "page-number": 140
+    },
+    {
+      "reference": "east-riding-design-code:movement-network",
+      "design-code": "east-riding-design-code",
+      "term": "Movement network",
+      "definition": "A movement network refers to a structured system or arrangement through which people move from one place to another.",
+      "page-number": 140
+    },
+    {
+      "reference": "east-riding-design-code:public-open-space",
+      "design-code": "east-riding-design-code",
+      "term": "Public open space",
+      "definition": "All open space of public value, including land and areas of water (such as rivers, canals, lakes and reservoirs) which offer important opportunities for sport and recreation and can act as a visual amenity.",
+      "page-number": 141
+    },
+    {
+      "reference": "east-riding-design-code:public-realm",
+      "design-code": "east-riding-design-code",
+      "term": "Public realm",
+      "definition": "This is the space that is visible and accessible to members of the public. It includes; streets, pedestrianised areas, promenades, squares, river and sea frontages, parks and areas of open space.",
+      "page-number": 141
+    },
+    {
+      "reference": "east-riding-design-code:renewable-energy",
+      "design-code": "east-riding-design-code",
+      "term": "Renewable energy",
+      "definition": "Energy derived from a natural source which can be continually replenished, for example wind or solar power.",
+      "page-number": 141
+    },
+    {
+      "reference": "east-riding-design-code:scale",
+      "design-code": "east-riding-design-code",
+      "term": "Scale",
+      "definition": "Scale refers to the relative size, proportion, and spatial dimensions of elements within the built environment, including buildings, streets, blocks, and entire neighbourhoods.",
+      "page-number": 141
+    },
+    {
+      "reference": "east-riding-design-code:surface-water-runoff",
+      "design-code": "east-riding-design-code",
+      "term": "Surface water runoff",
+      "definition": "Surface water runoff refers to the movement of rainwater, snowmelt, or other precipitation over the land surface, eventually flowing into streams, rivers, lakes, or oceans. It occurs when precipitation exceeds the infiltration capacity of the soil or when the ground is saturated.",
+      "page-number": 142
+    },
+    {
+      "reference": "east-riding-design-code:sustainable-drainage-systems",
+      "design-code": "east-riding-design-code",
+      "term": "Sustainable drainage systems (SuDS)",
+      "definition": "A wide range of sustainable approaches to surface-water drainage management which aim to mimic natural drainage processes and remove pollutants from urban run-off at source.",
+      "page-number": 142,
+      "extraction-notes": "The hyphen in \"surface-water\" falls at a line end in the PDF; it is kept because no line-end hyphen in this PDF splits a single word."
+    },
+    {
+      "reference": "east-riding-design-code:tree-pit",
+      "design-code": "east-riding-design-code",
+      "term": "Tree pit",
+      "definition": "A tree pit is an excavated area in the ground specifically designed to accommodate the planting and growth of trees in built environments.",
+      "page-number": 143
+    },
+    {
+      "reference": "east-riding-design-code:view",
+      "design-code": "east-riding-design-code",
+      "term": "View",
+      "definition": "A view refers to a visual perspective or sightline from a specific vantage point typically encompassing views of natural or built features such as landscapes, landmarks, buildings, public spaces, and streetscapes.",
+      "page-number": 143
+    },
+    {
+      "reference": "east-riding-design-code:wildlife-network",
+      "design-code": "east-riding-design-code",
+      "term": "Wildlife network",
+      "definition": "A wildlife network refers to a connected system of natural habitats that facilitates the movement, dispersal, and genetic exchange of wildlife populations within a landscape.",
+      "page-number": 143
+    }
+  ],
+  "place-types": [
+    {
+      "reference": "east-riding-design-code:town-centre",
+      "design-code": "east-riding-design-code",
+      "code": "TC",
+      "local-name": "Town centre",
+      "area-type": "town-or-city-centre",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:inner-neighbourhood",
+      "design-code": "east-riding-design-code",
+      "code": "IN",
+      "local-name": "Inner neighbourhood",
+      "area-type": "urban-neighbourhood",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:outer-neighbourhood",
+      "design-code": "east-riding-design-code",
+      "code": "ON",
+      "local-name": "Outer neighbourhood",
+      "area-type": "suburbs",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:neighbourhood-centre",
+      "design-code": "east-riding-design-code",
+      "code": "NC",
+      "local-name": "Neighbourhood centre",
+      "area-type": "local-centre",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:village",
+      "design-code": "east-riding-design-code",
+      "code": "V",
+      "local-name": "Village",
+      "area-type": "rural-settlements",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:countryside",
+      "design-code": "east-riding-design-code",
+      "code": "C",
+      "local-name": "Countryside",
+      "area-type": "",
+      "extraction-notes": "area-type is empty because the national area types have no match for this place type, so it is local-only, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:business-and-industrial",
+      "design-code": "east-riding-design-code",
+      "code": "SD",
+      "local-name": "Business and industrial",
+      "area-type": "industrial-area",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    }
+  ],
+  "development-types": [
+    {
+      "reference": "east-riding-design-code:householder",
+      "code": "H",
+      "name": "Householder Development",
+      "description": "Extensions, or minor works requiring planning permission, to a single existing housing unit.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Development types come from Table 1 in Chapter 1, included so that rule references resolve. Names are written in sentence case here; Table 1 prints them in capitals (for example \"H HOUSEHOLDER DEVELOPMENT\")."
+    },
+    {
+      "reference": "east-riding-design-code:1-2-units",
+      "code": "1",
+      "name": "1-2 Units",
+      "description": "New housing units. Please note a seperate checklist exists for residential conversions.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Table 1 gives one shared description for codes 1, 2 and 3. \"seperate\" is as printed."
+    },
+    {
+      "reference": "east-riding-design-code:3-9-units",
+      "code": "2",
+      "name": "3-9 Units",
+      "description": "New housing units. Please note a seperate checklist exists for residential conversions.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Table 1 gives one shared description for codes 1, 2 and 3. \"seperate\" is as printed."
+    },
+    {
+      "reference": "east-riding-design-code:10-plus-units",
+      "code": "3",
+      "name": "10+ Units",
+      "description": "New housing units. Please note a seperate checklist exists for residential conversions.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Table 1 gives one shared description for codes 1, 2 and 3. \"seperate\" is as printed."
+    },
+    {
+      "reference": "east-riding-design-code:mixed-use",
+      "code": "4",
+      "name": "Mixed Use",
+      "description": "Residential and commercial mixed use sites.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:flats",
+      "code": "F",
+      "name": "Flats",
+      "description": "New-build flats, or the conversion of existing premises to flats where requiring planning permission.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:agricultural",
+      "code": "A",
+      "name": "Agricultural",
+      "description": "New-build development on agricultural land (not including changes of use to non-agricultural development or development not supporting an existing agricultural function).",
+      "category": "non-residential",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:industrial-storage-and-distribution",
+      "code": "B",
+      "name": "Industrial, Storage and Distribution (B Class Uses)",
+      "description": "Development intended for B Class uses including general industrial and storage and distribution.",
+      "category": "non-residential",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:commercial",
+      "code": "C",
+      "name": "Commercial",
+      "description": "All forms of new-build development intended for commercial use, including offices, bars and eateries, and community spaces.",
+      "category": "non-residential",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:advertisement-consent",
+      "code": "",
+      "name": "Advertisement Consent",
+      "description": "",
+      "category": "non-residential",
+      "notes": "Not in Table 1. Name from Table 2 (Form 17 Advertisement Consent); Appendix D heads the column \"Adv Consent\". No description is given. No Chapter 3 item applies to it.",
+      "design-code": "east-riding-design-code"
+    }
+  ],
+  "local-plan-policies": [
+    {
+      "reference": "ENV1",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-A2",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "A2",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-A3",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "A3",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-B15",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "B15",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-B16",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "B16",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-B17",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "B17",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-B18",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "B18",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-B19",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "B19",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-B5",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "B5",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-B9",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "B9",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV1-C",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV1",
+      "criterion": "C",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV2",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV2",
+      "criterion": "",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV2-A3",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV2",
+      "criterion": "A3",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV2-A4",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV2",
+      "criterion": "A4",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV2-A5",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV2",
+      "criterion": "A5",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV4",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV4",
+      "criterion": "",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV5",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV5",
+      "criterion": "",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV5-A",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV5",
+      "criterion": "A",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV5-A1",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV5",
+      "criterion": "A1",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV5-A2",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV5",
+      "criterion": "A2",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV5-C",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV5",
+      "criterion": "C",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV6",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV6",
+      "criterion": "",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "ENV6-D",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "ENV6",
+      "criterion": "D",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "S9",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "S9",
+      "criterion": "",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "S9-A",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "S9",
+      "criterion": "A",
+      "name": "",
+      "documentation-url": ""
+    },
+    {
+      "reference": "S9-B",
+      "local-plan": "East Riding Local Plan 2025",
+      "policy": "S9",
+      "criterion": "B",
+      "name": "",
+      "documentation-url": ""
+    }
+  ],
+  "supporting-documents": [
+    {
+      "reference": "adapting-historic-buildings-for-energy-and-carbon-efficiency",
+      "title": "Adapting Historic Buildings for Energy and Carbon Efficiency: Historic England Advice Note 18",
+      "publisher": "Historic England",
+      "publication-date": "2024-07",
+      "category": "supporting-document",
+      "document-url": "https://historicengland.org.uk/images-books/publications/adapting-historic-buildings-energy-carbon-efficiency-advice-note-18/",
+      "page-number": 145
+    },
+    {
+      "reference": "building-with-nature-standards-framework",
+      "title": "Building with Nature Standards Framework (BwN 2.0)",
+      "publisher": "Building with Nature",
+      "publication-date": "2022",
+      "category": "supporting-document",
+      "document-url": "",
+      "page-number": 145,
+      "extraction-notes": "Appendix B has no link for this document."
+    },
+    {
+      "reference": "climate-change-strategy-2022-2030",
+      "title": "Climate Change Strategy 2022-2030",
+      "publisher": "East Riding of Yorkshire Council",
+      "publication-date": "2022",
+      "category": "supporting-document",
+      "document-url": "https://www.eastriding.gov.uk/environment/sustainable-environment/climate-change/climate-change-what-we-do/",
+      "page-number": 145
+    },
+    {
+      "reference": "first-steps-in-trees-and-new-developments",
+      "title": "First Steps in Trees and New Developments",
+      "publisher": "Trees and Design Action Group",
+      "publication-date": "2022",
+      "category": "supporting-document",
+      "document-url": "https://www.tdag.org.uk/first-steps-in-trees-and-new-developments.html",
+      "page-number": 145
+    },
+    {
+      "reference": "green-infrastructure-planning-and-design-guide",
+      "title": "Green Infrastructure Planning and Design Guide",
+      "publisher": "Natural England",
+      "publication-date": "2023",
+      "category": "supporting-document",
+      "document-url": "https://designatedsites.naturalengland.org.uk/GreenInfrastructure/DesignGuide.aspx",
+      "page-number": 145
+    },
+    {
+      "reference": "sustainable-drainage-system-design-guidance",
+      "title": "Sustainable Drainage System (SuDs) Design Guidance",
+      "publisher": "Yorkshire Water",
+      "publication-date": "2021",
+      "category": "supporting-document",
+      "document-url": "https://www.yorkshirewater.com/developers/sewerage/sewer-adoptions/",
+      "page-number": 146,
+      "extraction-notes": "Appendix B spells it \"System (SuDs)\"; the section 3.4 footer box has \"Systems (SuDS)\"."
+    },
+    {
+      "reference": "sustainable-drainage-systems-and-surface-water-drainage-for-new-developments",
+      "title": "Sustainable Drainage Systems (SuDS) and Surface Water Drainage for New Developments",
+      "publisher": "East Riding of Yorkshire Council",
+      "publication-date": "2016-09",
+      "category": "supporting-document",
+      "document-url": "https://www.eastriding.gov.uk/planning-permission-and-building-control/applications-for-planning-and-building-control/non-householder-and-commercial-planning-advice/#surface-water-drainage-systems",
+      "page-number": 146
+    },
+    {
+      "reference": "sustainable-traditional-buildings-alliance",
+      "title": "Sustainable Traditional Buildings Alliance",
+      "publisher": "",
+      "publication-date": "",
+      "category": "supporting-document",
+      "document-url": "https://stbauk.org/",
+      "page-number": 146,
+      "extraction-notes": "Appendix B gives a website rather than a document, with no author or date."
+    },
+    {
+      "reference": "statutory-biodiversity-metric-user-guide",
+      "title": "The Statutory Biodiversity Metric User Guide",
+      "publisher": "Department for Environment Food and Rural Affairs",
+      "publication-date": "2024-02",
+      "category": "supporting-document",
+      "document-url": "https://www.gov.uk/government/publications/statutory-biodiversity-metric-tools-and-guides",
+      "page-number": 146
+    },
+    {
+      "reference": "the-suds-manual",
+      "title": "The SuDS Manual. C753",
+      "publisher": "CIRIA",
+      "publication-date": "2015",
+      "category": "supporting-document",
+      "document-url": "https://www.ciria.org/CIRIA/CIRIA/Item_Detail.aspx?iProductCode=C753",
+      "page-number": 146
+    },
+    {
+      "reference": "trees-in-hard-landscapes",
+      "title": "Trees in Hard Landscapes: A guide for delivery",
+      "publisher": "Trees and Design Action Group",
+      "publication-date": "2014",
+      "category": "supporting-document",
+      "document-url": "https://www.tdag.org.uk/trees-in-hard-landscapes.html",
+      "page-number": 146
+    },
+    {
+      "reference": "trees-planning-and-development",
+      "title": "Trees, Planning and Development: a guide for delivery (sections one and two)",
+      "publisher": "Trees and Design Action Group",
+      "publication-date": "2023",
+      "category": "supporting-document",
+      "document-url": "https://www.tdag.org.uk/trees-planning-and-development.html",
+      "page-number": 146
+    },
+    {
+      "reference": "urban-greening-factor-for-england-user-guide",
+      "title": "Urban Greening Factor for England User Guide. Green Infrastructure Standards Framework- Principles and Standards for England",
+      "publisher": "Natural England",
+      "publication-date": "2023-01",
+      "category": "supporting-document",
+      "document-url": "https://designatedsites.naturalengland.org.uk/GreenInfrastructure/downloads/Urban%20Greening%20Factor%20for%20England%20User%20Guide.pdf",
+      "page-number": 146
+    }
+  ]
+}

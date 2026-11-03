@@ -1,0 +1,228 @@
+{% extends "v2/layouts/main.html" %}
+
+{% if error %}
+  {% set pageName = "Page not found" if error.status == 404 else "Sorry, there is a problem" %}
+{% else %}
+  {% set pageName = entity.name or ("Entity " + entity.entity) %}
+{% endif %}
+
+{% block stylesheets %}
+  {{ super() }}
+  {% if hasGeometry %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: baseUrl + "/search" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  {% if error %}
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+      {% if error.status == 404 %}
+        <p class="govuk-body">We could not find an entity with the ID {{ id }}.</p>
+      {% else %}
+        <p class="govuk-body">We could not load entity {{ id }} from planning.data.gov.uk. Try again later.</p>
+      {% endif %}
+    </div>
+
+  {% else %}
+
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-xl">{{ datasetName }}</span>
+      <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if hasGeometry %}
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">Geographical area</h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <div id="entity-map" class="app-entity-map" role="img" aria-label="Map showing the area covered by {{ pageName }}"></div>
+          </div>
+        </div>
+      {% endif %}
+
+      {#
+        Rows match planning.data.gov.uk. Rows with a field get a "Facts" link
+        to the real site, which has the history of each value.
+      #}
+      {% set rowDefinitions = [
+        { label: "CURIE", value: { text: entity.prefix + ":" + entity.reference } },
+        { label: "Prefix", field: "prefix", value: { text: entity.prefix } },
+        { label: "Reference", field: "reference", value: { text: entity.reference } },
+        { label: "Name", field: "name", value: { text: entity.name } },
+        { label: "Quality", value: { text: qualityText } },
+        { label: "Dataset", value: { html: '<a class="govuk-link" href="' + baseUrl + '/search?dataset=' + entity.dataset + '">' + (datasetName | escape) + '</a>' } },
+        { label: "Organisation", value: { html: ('<a class="govuk-link" href="' + baseUrl + '/entity/' + entity["organisation-entity"] + '">' + (organisationName | escape) + '</a>') if entity["organisation-entity"] else "" } },
+        { label: "Start date", field: "start-date", value: { text: entity["start-date"] } },
+        { label: "End date", field: "end-date", value: { text: entity["end-date"] } },
+        { label: "Entry date", field: "entry-date", value: { text: entity["entry-date"] } },
+        { label: "Typology", value: { text: entity.typology } },
+        { label: "Geometry", field: "geometry", value: { html: '<pre class="app-code app-code--scroll">' + (entity.geometry | escape) + '</pre>' }, show: entity.geometry },
+        { label: "Point", field: "point", value: { html: '<pre class="app-code">' + (entity.point | escape) + '</pre>' }, show: entity.point },
+        { label: "Notes", field: "notes", value: { text: entity.notes } },
+        { label: "Documentation url", field: "documentation-url", value: { html: '<a class="govuk-link app-break-word" href="' + (entity["documentation-url"] | escape) + '">' + (entity["documentation-url"] | escape) + '</a>' }, show: entity["documentation-url"] }
+      ] %}
+
+      {% set aboutRows = [] %}
+      {% for row in rowDefinitions %}
+        {% if row.show is undefined or row.show %}
+          {% set actions = {
+            items: [{
+              href: planningDataUrl + "/fact?dataset=" + entity.dataset + "&entity=" + entity.entity + "&field=" + row.field,
+              text: "Facts",
+              visuallyHiddenText: "about " + row.label,
+              classes: "govuk-!-font-size-16"
+            }]
+          } if row.field else undefined %}
+          {% set aboutRows = (aboutRows.push({ key: { text: row.label }, value: row.value, actions: actions }), aboutRows) %}
+        {% endif %}
+      {% endfor %}
+
+      {% set jsonHtml %}<pre class="app-code app-code--scroll" tabindex="0"><code>{{ entityJson }}</code></pre>{% endset %}
+      {% set geojsonHtml %}<pre class="app-code app-code--scroll" tabindex="0"><code>{{ geojsonText }}</code></pre>{% endset %}
+      {% set codeTabs = [{ label: "JSON", id: "json", panel: { html: jsonHtml } }] %}
+      {% if geojsonText %}
+        {% set codeTabs = (codeTabs.push({ label: "GeoJSON", id: "geojson", panel: { html: geojsonHtml } }), codeTabs) %}
+      {% endif %}
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">About this entity</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({ rows: aboutRows }) }}
+
+          {{ govukTabs({
+            title: "Available code snippets",
+            classes: "govuk-!-margin-bottom-0",
+            items: codeTabs
+          }) }}
+        </div>
+        {% if dataset and (dataset["attribution-text"] or licenceHtml) %}
+          <div class="app-summary-card__footer">
+            {% if dataset["attribution-text"] %}
+              <p class="govuk-body-s govuk-!-margin-bottom-1">{{ dataset["attribution-text"] }}</p>
+            {% endif %}
+            {% if licenceHtml %}
+              <p class="govuk-body-s govuk-!-margin-bottom-0">{{ licenceHtml | safe }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" aria-label="Explore and download this data">
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="view-the-data">View the data</h2>
+        <p class="govuk-hint govuk-!-font-size-16">You can explore this data</p>
+        <nav aria-labelledby="view-the-data">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li><a class="govuk-link" href="{{ baseUrl }}/map">On a map</a></li>
+          </ul>
+        </nav>
+
+        <hr class="govuk-section-break govuk-section-break--m">
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="download-the-data">Download the data</h2>
+        <p class="govuk-hint govuk-!-font-size-16">You can take a copy of this data as</p>
+        <nav aria-labelledby="download-the-data">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li><a class="govuk-link" href="{{ planningDataUrl }}/entity/{{ entity.entity }}.json" download="{{ entity.entity }}.json"><span class="govuk-visually-hidden">Download this data as </span>JSON</a></li>
+            {% if hasGeometry %}
+              <li><a class="govuk-link" href="{{ geojsonUrl }}" download="{{ entity.entity }}.geojson"><span class="govuk-visually-hidden">Download this data as </span>GeoJSON</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+
+        <hr class="govuk-section-break govuk-section-break--m">
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="specification">Dataset definition</h2>
+        <p class="govuk-hint govuk-!-font-size-16">You can view the definition of this dataset including the list of fields</p>
+        <nav aria-labelledby="specification">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li><a class="govuk-link" href="https://digital-land.github.io/specification/dataset/{{ entity.dataset }}">Dataset definition for {{ datasetName }} dataset</a></li>
+          </ul>
+        </nav>
+
+        {% if considerationUrl %}
+          <hr class="govuk-section-break govuk-section-break--m">
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="data-design">Designing the data</h2>
+          <p class="govuk-hint govuk-!-font-size-16">You can see details about how this dataset has been designed for planning.data.gov.uk</p>
+          <nav aria-labelledby="data-design">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li><a class="govuk-link" href="{{ considerationUrl }}">{{ dataset.consideration }} planning consideration</a></li>
+            </ul>
+          </nav>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--m">
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="design-code">Design code</h2>
+        <p class="govuk-hint govuk-!-font-size-16">You can view design code for this area</p>
+        <nav aria-labelledby="design-code">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li><a class="govuk-link" href="{{ baseUrl }}/design-code/east-riding">View design code</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Help improve this data</h2>
+      <p class="govuk-body"><a href="#" class="govuk-link">Give feedback on this dataset</a>, or email your questions and corrections to digitalland@communities.gov.uk.</p>
+    </div>
+
+  {% endif %}
+
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+  {% if hasGeometry %}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      (function () {
+        var map = L.map('entity-map', { scrollWheelZoom: false })
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map)
+
+        fetch({{ geojsonUrl | dump | safe }})
+          .then(function (response) {
+            if (!response.ok) throw new Error('GeoJSON request failed: ' + response.status)
+            return response.json()
+          })
+          .then(function (geojson) {
+            var layer = L.geoJSON(geojson, {
+              style: { color: '#1d70b8', weight: 2, fillOpacity: 0.2 }
+            }).addTo(map)
+
+            map.fitBounds(layer.getBounds(), { maxZoom: 16 })
+          })
+          .catch(function () {
+            var container = document.getElementById('entity-map')
+            map.remove()
+            container.removeAttribute('role')
+            container.removeAttribute('aria-label')
+            container.classList.remove('app-entity-map')
+            container.innerHTML = '<p class="govuk-body">The map could not be loaded.</p>'
+          })
+      })()
+    </script>
+  {% endif %}
+{% endblock %}

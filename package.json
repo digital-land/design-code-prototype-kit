@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "predev": "node -e \"require('fs').rmSync('.tmp', { recursive: true, force: true })\"",
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"

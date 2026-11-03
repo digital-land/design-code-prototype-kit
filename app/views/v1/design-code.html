@@ -1,0 +1,36 @@
+{% extends "v1/layouts/masthead.html" %}
+
+{% set mastheadCaption = "Planning and housing data in England" %}
+{% set pageName = "Design codes" %}
+
+{% block mastheadIntro %}
+  <p class="govuk-body-l govuk-!-margin-bottom-0 app-masthead__sub-title">
+    Design codes set clear, visual rules for how new development should look and feel in an area.
+    They help councils, developers and communities agree what good design means locally.
+  </p>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full govuk-grid-column-two-thirds-from-desktop">
+    <ul class="app-content-list govuk-!-margin-bottom-8">
+      <li class="app-content-list__item">
+        <h2 class="app-content-list__heading">
+          <a class="govuk-link app-content-list__link" href="{{ baseUrl }}/design-code/learn">Learn about design codes</a>
+        </h2>
+        <p class="app-content-list__description">
+          Find out what design codes are, what they cover and how they shape new development in your area.
+        </p>
+      </li>
+      <li class="app-content-list__item">
+        <h2 class="app-content-list__heading">
+          <a class="govuk-link app-content-list__link" href="{{ baseUrl }}/search">Look for a design code</a>
+        </h2>
+        <p class="app-content-list__description">
+          Search for a design code by council or location to see the rules that apply to an area.
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

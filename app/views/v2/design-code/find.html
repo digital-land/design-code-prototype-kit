@@ -1,0 +1,273 @@
+{% extends "v2/layouts/main.html" %}
+
+{#
+  Design code finder, from the Figma frame "Desktop - 83" (node 407:22386).
+  Tick one or more councils, or click an area on the map, to highlight them on the map and bring
+  their design codes to the top of the list. Without JavaScript, the form reloads the page with
+  the ticked councils selected.
+#}
+
+{% set pageName = "Find design codes for an area" %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: baseUrl + "/design-code", classes: "app-dc-page__back-link" }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l app-dc-finder__title">{{ pageName }}</h1>
+<p class="govuk-body app-dc-finder__description">
+  Design codes set out the rules new development must follow, such as building height, street layout and green space.
+  Search for a council or select an area on the map to see its design codes.
+</p>
+
+<div class="app-dc-finder app-dc-finder--v2" data-module="app-dc-finder">
+
+  <form class="app-dc-areas app-dc-areas--v2" action="{{ baseUrl }}/design-code/find" method="get" id="area-form" novalidate>
+    <div class="app-dc-search" role="search">
+      <label class="govuk-label app-label--secondary app-dc-search__label" for="area-search">Search</label>
+      <div class="app-dc-search__wrapper">
+        <input class="govuk-input app-dc-search__input" id="area-search" name="q" type="search" value="{{ search }}" autocomplete="off">
+        <button class="app-dc-search__button" type="submit">
+          <span class="govuk-visually-hidden">Search councils</span>
+          <svg class="app-dc-search__icon" width="12" height="12" viewBox="0 0 27 27" aria-hidden="true" focusable="false">
+            <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" fill="none"></circle>
+            <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <hr class="app-dc-areas__divider">
+
+    <fieldset class="govuk-fieldset app-dc-areas__fieldset">
+      <legend class="govuk-fieldset__legend app-label--secondary app-dc-areas__legend">Or select an area from list below</legend>
+      {# The list scrolls on its own, so it ends level with the bottom of the map #}
+      <div class="govuk-checkboxes govuk-checkboxes--small app-dc-areas__list" data-module="govuk-checkboxes">
+        {% for area in areas %}
+          <div class="govuk-checkboxes__item app-dc-areas__item" data-area-name="{{ area.council | lower }}"{% if area.hidden %} hidden{% endif %}>
+            <input class="govuk-checkboxes__input" id="area-{{ area.id }}" name="area" type="checkbox" value="{{ area.id }}"{% if area.id in selectedIds %} checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="area-{{ area.id }}">{{ area.council }}</label>
+          </div>
+        {% endfor %}
+      </div>
+      <p class="govuk-body govuk-!-margin-bottom-0" id="area-search-empty"{% if not search or (areas | rejectattr("hidden") | list | length) %} hidden{% endif %}>No councils match your search.</p>
+    </fieldset>
+
+    {# The map and list update as boxes are ticked, so the button is only needed without JavaScript #}
+    {{ govukButton({ text: "Show design codes", classes: "app-dc-areas__submit govuk-!-margin-bottom-0" }) }}
+  </form>
+
+  <div class="app-dc-results">
+    {% set mapHtml %}
+      <h2 class="govuk-visually-hidden">Map view</h2>
+      <div id="design-code-map" class="app-dc-map" role="region" aria-label="Map of design code areas"></div>
+    {% endset %}
+
+    {% set listHtml %}
+      <h2 class="govuk-visually-hidden">List view</h2>
+      <ul class="govuk-list app-dc-list">
+        {% for card in cards %}
+          {% set isSelected = card.area.id in selectedIds %}
+          <li class="app-dc-card{% if isSelected %} app-dc-card--selected{% endif %}" data-area="{{ card.area.id }}">
+            <div class="app-dc-card__header">
+              <h3 class="app-dc-card__title">
+                <a class="govuk-link govuk-link--text-colour govuk-link--no-underline app-dc-card__link" href="{{ baseUrl }}/design-code/{{ card.slug }}">{{ card.designCode.name }}</a>
+              </h3>
+              <button class="app-dc-card__toggle" type="button" aria-expanded="true" aria-controls="card-{{ card.slug }}" hidden>
+                <span class="govuk-visually-hidden">Hide details for {{ card.designCode.name }}</span>
+              </button>
+            </div>
+            <div class="app-dc-card__body" id="card-{{ card.slug }}">
+              <div class="app-dc-card__council">
+                <p class="app-dc-card__label">Council</p>
+                <p class="app-dc-card__value">{{ card.designCode.council }}</p>
+              </div>
+              <div class="app-dc-card__status">
+                <p class="app-dc-card__label">Status</p>
+                {{ govukTag({ text: card.designCode.status, classes: "govuk-tag--orange app-dc-card__tag" }) }}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {{ govukTabs({
+      classes: "app-dc-view-tabs",
+      title: "Show results as",
+      items: [
+        { label: "Map view", id: "map-view", panel: { html: mapHtml, attributes: { "data-view": "map" } } },
+        { label: "List view", id: "list-view", panel: { html: listHtml, attributes: { "data-view": "list" } } }
+      ]
+    }) }}
+  </div>
+
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    (function () {
+      var areas = {{ areas | dump | safe }}
+      var designCodes = {{ cards | dump | safe }}
+      var baseUrl = {{ baseUrl | dump | safe }}
+      var selected = {{ selectedIds | dump | safe }}
+
+      var form = document.getElementById('area-form')
+      var boxes = Array.prototype.slice.call(form.querySelectorAll('input[name="area"]'))
+      var list = document.querySelector('.app-dc-list')
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.app-dc-card'))
+      var cardOrder = areas.map(function (area) { return area.id })
+
+      // The page updates as boxes are ticked, so the button is only for when JavaScript fails
+      form.querySelector('.app-dc-areas__submit').hidden = true
+
+      function designCodeFor (id) {
+        return designCodes.find(function (card) { return card.area.id === id })
+      }
+
+      // Map, with the councils' real boundaries in the olive of the Figma design
+      var map = L.map('design-code-map', { scrollWheelZoom: false })
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        className: 'app-dc-map__tiles--muted',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map)
+      map.setView([53.2, -1.6], 6)
+
+      var layers = {}
+      var allBounds = null
+
+      function styleFor (isSelected) {
+        return {
+          color: '#838246',
+          fillColor: '#838246',
+          weight: isSelected ? 3 : 1,
+          opacity: 1,
+          fillOpacity: isSelected ? 0.6 : 0.33
+        }
+      }
+
+      function popupHtml (id) {
+        var card = designCodeFor(id)
+        return '<p class="app-dc-popup__title">1 feature selected</p>' +
+          '<p class="app-dc-popup__dataset">Design code</p>' +
+          '<a class="govuk-link app-dc-popup__link" href="' + baseUrl + '/design-code/' + card.slug + '">' + card.designCode.name + '</a>'
+      }
+
+      fetch('/public/data/v2/design-code-areas.geojson')
+        .then(function (response) { return response.json() })
+        .then(function (geojson) {
+          var group = L.geoJSON(geojson, {
+            style: function () { return styleFor(false) },
+            onEachFeature: function (feature, layer) {
+              var id = feature.properties.id
+              layers[id] = layer
+              layer.bindPopup(function () { return popupHtml(id) }, { className: 'app-dc-popup', autoPanPadding: [20, 20] })
+              // Clicking an area ticks it, and shows its design code
+              layer.on('click', function () {
+                if (selected.indexOf(id) === -1) update(selected.concat(id), { fromMap: true })
+              })
+            }
+          }).addTo(map)
+          allBounds = group.getBounds()
+          update(selected, { initial: true })
+        })
+
+      // Show the ticked areas: highlighted on the map, ticked in the list, and first in the list view
+      function update (ids, options) {
+        options = options || {}
+        selected = ids
+
+        boxes.forEach(function (box) { box.checked = ids.indexOf(box.value) !== -1 })
+
+        Object.keys(layers).forEach(function (id) {
+          var isSelected = ids.indexOf(id) !== -1
+          layers[id].setStyle(styleFor(isSelected))
+          if (isSelected) layers[id].bringToFront()
+        })
+
+        if (allBounds && !options.fromMap) {
+          map.closePopup()
+          var bounds = ids.length ? L.featureGroup(ids.map(function (id) { return layers[id] }).filter(Boolean)).getBounds() : allBounds
+          map.fitBounds(bounds, { padding: [40, 40], maxZoom: 10, animate: false })
+          // With one area, show its design code straight away
+          if (ids.length === 1 && layers[ids[0]]) layers[ids[0]].openPopup()
+        }
+
+        cards
+          .slice()
+          .sort(function (a, b) {
+            var aSelected = ids.indexOf(a.getAttribute('data-area')) !== -1
+            var bSelected = ids.indexOf(b.getAttribute('data-area')) !== -1
+            if (aSelected !== bSelected) return aSelected ? -1 : 1
+            return cardOrder.indexOf(a.getAttribute('data-area')) - cardOrder.indexOf(b.getAttribute('data-area'))
+          })
+          .forEach(function (card) {
+            card.classList.toggle('app-dc-card--selected', ids.indexOf(card.getAttribute('data-area')) !== -1)
+            list.appendChild(card)
+          })
+
+        if (!options.initial) {
+          var url = new URL(window.location.href)
+          url.searchParams.delete('area')
+          ids.forEach(function (id) { url.searchParams.append('area', id) })
+          window.history.replaceState(null, '', url)
+        }
+      }
+
+      boxes.forEach(function (box) {
+        box.addEventListener('change', function () {
+          update(boxes.filter(function (item) { return item.checked }).map(function (item) { return item.value }))
+        })
+      })
+
+      // Leaflet needs to measure the map again when its tab is shown
+      document.querySelectorAll('.app-dc-view-tabs .govuk-tabs__tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          setTimeout(function () { map.invalidateSize() }, 0)
+        })
+      })
+
+      // Collapse and expand each design code card
+      document.querySelectorAll('.app-dc-card__toggle').forEach(function (button) {
+        var body = document.getElementById(button.getAttribute('aria-controls'))
+        var label = button.querySelector('.govuk-visually-hidden')
+        button.hidden = false
+        button.addEventListener('click', function () {
+          var expanded = button.getAttribute('aria-expanded') === 'true'
+          button.setAttribute('aria-expanded', String(!expanded))
+          body.hidden = expanded
+          label.textContent = label.textContent.replace(expanded ? 'Hide' : 'Show', expanded ? 'Show' : 'Hide')
+        })
+      })
+
+      // Narrow the list of councils as the user types
+      var search = document.getElementById('area-search')
+      var empty = document.getElementById('area-search-empty')
+      search.addEventListener('input', function () {
+        var term = search.value.trim().toLowerCase()
+        var shown = 0
+        document.querySelectorAll('.app-dc-areas__item').forEach(function (item) {
+          var match = item.getAttribute('data-area-name').indexOf(term) !== -1
+          item.hidden = !match
+          if (match) shown++
+        })
+        empty.hidden = shown > 0
+      })
+      // Pressing Enter in the search ticks the first council that matches
+      form.addEventListener('submit', function (event) {
+        event.preventDefault()
+        var first = form.querySelector('.app-dc-areas__item:not([hidden]) input')
+        if (first && !first.checked) update(selected.concat(first.value))
+      })
+    })()
+  </script>
+{% endblock %}

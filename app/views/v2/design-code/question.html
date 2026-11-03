@@ -1,0 +1,46 @@
+{% extends "v2/layouts/main.html" %}
+
+{#
+  One question from "Not sure what I am looking for?" on a council's design code page.
+  The questions and where each answer leads are in app/routes/v2.js (QUESTIONS).
+#}
+
+{% set pageName = ("Error: " if error else "") + node.question + " - " + designCode.name %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: backHref }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if error %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [{ text: error, href: "#answer" }]
+      }) }}
+    {% endif %}
+
+    <form action="{{ baseUrl }}/design-code/{{ code }}/questions/{{ id }}" method="post" novalidate>
+      {{ govukRadios({
+        idPrefix: "answer",
+        name: "answer",
+        classes: "govuk-radios--inline" if inline else "",
+        fieldset: {
+          legend: {
+            html: '<span class="govuk-caption-l">' + designCode.name + '</span>' + node.question,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: { text: node.hint } if node.hint else undefined,
+        errorMessage: { text: error } if error else undefined,
+        items: items
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

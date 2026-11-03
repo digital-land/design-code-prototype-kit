@@ -9,3 +9,6 @@ migrate.log
 # General ignores
 .DS_Store
 .idea
+
+# Source documents (not for the public repo)
+app/data/Sources/
