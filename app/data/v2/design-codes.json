@@ -1,0 +1,111 @@
+{
+  "areas": [
+    {
+      "id": "east-riding",
+      "name": "East Riding",
+      "council": "East Riding of Yorkshire Council",
+      "designCode": "east-riding"
+    },
+    {
+      "id": "medway",
+      "name": "Medway",
+      "council": "Medway Council",
+      "designCode": "medway"
+    },
+    {
+      "id": "birmingham",
+      "name": "Birmingham",
+      "council": "Birmingham City Council",
+      "designCode": "birmingham"
+    },
+    {
+      "id": "manchester",
+      "name": "Manchester",
+      "council": "Manchester City Council",
+      "designCode": "manchester"
+    },
+    {
+      "id": "leeds",
+      "name": "Leeds",
+      "council": "Leeds City Council",
+      "designCode": "leeds"
+    },
+    {
+      "id": "southwark",
+      "name": "Southwark",
+      "council": "London Borough of Southwark",
+      "designCode": "southwark"
+    },
+    {
+      "id": "cambridge",
+      "name": "Cambridge",
+      "council": "Cambridge City Council",
+      "designCode": "cambridge"
+    },
+    {
+      "id": "newcastle",
+      "name": "Newcastle",
+      "council": "Newcastle City Council",
+      "designCode": "newcastle"
+    }
+  ],
+  "designCodes": {
+    "east-riding": {
+      "_comment": "Title, council, status, overview, topics and figures come from the extracted data (app/data/design-codes/east-riding.json). Only things not extracted yet are kept here.",
+      "name": "East Riding Design Code",
+      "council": "East Riding of Yorkshire Council",
+      "pageTitle": "East Riding Council",
+      "status": "Status",
+      "area": "east-riding"
+    },
+    "manchester": {
+      "name": "Manchester Design Code",
+      "council": "Manchester City Council",
+      "pageTitle": "Manchester City Council",
+      "status": "Status",
+      "area": "manchester"
+    },
+    "birmingham": {
+      "name": "Birmingham Design Code",
+      "council": "Birmingham City Council",
+      "pageTitle": "Birmingham City Council",
+      "status": "Status",
+      "area": "birmingham"
+    },
+    "medway": {
+      "name": "Medway Design Code",
+      "council": "Medway Council",
+      "pageTitle": "Medway Council",
+      "status": "Status",
+      "area": "medway"
+    },
+    "leeds": {
+      "name": "Leeds Design Code",
+      "council": "Leeds City Council",
+      "pageTitle": "Leeds City Council",
+      "status": "Status",
+      "area": "leeds"
+    },
+    "southwark": {
+      "name": "Southwark Design Code",
+      "council": "London Borough of Southwark",
+      "pageTitle": "London Borough of Southwark",
+      "status": "Status",
+      "area": "southwark"
+    },
+    "cambridge": {
+      "name": "Cambridge Design Code",
+      "council": "Cambridge City Council",
+      "pageTitle": "Cambridge City Council",
+      "status": "Status",
+      "area": "cambridge"
+    },
+    "newcastle": {
+      "name": "Newcastle Design Code",
+      "council": "Newcastle City Council",
+      "pageTitle": "Newcastle City Council",
+      "status": "Status",
+      "area": "newcastle"
+    }
+  }
+}

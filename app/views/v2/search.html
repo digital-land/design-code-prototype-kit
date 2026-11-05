@@ -1,0 +1,198 @@
+{% extends "v2/layouts/main.html" %}
+
+{% set pageName = "Search for planning and housing data" %}
+
+{#
+  A collapsible filter group, matching planning.data.gov.uk.
+  Open when it has a selection, or when `open` is set.
+#}
+{% macro filterGroup(params) %}
+  <div class="govuk-form-group">
+    <details class="app-filter-group" {% if params.open or params.selectedCount %}open{% endif %}>
+      <summary class="app-filter-group__summary">
+        <h3 class="govuk-heading-s app-filter-group__heading">
+          {{ params.title }}
+          {% if params.selectedCount %}
+            <span class="app-filter-group__selected">{{ params.selectedCount }} selected</span>
+          {% endif %}
+        </h3>
+      </summary>
+      <div class="app-filter-group__body">
+        {{ caller() }}
+      </div>
+    </details>
+  </div>
+{% endmacro %}
+
+{#
+  A long checkbox list with a text box that narrows the options.
+  The text box only appears when JavaScript is available.
+#}
+{% macro filterCheckboxes(params) %}
+  <div class="app-filter-checkboxes" data-module="app-filter-checkboxes">
+    <div class="govuk-form-group govuk-!-margin-bottom-2 app-filter-checkboxes__search" hidden>
+      <label class="govuk-label govuk-!-font-size-16" for="{{ params.idPrefix }}-search">Search {{ params.searchLabel }}</label>
+      <input class="govuk-input app-filter-checkboxes__input" id="{{ params.idPrefix }}-search" type="search" autocomplete="off">
+    </div>
+    <div class="app-filter-checkboxes__list">
+      {{ govukCheckboxes({
+        idPrefix: params.idPrefix,
+        name: params.name,
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: { text: params.legend, classes: "govuk-visually-hidden" }
+        },
+        items: params.items
+      }) }}
+    </div>
+  </div>
+{% endmacro %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: baseUrl }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+
+    {{ govukWarningText({
+      text: "The data may be incomplete and not yet cover all of England. We're working to improve its availability and quality."
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <form action="{{ baseUrl }}/search" method="get" id="search-facets-form" novalidate>
+      <h2 class="govuk-heading-m">Filters</h2>
+
+      {% call filterGroup({ title: "Dataset", selectedCount: selected.datasets | length, open: true }) %}
+        {{ filterCheckboxes({
+          idPrefix: "dataset",
+          name: "dataset",
+          legend: "Dataset",
+          searchLabel: "datasets",
+          items: datasetOptions
+        }) }}
+      {% endcall %}
+
+      {% call filterGroup({ title: "Location", selectedCount: selected.geographies | length }) %}
+        {{ filterCheckboxes({
+          idPrefix: "geometry_curie",
+          name: "geometry_curie",
+          legend: "Location",
+          searchLabel: "locations",
+          items: geographyOptions
+        }) }}
+      {% endcall %}
+
+      {% call filterGroup({ title: "Organisation", selectedCount: selected.organisations | length }) %}
+        {{ filterCheckboxes({
+          idPrefix: "organisation_entity",
+          name: "organisation_entity",
+          legend: "Organisation",
+          searchLabel: "organisations",
+          items: organisationOptions
+        }) }}
+      {% endcall %}
+
+      {% call filterGroup({ title: "Entry date", selectedCount: 1 if hasEntryDate else 0, open: true }) %}
+        {{ govukDateInput({
+          id: "entry_date",
+          namePrefix: "entry_date",
+          classes: "govuk-!-margin-bottom-4",
+          fieldset: {
+            legend: { text: "Which date are you interested in?", classes: "govuk-fieldset__legend--s" }
+          },
+          hint: { text: "For example, 27 3 2021" },
+          items: [
+            { name: "day", classes: "govuk-input--width-2", value: query.entry_date_day },
+            { name: "month", classes: "govuk-input--width-2", value: query.entry_date_month },
+            { name: "year", classes: "govuk-input--width-4", value: query.entry_date_year }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "entry_date_match",
+          classes: "govuk-radios--small",
+          formGroup: { classes: "govuk-!-margin-bottom-0" },
+          fieldset: {
+            legend: { text: "Do you want to see entries since the date or before the date?", classes: "govuk-fieldset__legend--s" }
+          },
+          items: [
+            { value: "since", text: "Since", checked: entryDateMatch == "since" },
+            { value: "before", text: "Before", checked: entryDateMatch == "before" }
+          ]
+        }) }}
+      {% endcall %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({ text: "Apply filters" }) }}
+        <a href="{{ baseUrl }}/search" class="govuk-link">Clear</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <section aria-label="Search results">
+      <h2 class="govuk-heading-m" aria-live="polite">
+        {{ resultCount | formatNumber if resultCount else 0 }} {{ "result" if resultCount == 1 else "results" }}
+      </h2>
+
+      {% if resultCount %}
+        <p class="govuk-body govuk-hint">Showing {{ firstResult }} to {{ lastResult }} of {{ resultCount | formatNumber }}</p>
+
+        <ul class="govuk-list app-results-list">
+          {% for result in results %}
+            {% set title = result.name or (result.datasetName + " " + result.reference) %}
+            <li class="app-results-list__item">
+              <section class="app-card" aria-labelledby="result-{{ result.entity }}">
+                <div class="app-card__header">
+                  <div class="app-card__meta">
+                    <a href="{{ baseUrl }}/entity/{{ result.entity }}" class="govuk-link">{{ result.reference or result.entity }}</a>
+                    <p class="govuk-body-s govuk-hint govuk-!-margin-0">
+                      <span class="govuk-visually-hidden">Typology type: </span>{{ result.typology | capitalize | replace("-", " ") }}
+                    </p>
+                  </div>
+                  <h3 class="govuk-heading-s app-card__title" id="result-{{ result.entity }}">
+                    <a href="{{ baseUrl }}/entity/{{ result.entity }}" class="govuk-link app-card__title-link">{{ title }}</a>
+                  </h3>
+                </div>
+                <div class="app-card__body">
+                  {{ govukSummaryList({
+                    classes: "govuk-!-margin-bottom-0 govuk-summary-list--no-border app-card__summary",
+                    rows: [
+                      { key: { text: "Dataset" }, value: { html: '<a class="govuk-link" href="' + baseUrl + '/search?dataset=' + result.dataset + '">' + (result.datasetName | escape) + '</a>' } },
+                      { key: { text: "Organisation" }, value: { text: result.organisationName } },
+                      { key: { text: "Reference" }, value: { html: '<a class="govuk-link" href="' + baseUrl + '/entity/' + result.entity + '">' + ((result.reference or result.entity) | escape) + '</a>' } },
+                      { key: { text: "Entry date" }, value: { text: result.entryDate | formatDate } }
+                    ]
+                  }) }}
+                </div>
+              </section>
+            </li>
+          {% endfor %}
+        </ul>
+
+        {% if pagination %}
+          {{ govukPagination(pagination) }}
+        {% endif %}
+
+      {% else %}
+        <p class="govuk-body">There are no results that match your filters.</p>
+        <p class="govuk-body">Try:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>selecting fewer filters</li>
+          <li>choosing a different date</li>
+          <li><a href="{{ baseUrl }}/search" class="govuk-link">clearing all filters</a></li>
+        </ul>
+      {% endif %}
+    </section>
+  </div>
+
+</div>
+{% endblock %}

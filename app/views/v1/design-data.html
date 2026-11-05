@@ -1,0 +1,55 @@
+{% extends "v1/layouts/masthead.html" %}
+
+{#
+  Recreates the home page of https://design.planning.data.gov.uk
+  Links to pages we have not built go to the real site.
+#}
+
+{% set pageName = "Designing planning and housing data that works for everyone" %}
+{% set designSiteUrl = "https://design.planning.data.gov.uk" %}
+
+{% block pageTitle %}Designing planning and housing data - {{ serviceName }} - GOV.UK{% endblock %}
+
+{% block mastheadIntro %}
+  <p class="govuk-body-l govuk-!-margin-bottom-0 app-masthead__sub-title">
+    Help identify and design the data on <a href="{{ baseUrl }}" class="govuk-link govuk-link--inverse">planning.data.gov.uk</a>
+  </p>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full govuk-grid-column-two-thirds-from-desktop">
+    <ul class="app-content-list govuk-!-margin-bottom-8">
+      <li class="app-content-list__item">
+        <h2 class="app-content-list__heading">
+          <a class="govuk-link app-content-list__link" href="{{ designSiteUrl }}/consideration/">Considerations</a>
+        </h2>
+        <p class="app-content-list__description">
+          Explore the topics we use to identify and discover the users, needs, and potential benefits
+          of data so we can make it available on <a class="govuk-link" href="{{ baseUrl }}">planning.data.gov.uk</a>.
+        </p>
+        <p class="app-content-list__description govuk-!-margin-top-2">
+          Example: <a class="govuk-link" href="{{ baseUrl }}/design-data/consideration/air-quality-management-areas">Air quality management areas</a>
+        </p>
+      </li>
+      <li class="app-content-list__item">
+        <h2 class="app-content-list__heading">
+          <a class="govuk-link app-content-list__link" href="{{ designSiteUrl }}/community">Community</a>
+        </h2>
+        <p class="app-content-list__description">
+          Help design planning data by participating in community discussions and events.
+        </p>
+      </li>
+      <li class="app-content-list__item">
+        <h2 class="app-content-list__heading">
+          <a class="govuk-link app-content-list__link" href="{{ designSiteUrl }}/roadmap">Roadmap</a>
+        </h2>
+        <p class="app-content-list__description">
+          We are currently working with the community on a <a class="govuk-link" href="{{ designSiteUrl }}/project">project</a> to develop data standards on
+          <a class="govuk-link" href="{{ designSiteUrl }}/project/planning-applications">planning applications</a> and decisions.
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

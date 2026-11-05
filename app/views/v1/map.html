@@ -1,0 +1,314 @@
+{% extends "v1/layouts/main.html" %}
+
+{% set pageName = "Map of planning data for England" %}
+
+{#
+  The map opens on St John's Wood to Paddington, in the City of Westminster, where
+  Article 4 direction areas and conservation areas both have data.
+  Layers (names, order and colours) match planning.data.gov.uk/map: app/data/map-layers.json.
+#}
+{% set startArea = {
+  name: "St John's Wood to Paddington, City of Westminster",
+  west: -0.19, south: 51.515, east: -0.155, north: 51.538
+} %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: baseUrl }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+    <p class="govuk-body-l">See the data we've collected and collated on a map.</p>
+
+    {{ govukWarningText({
+      text: "The data may be incomplete and not yet cover all of England. We're working to improve its availability and quality."
+    }) }}
+
+    <p class="govuk-body">Layers show the data in the part of the map you're looking at. Zoom in to see layers with a lot of data, such as listed buildings.</p>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="app-map">
+      <div id="map" class="app-map__canvas" role="region" aria-label="Map of planning data"></div>
+
+      <div class="app-map__panel">
+        <div class="app-map__panel-heading">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Data layers</h2>
+        </div>
+        <div class="app-map__panel-content">
+          <div class="govuk-form-group govuk-!-margin-bottom-3">
+            <label class="govuk-label govuk-!-font-size-16" for="layer-search">Search data layers</label>
+            <input class="govuk-input" id="layer-search" type="text" autocomplete="off">
+          </div>
+
+          <div class="govuk-form-group govuk-!-margin-bottom-0">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-visually-hidden">Show data layers on the map</legend>
+              <ul class="govuk-list govuk-!-margin-bottom-0 govuk-checkboxes govuk-checkboxes--small app-map__layers" id="layer-toggles">
+                {% for layer in mapLayers %}
+                  <li class="app-map__layer" data-layer-name="{{ layer.name | lower }}">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="layer-{{ layer.dataset }}" type="checkbox" value="{{ layer.dataset }}" {% if layer.checked %}checked{% endif %} aria-describedby="layer-{{ layer.dataset }}-status">
+                      <label class="govuk-label govuk-checkboxes__label" for="layer-{{ layer.dataset }}">
+                        <span class="app-map__key{% if layer.point %} app-map__key--point{% endif %}" style="--layer-colour: {{ layer.colour }}" aria-hidden="true"></span>
+                        {{ layer.name }}
+                      </label>
+                      <span class="govuk-hint govuk-!-font-size-16 govuk-!-margin-bottom-0 app-map__layer-status" id="layer-{{ layer.dataset }}-status" aria-live="polite"></span>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            </fieldset>
+          </div>
+          <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" id="layer-search-empty" hidden>No layers match your search.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="govuk-body-s govuk-!-margin-top-4">
+      Find, understand and download the <a href="{{ baseUrl }}/data" class="govuk-link">datasets used to create this map</a>.
+      Data is loaded live from <a href="https://www.planning.data.gov.uk" class="govuk-link">planning.data.gov.uk</a>.
+      Select a shape or point on the map to see what it is.
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    (function () {
+      var PLANNING_DATA_URL = 'https://www.planning.data.gov.uk'
+      var PAGE_SIZE = 500 // The most the API returns in one request
+      var MAX_PAGES = 6 // Up to 3,000 features a layer, then ask the user to zoom in
+      var MIN_ZOOM = 11 // Below this, layers that load what's in view ask the user to zoom in
+      var startArea = {{ startArea | dump | safe }}
+      var layers = {{ mapLayers | dump | safe }}
+      // Design code areas from this prototype that aren't on planning.data.gov.uk yet
+      var prototypeDesignCodeAreas = {{ prototypeDesignCodeAreas | dump | safe }}
+
+      // Canvas draws hundreds of features far faster than SVG
+      var map = L.map('map', { preferCanvas: true, scrollWheelZoom: false })
+
+      // Keep the start area clear of the layer panel when it floats over the map
+      var panel = document.querySelector('.app-map__panel')
+      var panelFloats = getComputedStyle(panel).position === 'absolute'
+      map.fitBounds(L.latLngBounds([startArea.south, startArea.west], [startArea.north, startArea.east]), {
+        paddingBottomRight: [panelFloats ? panel.offsetWidth + 30 : 0, 0]
+      })
+
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map)
+
+      L.control.scale({ imperial: false }).addTo(map)
+
+      function escapeHtml (text) {
+        var div = document.createElement('div')
+        div.textContent = text == null ? '' : String(text)
+        return div.innerHTML
+      }
+
+      function popupHtml (layer, properties) {
+        var title = properties.name || properties.reference || layer.name
+        var html = '<p class="govuk-body-s govuk-!-margin-bottom-1 govuk-hint">' + escapeHtml(layer.name) + '</p>' +
+          '<p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">' + escapeHtml(title) + '</p>'
+        if (properties.href) {
+          // An area from this prototype's own data
+          return html +
+            '<p class="govuk-body-s govuk-!-margin-bottom-1">' + escapeHtml(properties.area) + '</p>' +
+            '<p class="govuk-body-s govuk-!-margin-bottom-1">Not on planning.data.gov.uk yet</p>' +
+            '<a class="govuk-link govuk-body-s" href="' + escapeHtml(properties.href) + '">View design code</a>'
+        }
+        return html + '<a class="govuk-link govuk-body-s" href="{{ baseUrl }}/entity/' + encodeURIComponent(properties.entity) + '">View entity ' + escapeHtml(properties.entity) + '</a>'
+      }
+
+      function plural (count, one, many) {
+        return count.toLocaleString('en-GB') + ' ' + (count === 1 ? one : many)
+      }
+
+      function statusElement (layer) {
+        return document.getElementById('layer-' + layer.dataset + '-status')
+      }
+
+      function setStatus (layer, text) {
+        statusElement(layer).textContent = text
+      }
+
+      function viewWkt () {
+        var b = map.getBounds()
+        var w = b.getWest(); var s = b.getSouth(); var e = b.getEast(); var n = b.getNorth()
+        return 'POLYGON((' + [[w, s], [e, s], [e, n], [w, n], [w, s]].map(function (p) { return p.join(' ') }).join(',') + '))'
+      }
+
+      // Every page of features, up to MAX_PAGES. Resolves with { features, complete }.
+      function fetchFeatures (dataset, geometry, signal) {
+        var features = []
+        function page (offset, pagesLeft) {
+          var params = { dataset: dataset, limit: PAGE_SIZE, offset: offset }
+          if (geometry) { params.geometry = geometry; params.geometry_relation = 'intersects' }
+          return fetch(PLANNING_DATA_URL + '/entity.geojson?' + new URLSearchParams(params), { signal: signal })
+            .then(function (response) {
+              if (!response.ok) throw new Error('GeoJSON request failed: ' + response.status)
+              return response.json()
+            })
+            .then(function (geojson) {
+              features = features.concat(geojson.features)
+              var full = geojson.features.length === PAGE_SIZE
+              if (full && pagesLeft > 1) return page(offset + PAGE_SIZE, pagesLeft - 1)
+              return { features: features, complete: !full }
+            })
+        }
+        return page(0, MAX_PAGES)
+      }
+
+      function toLeaflet (layer, features) {
+        var group = L.geoJSON({ type: 'FeatureCollection', features: features }, {
+          style: { color: layer.colour, weight: 2, fillColor: layer.colour, fillOpacity: 0.2 },
+          pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, {
+              radius: 5, color: '#0b0c0c', weight: 1, fillColor: layer.colour, fillOpacity: 1
+            })
+          },
+          onEachFeature: function (feature, featureLayer) {
+            featureLayer.bindPopup(popupHtml(layer, feature.properties))
+          }
+        })
+        return group
+      }
+
+      // What's drawn and in flight for each layer
+      var state = {}
+      layers.forEach(function (layer) { state[layer.dataset] = { drawn: null, request: null, whole: null } })
+
+      function draw (layer, group) {
+        var current = state[layer.dataset]
+        if (current.drawn) map.removeLayer(current.drawn)
+        current.drawn = group
+        if (!group) return
+        group.addTo(map)
+        // Keep points on top of shapes
+        if (!layer.point) group.bringToBack()
+      }
+
+      function clear (layer) {
+        var current = state[layer.dataset]
+        if (current.request) current.request.abort()
+        current.request = null
+        draw(layer, null)
+        setStatus(layer, '')
+      }
+
+      // Layers with few entities spread across England, such as design code areas, load once in full
+      function showWholeDataset (layer) {
+        var current = state[layer.dataset]
+        if (!current.whole) {
+          setStatus(layer, 'Loading…')
+          current.whole = fetchFeatures(layer.dataset, null)
+            .then(function (result) {
+              var features = result.features
+              if (layer.dataset === 'design-code-area') features = features.concat(prototypeDesignCodeAreas.features)
+              return features
+            })
+            .catch(function () { current.whole = null; return null })
+        }
+        current.whole.then(function (features) {
+          if (!document.getElementById('layer-' + layer.dataset).checked) return
+          if (!features) return setStatus(layer, 'Could not load this layer. Untick and tick it to try again.')
+          var group = toLeaflet(layer, features)
+          draw(layer, group)
+          var status = statusElement(layer)
+          status.textContent = plural(features.length, 'in England', 'in England') + '. '
+          var link = document.createElement('a')
+          link.href = '#map'
+          link.className = 'govuk-link'
+          link.textContent = 'Show them all on the map'
+          link.addEventListener('click', function (event) {
+            event.preventDefault()
+            map.fitBounds(group.getBounds(), { paddingBottomRight: [panelFloats ? panel.offsetWidth + 30 : 0, 0] })
+            document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' })
+          })
+          status.appendChild(link)
+        })
+      }
+
+      // Other layers load what's in view, and again whenever the view changes
+      function showInView (layer) {
+        var current = state[layer.dataset]
+        if (current.request) current.request.abort()
+        if (map.getZoom() < MIN_ZOOM) {
+          draw(layer, null)
+          return setStatus(layer, 'Zoom in to see this layer')
+        }
+        var controller = new AbortController()
+        current.request = controller
+        setStatus(layer, 'Loading…')
+        fetchFeatures(layer.dataset, viewWkt(), controller.signal)
+          .then(function (result) {
+            if (current.request !== controller) return
+            current.request = null
+            draw(layer, toLeaflet(layer, result.features))
+            setStatus(layer, result.complete
+              ? plural(result.features.length, 'in this area', 'in this area')
+              : 'Showing the first ' + plural(result.features.length, '', '').trim() + '. Zoom in to see them all')
+          })
+          .catch(function (error) {
+            if (error.name === 'AbortError') return
+            current.request = null
+            setStatus(layer, 'Could not load this layer. Untick and tick it to try again.')
+          })
+      }
+
+      function show (layer) {
+        if (layer.wholeDataset) showWholeDataset(layer)
+        else showInView(layer)
+      }
+
+      layers.forEach(function (layer) {
+        var checkbox = document.getElementById('layer-' + layer.dataset)
+        checkbox.addEventListener('change', function () {
+          if (checkbox.checked) show(layer)
+          else clear(layer)
+        })
+        if (checkbox.checked) show(layer)
+      })
+
+      // Reload what's in view once the map stops moving
+      var moveTimer
+      map.on('moveend', function () {
+        clearTimeout(moveTimer)
+        moveTimer = setTimeout(function () {
+          layers.forEach(function (layer) {
+            if (!layer.wholeDataset && document.getElementById('layer-' + layer.dataset).checked) showInView(layer)
+          })
+        }, 300)
+      })
+
+      // Narrow the layer list as the user types
+      var search = document.getElementById('layer-search')
+      var empty = document.getElementById('layer-search-empty')
+      var items = document.querySelectorAll('.app-map__layer')
+      search.addEventListener('input', function () {
+        var term = search.value.trim().toLowerCase()
+        var shown = 0
+        items.forEach(function (item) {
+          var match = item.getAttribute('data-layer-name').indexOf(term) !== -1
+          item.hidden = !match
+          if (match) shown++
+        })
+        empty.hidden = shown > 0
+      })
+    })()
+  </script>
+{% endblock %}

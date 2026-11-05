@@ -1,0 +1,234 @@
+{% extends "v2/layouts/main.html" %}
+
+{% set pageName = "Map of planning data for England" %}
+
+{#
+  Sample area: St John's Wood to Paddington, in the City of Westminster.
+  Chosen because all four layers have data here.
+#}
+{% set sampleArea = {
+  name: "St John's Wood to Paddington, City of Westminster",
+  west: -0.19, south: 51.515, east: -0.155, north: 51.538
+} %}
+
+{#
+  Colours match planning.data.gov.uk, except tree preservation zones.
+  The real map gives them the same navy as Article 4 direction areas,
+  which makes the two impossible to tell apart when both are on.
+#}
+{% set mapLayers = [
+  { dataset: "article-4-direction-area", name: "Article 4 direction area", colour: "#003078", checked: true },
+  { dataset: "conservation-area", name: "Conservation area", colour: "#78AA00", checked: true },
+  { dataset: "listed-building", name: "Listed building", colour: "#F9C744", point: true },
+  { dataset: "tree-preservation-zone", name: "Tree preservation zone", colour: "#912b88" }
+] %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: baseUrl }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+    <p class="govuk-body-l">See the data we've collected and collated on a map.</p>
+
+    {{ govukWarningText({
+      text: "The data may be incomplete and not yet cover all of England. We're working to improve its availability and quality."
+    }) }}
+
+    <p class="govuk-body">This map shows a sample area: {{ sampleArea.name }}. The sample area is outlined with a dashed line.</p>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="app-map">
+      <div id="map" class="app-map__canvas" role="region" aria-label="Map of planning data for {{ sampleArea.name }}"></div>
+
+      <div class="app-map__panel">
+        <div class="app-map__panel-heading">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Data layers</h2>
+        </div>
+        <div class="app-map__panel-content">
+          <div class="govuk-form-group govuk-!-margin-bottom-3">
+            <label class="govuk-label govuk-!-font-size-16" for="layer-search">Search data layers</label>
+            <input class="govuk-input" id="layer-search" type="text" autocomplete="off">
+          </div>
+
+          <div class="govuk-form-group govuk-!-margin-bottom-0">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-visually-hidden">Show data layers on the map</legend>
+              <ul class="govuk-list govuk-!-margin-bottom-0 govuk-checkboxes govuk-checkboxes--small" id="layer-toggles">
+                {% for layer in mapLayers %}
+                  <li class="app-map__layer" data-layer-name="{{ layer.name | lower }}">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="layer-{{ layer.dataset }}" type="checkbox" value="{{ layer.dataset }}" {% if layer.checked %}checked{% endif %} aria-describedby="layer-{{ layer.dataset }}-status">
+                      <label class="govuk-label govuk-checkboxes__label" for="layer-{{ layer.dataset }}">
+                        <span class="app-map__key{% if layer.point %} app-map__key--point{% endif %}" style="--layer-colour: {{ layer.colour }}" aria-hidden="true"></span>
+                        {{ layer.name }}
+                      </label>
+                      <span class="govuk-hint govuk-!-font-size-16 govuk-!-margin-bottom-0 app-map__layer-status" id="layer-{{ layer.dataset }}-status"></span>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            </fieldset>
+          </div>
+          <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0" id="layer-search-empty" hidden>No layers match your search.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="govuk-body-s govuk-!-margin-top-4">
+      Find, understand and download the <a href="{{ baseUrl }}/data" class="govuk-link">datasets used to create this map</a>.
+      Data is loaded live from <a href="https://www.planning.data.gov.uk" class="govuk-link">planning.data.gov.uk</a>.
+      Select a shape or point on the map to see what it is.
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    (function () {
+      var PLANNING_DATA_URL = 'https://www.planning.data.gov.uk'
+      var MAX_FEATURES = 500
+      var area = {{ sampleArea | dump | safe }}
+      var layers = {{ mapLayers | dump | safe }}
+
+      var bounds = L.latLngBounds([area.south, area.west], [area.north, area.east])
+      var areaWkt = 'POLYGON((' + [
+        [area.west, area.south], [area.east, area.south], [area.east, area.north],
+        [area.west, area.north], [area.west, area.south]
+      ].map(function (point) { return point.join(' ') }).join(',') + '))'
+
+      // Canvas draws hundreds of features far faster than SVG
+      var map = L.map('map', { preferCanvas: true, scrollWheelZoom: false })
+
+      // Keep the sample area clear of the layer panel when it floats over the map
+      var panel = document.querySelector('.app-map__panel')
+      var panelFloats = getComputedStyle(panel).position === 'absolute'
+      map.fitBounds(bounds, { paddingBottomRight: [panelFloats ? panel.offsetWidth + 30 : 0, 0] })
+
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map)
+
+      L.rectangle(bounds, {
+        color: '#0b0c0c', weight: 2, dashArray: '6 6', fill: false, interactive: false
+      }).addTo(map)
+
+      L.control.scale({ imperial: false }).addTo(map)
+
+      function escapeHtml (text) {
+        var div = document.createElement('div')
+        div.textContent = text == null ? '' : String(text)
+        return div.innerHTML
+      }
+
+      function popupHtml (layer, properties) {
+        var title = properties.name || properties.reference || layer.name
+        return '<p class="govuk-body-s govuk-!-margin-bottom-1 govuk-hint">' + escapeHtml(layer.name) + '</p>' +
+          '<p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">' + escapeHtml(title) + '</p>' +
+          '<a class="govuk-link govuk-body-s" href="{{ baseUrl }}/entity/' + encodeURIComponent(properties.entity) + '">View entity ' + escapeHtml(properties.entity) + '</a>'
+      }
+
+      var loaded = {}
+
+      function setStatus (layer, text) {
+        document.getElementById('layer-' + layer.dataset + '-status').textContent = text
+      }
+
+      function loadLayer (layer) {
+        if (loaded[layer.dataset]) return loaded[layer.dataset]
+
+        setStatus(layer, 'Loading…')
+        var url = PLANNING_DATA_URL + '/entity.geojson?' + new URLSearchParams({
+          dataset: layer.dataset,
+          geometry: areaWkt,
+          geometry_relation: 'intersects',
+          limit: MAX_FEATURES
+        })
+
+        loaded[layer.dataset] = fetch(url)
+          .then(function (response) {
+            if (!response.ok) throw new Error('GeoJSON request failed: ' + response.status)
+            return response.json()
+          })
+          .then(function (geojson) {
+            var style = { color: layer.colour, weight: 2, fillColor: layer.colour, fillOpacity: 0.2 }
+            var leafletLayer = L.geoJSON(geojson, {
+              style: style,
+              pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                  radius: 5, color: '#0b0c0c', weight: 1, fillColor: layer.colour, fillOpacity: 1
+                })
+              },
+              onEachFeature: function (feature, featureLayer) {
+                featureLayer.bindPopup(popupHtml(layer, feature.properties))
+              }
+            })
+            var count = geojson.features.length
+            setStatus(layer, count === MAX_FEATURES
+              ? 'Showing the first ' + MAX_FEATURES + ' in this area'
+              : count + ' in this area')
+            return leafletLayer
+          })
+          .catch(function () {
+            delete loaded[layer.dataset]
+            setStatus(layer, 'Could not load this layer. Untick and tick it to try again.')
+            return null
+          })
+
+        return loaded[layer.dataset]
+      }
+
+      function showLayer (layer, visible) {
+        loadLayer(layer).then(function (leafletLayer) {
+          if (!leafletLayer) return
+          // The box may have been unticked while the data was loading
+          var checkbox = document.getElementById('layer-' + layer.dataset)
+          if (visible && checkbox.checked) {
+            leafletLayer.addTo(map)
+            // Keep points on top of shapes
+            if (!layer.point) leafletLayer.bringToBack()
+          } else {
+            map.removeLayer(leafletLayer)
+          }
+        })
+      }
+
+      layers.forEach(function (layer) {
+        var checkbox = document.getElementById('layer-' + layer.dataset)
+        checkbox.addEventListener('change', function () {
+          showLayer(layer, checkbox.checked)
+        })
+        if (checkbox.checked) showLayer(layer, true)
+      })
+
+      // Narrow the layer list as the user types
+      var search = document.getElementById('layer-search')
+      var empty = document.getElementById('layer-search-empty')
+      var items = document.querySelectorAll('.app-map__layer')
+      search.addEventListener('input', function () {
+        var term = search.value.trim().toLowerCase()
+        var shown = 0
+        items.forEach(function (item) {
+          var match = item.getAttribute('data-layer-name').indexOf(term) !== -1
+          item.hidden = !match
+          if (match) shown++
+        })
+        empty.hidden = shown > 0
+      })
+    })()
+  </script>
+{% endblock %}

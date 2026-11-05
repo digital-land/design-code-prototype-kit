@@ -1,0 +1,296 @@
+{% extends "v3/layouts/main.html" %}
+
+{#
+  Recreates https://design.planning.data.gov.uk/consideration/air-quality-management-areas
+  Content copied from the real page on 13 October 2026.
+  Links to pages we have not built go to the real site.
+#}
+
+{% set pageName = "Air quality management areas" %}
+{% set designSiteUrl = "https://design.planning.data.gov.uk" %}
+{% set considerationUrl = designSiteUrl + "/consideration/air-quality-management-areas" %}
+
+{# One question and its answer in the background information #}
+{% macro question(title) %}
+  <li class="app-question-set__item">
+    <h4 class="govuk-heading-s">{{ title }}</h4>
+    {{ caller() }}
+  </li>
+{% endmacro %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: baseUrl + "/design-data" },
+      { text: "Planning consideration", href: designSiteUrl + "/consideration/" },
+      { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">Planning consideration</span>
+    <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+    <p class="govuk-caption-l govuk-!-margin-bottom-8">Areas where air pollution levels have exceeded the national air quality objectives</p>
+
+    <dl class="govuk-summary-list" id="details">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <a href="{{ considerationUrl }}/stage" class="govuk-link govuk-link--text-colour">Design stage</a>
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ govukTag({ text: "On the platform", classes: "govuk-tag--green" }) }}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Tags</dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--spaced">
+            {% for tag in ["local plan", "local information", "environmental", "policies map"] %}
+              <li><a href="{{ designSiteUrl }}/consideration/?tag={{ tag | urlencode }}" class="app-tag-link">{{ govukTag({ text: tag }) }}</a></li>
+            {% endfor %}
+          </ul>
+          <p class="govuk-body-s">
+            <a href="{{ designSiteUrl }}/tags/glossary" class="govuk-link">View a glossary of tags</a>
+          </p>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Github</dt>
+        <dd class="govuk-summary-list__value">
+          <a href="https://github.com/digital-land/data-standards-backlog/discussions/55" class="govuk-link">Join the discussion</a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Synonyms</dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--spaced">
+            <li>Air quality management locations</li>
+            <li>AQMA</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Legislation</dt>
+        <dd class="govuk-summary-list__value">
+          <a href="https://www.legislation.gov.uk/ukpga/1995/25/contents" class="govuk-link">The Environment Act 1995</a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Ordnance Survey declaration</dt>
+        <dd class="govuk-summary-list__value">Unknown</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Expected number of records</dt>
+        <dd class="govuk-summary-list__value">643</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Frequency of updates</dt>
+        <dd class="govuk-summary-list__value">Ad hoc</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Useful links</dt>
+        <dd class="govuk-summary-list__value">
+          <a href="https://uk-air.defra.gov.uk/aqma/maps/" class="govuk-link">National dataset mapping</a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Technical specification</dt>
+        <dd class="govuk-summary-list__value">
+          <span class="app-missing-item">No specification added</span>
+        </dd>
+      </div>
+    </dl>
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    {{ govukSummaryList({
+      card: {
+        title: { text: "Related dataset" }
+      },
+      attributes: { id: "data-related" },
+      rows: [
+        {
+          key: { html: '<a href="https://www.planning.data.gov.uk/dataset/air-quality-management-area" class="govuk-link">Air quality management area</a>' },
+          value: { html: '<a href="https://github.com/digital-land/specification/blob/main/content/dataset/air-quality-management-area.md?plain=1" class="govuk-link">View schema on Github</a>' }
+        }
+      ]
+    }) }}
+
+    <section id="design-process-stages" class="govuk-!-margin-top-9">
+      <h2 class="govuk-heading-l">Background information</h2>
+      <p class="govuk-body">Each planning consideration we work on passes through the stages of our design process, where we research and answer specific questions to help us collect more information.</p>
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-6">Backlog</h3>
+      <ul class="govuk-list app-question-set">
+        {% call question("Who asked for 'Air quality management areas' data?") %}
+          <p class="govuk-body">Identified as a potentially high value consideration with possible national data already available</p>
+        {% endcall %}
+        {% call question("What is the driver for the request?") %}
+          <p class="govuk-body">Other</p>
+        {% endcall %}
+        {% call question("Which 2024 focus area does the request support?") %}
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Modern planning software</li>
+            <li>Faster local plans</li>
+          </ul>
+        {% endcall %}
+      </ul>
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-6">Screen</h3>
+      <ul class="govuk-list app-question-set">
+        {% call question("What is the 'Air quality management areas' consideration?") %}
+          <p class="govuk-body">An Air Quality Management Area is a region in which air pollutants fall below a specific threshold, in line with <a class="govuk-link" href="https://uk-air.defra.gov.uk/assets/documents/Air_Quality_Objectives_Update.pdf">national air quality objectives</a>.</p>
+          <p class="govuk-body">"If a local authority finds any places where the objectives are not likely to be achieved, it must declare an Air Quality Management Area there. This area could be just one or two streets, or it could be much bigger."</p>
+        {% endcall %}
+
+        {% call question("Is there legislation that defines 'Air quality management areas'?") %}
+          <p class="govuk-body">Yes</p>
+          <ul class="govuk-list app-question-set">
+            {% call question("What is the legislation that defines 'Air quality management areas'?") %}
+              <ul class="govuk-list govuk-list--bullet">
+                <li><a class="govuk-link" href="https://www.legislation.gov.uk/uksi/2010/1001/regulation/26/made">The Air Quality Standards Regulations 2010, regulation 26 - "Air quality plans"</a></li>
+              </ul>
+            {% endcall %}
+            {% call question("What is the specific part of the legislation that describes how a 'Air quality management areas' gets designated?") %}
+              <p class="govuk-body">26.—(1) Where the levels of sulphur dioxide, nitrogen dioxide, benzene, carbon monoxide, lead and PM10 in ambient air exceed any of the limit values in Schedule 2 or the level of PM2.5 exceeds the target value in Schedule 3, the Secretary of State must draw up and implement an air quality plan so as to achieve that limit value or target value.</p>
+              <p class="govuk-body">(2) The air quality plan must include measures intended to ensure compliance with any relevant limit value within the shortest possible time.</p>
+            {% endcall %}
+            {% call question("What is the specific part of the legislation that requires the publication of 'Air quality management areas'?") %}
+            {% endcall %}
+          </ul>
+        {% endcall %}
+
+        {% call question("Who, in law, is responsible for the planning consideration or makes decisions about 'Air quality management areas'?") %}
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Secretary of State, Defra</li>
+          </ul>
+        {% endcall %}
+
+        {% call question("Which organisations do we think should publish the data?") %}
+          <ul class="govuk-list govuk-list--bullet">
+            <li>UK Air (Defra)</li>
+          </ul>
+        {% endcall %}
+
+        {% call question("Is the Air quality management areas a trigger?") %}
+          <p class="govuk-body">Yes</p>
+          <ul class="govuk-list app-question-set">
+            {% call question("What needs to be done because Air quality management areas has acted as the trigger?") %}
+              <p class="govuk-body">An Air Quality Assessment</p>
+            {% endcall %}
+          </ul>
+        {% endcall %}
+
+        {% call question("Is the Air quality management areas something to consult during plan making?") %}
+          <p class="govuk-body">Yes</p>
+          <ul class="govuk-list app-question-set">
+            {% call question("Provide information about when Air quality management areas is used during plan making") %}
+              <p class="govuk-body">Generally, air quality is considered when assessing sites to be taken forward through the selection and allocation process. It is likely that the presence of an air quality management area will lead to further scrutiny in the site selection process, and as well as the preparation of an air quality assessment, developers will likely be required to demonstrate mitigation.</p>
+            {% endcall %}
+          </ul>
+        {% endcall %}
+
+        {% call question("Is there any Air quality management areas data already available?") %}
+          <p class="govuk-body">Yes</p>
+          <ul class="govuk-list app-question-set">
+            {% call question("What Air quality management areas data is currently available?") %}
+              {{ govukSummaryList({
+                card: {
+                  title: { text: "Item 1" },
+                  classes: "app-previous-item"
+                },
+                classes: "govuk-summary-list--no-border",
+                rows: [
+                  { key: { text: "url" }, value: { html: '<a class="govuk-link" href="https://uk-air.defra.gov.uk/aqma/maps/">https://uk-air.defra.gov.uk/aqma/maps/</a>' } },
+                  { key: { text: "name" }, value: { text: "AQMA Boundaries" } },
+                  { key: { text: "fields" }, value: { text: "Local Authority;AQMA Name;Pollutants Declared;Date Declared;Date Amended;Date Revoked;Source" } },
+                  { key: { text: "licence" }, value: { text: "OGL" } },
+                  { key: { text: "coverage" }, value: { text: "England" } },
+                  { key: { text: "publisher" }, value: { text: "Defra" } },
+                  { key: { text: "attribution" }, value: { text: "© Crown copyright and database rights 2024 licenced under Defra's Public Sector Mapping Agreement with Ordnance Survey (licence No. 100022861)." } },
+                  { key: { text: "metadata_url" }, value: { text: "" } }
+                ]
+              }) }}
+            {% endcall %}
+          </ul>
+        {% endcall %}
+
+        {% call question("Do we think the data should come from a single source?") %}
+          <p class="govuk-body">Yes - Defra, UK Air</p>
+        {% endcall %}
+
+        {% call question("Will a data standard be required?") %}
+          <p class="govuk-body">No</p>
+        {% endcall %}
+      </ul>
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-6">Research</h3>
+      <ul class="govuk-list app-question-set">
+        {% call question("Do we understand the lifecycle of a Air quality management areas?") %}
+        {% endcall %}
+        {% call question("Do we understand how the data is created/produced?") %}
+          <p class="govuk-body">This data is produced by UK Air, a part of DEFRA. So, although we do not know for a fact how this data is produced, we expect (based on the licensing information) that it is created using OS data for the correct geospatial mapping and Royal Mail data for the correct location information.</p>
+        {% endcall %}
+        {% call question("Where will or should the data be used?") %}
+          <p class="govuk-body">This data should be used in plan-making and development management decisions by local planning authorities.</p>
+        {% endcall %}
+        {% call question("What other planning considerations does it interact with?") %}
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Local plans - AQMAs are referenced a number of times in local plans, so we think that this consideration feeds into the process of creating a local plan.</li>
+          </ul>
+        {% endcall %}
+        {% call question("Who are the statutory consultees for Air quality management areas?") %}
+          <p class="govuk-body">Environment Agency</p>
+        {% endcall %}
+        {% call question("Other than the statutory consultees who are the primary users of Air quality management areas? How do we expect them to use Air quality management areas?") %}
+        {% endcall %}
+        {% call question("What are the planning needs for this data?") %}
+          <p class="govuk-body">Air Quality Management Areas are a useful planning consideration for the platform, as they are taken into consideration in both plan-making and development management decisions. Understanding air quality when selecting, assessing and allocating sites is important to ensure that any decisions in relation to the development of the site will mitigate existing poor air quality, and take into account risks of worsening air quality of the area.</p>
+        {% endcall %}
+        {% call question("Who are the types of users who might benefit from having access to Air quality management areas data?") %}
+        {% endcall %}
+        {% call question("What are some potential uses of Air quality management areas data?") %}
+        {% endcall %}
+        {% call question("What's the value of adding Air quality management areas data to the platform?") %}
+          <p class="govuk-body">Air Quality Management Areas are a useful planning consideration for the platform, as they are taken into consideration in both plan-making and development management decisions. Understanding air quality when selecting, assessing and allocating sites is important to ensure that any decisions in relation to the development of the site will mitigate existing poor air quality, and take into account risks of worsening air quality of the area.</p>
+        {% endcall %}
+        {% call question("From what we have learnt so far are there any risks to making Air quality management areas data available?") %}
+          <p class="govuk-body">It appears that the dataset can be downloaded, but as a snapshot in time. We may need to work with Defra to see if we can always have up-to-date data.</p>
+        {% endcall %}
+      </ul>
+    </section>
+
+    <section id="notes" class="govuk-!-margin-top-9">
+      <h2 class="govuk-heading-l">4 updates</h2>
+      <ul class="govuk-list govuk-list--spaced">
+        <li>
+          <span class="govuk-!-font-size-16">Colm Britton (04 February 2025)</span>
+          <p class="govuk-body">We have posted <a class="govuk-link" href="https://github.com/digital-land/data-standards-backlog/discussions/55#discussioncomment-11828765">a summary</a> of what we learnt analysing the existing dataset.</p>
+        </li>
+        <li>
+          <span class="govuk-!-font-size-16">Kieran Wint (04 September 2024)</span>
+          <p class="govuk-body">As per some research we did, summarised in this <a class="govuk-link" href="https://digital-land.github.io/blog-post/local-plan-and-local-requirement-analysis/">blog on an analysis of local plans and local area requirements</a>, we're confident that this consideration acts as an INPUT to the process of creating a local plan.</p>
+        </li>
+        <li>
+          <span class="govuk-!-font-size-16">elliotrowen (03 September 2024)</span>
+          <p class="govuk-body">No specific date for frequency update was identified, however it was assumed this would be updated 'ad hoc', as and when an area needed to improve the air quality.</p>
+        </li>
+        <li>
+          <span class="govuk-!-font-size-16">Kieran Wint (30 July 2024)</span>
+          <p class="govuk-body">The dataset found is a snapshot in time, so we may need to work further with Defra to ensure we would always have the most up-to-date data.</p>
+        </li>
+      </ul>
+    </section>
+
+    <p class="govuk-hint govuk-!-margin-top-6">
+      <a href="{{ considerationUrl }}/change-log" class="govuk-link">Last updated: 2025-09-11 12:03:36</a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}

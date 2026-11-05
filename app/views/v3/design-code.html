@@ -1,0 +1,42 @@
+{% extends "v3/layouts/masthead.html" %}
+
+{#
+  Design codes landing page, from the Figma frame "Desktop - 85" (node 400:14297).
+  Links to the guidance and to the design code finder.
+#}
+
+{% set pageName = "Design code" %}
+{% set hidePhaseBanner = true %}
+{% set mastheadClasses = "app-dc-masthead" %}
+
+{% block mastheadIntro %}
+  <p class="govuk-body-l app-masthead__sub-title app-dc-masthead__intro">
+    A design code sets the mandatory visual, environmental, and layout standards for new developments in this area.
+    Use this service to find the design code you are looking for, search below or apply filters to find the right design code for you.
+  </p>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full govuk-grid-column-three-quarters-from-desktop">
+    <ul class="app-content-list app-content-list--large govuk-!-margin-bottom-8">
+      <li class="app-content-list__item">
+        <h2 class="app-content-list__heading">
+          <a class="govuk-link govuk-link--text-colour app-content-list__link" href="{{ baseUrl }}/design-code/learn">Learn about design codes</a>
+        </h2>
+        <p class="app-content-list__description">
+          Find out what design codes are, what they cover and how they shape new development in your area.
+        </p>
+      </li>
+      <li class="app-content-list__item">
+        <h2 class="app-content-list__heading">
+          <a class="govuk-link govuk-link--text-colour app-content-list__link" href="{{ baseUrl }}/design-code/find">Look for a design code</a>
+        </h2>
+        <p class="app-content-list__description">
+          Search for a design code by council or location to see the rules that apply to an area.
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

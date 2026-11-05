@@ -1,0 +1,290 @@
+{
+  "_comment": [
+    "Data layers on the map, in the order, with the names and colours, used by planning.data.gov.uk/map (checked 19 October 2026).",
+    "Each dataset is a planning.data.gov.uk dataset reference. Brownfield land and listed buildings are drawn as points; their colours aren't shown in the platform's key, so these are ours.",
+    "wholeDataset: load every entity, rather than only those in view, because there are few of them spread across England.",
+    "Design code area also shows the areas of design codes extracted in this prototype that are not on the platform yet (see app/routes/v1.js)."
+  ],
+  "layers": [
+    {
+      "dataset": "agricultural-land-classification",
+      "name": "Agricultural land classification",
+      "colour": "#00703c"
+    },
+    {
+      "dataset": "air-quality-management-area",
+      "name": "Air quality management area",
+      "colour": "#87823A"
+    },
+    {
+      "dataset": "ancient-woodland",
+      "name": "Ancient woodland",
+      "colour": "#00703c"
+    },
+    {
+      "dataset": "archaeological-priority-area",
+      "name": "Archaeological priority area",
+      "colour": "#b54405"
+    },
+    {
+      "dataset": "area-of-outstanding-natural-beauty",
+      "name": "Area of outstanding natural beauty",
+      "colour": "#d53880"
+    },
+    {
+      "dataset": "article-4-direction-area",
+      "name": "Article 4 direction area",
+      "colour": "#003078",
+      "checked": true
+    },
+    {
+      "dataset": "asset-of-community-value",
+      "name": "Asset of community value",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "battlefield",
+      "name": "Battlefield",
+      "colour": "#4d2942"
+    },
+    {
+      "dataset": "border",
+      "name": "Border",
+      "colour": "#0b0c0c"
+    },
+    {
+      "dataset": "brownfield-land",
+      "name": "Brownfield land",
+      "colour": "#745729",
+      "point": true
+    },
+    {
+      "dataset": "brownfield-site",
+      "name": "Brownfield site",
+      "colour": "#745729"
+    },
+    {
+      "dataset": "building-preservation-notice",
+      "name": "Building preservation notice",
+      "colour": "#f944c7"
+    },
+    {
+      "dataset": "built-up-area",
+      "name": "Built up area",
+      "colour": "#f47738"
+    },
+    {
+      "dataset": "central-activities-zone",
+      "name": "Central activities zone",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "certificate-of-immunity",
+      "name": "Certificate of immunity",
+      "colour": "#D8760D"
+    },
+    {
+      "dataset": "conservation-area",
+      "name": "Conservation area",
+      "colour": "#78AA00",
+      "checked": true
+    },
+    {
+      "dataset": "design-code-area",
+      "name": "Design code area",
+      "colour": "#003078",
+      "wholeDataset": true
+    },
+    {
+      "dataset": "development-corporation-boundary",
+      "name": "Development corporation boundary",
+      "colour": "#0b0c0c"
+    },
+    {
+      "dataset": "educational-establishment",
+      "name": "Educational establishment",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "flood-risk-zone",
+      "name": "Flood risk zone",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "flood-storage-area",
+      "name": "Flood storage area",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "green-belt",
+      "name": "Green belt",
+      "colour": "#85994b"
+    },
+    {
+      "dataset": "heritage-at-risk",
+      "name": "Heritage at risk",
+      "colour": "#8D73AF"
+    },
+    {
+      "dataset": "heritage-coast",
+      "name": "Heritage coast",
+      "colour": "#912b88"
+    },
+    {
+      "dataset": "infrastructure-project",
+      "name": "Infrastructure project",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "listed-building",
+      "name": "Listed building",
+      "colour": "#F9C744",
+      "point": true
+    },
+    {
+      "dataset": "listed-building-outline",
+      "name": "Listed building outline",
+      "colour": "#F9C744"
+    },
+    {
+      "dataset": "local-authority-district",
+      "name": "Local authority district",
+      "colour": "#0b0c0c"
+    },
+    {
+      "dataset": "locally-listed-building",
+      "name": "Locally listed building",
+      "colour": "#F9C744"
+    },
+    {
+      "dataset": "local-nature-reserve",
+      "name": "Local nature reserve",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "local-plan-boundary",
+      "name": "Local plan boundary",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "local-planning-authority",
+      "name": "Local Planning Authority",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "local-resilience-forum-boundary",
+      "name": "Local resilience forum boundary",
+      "colour": "#f499be"
+    },
+    {
+      "dataset": "minerals-plan-boundary",
+      "name": "Minerals plan boundary",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "national-nature-reserve",
+      "name": "National nature reserve",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "national-park",
+      "name": "National park",
+      "colour": "#3DA52C"
+    },
+    {
+      "dataset": "nature-improvement-area",
+      "name": "Nature improvement area",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "nutrient-neutrality-catchment",
+      "name": "Nutrient neutrality catchment",
+      "colour": "#308fac"
+    },
+    {
+      "dataset": "parish",
+      "name": "Civil parish",
+      "colour": "#5694ca"
+    },
+    {
+      "dataset": "park-and-garden",
+      "name": "Historic parks and gardens",
+      "colour": "#0EB951"
+    },
+    {
+      "dataset": "protected-wreck-site",
+      "name": "Protected wreck site",
+      "colour": "#0b0c0c"
+    },
+    {
+      "dataset": "ramsar",
+      "name": "Ramsar site",
+      "colour": "#2E8B8B"
+    },
+    {
+      "dataset": "region",
+      "name": "Region",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "scheduled-monument",
+      "name": "Scheduled monument",
+      "colour": "#0F9CDA"
+    },
+    {
+      "dataset": "site-of-special-scientific-interest",
+      "name": "Site of special scientific interest",
+      "colour": "#308fac"
+    },
+    {
+      "dataset": "special-area-of-conservation",
+      "name": "Special area of conservation",
+      "colour": "#7A8705"
+    },
+    {
+      "dataset": "special-protection-area",
+      "name": "Special protection area",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "title-boundary",
+      "name": "Title boundary",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "transport-access-node",
+      "name": "Public transport access node",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "tree",
+      "name": "Tree",
+      "colour": "#3B453D"
+    },
+    {
+      "dataset": "tree-preservation-zone",
+      "name": "Tree preservation zone",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "ward",
+      "name": "Ward",
+      "colour": "#3DA52C"
+    },
+    {
+      "dataset": "waste-plan-boundary",
+      "name": "Waste plan boundary",
+      "colour": "#003078"
+    },
+    {
+      "dataset": "world-heritage-site",
+      "name": "World heritage site",
+      "colour": "#EB1EE5"
+    },
+    {
+      "dataset": "world-heritage-site-buffer-zone",
+      "name": "World heritage site buffer zone",
+      "colour": "#EB1EE5"
+    }
+  ]
+}

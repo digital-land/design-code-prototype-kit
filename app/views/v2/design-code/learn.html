@@ -1,0 +1,235 @@
+{% extends "v2/layouts/main.html" %}
+
+{#
+  Guidance on preparing a design code, laid out like long GOV.UK guidance: contents on the
+  left, the guidance on the right. Content from the "Design codes" document (October 2026).
+  Links marked href="#" are in the content but their pages haven't been chosen yet.
+#}
+
+{% set pageName = "Prepare a design code" %}
+
+{% set contents = [
+  { id: "when-to-use", text: "When you should use a design code" },
+  { id: "design-code-type", text: "Choose your design code type" },
+  { id: "structure", text: "How to structure your design code" },
+  { id: "rules", text: "Creating design code rules" },
+  { id: "references", text: "Design code rule references" },
+  { id: "publish", text: "Publish your design code on planning.data.gov.uk" },
+  { id: "decisions", text: "Use your design code in decisions" }
+] %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Design code", href: baseUrl + "/design-code" },
+      { text: "Learn about design codes" }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row app-guidance">
+  {# Contents come first, so on phones they sit above the guidance #}
+  <div class="govuk-grid-column-one-third">
+    <nav class="app-contents" aria-labelledby="contents-heading">
+      <h2 class="govuk-heading-s app-contents__heading" id="contents-heading">Contents</h2>
+      <ol class="app-contents__list">
+        {% for item in contents %}
+          <li class="app-contents__item"><a class="govuk-link app-contents__link" href="#{{ item.id }}">{{ item.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </nav>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">Learn about design codes</span>
+    <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+
+    <p class="govuk-body">A design code is a set of design rules for the development of a site or area. Each rule sets clear, specific, measurable and visual parameters for physical development.</p>
+    <p class="govuk-body">These rules turn the broad design policies in your local plan into requirements that are visual and that you can measure. They show applicants what you will accept before they apply, so that you can make faster and more consistent decisions.</p>
+    <p class="govuk-body">A design code should:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>be measurable</li>
+      <li>use numbers and diagrams rather than detailed policy wording</li>
+      <li>be simple, concise and specific to the place or type of development it applies to</li>
+      <li>give developers certainty about what you will accept</li>
+      <li>raise the standard of baseline design quality</li>
+      <li>allow enough flexibility for variety, creativity and innovation</li>
+    </ul>
+    <p class="govuk-body">You need to base your design code on the 7 features of well-designed places:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>liveability</li>
+      <li>climate</li>
+      <li>nature</li>
+      <li>movement</li>
+      <li>built form</li>
+      <li>public space</li>
+      <li>identity</li>
+    </ul>
+
+    <h3 class="govuk-heading-s">National design issues that you can set rules for</h3>
+    <p class="govuk-body"><a class="govuk-link" href="#">Check the design issues that you can set rules for</a>. These design issues are for common types of development. You should use or adapt the existing issues and rules before writing your own.</p>
+
+    <h2 class="govuk-heading-l" id="when-to-use">When you should use a design code</h2>
+    <p class="govuk-body">Use a design code when you need specific control over design. If you want to allow more flexibility and only want to encourage good practice, use guidance instead. You can use design codes and guidance together in your master plan.</p>
+    <p class="govuk-body">You must be clear whether something is a design code or guidance.</p>
+
+    <h2 class="govuk-heading-l" id="design-code-type">Choose your design code type</h2>
+    <p class="govuk-body">There are 3 types of design codes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>authority-wide (type-based)</li>
+      <li>area-specific</li>
+      <li>site-specific</li>
+    </ul>
+    <p class="govuk-body">Choose based on where the design code will apply and how much you already know about the sites.</p>
+
+    <h3 class="govuk-heading-m">Authority-wide (type-based)</h3>
+    <p class="govuk-body">This design code applies to the same type of development, wherever it happens in your area. For example, new homes, small sites or a type of street. They apply to repeat design issues and usually link to a planning policy.</p>
+
+    <h3 class="govuk-heading-m">Area-specific</h3>
+    <p class="govuk-body">Area-specific design codes apply to growth or priority areas. For example, a town centre, regeneration corridor or urban extension. They coordinate development across several sites, owners or phases and are often linked to a master plan. Authority-wide codes still apply in these areas.</p>
+
+    <h3 class="govuk-heading-m">Site-specific</h3>
+    <p class="govuk-body">These apply to a single site that’s usually in one ownership and link to a master plan. For example, to support an outline planning application. They give more certainty and detailed rules than type-based codes, as the site constraints are known.</p>
+
+    <h2 class="govuk-heading-l" id="structure">How to structure your design code</h2>
+    <p class="govuk-body">Every design code has the same 4 parts, so that all applicants and other authorities can understand them.</p>
+    <table class="govuk-table">
+      <caption class="govuk-visually-hidden">The 4 parts of a design code</caption>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Design code</th>
+          <td class="govuk-table__cell">The whole set of rules, with one name, status and boundary. For example, Planham Centre Design Code 2026.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Coding plan</th>
+          <td class="govuk-table__cell">A map and key showing the boundary of the code and where each area type and character area applies. It does not need to cover your whole authority area.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Area types and character areas</th>
+          <td class="govuk-table__cell">The places that share a set of rules.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Design code rules</th>
+          <td class="govuk-table__cell">The individual requirements. Each rule deals with one design issue and applies to one or more area types or types of development.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="govuk-heading-m">Area types</h3>
+    <p class="govuk-body">Area types group places with the same physical characteristics. For example, street patterns and house types. Use area types to set the same requirements across similar places.</p>
+    <p class="govuk-body">Examples of an area type include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>town or city centre</li>
+      <li>local centre</li>
+      <li>urban neighbourhood</li>
+      <li>suburbs</li>
+      <li>industrial area</li>
+      <li>rural settlements</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">Character areas</h3>
+    <p class="govuk-body">A character area has its own distinct qualities, including its culture, built form, architecture and materials. Use character areas to manage small changes in established neighbourhoods. If you have a lot of character areas, combine them into broader area types.</p>
+
+    <h3 class="govuk-heading-m">Where the code applies</h3>
+    <p class="govuk-body">State the geographic coverage of your code clearly and link each rule to a location on a map.</p>
+
+    <h3 class="govuk-heading-m">What each rule contains</h3>
+    <p class="govuk-body">Every design requirement is structured in the same way, using a ‘design code rule’.</p>
+
+    <h2 class="govuk-heading-l" id="rules">Creating design code rules</h2>
+    <p class="govuk-body">Each design code rule must include the same parts.</p>
+    <table class="govuk-table">
+      <caption class="govuk-visually-hidden">The parts of a design code rule</caption>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">National design issue reference</th>
+          <td class="govuk-table__cell">The national design issue reference. For example, ‘M4i’.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Design issue</th>
+          <td class="govuk-table__cell">The name of the issue that the rule deals with. For example, ‘Design for active travel’.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Design code rule reference</th>
+          <td class="govuk-table__cell">The reference for where people can find the rule within the overall design code document. For example, ‘3.4.9’.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Requirement</th>
+          <td class="govuk-table__cell">What the development must do, including numbers and units.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Reason</th>
+          <td class="govuk-table__cell">Explain why the rule exists. Every rule must have a reason, so you can judge proposals.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Coverage</th>
+          <td class="govuk-table__cell">The area types, sites or types of development the rule applies to.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Other considerations</th>
+          <td class="govuk-table__cell">Related rules and other standards, so the rule does not duplicate or contradict them. For example, building regulations or biodiversity net gain.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Illustration</th>
+          <td class="govuk-table__cell">A diagram, plan, section or 3D drawing that shows what is acceptable.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="govuk-body"><a class="govuk-link" href="#">Find out how to write good design code rules</a>.</p>
+
+    <h2 class="govuk-heading-l" id="references">Design code rule references</h2>
+    <p class="govuk-body">When referencing your design code rule, you need to include a national design issue reference and a local rule number.</p>
+
+    <h3 class="govuk-heading-m">National design issue reference</h3>
+    <p class="govuk-body">The <a class="govuk-link" href="#">national design issue references</a> standardise all design issue references, so that every authority uses the same reference for the same issue. All authorities must set their local rules from these issues.</p>
+    <p class="govuk-body">A national design issue reference has 3 parts, including the:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>feature</li>
+      <li>design principle within that feature</li>
+      <li>design issue within that principle (this must be in lower case Roman numerals)</li>
+    </ul>
+    <p class="govuk-body">For example, in M4ii:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>M is the feature - movement</li>
+      <li>4 is the design principle within that feature - active travel</li>
+      <li>ii is the design issue within that principle - junctions and crossings</li>
+    </ul>
+    <p class="govuk-body">You need to use this national design issue reference with your design code rule reference.</p>
+    <p class="govuk-body"><a class="govuk-link" href="#">Check the features and design principles you can include</a>.</p>
+
+    <h3 class="govuk-heading-m">Local rule number</h3>
+    <p class="govuk-body">This number shows where people can find the rule within the overall design code document. It has 3 parts, including:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>chapter</li>
+      <li>section</li>
+      <li>paragraph</li>
+    </ul>
+    <p class="govuk-body">An example local rule number is ‘3.4.9’, in this number:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>3 is the chapter (for example, ‘coding plan and area type’)</li>
+      <li>4 is the section (for example, Planham area type)</li>
+      <li>9 is the ninth numbered paragraph in chapter 3, section 4</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">Create a design code rule reference for planning.data.gov.uk</h3>
+    <p class="govuk-body">Each design code rule needs a <a class="govuk-link" href="https://www.planning.data.gov.uk/">planning.data.gov.uk</a> reference.</p>
+    <p class="govuk-body">You should combine your design code abbreviation and local rule number. For example, the reference for ‘Planham Centre design code, rule number 3.3.9’ should be <code class="app-code">pcdc-3-3-9</code>.</p>
+
+    <h2 class="govuk-heading-l" id="publish">Publish your design code on planning.data.gov.uk</h2>
+    <p class="govuk-body"><a class="govuk-link" href="#">Find out how to publish your design code as data</a>.</p>
+
+    <h2 class="govuk-heading-l" id="decisions">Use your design code in decisions</h2>
+    <p class="govuk-body">Give your design code appropriate weight in planning decisions as part of the development plan. For example, in your local plan or as a supplementary plan.</p>
+    <p class="govuk-body">You should:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>make your design codes easy to find</li>
+      <li>tell applicants which design code rules apply to their site during pre-application</li>
+      <li>ask applicants to show how they comply in their design and access statement</li>
+      <li>check each relevant rule and work with applicants to resolve any non-compliance</li>
+      <li>refuse applications that do not meet the design code</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

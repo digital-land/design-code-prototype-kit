@@ -1,0 +1,29 @@
+{% extends "v3/layouts/main.html" %}
+
+{# The result of "Not sure what I am looking for?" when the flow charts cannot give a place type #}
+
+{% set pageName = "Speak to the council about your place type - " + designCode.name %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: backHref }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{ designCode.name }}</span>
+    <h1 class="govuk-heading-l">Speak to the council about your place type</h1>
+
+    <p class="govuk-body">We cannot work out the place type for your site from your answers.</p>
+    <p class="govuk-body">Contact {{ designCode.council }} for pre-application advice. They can tell you which place type and codes apply to your site. This could save time during the application process.</p>
+
+    <h2 class="govuk-heading-m">Codes that may apply</h2>
+    <p class="govuk-body">You can still see the codes for what you are building. Some codes only apply in certain place types.</p>
+
+    <div class="govuk-button-group">
+      {{ govukButton({ text: "See codes for what you are building", href: resultsHref }) }}
+    </div>
+  </div>
+</div>
+{% endblock %}

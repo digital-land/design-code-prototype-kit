@@ -1,0 +1,70 @@
+{#
+  Start page listing every version of the prototype.
+  Uses the plain Prototype Kit layout, not a version's Planning Data header.
+  Add new versions to the top of the list.
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% set pageName = "Design Codes prototype" %}
+
+{% set versions = [
+  {
+    name: "v3",
+    date: "21 October 2026",
+    description: "Interactive map that drills down from council to place type, with filters linked to the map",
+    href: "/v3/design-code/east-riding"
+  },
+  {
+    name: "v2",
+    date: "15 October 2026",
+    description: "Design code finder with map and list views, and a tabbed page for each council's design code",
+    href: "/v2/design-code"
+  },
+  {
+    name: "v1",
+    date: "15 October 2026",
+    description: "Planning Data service with Design codes section added",
+    href: "/v1"
+  }
+] %}
+
+{% block pageTitle %}Design Codes prototype - GOV.UK{% endblock %}
+
+{# No service navigation on the start page #}
+{% block govukServiceNavigation %}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Design Codes prototype</h1>
+    <p class="govuk-body">Choose a version of the prototype.</p>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% set rows = [] %}
+    {% for version in versions %}
+      {% set rows = (rows.push([
+        { text: version.name },
+        { text: version.date },
+        { text: version.description },
+        { html: '<a class="govuk-link" href="' + version.href + '">Open<span class="govuk-visually-hidden"> ' + version.name + '</span></a>' }
+      ]), rows) %}
+    {% endfor %}
+    {{ govukTable({
+      caption: "Versions",
+      captionClasses: "govuk-table__caption--m",
+      firstCellIsHeader: true,
+      head: [
+        { text: "Version" },
+        { text: "Date" },
+        { text: "Description" },
+        { html: '<span class="govuk-visually-hidden">Link</span>' }
+      ],
+      rows: rows
+    }) }}
+  </div>
+</div>
+{% endblock %}

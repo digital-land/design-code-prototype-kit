@@ -1,0 +1,34 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% set navigationLinks = [
+  { href: baseUrl + "/about", text: "About" },
+  { href: baseUrl + "/search", text: "Search" },
+  { href: baseUrl + "/data", text: "Data" },
+  { href: baseUrl + "/map", text: "Map" },
+  { href: baseUrl + "/api", text: "API" },
+  { href: baseUrl + "/design-data", text: "Design data" },
+  { href: baseUrl + "/design-code", text: "Design code" },
+  { href: baseUrl + "/provide-data", text: "Provide data" }
+] %}
+
+{% block govukServiceNavigation %}
+  {% set navigationItems = [] %}
+  {% for link in navigationLinks %}
+    {% set navigationItems = (navigationItems.push({
+      href: link.href,
+      text: link.text,
+      active: currentPath == link.href or (currentPath | string).startsWith(link.href + "/")
+    }), navigationItems) %}
+  {% endfor %}
+
+  {{ govukServiceNavigation({
+    serviceName: serviceName,
+    serviceUrl: baseUrl,
+    navigation: navigationItems
+  }) }}
+{% endblock %}
