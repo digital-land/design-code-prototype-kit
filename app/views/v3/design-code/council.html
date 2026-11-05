@@ -47,14 +47,44 @@
 </p>
 
 <div class="app-v3-map-wrapper" id="dc-map-wrapper">
-  {# Where the map is, and the way back up a level. Kept in sync with the URL by
-     app/assets/javascripts/v3-drill-down.js #}
-  <div class="app-v3-map-control" id="dc-map-nav">
-    <h2 class="govuk-heading-s app-v3-map-control__heading" id="dc-map-heading" tabindex="-1">{{ mapState.crumbs[mapState.crumbs.length - 1].text }}</h2>
-    {% if mapState.note %}<p class="govuk-body-s app-v3-map-control__text">{{ mapState.note }}</p>{% endif %}
-    {% if mapState.upHref %}
-      <a class="govuk-link govuk-body-s app-v3-map-control__up" href="{{ mapState.upHref }}" data-drill>Back up a level<span class="govuk-visually-hidden"> to {{ mapState.crumbs[mapState.crumbs.length - 2].text }}</span></a>
-    {% endif %}
+  <div class="app-v3-map-tools" id="dc-map-tools">
+    {# Draw an area to see its design codes (Figma node 487:13814). Drawing needs the map, so this
+       only shows with JavaScript. #}
+    <div class="app-v3-draw" id="dc-draw" hidden>
+      <button type="button" class="govuk-button govuk-button--secondary app-v3-draw__toggle" id="dc-draw-toggle" aria-expanded="false" aria-controls="dc-draw-menu">
+        Add location boundary
+        <img class="app-v3-draw__chevron" src="/public/images/design-codes/map/arrow-forward-ios.svg" width="16" height="16" alt="">
+      </button>
+      <ul class="app-v3-draw__menu" id="dc-draw-menu" hidden>
+        <li>
+          <button type="button" class="app-v3-draw__item" data-draw="polygon">
+            <img src="/public/images/design-codes/map/format-shapes.svg" width="24" height="24" alt="">
+            Add polygon
+          </button>
+        </li>
+        <li>
+          <button type="button" class="app-v3-draw__item" data-draw="square">
+            <img src="/public/images/design-codes/map/check-box-outline-blank.svg" width="24" height="24" alt="">
+            Add a square
+          </button>
+        </li>
+      </ul>
+      {# What to do next while drawing #}
+      <div class="app-v3-draw__status" id="dc-draw-status" hidden>
+        <p class="govuk-body-s" id="dc-draw-instructions" aria-live="polite"></p>
+        <button type="button" class="govuk-link app-v3-draw__cancel" id="dc-draw-cancel">Cancel<span class="govuk-visually-hidden"> drawing</span></button>
+      </div>
+    </div>
+
+    {# Where the map is, and the way back up a level. Kept in sync with the URL by
+       app/assets/javascripts/v3-drill-down.js #}
+    <div class="app-v3-map-control" id="dc-map-nav">
+      <h2 class="govuk-heading-s app-v3-map-control__heading" id="dc-map-heading" tabindex="-1">{{ mapState.crumbs[mapState.crumbs.length - 1].text }}</h2>
+      {% if mapState.note %}<p class="govuk-body-s app-v3-map-control__text">{{ mapState.note }}</p>{% endif %}
+      {% if mapState.upHref %}
+        <a class="govuk-link govuk-body-s app-v3-map-control__up" href="{{ mapState.upHref }}" data-drill>Back up a level<span class="govuk-visually-hidden"> to {{ mapState.crumbs[mapState.crumbs.length - 2].text }}</span></a>
+      {% endif %}
+    </div>
   </div>
 
   <div id="dc-map" class="app-v3-map" role="region" aria-label="Map. Use Tab to move between areas and Enter to choose one."></div>
@@ -88,6 +118,7 @@
     {# The map level travels with the filters #}
     {% if mapState.settlement %}<input type="hidden" name="settlement" value="{{ mapState.settlement }}">{% endif %}
     {% if mapState.level == "site" %}<input type="hidden" name="site" value="example" data-site>{% endif %}
+    {% if mapState.boundary %}<input type="hidden" name="boundary" value="{{ mapState.boundary.points | join(";") }}">{% endif %}
 
     <div class="app-dc-search">
       <label class="govuk-label app-label--secondary app-dc-search__label" for="design-code-search">Search</label>
@@ -122,86 +153,29 @@
     {% endif %}
     </div>
 
-    {% set featureItems = [] %}
-    {% for option in featureOptions %}
-      {% set featureItems = (featureItems.push({ value: option.value, text: option.text + " (" + option.count + ")", checked: option.value in filters.features }), featureItems) %}
+    {# The filter groups and options follow Figma node 535:20291 (see app/data/filters.js) #}
+    {% for group in filterGroups %}
+      {% call filterGroup({ title: group.title, open: group.count, count: group.count }) %}
+        {{ govukCheckboxes({
+          idPrefix: group.name,
+          name: group.name,
+          classes: "govuk-checkboxes--small",
+          formGroup: { classes: "govuk-!-margin-bottom-0" },
+          fieldset: { legend: { text: group.title, classes: "govuk-visually-hidden" } },
+          hint: { text: group.hint, classes: "app-dc-filter__hint" } if group.hint,
+          items: group.items
+        }) }}
+        {% if group.name == "design-code-type" %}
+          <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0">
+            <a href="{{ baseUrl }}/design-code/learn#design-code-type" class="govuk-link">What do these mean?</a>
+          </p>
+        {% elif group.name == "area-type" %}
+          <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0">
+            <a href="{{ placeTypeQuestionsHref }}" class="govuk-link">Not sure? Find your place type</a>
+          </p>
+        {% endif %}
+      {% endcall %}
     {% endfor %}
-    {% call filterGroup({ title: "Feature", open: filters.features.length, count: filters.features.length }) %}
-      {{ govukCheckboxes({
-        idPrefix: "feature",
-        name: "feature",
-        classes: "govuk-checkboxes--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Feature", classes: "govuk-visually-hidden" } },
-        items: featureItems
-      }) }}
-    {% endcall %}
-
-    {% set developmentTypeItems = [] %}
-    {% for option in developmentTypeOptions %}
-      {% set developmentTypeItems = (developmentTypeItems.push({ value: option.value, text: option.text, checked: option.value == filters.developmentType }), developmentTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Development type", open: filters.developmentType, count: 1 if filters.developmentType else 0 }) %}
-      {{ govukRadios({
-        idPrefix: "development-type",
-        name: "development-type",
-        classes: "govuk-radios--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Development type", classes: "govuk-visually-hidden" } },
-        hint: { text: "What are you building?" },
-        items: developmentTypeItems
-      }) }}
-    {% endcall %}
-
-    {# The values are the council's own place types, so the map and "Not sure?" questions use them too #}
-    {% set areaTypeItems = [] %}
-    {% for option in areaTypeOptions %}
-      {% set areaTypeItems = (areaTypeItems.push({ value: option.value, text: option.text, hint: { text: option.hint }, checked: option.value == filters.placeType }), areaTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Area type", open: filters.placeType, count: 1 if filters.placeType else 0 }) %}
-      {{ govukRadios({
-        idPrefix: "place-type",
-        name: "place-type",
-        classes: "govuk-radios--small",
-        formGroup: { classes: "govuk-!-margin-bottom-2" },
-        fieldset: { legend: { text: "Area type", classes: "govuk-visually-hidden" } },
-        hint: { text: "Where is your site? This is called the area type" },
-        items: areaTypeItems
-      }) }}
-      <p class="govuk-body-s govuk-!-margin-bottom-0">
-        <a href="{{ baseUrl }}/design-code/{{ code }}/questions?start=place-type{% if filters.developmentType %}&amp;development-type={{ filters.developmentType }}{% endif %}" class="govuk-link">Not sure? Find your place type</a>
-      </p>
-    {% endcall %}
-
-    {% set designCodeTypeItems = [] %}
-    {% for option in designCodeTypeOptions %}
-      {% set designCodeTypeItems = (designCodeTypeItems.push({ value: option.value, text: option.text, checked: option.value in filters.designCodeTypes }), designCodeTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Design code type", open: filters.designCodeTypes.length, count: filters.designCodeTypes.length }) %}
-      {{ govukCheckboxes({
-        idPrefix: "design-code-type",
-        name: "design-code-type",
-        classes: "govuk-checkboxes--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Design code type", classes: "govuk-visually-hidden" } },
-        items: designCodeTypeItems
-      }) }}
-    {% endcall %}
-
-    {% set requirementTypeItems = [] %}
-    {% for option in requirementTypeOptions %}
-      {% set requirementTypeItems = (requirementTypeItems.push({ value: option.value, text: option.text, checked: option.value in filters.requirementTypes }), requirementTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Code or guidance", open: filters.requirementTypes.length, count: filters.requirementTypes.length }) %}
-      {{ govukCheckboxes({
-        idPrefix: "requirement-type",
-        name: "requirement-type",
-        classes: "govuk-checkboxes--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Code or guidance", classes: "govuk-visually-hidden" } },
-        items: requirementTypeItems
-      }) }}
-    {% endcall %}
 
     <p class="govuk-body govuk-!-margin-bottom-0">
       <a href="{{ baseUrl }}/design-code/{{ code }}/questions" class="govuk-link">Not sure what I am looking for?</a>

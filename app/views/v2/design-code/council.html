@@ -80,86 +80,29 @@
       </ul>
     {% endif %}
 
-    {% set featureItems = [] %}
-    {% for option in featureOptions %}
-      {% set featureItems = (featureItems.push({ value: option.value, text: option.text + " (" + option.count + ")", checked: option.value in filters.features }), featureItems) %}
+    {# The filter groups and options follow Figma node 535:20291 (see app/data/filters.js) #}
+    {% for group in filterGroups %}
+      {% call filterGroup({ title: group.title, open: group.count, count: group.count }) %}
+        {{ govukCheckboxes({
+          idPrefix: group.name,
+          name: group.name,
+          classes: "govuk-checkboxes--small",
+          formGroup: { classes: "govuk-!-margin-bottom-0" },
+          fieldset: { legend: { text: group.title, classes: "govuk-visually-hidden" } },
+          hint: { text: group.hint, classes: "app-dc-filter__hint" } if group.hint,
+          items: group.items
+        }) }}
+        {% if group.name == "design-code-type" %}
+          <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0">
+            <a href="{{ baseUrl }}/design-code/learn#design-code-type" class="govuk-link">What do these mean?</a>
+          </p>
+        {% elif group.name == "area-type" %}
+          <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0">
+            <a href="{{ placeTypeQuestionsHref }}" class="govuk-link">Not sure? Find your place type</a>
+          </p>
+        {% endif %}
+      {% endcall %}
     {% endfor %}
-    {% call filterGroup({ title: "Feature", open: filters.features.length, count: filters.features.length }) %}
-      {{ govukCheckboxes({
-        idPrefix: "feature",
-        name: "feature",
-        classes: "govuk-checkboxes--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Feature", classes: "govuk-visually-hidden" } },
-        items: featureItems
-      }) }}
-    {% endcall %}
-
-    {% set developmentTypeItems = [] %}
-    {% for option in developmentTypeOptions %}
-      {% set developmentTypeItems = (developmentTypeItems.push({ value: option.value, text: option.text, checked: option.value == filters.developmentType }), developmentTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Development type", open: filters.developmentType, count: 1 if filters.developmentType else 0 }) %}
-      {{ govukRadios({
-        idPrefix: "development-type",
-        name: "development-type",
-        classes: "govuk-radios--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Development type", classes: "govuk-visually-hidden" } },
-        hint: { text: "What are you building?" },
-        items: developmentTypeItems
-      }) }}
-    {% endcall %}
-
-    {# The values are the council's own place types, so the map and "Not sure?" questions use them too #}
-    {% set areaTypeItems = [] %}
-    {% for option in areaTypeOptions %}
-      {% set areaTypeItems = (areaTypeItems.push({ value: option.value, text: option.text, hint: { text: option.hint }, checked: option.value == filters.placeType }), areaTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Area type", open: filters.placeType, count: 1 if filters.placeType else 0 }) %}
-      {{ govukRadios({
-        idPrefix: "place-type",
-        name: "place-type",
-        classes: "govuk-radios--small",
-        formGroup: { classes: "govuk-!-margin-bottom-2" },
-        fieldset: { legend: { text: "Area type", classes: "govuk-visually-hidden" } },
-        hint: { text: "Where is your site? This is called the area type" },
-        items: areaTypeItems
-      }) }}
-      <p class="govuk-body-s govuk-!-margin-bottom-0">
-        <a href="{{ baseUrl }}/design-code/{{ code }}/questions?start=place-type{% if filters.developmentType %}&amp;development-type={{ filters.developmentType }}{% endif %}" class="govuk-link">Not sure? Find your place type</a>
-      </p>
-    {% endcall %}
-
-    {% set designCodeTypeItems = [] %}
-    {% for option in designCodeTypeOptions %}
-      {% set designCodeTypeItems = (designCodeTypeItems.push({ value: option.value, text: option.text, checked: option.value in filters.designCodeTypes }), designCodeTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Design code type", open: filters.designCodeTypes.length, count: filters.designCodeTypes.length }) %}
-      {{ govukCheckboxes({
-        idPrefix: "design-code-type",
-        name: "design-code-type",
-        classes: "govuk-checkboxes--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Design code type", classes: "govuk-visually-hidden" } },
-        items: designCodeTypeItems
-      }) }}
-    {% endcall %}
-
-    {% set requirementTypeItems = [] %}
-    {% for option in requirementTypeOptions %}
-      {% set requirementTypeItems = (requirementTypeItems.push({ value: option.value, text: option.text, checked: option.value in filters.requirementTypes }), requirementTypeItems) %}
-    {% endfor %}
-    {% call filterGroup({ title: "Code or guidance", open: filters.requirementTypes.length, count: filters.requirementTypes.length }) %}
-      {{ govukCheckboxes({
-        idPrefix: "requirement-type",
-        name: "requirement-type",
-        classes: "govuk-checkboxes--small",
-        formGroup: { classes: "govuk-!-margin-bottom-0" },
-        fieldset: { legend: { text: "Code or guidance", classes: "govuk-visually-hidden" } },
-        items: requirementTypeItems
-      }) }}
-    {% endcall %}
 
     <p class="govuk-body govuk-!-margin-bottom-0">
       <a href="{{ baseUrl }}/design-code/{{ code }}/questions" class="govuk-link">Not sure what I am looking for?</a>

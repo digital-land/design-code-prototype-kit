@@ -1319,6 +1319,14 @@
   padding: govuk-spacing(2) 12px govuk-spacing(1);
 }
 
+// A short explanation above a group's options (Figma node 535:20358)
+.app-dc-filter__hint {
+  @include govuk-font($size: 16);
+  margin-bottom: govuk-spacing(1);
+  color: #6c6d6d;
+  line-height: 25px;
+}
+
 .app-dc-page__results {
   @include govuk-media-query($from: tablet) {
     flex: 1 1 0;
@@ -1898,14 +1906,23 @@ summary.app-dc-applied__summary {
   }
 }
 
-// Where the map is, and "Back up a level"
-.app-v3-map-control {
+// The boxes in the top left of the map: "Add location boundary", then where the map is
+.app-v3-map-tools {
+  display: flex;
   position: absolute;
   z-index: 1001; // Above Leaflet's panes and controls
-  top: govuk-spacing(2);
-  left: govuk-spacing(2);
+  top: 16px;
+  left: 18px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: govuk-spacing(2);
+  max-width: calc(100% - 36px);
+}
+
+// Where the map is, and "Back up a level"
+.app-v3-map-control {
   box-sizing: border-box;
-  max-width: calc(100% - #{govuk-spacing(4)});
+  max-width: 100%;
   padding: govuk-spacing(1) govuk-spacing(2);
   border: 1px solid #cecece;
   background-color: govuk-colour("white");
@@ -2008,18 +2025,188 @@ summary.app-dc-applied__summary {
   margin-top: 50px;
 }
 
-// The hovered design code's reference, pinned on the map where it applies
-.app-v3-map__code-tag {
-  span {
-    @include govuk-font($size: 16, $weight: bold);
-    display: inline-block;
-    padding: 5px 8px 4px;
-    transform: translate(-50%, -50%);
-    background-color: govuk-colour("blue");
-    box-shadow: 0 0 0 2px govuk-colour("white");
-    color: govuk-colour("white");
-    white-space: nowrap;
+// "Add location boundary" and its menu (Figma node 487:13814)
+.app-v3-draw {
+  position: relative;
+}
+
+.app-v3-draw__toggle.govuk-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 12px 7px;
+}
+
+.app-v3-draw__chevron {
+  transform: rotate(90deg);
+  transition: transform .15s;
+
+  [aria-expanded="true"] > & {
+    transform: rotate(-90deg);
   }
+}
+
+.app-v3-draw__menu {
+  position: absolute;
+  z-index: 1; // Over the box saying where the map is
+  top: calc(100% + 6px);
+  left: 0;
+  width: 235px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 2px 4px rgba(11, 12, 12, .15);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.app-v3-draw__item {
+  @include govuk-font($size: 19);
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 7px 20px;
+  border: 0;
+  border-bottom: 1px solid #cecece;
+  background-color: govuk-colour("white");
+  color: govuk-functional-colour("text");
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background-color: govuk-colour("light-grey");
+  }
+
+  &:focus {
+    outline: $govuk-focus-width solid transparent;
+    background-color: $govuk-focus-colour;
+    box-shadow: inset 0 -4px 0 govuk-functional-colour("text");
+  }
+}
+
+// What to do next while drawing
+.app-v3-draw__status {
+  box-sizing: border-box;
+  max-width: 300px;
+  margin-top: govuk-spacing(2);
+  padding: govuk-spacing(1) govuk-spacing(2);
+  border: 1px solid #cecece;
+  background-color: govuk-colour("white");
+  box-shadow: 0 2px 4px rgba(11, 12, 12, .15);
+
+  &[hidden] {
+    display: none;
+  }
+
+  .govuk-body-s {
+    margin: 0;
+  }
+}
+
+.app-v3-draw__cancel {
+  @include govuk-font($size: 16);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.app-v3-map--drawing,
+.app-v3-map--drawing .leaflet-interactive {
+  cursor: crosshair;
+}
+
+// Hovering an area: its name and how many design codes match
+.leaflet-tooltip.app-v3-map__hover {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid govuk-functional-colour("text");
+  border-radius: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+  color: govuk-functional-colour("text");
+  white-space: nowrap;
+  pointer-events: none;
+
+  &::before {
+    display: none;
+  }
+}
+
+.app-v3-map__hover-name {
+  @include govuk-font($size: 16, $weight: bold);
+}
+
+.app-v3-map__hover-count {
+  @include govuk-font($size: 16);
+  font-size: 14px;
+}
+
+// A pin with the matching design codes' references: the tag in a white box whose point is on
+// the place
+.app-v3-pin__box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 6px 7px;
+  transform: translate(-50%, calc(-100% - 22px));
+  border: 1px solid #cecece;
+  background-color: govuk-colour("white");
+  white-space: nowrap;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-style: solid;
+    border-color: transparent;
+  }
+
+  &::before {
+    margin-left: -12px;
+    border-width: 22px 12px 0;
+    border-top-color: #cecece;
+  }
+
+  &::after {
+    margin-left: -11px;
+    border-width: 20px 11px 0;
+    border-top-color: govuk-colour("white");
+  }
+}
+
+.app-v3-pin__tag {
+  @include govuk-font($size: 16, $weight: bold);
+  display: block;
+  padding: 5px 8px 4px;
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+  text-transform: uppercase;
+}
+
+// Handles on a drawn area: corners, and midpoints that add a corner when dragged
+.app-v3-handle {
+  box-sizing: border-box;
+  border-radius: 50%;
+  cursor: move;
+}
+
+.app-v3-handle--vertex {
+  border: 2px solid #b4441f;
+  background-color: #f47738;
+}
+
+.app-v3-handle--midpoint {
+  border: 1.5px solid #505a5f;
+  background-color: govuk-colour("white");
 }
 
 .app-v3-breadcrumbs {
@@ -2042,13 +2229,10 @@ summary.app-dc-applied__summary {
   text-transform: uppercase;
 }
 
-// Areas you can choose on the map: a clear focus style that isn't only colour
+// Areas you can choose on the map: a clear focus style that isn't only colour. Hovering selects
+// them (see v3-drill-down.js).
 .app-v3-area {
   cursor: pointer;
-
-  &:hover {
-    stroke-width: 3px;
-  }
 
   &:focus,
   &:focus-visible {

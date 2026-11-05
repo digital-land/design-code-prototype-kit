@@ -202,6 +202,7 @@ function toViewModel (data) {
     title: meta.name,
     council: ORGANISATIONS[meta.organisation] || meta.organisation,
     status: STATUS_TAGS[meta.status] || { text: meta.status, classes: 'govuk-tag--grey' },
+    statusValue: meta.status,
     coverage: meta.coverage,
     designCodeType: meta['design-code-type'],
     // The council's place types, each with the national area type it matches (empty if none)

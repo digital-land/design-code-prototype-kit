@@ -159,7 +159,7 @@ router.get('/search', (req, res) => {
 // not in the extracted data yet, such as illustrations.
 const designCodeData = require('../data/v2/design-codes.json')
 const extractedDesignCodes = require('../data')
-const { FEATURES, AREA_TYPES, DESIGN_CODE_TYPES } = require('../data/national')
+const filterOptions = require('../data/filters')
 
 function extractedFor (slug) {
   return extractedDesignCodes.get(`${slug}-design-code`)
@@ -209,8 +209,8 @@ router.get('/design-code/find', (req, res) => {
   })
 })
 
-// Filter options on a council's design code page. Values match the short references
-// in the extracted data (see app/data/index.js), so they work for any council.
+// The council's own development types, for the "Not sure what I am looking for?" questions.
+// Values match the short references in the extracted data (see app/data/index.js).
 const DEVELOPMENT_TYPE_OPTIONS = [
   { value: 'householder', text: 'Householder extension or minor works' },
   { value: '1-2-units', text: '1 to 2 new homes' },
@@ -234,43 +234,32 @@ const PLACE_TYPE_OPTIONS = [
   { value: 'business-and-industrial', text: 'Business and industrial' }
 ]
 
-const REQUIREMENT_TYPE_OPTIONS = [
-  { value: 'code', text: 'Codes (must be met)' },
-  { value: 'key-guidance', text: 'Guidance (should be followed)' }
-]
-
+// The filter groups and options follow Figma node 535:20291 (see app/data/filters.js)
 function readDesignCodeFilters (query) {
-  // The prototype kit adds "_unchecked" for checkbox groups with nothing ticked
-  const list = value => toArray(value).filter(item => item !== '_unchecked')
-  const one = value => list(value)[0] || ''
   return {
-    developmentType: one(query['development-type']),
-    // Area type: the value is the council's own place type, such as "inner-neighbourhood"
-    placeType: one(query['place-type']),
-    features: list(query.feature),
-    designCodeTypes: list(query['design-code-type']),
-    requirementTypes: list(query['requirement-type']),
-    search: (query.q || '').trim()
+    ...filterOptions.readFilters(query),
+    // An area drawn on the map, as its corners. The route works out what it overlaps.
+    boundary: parseBoundary([].concat(query.boundary || [])[0])
   }
 }
 
-// Does a rule match every filter? Feature is checked separately so its counts can ignore it.
-function ruleMatches (rule, filters, designCodeType) {
-  if (filters.designCodeTypes.length && !filters.designCodeTypes.includes(designCodeType)) return false
-  if (filters.developmentType && !rule.developmentTypeIds.includes(filters.developmentType)) return false
-  // A rule with no place types applies in every place type
-  if (filters.placeType && rule.placeTypeIds.length && !rule.placeTypeIds.includes(filters.placeType)) return false
-  if (filters.requirementTypes.length && !filters.requirementTypes.includes(rule.type)) return false
-  if (filters.search) {
-    const text = [rule.reference, rule.requirementText, rule.guidanceText].join(' ').toLowerCase()
-    if (!text.includes(filters.search.toLowerCase())) return false
-  }
+// A drawn area in the URL is its corners as "lat,lng;lat,lng;…". Returns [lng, lat] points, as
+// in GeoJSON, or null if it isn't a usable shape.
+function parseBoundary (value) {
+  const points = String(value || '').split(';').map(pair => pair.split(',').map(Number))
+  const valid = points.length >= 3 && points.length <= 100 &&
+    points.every(point => point.length === 2 && Math.abs(point[0]) <= 90 && Math.abs(point[1]) <= 180)
+  return valid ? points.map(([lat, lng]) => [lng, lat]) : null
+}
+
+// Does a rule match every filter, and apply somewhere in any drawn area? Design feature is
+// checked separately.
+function ruleMatches (rule, filters, extracted) {
+  if (!filterOptions.ruleMatches(rule, filters, extracted)) return false
+  const drawn = filters.boundaryOverlap
+  if (drawn && !drawn.council) return false
+  if (drawn && rule.placeTypeIds.length && !rule.placeTypeIds.some(id => drawn.placeTypeIds.includes(id))) return false
   return true
-}
-
-// With no features chosen, every rule is shown
-function hasFeature (rule, features) {
-  return !features.length || rule.features.some(feature => features.includes(feature))
 }
 
 // The first sentence of a code's text, for the short version on the overview page.
@@ -286,42 +275,24 @@ function extractedPage (placeholder, extracted, filters) {
   const mapArea = designCodeData.areas.find(area => area.id === placeholder.area)
   const areaName = mapArea ? mapArea.name : extracted.council
   const rules = extracted.chapters.flatMap(chapter => chapter.sections).flatMap(section => section.rules)
-  const matching = rules.filter(rule => ruleMatches(rule, filters, extracted.designCodeType))
-
-  // The Feature filter lists every national feature, with how many results it would show with
-  // the other filters applied
-  const featureOptions = FEATURES.map(feature => ({
-    ...feature,
-    count: matching.filter(rule => rule.features.includes(feature.value)).length
-  }))
-
-  // Area type lists the national area types the council's place types match, in national order,
-  // with the council's own name as a hint, then any place types with no national match
-  const areaTypeOptions = [
-    ...AREA_TYPES.flatMap(areaType => extracted.placeTypes
-      .filter(placeType => placeType.areaType === areaType.value)
-      .map(placeType => ({ value: placeType.id, text: areaType.text, hint: `${areaName} calls this ${placeType.localName}` }))),
-    ...extracted.placeTypes
-      .filter(placeType => !placeType.areaType)
-      .map(placeType => ({ value: placeType.id, text: placeType.localName, hint: `Only in ${areaName}: there is no national area type for this` }))
-  ]
-
-  const optionText = (options, value) => (options.find(option => option.value === value) || {}).text || value
 
   // On each result, a row for each filter in use, showing what in the code matched it
   const filterRows = rule => [
-    filters.features.length && {
-      key: 'Feature',
-      value: rule.features.filter(feature => filters.features.includes(feature)).map(feature => optionText(FEATURES, feature)).join(', ')
-    },
-    filters.developmentType && { key: 'Development type', value: optionText(DEVELOPMENT_TYPE_OPTIONS, filters.developmentType) },
-    filters.placeType && { key: 'Area type', value: optionText(areaTypeOptions, filters.placeType) },
-    filters.designCodeTypes.length && { key: 'Design code type', value: optionText(DESIGN_CODE_TYPES, extracted.designCodeType) },
-    filters.requirementTypes.length && { key: 'Code or guidance', value: rule.type === 'code' ? 'Code' : 'Guidance' }
-  ].filter(Boolean)
+    ...filterOptions.filterRows(rule, filters, extracted),
+    ...(filters.boundaryOverlap
+      ? [{
+          key: 'Your area',
+          value: rule.placeTypeIds.length
+            ? 'Applies in its ' + rule.placeTypeIds.filter(id => filters.boundaryOverlap.placeTypeIds.includes(id))
+              .map(id => extracted.placeTypes.find(placeType => placeType.id === id).localName.toLowerCase()).join(', ')
+            : `Applies across ${areaName}`
+        }]
+      : [])
+  ]
 
   // Every matching code and key guidance item, in one list, in the order of the design code
-  const results = matching.filter(rule => hasFeature(rule, filters.features))
+  const results = rules
+    .filter(rule => ruleMatches(rule, filters, extracted) && filterOptions.hasFeature(rule, filters.features))
     .map(rule => ({
       reference: rule.reference,
       // Where it applies, highlighted on the map when the result is hovered. None means everywhere.
@@ -340,12 +311,8 @@ function extractedPage (placeholder, extracted, filters) {
   // A tag for each filter in use (Figma node 444:27884), with the query parameter and value that
   // the route removes to clear just that one
   const appliedFilters = [
-    ...(filters.search ? [{ label: `Search: ${filters.search}`, param: 'q' }] : []),
-    ...filters.features.map(value => ({ label: optionText(FEATURES, value), param: 'feature', value })),
-    ...(filters.developmentType ? [{ label: optionText(DEVELOPMENT_TYPE_OPTIONS, filters.developmentType), param: 'development-type' }] : []),
-    ...(filters.placeType ? [{ label: optionText(areaTypeOptions, filters.placeType), param: 'place-type' }] : []),
-    ...filters.designCodeTypes.map(value => ({ label: optionText(DESIGN_CODE_TYPES, value), param: 'design-code-type', value })),
-    ...filters.requirementTypes.map(value => ({ label: optionText(REQUIREMENT_TYPE_OPTIONS, value), param: 'requirement-type', value }))
+    ...(filters.boundary ? [{ label: 'Your area', param: 'boundary' }] : []),
+    ...filterOptions.appliedFilters(filters, extracted)
   ]
 
   return {
@@ -358,8 +325,7 @@ function extractedPage (placeholder, extracted, filters) {
     },
     // The council's area, for the map beside the overview
     mapArea,
-    featureOptions,
-    areaTypeOptions,
+    filterGroups: filterOptions.filterGroups(filters, extracted),
     results,
     appliedFilters,
     resultCount: results.length
@@ -374,7 +340,7 @@ const fs = require('fs')
 const path = require('path')
 const mapLevels = require('../data/v3/map-levels.json')
 const designCodeAreaBoundaries = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'assets', 'data', 'design-code-areas.geojson'), 'utf8'))
-const MAP_PARAMS = ['map', 'settlement', 'place-type', 'site']
+const MAP_PARAMS = ['map', 'settlement', 'site']
 const RESULTS_PAGE_SIZE = 5
 
 // The illustrative example site: a 16:10 rectangle inside the chosen place type zone. Ring-shaped
@@ -403,60 +369,129 @@ const LABEL_TOWARD = {
   'neighbourhood-centre': ['north', 0],
   'business-and-industrial': ['south', 0]
 }
-function zoneLabelPoint (zone) {
+// Where the pins with the matching design codes go: each zone in a different direction, so the
+// nested zones' pins don't sit on top of each other or the labels
+const PIN_TOWARD = {
+  'outer-neighbourhood': ['east', 0.9],
+  'inner-neighbourhood': ['south', 0.7],
+  'town-centre': ['north', 0.6],
+  'neighbourhood-centre': ['east', 0.3],
+  'business-and-industrial': ['north', 0.3]
+}
+function zonePoint (zone, toward) {
   const ring = zone.geometry.coordinates[0]
   const xs = ring.map(point => point[0])
   const ys = ring.map(point => point[1])
   const centre = [(Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...ys) + Math.max(...ys)) / 2]
-  const [direction, t] = LABEL_TOWARD[zone.id] || ['north', 0]
-  const pick = { north: p => p[1], south: p => -p[1], west: p => -p[0] }[direction]
+  const [direction, t] = toward[zone.id] || ['north', 0]
+  const pick = { north: p => p[1], south: p => -p[1], west: p => -p[0], east: p => p[0] }[direction]
   const edge = ring.reduce((best, point) => (pick(point) > pick(best) ? point : best))
   return [centre[1] + (edge[1] - centre[1]) * t, centre[0] + (edge[0] - centre[0]) * t]
 }
 
-// The national area type name for one of the council's place types, or its own name if there's
-// no national match
-function areaTypeName (code, placeTypeId) {
-  const extracted = extractedFor(code)
-  const placeType = extracted && extracted.placeTypes.find(item => item.id === placeTypeId)
-  if (!placeType) return (PLACE_TYPE_OPTIONS.find(option => option.value === placeTypeId) || { text: placeTypeId }).text
-  const areaType = AREA_TYPES.find(item => item.value === placeType.areaType)
-  return areaType ? areaType.text : placeType.localName
+// ---- Drawn areas ----
+// Does a drawn area overlap a Polygon or MultiPolygon? Either an edge crosses, or one has a corner
+// inside the other. Holes count, so an area inside a ring-shaped zone's hole doesn't overlap it.
+function polygonsOf (geometry) {
+  if (!geometry) return []
+  return geometry.type === 'MultiPolygon' ? geometry.coordinates : [geometry.coordinates]
 }
 
-// The page's URL with the filters kept and the map state replaced
+function inRing (point, ring) {
+  let inside = false
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i]
+    const [xj, yj] = ring[j]
+    if ((yi > point[1]) !== (yj > point[1]) && point[0] < (xj - xi) * (point[1] - yi) / (yj - yi) + xi) inside = !inside
+  }
+  return inside
+}
+
+function inPolygon (point, polygon) {
+  return inRing(point, polygon[0]) && !polygon.slice(1).some(hole => inRing(point, hole))
+}
+
+function edgesCross (a, b) {
+  const side = (p, q, r) => Math.sign((q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]))
+  for (let i = 0; i < a.length; i++) {
+    const [p1, p2] = [a[i], a[(i + 1) % a.length]]
+    for (let j = 0; j < b.length; j++) {
+      const [q1, q2] = [b[j], b[(j + 1) % b.length]]
+      if (side(p1, p2, q1) !== side(p1, p2, q2) && side(q1, q2, p1) !== side(q1, q2, p2)) return true
+    }
+  }
+  return false
+}
+
+function overlaps (points, geometry) {
+  return polygonsOf(geometry).some(polygon =>
+    polygon.some(ring => edgesCross(points, ring)) ||
+    points.some(point => inPolygon(point, polygon)) ||
+    inRing(polygon[0][0], points))
+}
+
+// What a drawn area covers: whether it's in the council at all, and the place types of any
+// (indicative) zones it overlaps
+function boundaryOverlap (code, points) {
+  if (!points) return null
+  const area = designCodeData.areas.find(item => item.designCode === code)
+  const council = (designCodeAreaBoundaries.features.find(feature => feature.properties.id === area.id) || {}).geometry
+  const settlements = mapLevels.council === code ? mapLevels.settlements : []
+  const placeTypeIds = [...new Set(settlements.flatMap(settlement => settlement.placeTypes)
+    .filter(zone => overlaps(points, zone.geometry))
+    .map(zone => zone.id))]
+  return { council: overlaps(points, council), placeTypeIds }
+}
+
+// The page's URL with the filters kept and the map state replaced. The area types are kept unless
+// the state gives them.
 function drillUrl (code, query, state) {
   const params = new URLSearchParams()
   for (const [key, value] of Object.entries(query)) {
-    if (MAP_PARAMS.includes(key) || key === 'page') continue
+    if (MAP_PARAMS.includes(key) || key === 'page' || (key === 'area-type' && state.areaTypes)) continue
     for (const item of [].concat(value)) if (item && item !== '_unchecked') params.append(key, item)
   }
   if (state.map) params.set('map', state.map)
   if (state.settlement) params.set('settlement', state.settlement)
-  if (state.placeType) params.set('place-type', state.placeType)
+  for (const areaType of state.areaTypes || []) params.append('area-type', areaType)
   if (state.site) params.set('site', state.site)
   const search = params.toString()
   return `${BASE_URL}/design-code/${code}${search ? '?' + search : ''}`
 }
 
-function mapStateFor (code, query, filters) {
+function mapStateFor (code, query, filters, results) {
   const area = designCodeData.areas.find(item => item.designCode === code)
+  const extracted = extractedFor(code)
   const boundaryOf = id => (designCodeAreaBoundaries.features.find(feature => feature.properties.id === id) || {}).geometry
   const levels = mapLevels.council === code ? mapLevels : { settlements: [] }
   const settlement = levels.settlements.find(item => item.id === query.settlement)
-  const placeType = settlement && settlement.placeTypes.find(item => item.id === filters.placeType)
+  // The zones of the ticked area types. With one, the map goes to that zone; with several, it
+  // stays on the town and shows them selected.
+  const tickedIds = filters.areaTypes.length ? filterOptions.placeTypesFor(extracted, filters.areaTypes) : []
+  const tickedZones = settlement ? settlement.placeTypes.filter(item => tickedIds.includes(item.id)) : []
+  const placeType = filters.areaTypes.length === 1 && tickedZones.length === 1 ? tickedZones[0] : null
   // The council is the highest level: the page is about one council's design code
   const level = !settlement ? 'council'
       : !placeType ? 'settlement'
         : query.site === 'example' ? 'site' : 'place-type'
   const url = state => drillUrl(code, query, state)
 
-  const crumbs = [{ text: area.name, href: url({}) }]
-  if (settlement) crumbs.push({ text: settlement.name, href: url({ settlement: settlement.id }) })
-  if (placeType && level !== 'settlement') crumbs.push({ text: placeType.name, href: url({ settlement: settlement.id, placeType: placeType.id }) })
-  if (level === 'site') crumbs.push({ text: 'Example site', href: url({ settlement: settlement.id, placeType: placeType.id, site: 'example' }) })
+  // Going up a level to the council or a town leaves the area type
+  const crumbs = [{ text: area.name, href: url({ areaTypes: [] }) }]
+  if (settlement) crumbs.push({ text: settlement.name, href: url({ settlement: settlement.id, areaTypes: [] }) })
+  if (placeType && level !== 'settlement') crumbs.push({ text: placeType.name, href: url({ settlement: settlement.id }) })
+  if (level === 'site') crumbs.push({ text: 'Example site', href: url({ settlement: settlement.id, site: 'example' }) })
 
   const councilFeature = item => ({ id: item.id, name: item.name, geometry: boundaryOf(item.id) })
+
+  // The matching design codes in an area with these place types, for its pin and hover box. A code
+  // with no place types applies everywhere; null means the whole council.
+  const codesIn = placeTypeIds => results
+    .filter(result => !placeTypeIds || !result.placeTypeIds.length || result.placeTypeIds.some(id => placeTypeIds.includes(id)))
+    .map(result => result.reference)
+  const areaTypeOf = id => (extracted && filterOptions.areaTypeFor(extracted, id)) || ''
+  const zoneIds = item => item.placeTypes.map(zone => zone.id)
+  const areaTypeNames = filters.areaTypes.map(value => filterOptions.optionText(filterOptions.AREA_TYPES, value).toLowerCase())
   const state = {
     level,
     settlement: settlement ? settlement.id : '',
@@ -464,18 +499,25 @@ function mapStateFor (code, query, filters) {
     upHref: crumbs.length > 1 ? crumbs[crumbs.length - 2].href : null,
     indicative: false,
     // The map can't zoom out beyond the council
-    council: boundaryOf(area.id)
+    council: boundaryOf(area.id),
+    // Pins with the matching codes go on the map only when filters are in use
+    showPins: Boolean(filters.hasFilters),
+    // An area drawn on the map, as [lat, lng] points for Leaflet
+    boundary: filters.boundary && {
+      points: filters.boundary.map(([lng, lat]) => [lat, lng]),
+      codes: results.map(result => result.reference)
+    }
   }
 
   if (level === 'council') {
     Object.assign(state, {
       heading: levels.settlements.length ? `Towns in ${area.name}` : '',
-      parent: councilFeature(area),
+      parent: { ...councilFeature(area), codes: codesIn(null) },
       children: levels.settlements.map(item => ({
-        id: item.id, name: item.name, geometry: item.geometry, href: url({ settlement: item.id, placeType: filters.placeType })
+        id: item.id, name: item.name, geometry: item.geometry, href: url({ settlement: item.id }), codes: codesIn(zoneIds(item))
       })),
-      note: filters.placeType && levels.settlements.length
-        ? `Choose a town to see its ${areaTypeName(code, filters.placeType).toLowerCase()}.`
+      note: areaTypeNames.length && levels.settlements.length
+        ? `Choose a town to see its ${areaTypeNames.join(' and ')}.`
         : ''
     })
   } else if (level === 'settlement') {
@@ -483,26 +525,46 @@ function mapStateFor (code, query, filters) {
       heading: `Place types in ${settlement.name}`,
       indicative: true,
       context: [boundaryOf(area.id)],
-      parent: { id: settlement.id, name: settlement.name, geometry: settlement.geometry },
+      parent: { id: settlement.id, name: settlement.name, geometry: settlement.geometry, codes: codesIn(zoneIds(settlement)) },
       siblings: levels.settlements.filter(item => item !== settlement).map(item => ({ id: item.id, name: item.name, geometry: item.geometry })),
+      // Each zone is coloured by its national area type (Figma node 487:13814). Choosing one ticks
+      // just its area type.
       children: settlement.placeTypes.map(item => ({
-        id: item.id, name: item.name, geometry: item.geometry, labelAt: zoneLabelPoint(item), href: url({ settlement: settlement.id, placeType: item.id })
+        id: item.id,
+        name: item.name,
+        geometry: item.geometry,
+        areaType: areaTypeOf(item.id),
+        ticked: tickedIds.includes(item.id),
+        labelAt: zonePoint(item, LABEL_TOWARD),
+        pinAt: zonePoint(item, PIN_TOWARD),
+        href: url({ settlement: settlement.id, areaTypes: [areaTypeOf(item.id)].filter(Boolean) }),
+        codes: codesIn([item.id])
       }))
     })
   } else {
-    const site = { id: 'example', name: 'Example site (illustrative)', bounds: exampleSiteBounds(placeType) }
+    const site = { id: 'example', name: 'Example site (illustrative)', bounds: exampleSiteBounds(placeType), codes: codesIn([placeType.id]) }
     Object.assign(state, {
       heading: level === 'place-type' ? `Sites in ${placeType.name.toLowerCase()}` : '',
       indicative: true,
       context: [settlement.geometry],
       parent: level === 'site'
         ? { ...site, image: '/public/images/design-codes/example-site-illustrative.png' }
-        : { id: placeType.id, name: placeType.name, geometry: placeType.geometry },
+        : { id: placeType.id, name: placeType.name, geometry: placeType.geometry, areaType: areaTypeOf(placeType.id), codes: codesIn([placeType.id]) },
       siblings: level === 'site' ? [] : settlement.placeTypes.filter(item => item !== placeType).map(item => ({ id: item.id, name: item.name, geometry: item.geometry })),
-      children: level === 'site' ? [] : [{ ...site, href: url({ settlement: settlement.id, placeType: placeType.id, site: 'example' }) }]
+      children: level === 'site' ? [] : [{ ...site, href: url({ settlement: settlement.id, site: 'example' }) }]
     })
   }
   return state
+}
+
+// The filters a "Not sure what I am looking for?" result sets: the development type options that
+// the council's development type matches, and the area type of the place type
+function questionsFilters (code, result) {
+  const extracted = extractedFor(code)
+  return {
+    developmentTypes: result.developmentTypes || filterOptions.developmentTypesFor(result.developmentType),
+    areaTypes: result.placeType ? [filterOptions.areaTypeFor(extracted, result.placeType)].filter(Boolean) : []
+  }
 }
 
 router.get('/design-code/:code', (req, res, next) => {
@@ -510,9 +572,11 @@ router.get('/design-code/:code', (req, res, next) => {
   if (!placeholder) return next()
   const extracted = extractedFor(req.params.code)
   const filters = readDesignCodeFilters(req.query)
+  filters.boundaryOverlap = boundaryOverlap(req.params.code, filters.boundary)
+  filters.hasFilters = filterOptions.anyFilters(filters) || Boolean(filters.boundary)
   const page = extracted
     ? extractedPage(placeholder, extracted, filters)
-    : { designCode: placeholder, featureOptions: [], areaTypeOptions: [], results: [], appliedFilters: [], resultCount: 0 }
+    : { designCode: placeholder, filterGroups: [], results: [], appliedFilters: [], resultCount: 0 }
 
   // Send "Back" to the entity page the user came from, if that's how they got here.
   // Only the path is used, so the link always stays on this site.
@@ -522,9 +586,11 @@ router.get('/design-code/:code', (req, res, next) => {
   // Explain the results if they came from "Not sure what I am looking for?"
   const journey = req.session.designCodeQuestions
   const result = journey && journey.code === req.params.code && journey.result
-  const fromQuestions = Boolean(result && !result.speakToCouncil &&
-    filters.placeType === result.placeType && filters.developmentType === (result.developmentType || '') &&
-    !filters.features.length && !filters.designCodeTypes.length && !filters.requirementTypes.length && !filters.search)
+  const expected = result && questionsFilters(req.params.code, result)
+  const same = (a, b) => a.length === b.length && a.every(item => b.includes(item))
+  const fromQuestions = Boolean(result && !result.speakToCouncil && !filters.boundary &&
+    same(filters.areaTypes, expected.areaTypes) && same(filters.developmentTypes, expected.developmentTypes) &&
+    !filterOptions.anyFilters({ ...filters, areaTypes: [], developmentTypes: [] }))
 
   // The page's URL with one parameter changed. Filters and the map level are kept; the page number
   // isn't, as the results change.
@@ -542,7 +608,7 @@ router.get('/design-code/:code', (req, res, next) => {
   const appliedFilters = page.appliedFilters.map(filter => ({
     ...filter,
     removeHref: pageUrl((key, item) => (key === filter.param && (!filter.value || item === filter.value)) ||
-      (filter.param === 'place-type' && key === 'site'))
+      (filter.param === 'area-type' && key === 'site'))
   }))
 
   // 5 results to a page (Figma node 445:28314)
@@ -562,7 +628,9 @@ router.get('/design-code/:code', (req, res, next) => {
     questionsResult: fromQuestions && {
       ...result,
       placeTypeText: PLACE_TYPE_OPTIONS.find(option => option.value === result.placeType).text,
-      developmentTypeText: result.developmentType && DEVELOPMENT_TYPE_OPTIONS.find(option => option.value === result.developmentType).text,
+      developmentTypeText: result.developmentType
+        ? DEVELOPMENT_TYPE_OPTIONS.find(option => option.value === result.developmentType).text
+        : expected.developmentTypes.map(value => filterOptions.optionText(filterOptions.DEVELOPMENT_TYPES, value)).join(' or '),
       changeHref: questionsUrl(req.params.code, journey.path[journey.path.length - 1])
     },
     backHref: cameFromEntity ? referrerPath : BASE_URL + '/design-code/find?area=' + page.designCode.area,
@@ -572,13 +640,12 @@ router.get('/design-code/:code', (req, res, next) => {
     pageResults: page.results.slice((currentPage - 1) * RESULTS_PAGE_SIZE, currentPage * RESULTS_PAGE_SIZE),
     pagination,
     hasData: Boolean(extracted),
-    mapState: mapStateFor(req.params.code, req.query, filters),
+    mapState: mapStateFor(req.params.code, req.query, filters, page.results),
     filters,
-    hasFilters: Boolean(filters.search || filters.features.length || filters.developmentType || filters.placeType ||
-      filters.designCodeTypes.length || filters.requirementTypes.length),
-    developmentTypeOptions: DEVELOPMENT_TYPE_OPTIONS,
-    designCodeTypeOptions: DESIGN_CODE_TYPES,
-    requirementTypeOptions: REQUIREMENT_TYPE_OPTIONS
+    hasFilters: filters.hasFilters,
+    // "Not sure? Find your place type" keeps the development types already ticked
+    placeTypeQuestionsHref: `${BASE_URL}/design-code/${req.params.code}/questions?` +
+      new URLSearchParams([['start', 'place-type'], ...filters.developmentTypes.map(value => ['development-type', value])]).toString()
   })
 })
 
@@ -688,23 +755,28 @@ function questionsUrl (code, id) {
   return `${BASE_URL}/design-code/${code}/questions/${id}`
 }
 
+// The council's page with the filters a result sets
 function councilUrl (code, result) {
+  const { developmentTypes, areaTypes } = questionsFilters(code, result)
   const params = new URLSearchParams()
-  if (result.developmentType) params.set('development-type', result.developmentType)
-  if (result.placeType) params.set('place-type', result.placeType)
+  developmentTypes.forEach(value => params.append('development-type', value))
+  areaTypes.forEach(value => params.append('area-type', value))
   const query = params.toString()
   return `${BASE_URL}/design-code/${code}${query ? '?' + query : ''}`
 }
 
 // Start the questions. "Not sure? Find your place type" starts at the place type questions
-// and keeps the development type already chosen in the filters.
+// and keeps the development types already ticked in the filters.
 router.get('/design-code/:code/questions', (req, res, next) => {
   if (!extractedFor(req.params.code)) return next()
   const placeTypeOnly = req.query.start === 'place-type'
   const first = placeTypeOnly ? 'settlement' : 'development-type'
   req.session.designCodeQuestions = {
     code: req.params.code,
-    developmentType: placeTypeOnly ? readDesignCodeFilters(req.query).developmentType : '',
+    // The council's own development type, from the first question
+    developmentType: '',
+    // Or the development type options already ticked
+    developmentTypes: placeTypeOnly ? readDesignCodeFilters(req.query).developmentTypes : null,
     answers: {},
     // The questions answered so far, in order, for the back links
     path: [first]
@@ -750,7 +822,10 @@ router.post('/design-code/:code/questions/:id', (req, res, next) => {
   }
 
   journey.answers[id] = answer
-  if (id === 'development-type') journey.developmentType = answer
+  if (id === 'development-type') {
+    journey.developmentType = answer
+    journey.developmentTypes = null
+  }
   // Answering again forgets the questions that came after this one
   journey.path = journey.path.slice(0, journey.path.indexOf(id) + 1)
 
@@ -760,7 +835,7 @@ router.post('/design-code/:code/questions/:id', (req, res, next) => {
     return res.redirect(questionsUrl(code, step))
   }
 
-  journey.result = { developmentType: journey.developmentType, ...step }
+  journey.result = { developmentType: journey.developmentType, developmentTypes: journey.developmentTypes, ...step }
   if (step.speakToCouncil) return res.redirect(`${BASE_URL}/design-code/${code}/questions/result/speak-to-the-council`)
   res.redirect(councilUrl(code, journey.result))
 })
@@ -776,7 +851,7 @@ router.get('/design-code/:code/questions/result/speak-to-the-council', (req, res
     code: req.params.code,
     designCode: { name: extracted.title, council: extracted.council },
     backHref: questionsUrl(req.params.code, journey.path[journey.path.length - 1]),
-    resultsHref: councilUrl(req.params.code, { developmentType: journey.developmentType }),
+    resultsHref: councilUrl(req.params.code, { developmentType: journey.developmentType, developmentTypes: journey.developmentTypes }),
     placeTypeOptions: PLACE_TYPE_OPTIONS
   })
 })
