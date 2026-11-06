@@ -2087,33 +2087,59 @@ summary.app-dc-applied__summary {
     background-color: $govuk-focus-colour;
     box-shadow: inset 0 -4px 0 govuk-functional-colour("text");
   }
+
+  // Only one area can be drawn, so these wait until it's deleted
+  &[aria-disabled="true"] {
+    color: #6c6d6d;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour("white");
+    }
+
+    img {
+      opacity: .5;
+    }
+  }
 }
 
-// What to do next while drawing
+// While drawing: "Done" and "Cancel", in the bottom left of the map
 .app-v3-draw__status {
+  position: absolute;
+  z-index: 1001; // Above Leaflet's panes and the "Indicative" badge
+  bottom: 12px;
+  left: 14px;
   box-sizing: border-box;
-  max-width: 300px;
-  margin-top: govuk-spacing(2);
-  padding: govuk-spacing(1) govuk-spacing(2);
-  border: 1px solid #cecece;
+  max-width: calc(100% - 28px);
+  padding: 8px 12px;
   background-color: govuk-colour("white");
   box-shadow: 0 2px 4px rgba(11, 12, 12, .15);
 
   &[hidden] {
     display: none;
   }
+}
 
-  .govuk-body-s {
-    margin: 0;
+.app-v3-draw__error.govuk-error-message {
+  @include govuk-font($size: 16, $weight: bold);
+  max-width: 230px;
+  margin-bottom: govuk-spacing(2);
+
+  &[hidden] {
+    display: none;
   }
 }
 
-.app-v3-draw__cancel {
+.app-v3-draw__actions {
+  display: flex;
+  gap: 4px;
+}
+
+.app-v3-draw__button.govuk-button {
   @include govuk-font($size: 16);
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
+  min-width: 106px;
+  margin: 0;
+  padding: 6px 12px 5px;
 }
 
 .app-v3-map--drawing,

@@ -52,7 +52,7 @@
        only shows with JavaScript. #}
     <div class="app-v3-draw" id="dc-draw" hidden>
       <button type="button" class="govuk-button govuk-button--secondary app-v3-draw__toggle" id="dc-draw-toggle" aria-expanded="false" aria-controls="dc-draw-menu">
-        Add location boundary
+        <span id="dc-draw-label">Add location boundary</span>
         <img class="app-v3-draw__chevron" src="/public/images/design-codes/map/arrow-forward-ios.svg" width="16" height="16" alt="">
       </button>
       <ul class="app-v3-draw__menu" id="dc-draw-menu" hidden>
@@ -68,12 +68,14 @@
             Add a square
           </button>
         </li>
+        {# Only once an area is drawn, when the menu is "Edit location boundary" #}
+        <li id="dc-draw-delete" hidden>
+          <button type="button" class="app-v3-draw__item" data-draw="delete">
+            <img src="/public/images/design-codes/map/delete.svg" width="24" height="24" alt="">
+            Delete shape
+          </button>
+        </li>
       </ul>
-      {# What to do next while drawing #}
-      <div class="app-v3-draw__status" id="dc-draw-status" hidden>
-        <p class="govuk-body-s" id="dc-draw-instructions" aria-live="polite"></p>
-        <button type="button" class="govuk-link app-v3-draw__cancel" id="dc-draw-cancel">Cancel<span class="govuk-visually-hidden"> drawing</span></button>
-      </div>
     </div>
 
     {# Where the map is, and the way back up a level. Kept in sync with the URL by
@@ -89,6 +91,16 @@
 
   <div id="dc-map" class="app-v3-map" role="region" aria-label="Map. Use Tab to move between areas and Enter to choose one."></div>
   <p class="app-v3-map__badge" id="dc-map-badge" {% if not mapState.indicative %}hidden{% endif %}>Indicative</p>
+
+  {# While drawing: keep the area or throw it away #}
+  <div class="app-v3-draw__status" id="dc-draw-status" hidden>
+    <p class="govuk-visually-hidden" id="dc-draw-instructions" aria-live="polite"></p>
+    <p class="govuk-error-message app-v3-draw__error" id="dc-draw-error" hidden></p>
+    <div class="app-v3-draw__actions">
+      <button type="button" class="govuk-button app-v3-draw__button" id="dc-draw-done">Done</button>
+      <button type="button" class="govuk-button govuk-button--secondary app-v3-draw__button" id="dc-draw-cancel">Cancel<span class="govuk-visually-hidden"> drawing</span></button>
+    </div>
+  </div>
 
   {# The areas at this level as links. The map's areas can be reached with Tab too, so with
      JavaScript this list is only for screen readers. #}

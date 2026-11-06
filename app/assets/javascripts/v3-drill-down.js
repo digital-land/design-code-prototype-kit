@@ -441,11 +441,29 @@
   var drawMenu = document.getElementById('dc-draw-menu')
   var drawStatus = document.getElementById('dc-draw-status')
   var drawInstructions = document.getElementById('dc-draw-instructions')
-  var sketch = null // While drawing: { mode, points, group }
+  var drawError = document.getElementById('dc-draw-error')
+  var sketch = null // While drawing: { mode, points, group, closed }
 
   function openMenu (open) {
     drawMenu.hidden = !open
     drawToggle.setAttribute('aria-expanded', String(open))
+  }
+
+  // With an area drawn the menu changes it instead (Figma "Edit location boundary"): the area can
+  // be deleted, and a new one drawn only after that
+  function setEditing (editing) {
+    if (!drawTools) return
+    document.getElementById('dc-draw-label').textContent = editing ? 'Edit location boundary' : 'Add location boundary'
+    document.getElementById('dc-draw-delete').hidden = !editing
+    drawMenu.querySelectorAll('[data-draw="polygon"], [data-draw="square"]').forEach(function (item) {
+      if (editing) item.setAttribute('aria-disabled', 'true')
+      else item.removeAttribute('aria-disabled')
+    })
+  }
+
+  function showDrawError (text) {
+    drawError.hidden = !text
+    drawError.innerHTML = text ? '<span class="govuk-visually-hidden">Error:</span> ' + escapeHtml(text) : ''
   }
 
   function handleIcon (kind) {
@@ -460,13 +478,14 @@
     hideHoverBox()
     if (hovered) deselect(hovered)
     hovered = null
-    sketch = { mode: mode, points: [], group: L.layerGroup().addTo(map) }
+    sketch = { mode: mode, points: [], group: L.layerGroup().addTo(map), closed: false }
     mapElement.classList.add('app-v3-map--drawing')
     map.doubleClickZoom.disable()
+    showDrawError('')
     drawStatus.hidden = false
     drawInstructions.textContent = mode === 'polygon'
-      ? 'Select points on the map to draw your area. Select the first point again to finish.'
-      : 'Select one corner of your area, then the opposite corner.'
+      ? 'Select points on the map to draw your area, then select Done.'
+      : 'Select one corner of your area, then the opposite corner, then select Done.'
   }
 
   function stopDrawing () {
@@ -475,8 +494,20 @@
     sketch = null
     mapElement.classList.remove('app-v3-map--drawing')
     map.doubleClickZoom.enable()
+    showDrawError('')
     drawStatus.hidden = true
     drawInstructions.textContent = ''
+  }
+
+  // "Done": keep the area if there's enough of it
+  function doneDrawing () {
+    var points = sketch.points
+    if (sketch.mode === 'square') {
+      if (points.length < 2) return showDrawError('Select two opposite corners on the map')
+      return finishDrawing(squareCorners(points[0], points[1]))
+    }
+    if (points.length < 3) return showDrawError('Select at least 3 points on the map')
+    finishDrawing(points)
   }
 
   function squareCorners (a, b) {
@@ -489,17 +520,27 @@
     group.clearLayers()
     var points = sketch.points
     if (sketch.mode === 'square') {
-      if (points.length && pointer) L.polygon(squareCorners(points[0], pointer), Object.assign({ interactive: false, pane: 'dcBoundary' }, BOUNDARY)).addTo(group)
+      var corner = points[1] || pointer
+      if (points.length && corner) L.polygon(squareCorners(points[0], corner), Object.assign({ interactive: false, pane: 'dcBoundary' }, BOUNDARY)).addTo(group)
       return
     }
-    var line = pointer ? points.concat([pointer]) : points
-    if (line.length > 1) L.polyline(line, { color: BOUNDARY.color, weight: BOUNDARY.weight, interactive: false, pane: 'dcBoundary' }).addTo(group)
+    if (sketch.closed) {
+      L.polygon(points, Object.assign({ interactive: false, pane: 'dcBoundary' }, BOUNDARY)).addTo(group)
+    } else {
+      var line = pointer ? points.concat([pointer]) : points
+      if (line.length > 1) L.polyline(line, { color: BOUNDARY.color, weight: BOUNDARY.weight, interactive: false, pane: 'dcBoundary' }).addTo(group)
+    }
     points.forEach(function (point, index) {
       var vertex = L.marker(point, { icon: handleIcon('vertex'), pane: 'dcCodeTag', keyboard: false, interactive: index === 0 }).addTo(group)
       if (index === 0) {
+        // Selecting the first point again closes the shape, ready for "Done"
         vertex.on('click', function (event) {
           L.DomEvent.stopPropagation(event)
-          if (sketch.points.length >= 3) finishDrawing(sketch.points)
+          if (sketch.points.length < 3 || sketch.closed) return
+          sketch.closed = true
+          showDrawError('')
+          drawInstructions.textContent = 'Area closed. Select Done to see its design codes.'
+          drawSketch()
         })
       }
     })
@@ -511,19 +552,22 @@
   }
 
   map.on('click', function (event) {
-    if (!sketch) return
+    if (!sketch || sketch.closed) return
+    showDrawError('')
+    sketch.points.push(event.latlng)
     if (sketch.mode === 'square') {
-      if (sketch.points.length) return finishDrawing(squareCorners(sketch.points[0], event.latlng))
-      sketch.points.push(event.latlng)
-      drawInstructions.textContent = 'Now select the opposite corner.'
-    } else {
-      sketch.points.push(event.latlng)
+      if (sketch.points.length === 2) {
+        sketch.closed = true
+        drawInstructions.textContent = 'Area drawn. Select Done to see its design codes.'
+      } else {
+        drawInstructions.textContent = 'Now select the opposite corner.'
+      }
     }
     drawSketch()
   })
 
   map.on('mousemove', function (event) {
-    if (sketch && sketch.points.length) drawSketch(event.latlng)
+    if (sketch && sketch.points.length && !sketch.closed) drawSketch(event.latlng)
   })
 
   // The page's URL with the drawn area, as "lat,lng;lat,lng;…". The results change, so the page
@@ -549,6 +593,7 @@
   // that adds a corner when dragged. Each change updates the results.
   function showBoundary (boundary) {
     boundaryLayer.clearLayers()
+    setEditing(Boolean(boundary))
     if (!boundary) return
     var square = isSquare(boundary.points)
     var points = boundary.points.map(function (point) { return L.latLng(point) })
@@ -609,15 +654,28 @@
     // Clicks and scrolling on the boxes shouldn't move the map
     L.DomEvent.disableClickPropagation(mapTools)
     L.DomEvent.disableScrollPropagation(mapTools)
+    L.DomEvent.disableClickPropagation(drawStatus)
 
     drawToggle.addEventListener('click', function () {
       openMenu(drawMenu.hidden)
-      if (!drawMenu.hidden) drawMenu.querySelector('button').focus()
+      if (!drawMenu.hidden) drawMenu.querySelector('li:not([hidden]) [data-draw]:not([aria-disabled])').focus()
     })
     drawMenu.addEventListener('click', function (event) {
       var item = event.target.closest('[data-draw]')
-      if (item) startDrawing(item.getAttribute('data-draw'))
+      if (!item || item.getAttribute('aria-disabled') === 'true') return
+      var action = item.getAttribute('data-draw')
+      if (action === 'delete') {
+        openMenu(false)
+        var params = new URLSearchParams(window.location.search)
+        params.delete('boundary')
+        params.delete('page')
+        var search = params.toString()
+        drawToggle.focus()
+        return go(window.location.pathname + (search ? '?' + search : ''), { push: true })
+      }
+      startDrawing(action)
     })
+    document.getElementById('dc-draw-done').addEventListener('click', doneDrawing)
     document.getElementById('dc-draw-cancel').addEventListener('click', function () {
       stopDrawing()
       drawToggle.focus()
