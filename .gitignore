@@ -5,6 +5,7 @@ node_modules/
 .tmp/
 .env
 migrate.log
+.vscode/
 
 # General ignores
 .DS_Store

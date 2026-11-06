@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "26.x"
+  },
   "scripts": {
     "predev": "node -e \"require('fs').rmSync('.tmp', { recursive: true, force: true })\"",
     "dev": "govuk-prototype-kit dev",
