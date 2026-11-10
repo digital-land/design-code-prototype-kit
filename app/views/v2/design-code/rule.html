@@ -3,7 +3,7 @@
 {#
   One code or piece of key guidance in full, linked from a council's design code page.
   Layout from the Figma frames:
-    Design code tab          - node 256:8609
+    Design rule tab          - node 256:8609
     Guidance tab             - node 256:8694
     Table tab                - node 123:18738
     Development type tab     - node 256:8900
@@ -73,7 +73,7 @@
 {% set guidanceText = rule.guidanceText if rule.type == "code" else rule.requirementText %}
 
 {% set codeHtml %}
-  <h2 class="govuk-visually-hidden">Design code</h2>
+  <h2 class="govuk-visually-hidden">Design rule</h2>
   <dl class="app-dc-details">
     <div class="app-dc-details__row">
       <dt class="app-dc-details__key">Codes</dt>
@@ -205,7 +205,7 @@
   {% endif %}
 {% endset %}
 
-{% set tabs = [{ label: "Design code", id: "design-code", panel: { html: codeHtml } }] %}
+{% set tabs = [{ label: "Design rule", id: "design-rule", panel: { html: codeHtml } }] %}
 {% if guidanceText %}
   {% set tabs = (tabs.push({ label: "Guidance", id: "guidance", panel: { html: guidanceHtml } }), tabs) %}
 {% endif %}

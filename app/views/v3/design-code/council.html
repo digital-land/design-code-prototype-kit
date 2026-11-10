@@ -126,6 +126,8 @@
 <div class="app-v3-layout" id="dc-layout">
 
   <form class="app-dc-page__filters app-v3-filters" id="dc-filters" action="{{ baseUrl }}/design-code/{{ code }}" method="get" novalidate>
+    {# Always sent, so unticking the council's own design code isn't undone (see app/data/filters.js) #}
+    <input type="hidden" name="design-code" value="none">
     <h2 class="govuk-heading-m app-dc-page__filters-heading">Filters</h2>
     {# The map level travels with the filters #}
     {% if mapState.settlement %}<input type="hidden" name="settlement" value="{{ mapState.settlement }}">{% endif %}
@@ -196,7 +198,7 @@
     <div class="govuk-button-group govuk-!-margin-bottom-0">
       {{ govukButton({ text: "Apply filter", classes: "govuk-!-margin-bottom-0" }) }}
       {% if hasFilters %}
-        <a href="{{ baseUrl }}/design-code/{{ code }}" class="govuk-link" data-drill data-focus="count">Clear filters</a>
+        <a href="{{ baseUrl }}/design-code/{{ code }}?design-code=none" class="govuk-link" data-drill data-focus="count">Clear filters</a>
       {% endif %}
     </div>
   </form>
@@ -223,7 +225,7 @@
     {# Updated in place. After "Apply filter" focus moves here, so screen readers read the new count;
        when the map changes it, the live region announces it. #}
     <p class="govuk-body app-dc-page__result-count" id="dc-result-count" aria-live="polite" tabindex="-1">
-      {% if hasFilters %}Showing {{ resultCount }} {{ "code or key guidance" if resultCount == 1 else "codes and key guidance" }}{% else %}Showing all codes and key guidance{% endif %}
+      {% if filters.narrows %}Showing {{ resultCount }} {{ "code or key guidance" if resultCount == 1 else "codes and key guidance" }}{% else %}Showing all codes and key guidance{% endif %}
     </p>
 
     <div id="dc-results">

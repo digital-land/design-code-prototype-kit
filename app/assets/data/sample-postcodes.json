@@ -1,0 +1,30 @@
+{
+  "_comment": "Sample postcodes for the design code finder's search: a few real postcode areas in each council with a design code in the prototype. Locations are approximate.",
+  "postcodes": [
+    { "postcode": "HU17 8BA", "area": "east-riding", "place": "Beverley", "lat": 53.8425, "lng": -0.4300 },
+    { "postcode": "YO16 4LZ", "area": "east-riding", "place": "Bridlington", "lat": 54.0880, "lng": -0.1960 },
+    { "postcode": "YO25 6QN", "area": "east-riding", "place": "Driffield", "lat": 54.0040, "lng": -0.4410 },
+    { "postcode": "DN14 5TB", "area": "east-riding", "place": "Goole", "lat": 53.7030, "lng": -0.8720 },
+    { "postcode": "ME4 4TR", "area": "medway", "place": "Chatham", "lat": 51.3800, "lng": 0.5280 },
+    { "postcode": "ME1 1HL", "area": "medway", "place": "Rochester", "lat": 51.3880, "lng": 0.5050 },
+    { "postcode": "ME7 1NY", "area": "medway", "place": "Gillingham", "lat": 51.3870, "lng": 0.5480 },
+    { "postcode": "B1 1BB", "area": "birmingham", "place": "Birmingham city centre", "lat": 52.4780, "lng": -1.9080 },
+    { "postcode": "B15 2TT", "area": "birmingham", "place": "Edgbaston", "lat": 52.4500, "lng": -1.9300 },
+    { "postcode": "B29 6NA", "area": "birmingham", "place": "Selly Oak", "lat": 52.4400, "lng": -1.9400 },
+    { "postcode": "M1 1AE", "area": "manchester", "place": "Manchester city centre", "lat": 53.4800, "lng": -2.2370 },
+    { "postcode": "M14 5RX", "area": "manchester", "place": "Fallowfield", "lat": 53.4430, "lng": -2.2200 },
+    { "postcode": "M20 2RN", "area": "manchester", "place": "Didsbury", "lat": 53.4170, "lng": -2.2310 },
+    { "postcode": "LS1 4AP", "area": "leeds", "place": "Leeds city centre", "lat": 53.7960, "lng": -1.5480 },
+    { "postcode": "LS6 3HN", "area": "leeds", "place": "Headingley", "lat": 53.8200, "lng": -1.5800 },
+    { "postcode": "LS28 5UJ", "area": "leeds", "place": "Pudsey", "lat": 53.7950, "lng": -1.6630 },
+    { "postcode": "SE1 7PB", "area": "southwark", "place": "Bankside", "lat": 51.5050, "lng": -0.0990 },
+    { "postcode": "SE15 5NL", "area": "southwark", "place": "Peckham", "lat": 51.4700, "lng": -0.0700 },
+    { "postcode": "SE22 8DX", "area": "southwark", "place": "East Dulwich", "lat": 51.4550, "lng": -0.0750 },
+    { "postcode": "CB1 1PT", "area": "cambridge", "place": "Cambridge station", "lat": 52.1950, "lng": 0.1370 },
+    { "postcode": "CB2 1TN", "area": "cambridge", "place": "Cambridge city centre", "lat": 52.2030, "lng": 0.1180 },
+    { "postcode": "CB4 1ZA", "area": "cambridge", "place": "Chesterton", "lat": 52.2200, "lng": 0.1300 },
+    { "postcode": "NE1 4ST", "area": "newcastle", "place": "Newcastle city centre", "lat": 54.9700, "lng": -1.6140 },
+    { "postcode": "NE2 4PB", "area": "newcastle", "place": "Jesmond", "lat": 54.9850, "lng": -1.6000 },
+    { "postcode": "NE6 1AS", "area": "newcastle", "place": "Byker", "lat": 54.9750, "lng": -1.5750 }
+  ]
+}

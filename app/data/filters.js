@@ -119,11 +119,17 @@ const GROUPS = [
   { key: 'ruleTypes', param: 'rule-type', title: 'Design code rule type', options: RULE_TYPES }
 ]
 
-function readFilters (query) {
+// The form always sends design-code=none, so a page with no design-code at all is a first visit,
+// where the council's own design code is ticked
+const NO_DESIGN_CODE = 'none'
+
+// options.defaultDesignCode: the design code ticked when the URL doesn't choose any
+function readFilters (query, options = {}) {
   // The prototype kit adds "_unchecked" for checkbox groups with nothing ticked
-  const list = value => [].concat(value || []).filter(item => item && item !== '_unchecked')
+  const list = value => [].concat(value || []).filter(item => item && item !== '_unchecked' && item !== NO_DESIGN_CODE)
   const filters = { search: String(query.q || '').trim() }
   GROUPS.forEach(group => { filters[group.key] = list(query[group.param]) })
+  if (query['design-code'] === undefined && options.defaultDesignCode) filters.designCodes = [options.defaultDesignCode]
   return filters
 }
 
@@ -131,9 +137,15 @@ function anyFilters (filters) {
   return Boolean(filters.search || GROUPS.some(group => filters[group.key].length))
 }
 
+// Towns with a place on the v3 map but no design code of their own yet. Ticking one on its own
+// shows no results.
+const TOWN_DESIGN_CODES = {
+  'east-riding-design-code': [{ value: 'beverley', text: 'Beverley' }]
+}
+
 // The council's own design codes, for the Design code group
 function designCodeOptions (extracted) {
-  return [{ value: extracted.id, text: extracted.title }]
+  return [{ value: extracted.id, text: extracted.title }, ...(TOWN_DESIGN_CODES[extracted.id] || [])]
 }
 
 function groupOptions (group, extracted) {
@@ -196,7 +208,8 @@ function filterRows (rule, filters, extracted) {
       key: 'Design feature',
       value: texts(DESIGN_FEATURES, rule.features.filter(feature => filters.features.includes(feature)))
     },
-    filters.designCodes.length && { key: 'Design code', value: extracted.title },
+    // Every result is from the council's own design code, so that alone (ticked when the page opens) needs no row
+    filters.designCodes.some(value => value !== extracted.id) && { key: 'Design code', value: extracted.title },
     filters.designCodeTypes.length && { key: 'Design code type', value: optionText(DESIGN_CODE_TYPES, extracted.designCodeType) },
     filters.areaTypes.length && {
       key: 'Area type',
@@ -227,6 +240,7 @@ function appliedFilters (filters, extracted) {
 }
 
 module.exports = {
+  NO_DESIGN_CODE,
   readFilters,
   anyFilters,
   ruleMatches,

@@ -160,6 +160,9 @@ router.get('/search', (req, res) => {
 const designCodeData = require('../data/v2/design-codes.json')
 const extractedDesignCodes = require('../data')
 const filterOptions = require('../data/filters')
+// Sample postcodes for the finder's search, so a council can be found by postcode
+const samplePostcodes = require('../assets/data/sample-postcodes.json').postcodes
+const normalisePostcode = text => text.replace(/\s+/g, '').toUpperCase()
 
 function extractedFor (slug) {
   return extractedDesignCodes.get(`${slug}-design-code`)
@@ -198,14 +201,20 @@ router.get('/design-code/find', (req, res) => {
     }))
     .sort((a, b) => isSelected(b.area) - isSelected(a.area))
 
+  // A search matches a council's name, or the start of one of its postcodes
+  const postcodeSearch = normalisePostcode(search)
+  const matchesSearch = area => area.council.toLowerCase().includes(search.toLowerCase()) ||
+    samplePostcodes.some(item => item.area === area.id && normalisePostcode(item.postcode).startsWith(postcodeSearch))
+
   res.render(`${VIEWS}/design-code/find`, {
     areas: designCodeData.areas.map(area => ({
       ...area,
-      hidden: Boolean(search) && !area.council.toLowerCase().includes(search.toLowerCase())
+      hidden: Boolean(search) && !matchesSearch(area)
     })),
     cards,
     selectedIds,
-    search
+    search,
+    postcodes: samplePostcodes
   })
 })
 
@@ -235,9 +244,9 @@ const PLACE_TYPE_OPTIONS = [
 ]
 
 // The filter groups and options follow Figma node 535:20291 (see app/data/filters.js)
-function readDesignCodeFilters (query) {
+function readDesignCodeFilters (query, options) {
   return {
-    ...filterOptions.readFilters(query),
+    ...filterOptions.readFilters(query, options),
     // An area drawn on the map, as its corners. The route works out what it overlaps.
     boundary: parseBoundary([].concat(query.boundary || [])[0])
   }
@@ -501,7 +510,7 @@ function mapStateFor (code, query, filters, results) {
     // The map can't zoom out beyond the council
     council: boundaryOf(area.id),
     // Pins with the matching codes go on the map only when filters are in use
-    showPins: Boolean(filters.hasFilters),
+    showPins: Boolean(filters.narrows),
     // An area drawn on the map, as [lat, lng] points for Leaflet
     boundary: filters.boundary && {
       points: filters.boundary.map(([lng, lat]) => [lat, lng]),
@@ -571,9 +580,13 @@ router.get('/design-code/:code', (req, res, next) => {
   const placeholder = designCodeData.designCodes[req.params.code]
   if (!placeholder) return next()
   const extracted = extractedFor(req.params.code)
-  const filters = readDesignCodeFilters(req.query)
+  // The council's own design code is ticked when the page first opens
+  const filters = readDesignCodeFilters(req.query, { defaultDesignCode: extracted && extracted.id })
   filters.boundaryOverlap = boundaryOverlap(req.params.code, filters.boundary)
   filters.hasFilters = filterOptions.anyFilters(filters) || Boolean(filters.boundary)
+  // The council's own design code, ticked when the page opens, narrows nothing, so it alone doesn't put pins on the map
+  filters.narrows = Boolean(filters.boundary) ||
+    filterOptions.anyFilters({ ...filters, designCodes: filters.designCodes.filter(value => !extracted || value !== extracted.id) })
   const page = extracted
     ? extractedPage(placeholder, extracted, filters)
     : { designCode: placeholder, filterGroups: [], results: [], appliedFilters: [], resultCount: 0 }
@@ -590,7 +603,7 @@ router.get('/design-code/:code', (req, res, next) => {
   const same = (a, b) => a.length === b.length && a.every(item => b.includes(item))
   const fromQuestions = Boolean(result && !result.speakToCouncil && !filters.boundary &&
     same(filters.areaTypes, expected.areaTypes) && same(filters.developmentTypes, expected.developmentTypes) &&
-    !filterOptions.anyFilters({ ...filters, areaTypes: [], developmentTypes: [] }))
+    !filterOptions.anyFilters({ ...filters, areaTypes: [], developmentTypes: [], designCodes: [] }))
 
   // The page's URL with one parameter changed. Filters and the map level are kept; the page number
   // isn't, as the results change.
@@ -604,11 +617,16 @@ router.get('/design-code/:code', (req, res, next) => {
     return `${BASE_URL}/design-code/${req.params.code}${search ? '?' + search : ''}`
   }
 
+  // Adds design-code=none to a URL, so the council's own design code isn't ticked again
+  const withNoDesignCode = (needed, href) => !needed || /[?&]design-code=none(&|$)/.test(href)
+    ? href
+    : href + (href.includes('?') ? '&' : '?') + 'design-code=' + filterOptions.NO_DESIGN_CODE
+
   // Removing a filter's tag removes just that value. A new area type leaves the example site.
   const appliedFilters = page.appliedFilters.map(filter => ({
     ...filter,
-    removeHref: pageUrl((key, item) => (key === filter.param && (!filter.value || item === filter.value)) ||
-      (filter.param === 'area-type' && key === 'site'))
+    removeHref: withNoDesignCode(filter.param === 'design-code', pageUrl((key, item) => (key === filter.param && (!filter.value || item === filter.value)) ||
+      (filter.param === 'area-type' && key === 'site')))
   }))
 
   // 5 results to a page (Figma node 445:28314)

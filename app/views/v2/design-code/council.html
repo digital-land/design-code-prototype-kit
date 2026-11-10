@@ -47,6 +47,8 @@
   </div>
 
   <form class="app-dc-page__filters" id="dc-filters" action="{{ baseUrl }}/design-code/{{ code }}" method="get" novalidate>
+    {# Always sent, so unticking the council's own design code isn't undone (see app/data/filters.js) #}
+    <input type="hidden" name="design-code" value="none">
     <h2 class="govuk-heading-m app-dc-page__filters-heading">Filters</h2>
 
     <div class="app-dc-search">
@@ -111,7 +113,7 @@
     <div class="govuk-button-group govuk-!-margin-bottom-0">
       {{ govukButton({ text: "Apply filter", classes: "govuk-!-margin-bottom-0" }) }}
       {% if hasFilters %}
-        <a href="{{ baseUrl }}/design-code/{{ code }}" class="govuk-link" id="dc-clear-filters">Clear filters</a>
+        <a href="{{ baseUrl }}/design-code/{{ code }}?design-code=none" class="govuk-link" id="dc-clear-filters">Clear filters</a>
       {% endif %}
     </div>
   </form>
@@ -133,7 +135,7 @@
 
     {# Focus moves here after "Apply filter" or "Clear filters", so screen readers read the new count #}
     <p class="govuk-body app-dc-page__result-count" id="dc-result-count" tabindex="-1">
-      Showing {{ resultCount }} {{ "code or key guidance" if resultCount == 1 else "codes and key guidance" }}
+      Showing {{ resultCount }} {{ "rule or key guidance" if resultCount == 1 else "rules and key guidance" }}
     </p>
 
     {% if results.length %}
@@ -145,11 +147,6 @@
                 {{ govukTag({ text: item.reference, classes: "app-dc-result__reference" }) }}
                 {{ govukTag({ text: item.status, classes: "govuk-tag--turquoise app-design-code__reference" }) }}
               </div>
-              <ul class="app-dc-keys" aria-label="Development types">
-                {% for type in item.developmentTypes %}
-                  <li class="app-dc-key app-dc-key--{{ type.key | lower }}" title="{{ type.name }}"><span aria-hidden="true">{{ type.key }}</span><span class="govuk-visually-hidden">{{ type.name }}</span></li>
-                {% endfor %}
-              </ul>
             </div>
             <a class="govuk-link app-dc-result__title" href="{{ baseUrl }}/design-code/{{ code }}/{{ item.reference | lower }}">{{ item.title or item.section }}<span class="govuk-visually-hidden"> ({{ item.reference }})</span></a>
             {# Figma node 407:15665: with filters applied, what in the code matched each one #}

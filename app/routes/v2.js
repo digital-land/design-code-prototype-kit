@@ -160,6 +160,9 @@ router.get('/search', (req, res) => {
 const designCodeData = require('../data/v2/design-codes.json')
 const extractedDesignCodes = require('../data')
 const filterOptions = require('../data/filters')
+// Sample postcodes for the finder's search, so a council can be found by postcode
+const samplePostcodes = require('../assets/data/sample-postcodes.json').postcodes
+const normalisePostcode = text => text.replace(/\s+/g, '').toUpperCase()
 
 function extractedFor (slug) {
   return extractedDesignCodes.get(`${slug}-design-code`)
@@ -198,14 +201,20 @@ router.get('/design-code/find', (req, res) => {
     }))
     .sort((a, b) => isSelected(b.area) - isSelected(a.area))
 
+  // A search matches a council's name, or the start of one of its postcodes
+  const postcodeSearch = normalisePostcode(search)
+  const matchesSearch = area => area.council.toLowerCase().includes(search.toLowerCase()) ||
+    samplePostcodes.some(item => item.area === area.id && normalisePostcode(item.postcode).startsWith(postcodeSearch))
+
   res.render(`${VIEWS}/design-code/find`, {
     areas: designCodeData.areas.map(area => ({
       ...area,
-      hidden: Boolean(search) && !area.council.toLowerCase().includes(search.toLowerCase())
+      hidden: Boolean(search) && !matchesSearch(area)
     })),
     cards,
     selectedIds,
-    search
+    search,
+    postcodes: samplePostcodes
   })
 })
 
@@ -300,7 +309,8 @@ router.get('/design-code/:code', (req, res, next) => {
   const placeholder = designCodeData.designCodes[req.params.code]
   if (!placeholder) return next()
   const extracted = extractedFor(req.params.code)
-  const filters = readDesignCodeFilters(req.query)
+  // The council's own design code is ticked when the page first opens
+  const filters = readDesignCodeFilters(req.query, { defaultDesignCode: extracted && extracted.id })
   const page = extracted
     ? extractedPage(placeholder, extracted, filters)
     : { designCode: placeholder, filterGroups: [], results: [], appliedFilters: [], resultCount: 0 }
@@ -317,9 +327,10 @@ router.get('/design-code/:code', (req, res, next) => {
   const same = (a, b) => a.length === b.length && a.every(item => b.includes(item))
   const fromQuestions = Boolean(result && !result.speakToCouncil &&
     same(filters.areaTypes, expected.areaTypes) && same(filters.developmentTypes, expected.developmentTypes) &&
-    !filterOptions.anyFilters({ ...filters, areaTypes: [], developmentTypes: [] }))
+    !filterOptions.anyFilters({ ...filters, areaTypes: [], developmentTypes: [], designCodes: [] }))
 
-  // Removing a filter's tag removes just that value
+  // Removing a filter's tag removes just that value. Removing a design code keeps "none", so the
+  // council's own design code isn't ticked again.
   const withoutFilter = filter => {
     const params = new URLSearchParams()
     for (const [key, value] of Object.entries(req.query)) {
@@ -327,6 +338,7 @@ router.get('/design-code/:code', (req, res, next) => {
         if (item !== '_unchecked' && !(key === filter.param && (!filter.value || item === filter.value))) params.append(key, item)
       }
     }
+    if (filter.param === 'design-code' && !params.getAll('design-code').includes(filterOptions.NO_DESIGN_CODE)) params.append('design-code', filterOptions.NO_DESIGN_CODE)
     const search = params.toString()
     return search ? '?' + search : ''
   }

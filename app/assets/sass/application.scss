@@ -906,6 +906,62 @@
   }
 }
 
+// Suggested postcodes, in a dropdown under the search box
+.app-dc-search--suggest {
+  position: relative;
+}
+
+.app-dc-search__hint {
+  margin-bottom: govuk-spacing(1);
+  @include govuk-font($size: 16);
+}
+
+.app-dc-suggestions {
+  position: absolute;
+  z-index: 1001; // above the map
+  top: 100%;
+  right: 0;
+  left: 0;
+  max-height: 280px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  border: 2px solid #262626;
+  border-top: 0;
+  background-color: govuk-functional-colour("body-background");
+}
+
+.app-dc-suggestions__option {
+  padding: govuk-spacing(2);
+  border-bottom: 1px solid govuk-functional-colour("border");
+  cursor: pointer;
+  @include govuk-font($size: 16);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:hover,
+  &--active {
+    color: govuk-functional-colour("inverse-text");
+    background-color: govuk-functional-colour("brand");
+
+    .app-dc-suggestions__place {
+      color: inherit;
+    }
+  }
+}
+
+.app-dc-suggestions__postcode {
+  @include govuk-typography-weight-bold;
+}
+
+.app-dc-suggestions__place {
+  display: block;
+  color: govuk-functional-colour("secondary-text");
+}
+
 .app-dc-results {
   @include govuk-media-query($from: tablet) {
     flex: 1 1 0;

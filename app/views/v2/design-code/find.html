@@ -2,7 +2,8 @@
 
 {#
   Design code finder, from the Figma frame "Desktop - 83" (node 407:22386).
-  Tick one or more councils, or click an area on the map, to highlight them on the map. The map's
+  Tick one or more councils, click an area on the map, or search by council name or postcode, to
+  highlight them on the map. Choosing a suggested postcode also drops a pin on it. The map's
   pop-up links to the council's design code. Without JavaScript, the form reloads the page with
   the ticked councils selected.
 #}
@@ -23,16 +24,18 @@
 <h1 class="govuk-heading-l app-dc-finder__title">{{ pageName }}</h1>
 <p class="govuk-body app-dc-finder__description">
   Design codes set out the rules new development must follow, such as building height, street layout and green space.
-  Search for a council or select an area on the map to see its design codes.
+  Search for a council or postcode, or select an area on the map, to see its design codes.
 </p>
 
 <div class="app-dc-finder app-dc-finder--v2" data-module="app-dc-finder">
 
   <form class="app-dc-areas app-dc-areas--v2" action="{{ baseUrl }}/design-code/find" method="get" id="area-form" novalidate>
-    <div class="app-dc-search" role="search">
+    {# Search by council name or postcode. As a postcode is typed, matching postcodes are suggested below #}
+    <div class="app-dc-search app-dc-search--suggest" role="search">
       <label class="govuk-label app-label--secondary app-dc-search__label" for="area-search">Search</label>
+      <div class="govuk-hint app-dc-search__hint" id="area-search-hint">Council name or postcode</div>
       <div class="app-dc-search__wrapper">
-        <input class="govuk-input app-dc-search__input" id="area-search" name="q" type="search" value="{{ search }}" autocomplete="off">
+        <input class="govuk-input app-dc-search__input" id="area-search" name="q" type="search" value="{{ search }}" autocomplete="off" aria-describedby="area-search-hint">
         <button class="app-dc-search__button" type="submit">
           <span class="govuk-visually-hidden">Search councils</span>
           <svg class="app-dc-search__icon" width="12" height="12" viewBox="0 0 27 27" aria-hidden="true" focusable="false">
@@ -41,6 +44,8 @@
           </svg>
         </button>
       </div>
+      <ul class="app-dc-suggestions" id="area-search-suggestions" role="listbox" aria-label="Postcode suggestions" hidden></ul>
+      <div class="govuk-visually-hidden" id="area-search-status" aria-live="polite"></div>
     </div>
 
     <hr class="app-dc-areas__divider">
@@ -145,6 +150,12 @@
 
         boxes.forEach(function (box) { box.checked = ids.indexOf(box.value) !== -1 })
 
+        // The postcode's pin goes when its council is unticked
+        if (pin && ids.indexOf(pin.area) === -1) {
+          map.removeLayer(pin)
+          pin = null
+        }
+
         Object.keys(layers).forEach(function (id) {
           var isSelected = ids.indexOf(id) !== -1
           layers[id].setStyle(styleFor(isSelected))
@@ -173,22 +184,149 @@
         })
       })
 
-      // Narrow the list of councils as the user types
+      // Postcodes: sample ones for each council, so a council can be found by postcode
+      var postcodes = {{ postcodes | dump | safe }}
       var search = document.getElementById('area-search')
       var empty = document.getElementById('area-search-empty')
-      search.addEventListener('input', function () {
-        var term = search.value.trim().toLowerCase()
+      var suggestions = document.getElementById('area-search-suggestions')
+      var status = document.getElementById('area-search-status')
+      var matches = []
+      var active = -1
+      var pin = null
+
+      function normalise (text) { return text.replace(/\s+/g, '').toUpperCase() }
+
+      // Postcodes starting with what has been typed, once there are 2 characters
+      function postcodesMatching (text) {
+        var term = normalise(text)
+        if (term.length < 2) return []
+        return postcodes.filter(function (item) { return normalise(item.postcode).indexOf(term) === 0 }).slice(0, 8)
+      }
+
+      function councilName (id) {
+        var area = areas.find(function (item) { return item.id === id })
+        return area ? area.council : ''
+      }
+
+      // Narrow the list of councils to those whose name, or one of whose postcodes, matches
+      function filterList (text) {
+        var term = text.trim().toLowerCase()
+        var postcodeAreas = postcodesMatching(text).map(function (item) { return item.area })
         var shown = 0
         document.querySelectorAll('.app-dc-areas__item').forEach(function (item) {
-          var match = item.getAttribute('data-area-name').indexOf(term) !== -1
+          var box = item.querySelector('input')
+          var match = item.getAttribute('data-area-name').indexOf(term) !== -1 || postcodeAreas.indexOf(box.value) !== -1
           item.hidden = !match
           if (match) shown++
         })
         empty.hidden = shown > 0
+      }
+
+      // The dropdown of suggested postcodes, a combobox pattern
+      search.setAttribute('role', 'combobox')
+      search.setAttribute('aria-autocomplete', 'list')
+      search.setAttribute('aria-controls', suggestions.id)
+      search.setAttribute('aria-expanded', 'false')
+
+      function closeSuggestions () {
+        matches = []
+        active = -1
+        suggestions.hidden = true
+        suggestions.innerHTML = ''
+        search.setAttribute('aria-expanded', 'false')
+        search.removeAttribute('aria-activedescendant')
+      }
+
+      function showSuggestions () {
+        matches = postcodesMatching(search.value)
+        active = -1
+        search.removeAttribute('aria-activedescendant')
+        if (!matches.length) {
+          closeSuggestions()
+          status.textContent = ''
+          return
+        }
+        suggestions.innerHTML = matches.map(function (item, index) {
+          return '<li class="app-dc-suggestions__option" id="area-search-option-' + index + '" role="option" aria-selected="false" data-index="' + index + '">' +
+            '<span class="app-dc-suggestions__postcode">' + item.postcode + '</span> ' +
+            '<span class="app-dc-suggestions__place">' + item.place + ', ' + councilName(item.area) + '</span></li>'
+        }).join('')
+        suggestions.hidden = false
+        search.setAttribute('aria-expanded', 'true')
+        status.textContent = matches.length + (matches.length === 1 ? ' postcode' : ' postcodes') + ' suggested. Use the up and down arrows to choose one.'
+      }
+
+      function highlight (index) {
+        active = index
+        Array.prototype.forEach.call(suggestions.children, function (option, i) {
+          option.setAttribute('aria-selected', String(i === index))
+          option.classList.toggle('app-dc-suggestions__option--active', i === index)
+        })
+        if (index === -1) {
+          search.removeAttribute('aria-activedescendant')
+        } else {
+          search.setAttribute('aria-activedescendant', 'area-search-option-' + index)
+          suggestions.children[index].scrollIntoView({ block: 'nearest' })
+        }
+      }
+
+      // Choosing a postcode ticks its council and drops a pin on the postcode
+      function choosePostcode (item) {
+        search.value = item.postcode
+        closeSuggestions()
+        filterList(item.postcode)
+        status.textContent = item.postcode + ' is in ' + councilName(item.area) + '. It has been selected.'
+        update(selected.indexOf(item.area) === -1 ? selected.concat(item.area) : selected)
+        if (pin) map.removeLayer(pin)
+        pin = L.marker([item.lat, item.lng], { title: item.postcode, alt: item.postcode, keyboard: false }).addTo(map)
+        pin.area = item.area
+        if (layers[item.area]) {
+          pin.bindPopup('<p class="app-dc-popup__title">' + item.postcode + '</p>' + popupHtml(item.area).replace(/^<p class="app-dc-popup__title">[^<]*<\/p>/, ''), { className: 'app-dc-popup' })
+          var bounds = layers[item.area].getBounds().extend(pin.getLatLng())
+          map.fitBounds(bounds, { padding: [40, 40], maxZoom: 10, animate: false })
+          pin.openPopup()
+        }
+      }
+
+      search.addEventListener('input', function () {
+        filterList(search.value)
+        showSuggestions()
       })
-      // Pressing Enter in the search ticks the first council that matches
+
+      search.addEventListener('keydown', function (event) {
+        if (suggestions.hidden) {
+          if (event.key === 'ArrowDown' && postcodesMatching(search.value).length) { showSuggestions(); highlight(0); event.preventDefault() }
+          return
+        }
+        if (event.key === 'ArrowDown') {
+          highlight(active < matches.length - 1 ? active + 1 : 0)
+          event.preventDefault()
+        } else if (event.key === 'ArrowUp') {
+          highlight(active > 0 ? active - 1 : matches.length - 1)
+          event.preventDefault()
+        } else if (event.key === 'Enter' && active !== -1) {
+          choosePostcode(matches[active])
+          event.preventDefault()
+        } else if (event.key === 'Escape') {
+          closeSuggestions()
+          event.preventDefault()
+        }
+      })
+
+      // Mouse down, not click, so the search keeps focus while choosing
+      suggestions.addEventListener('mousedown', function (event) {
+        var option = event.target.closest('.app-dc-suggestions__option')
+        if (!option) return
+        event.preventDefault()
+        choosePostcode(matches[Number(option.getAttribute('data-index'))])
+      })
+      search.addEventListener('blur', closeSuggestions)
+
+      // Pressing Enter in the search chooses the first postcode suggested, or ticks the first council that matches
       form.addEventListener('submit', function (event) {
         event.preventDefault()
+        var postcode = postcodesMatching(search.value)[0]
+        if (postcode) return choosePostcode(postcode)
         var first = form.querySelector('.app-dc-areas__item:not([hidden]) input')
         if (first && !first.checked) update(selected.concat(first.value))
       })
