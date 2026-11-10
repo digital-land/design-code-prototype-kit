@@ -1,7 +1,7 @@
 //
 // Routes for version 3 of the prototype, served under /v3
 //
-// To make a new version, copy this file and app/views/v1/,
+// To make a new version, copy this file and app/views/v3/,
 // then change BASE_URL and VIEWS below.
 //
 

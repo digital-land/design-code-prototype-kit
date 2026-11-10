@@ -338,13 +338,27 @@
     return codes[0] + (codes.length > 1 ? ' +' + (codes.length - 1) : '')
   }
 
-  function addPin (group, latlng, text) {
-    return L.marker(latlng, {
-      icon: L.divIcon({ className: 'app-v3-pin', html: '<span class="app-v3-pin__box"><span class="app-v3-pin__tag">' + escapeHtml(text) + '</span></span>', iconSize: null }),
+  // A pin with codes can be clicked to scroll down to them
+  function addPin (group, latlng, text, codes) {
+    var marker = L.marker(latlng, {
+      icon: L.divIcon({ className: 'app-v3-pin' + (codes ? ' app-v3-pin--link' : ''), html: '<span class="app-v3-pin__box"><span class="app-v3-pin__tag">' + escapeHtml(text) + '</span></span>', iconSize: null }),
       pane: 'dcCodeTag',
-      interactive: false,
+      interactive: Boolean(codes),
       keyboard: false
     }).addTo(group)
+    if (codes) marker.on('click', function () { scrollToCodes(codes) })
+    return marker
+  }
+
+  // Scroll down to the first of these codes in the results, or to the top of the results if it's
+  // on another page. The first code is focused, so it's clear which one the pin was for.
+  function scrollToCodes (codes) {
+    var items = Array.prototype.slice.call(document.querySelectorAll('#dc-results .app-v3-code'))
+    var item = items.find(function (element) { return codes.indexOf(element.getAttribute('data-reference')) !== -1 })
+    var target = !item || item === items[0] ? document.getElementById('dc-results-heading') : item
+    var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' })
+    if (item) item.querySelector('.app-v3-code__title').focus({ preventScroll: true })
   }
 
   // With filters in use, a pin on each area to choose (or on the selected area at the most
@@ -357,7 +371,7 @@
     areas.forEach(function (area) {
       if (!area.codes || !area.codes.length) return
       var layer = current.children[area.id] || current.parent
-      addPin(pins, area.pinAt || layer.getBounds().getCenter(), pinLabel(area.codes))
+      addPin(pins, area.pinAt || layer.getBounds().getCenter(), pinLabel(area.codes), area.codes)
     })
     declutterPins()
   }

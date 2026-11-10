@@ -6,7 +6,7 @@ Never start, stop or kill a dev server. The user runs it themselves.
 
 ## Versions
 
-Each version of the prototype runs under its own path, for example `/v1`, and the start page at `/` lists them all.
+Each version of the prototype runs under its own path, for example `/v2`, and the start page at `/` lists them all.
 
 To create a new version, copy the latest version folder and routes file, then add an entry to the start page:
 

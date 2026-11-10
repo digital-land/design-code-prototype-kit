@@ -138,25 +138,6 @@
   }
 }
 
-// v2 design codes landing page (Figma node 400:14297): larger headings and a thin chevron
-.app-content-list--large {
-  .app-content-list__item {
-    padding-right: govuk-spacing(9);
-  }
-
-  .app-content-list__heading {
-    @include govuk-font($size: 24, $weight: bold);
-    margin-bottom: govuk-spacing(2);
-  }
-
-  .app-content-list__link::after {
-    width: 10px;
-    height: 10px;
-    margin-top: -7px;
-    border-width: 2px;
-  }
-}
-
 // Contents for long guidance: beside the guidance on desktop, staying in view as the page
 // scrolls, and above it on phones. The row is flex so the contents column runs the full height
 // of the guidance, which the sticky contents need.
@@ -932,59 +913,13 @@
   }
 }
 
-// Map view and List view tabs: white tabs inside a bordered strip
-.app-dc-view-tabs {
-  margin: 0;
-
-  @include govuk-media-query($from: tablet) {
-    .govuk-tabs__list {
-      display: inline-flex;
-      margin: 0;
-      border: 1px solid #cecece;
-      border-bottom: 0;
-    }
-
-    .govuk-tabs__list-item {
-      margin: 0;
-      padding: 15px 20px;
-      border: 0;
-      background-color: govuk-functional-colour("body-background");
-
-      & + .govuk-tabs__list-item {
-        border-left: 1px solid #cecece;
-      }
-    }
-
-    .govuk-tabs__list-item--selected {
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 15px 20px;
-      border: 0;
-    }
-
-    .govuk-tabs__tab {
-      @include govuk-link-style-default;
-      margin: 0;
-    }
-
-    .govuk-tabs__list-item--selected .govuk-tabs__tab {
-      color: govuk-functional-colour("text");
-      text-decoration: none;
-    }
-
-    .govuk-tabs__panel {
-      padding: 0;
-      border: 0;
-    }
-  }
-}
-
+// Level with the councils beside it
 .app-dc-map {
   height: 450px;
   border: 1px solid rgba(0, 0, 0, .41);
 
   @include govuk-media-query($from: tablet) {
-    height: 586px;
+    height: 640px;
   }
 }
 
@@ -1011,119 +946,6 @@
 
 .app-dc-popup__link {
   @include govuk-font($size: 16);
-}
-
-// List view: 31px between the tabs and each design code card
-.app-dc-list {
-  display: flex;
-  flex-direction: column;
-  gap: 31px;
-  margin: 31px 0 0;
-}
-
-.app-dc-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0;
-  border: 8px solid #f4f2f1;
-  background-color: govuk-functional-colour("body-background");
-
-  &[hidden] {
-    display: none;
-  }
-}
-
-// The chosen area's design code has a yellow border
-.app-dc-card--selected {
-  border-color: govuk-functional-colour("focus");
-}
-
-.app-dc-card__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 8px 7px 7px 11px;
-  background-color: #f4f2f1;
-}
-
-.app-dc-card__title {
-  @include govuk-font($size: 19, $weight: bold);
-  margin: 0;
-}
-
-.app-dc-card__link:hover {
-  text-decoration: underline;
-}
-
-// Chevron that collapses the card, pointing up when the card is open
-.app-dc-card__toggle {
-  position: relative;
-  width: 25px;
-  height: 25px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    margin: -1px 0 0 -4px;
-    border-top: 1px solid govuk-functional-colour("text");
-    border-left: 1px solid govuk-functional-colour("text");
-    transform: rotate(45deg);
-  }
-
-  &[aria-expanded="false"]::after {
-    margin-top: -5px;
-    transform: rotate(-135deg);
-  }
-
-  &:focus {
-    @include govuk-focused-text;
-  }
-}
-
-.app-dc-card__body {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 10px;
-
-  &[hidden] {
-    display: none;
-  }
-}
-
-.app-dc-card__council {
-  flex: 1 1 auto;
-}
-
-.app-dc-card__label,
-.app-dc-card__value {
-  @include govuk-font($size: 16);
-  margin: 0 0 4px;
-}
-
-.app-dc-card__label {
-  color: #6c6d6d;
-}
-
-.app-dc-card__value {
-  @include govuk-typography-weight-bold;
-  margin-bottom: 0;
-}
-
-.app-dc-card__tag {
-  @include govuk-font($size: 16, $weight: bold);
-  padding: 5px 8px 4px;
-  text-transform: uppercase;
 }
 
 // Council design code page: back link 50px below the navigation,
@@ -1977,6 +1799,12 @@ summary.app-dc-applied__summary {
   margin-bottom: 18px;
 }
 
+// Room above where a pin on the map scrolls to
+.app-v3-results__heading,
+.app-v3-code {
+  scroll-margin-top: govuk-spacing(4);
+}
+
 // Design codes: a row for each, divided by rules. Hovering one highlights it and where it applies.
 .app-v3-codes {
   margin: 0;
@@ -2216,6 +2044,15 @@ summary.app-dc-applied__summary {
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
   text-transform: uppercase;
+}
+
+// A pin that scrolls down to its codes
+.app-v3-pin--link .app-v3-pin__box {
+  cursor: pointer;
+}
+
+.app-v3-pin--link:hover .app-v3-pin__tag {
+  background-color: govuk-colour("dark-blue");
 }
 
 // Handles on a drawn area: corners, and midpoints that add a corner when dragged
