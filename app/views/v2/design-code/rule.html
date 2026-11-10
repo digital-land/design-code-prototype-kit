@@ -6,7 +6,7 @@
     Design rule tab          - node 256:8609
     Guidance tab             - node 256:8694
     Table tab                - node 123:18738
-    Development type tab     - node 256:8900
+    Development type tab     - node 256:8900 (now in the Design rule tab)
     Supporting materials tab - node 256:8825
   The code's title and summary list beside its section's figure, then tabs. A tab with
   nothing in it for this code is left out. Content comes from the extracted data.
@@ -72,32 +72,9 @@
 {# Key guidance is guidance rather than a code, so its text goes in the Guidance tab #}
 {% set guidanceText = rule.guidanceText if rule.type == "code" else rule.requirementText %}
 
+{# The development types it applies to, with what each means, then the code's text #}
 {% set codeHtml %}
   <h2 class="govuk-visually-hidden">Design rule</h2>
-  <dl class="app-dc-details">
-    <div class="app-dc-details__row">
-      <dt class="app-dc-details__key">Codes</dt>
-      <dd class="app-dc-details__value">
-        <ul class="app-dc-keys" aria-label="Development types">
-          {% for type in rule.developmentTypeDetails %}
-            <li class="app-dc-key app-dc-key--{{ type.code | lower }}" title="{{ type.name }}"><span aria-hidden="true">{{ type.code }}</span><span class="govuk-visually-hidden">{{ type.name }}</span></li>
-          {% endfor %}
-        </ul>
-        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-0"><a class="govuk-link" href="#development-type">What do these mean?</a></p>
-      </dd>
-    </div>
-    {# Key guidance is guidance rather than a code, so its text is in the Guidance tab #}
-    {% if rule.type == "code" %}
-      <div class="app-dc-details__row">
-        <dt class="app-dc-details__key">Design code</dt>
-        <dd class="app-dc-details__value">{{ rule.requirementText | designCodeText }}</dd>
-      </div>
-    {% endif %}
-  </dl>
-{% endset %}
-
-{% set developmentTypeHtml %}
-  <h2 class="govuk-visually-hidden">Development type</h2>
   <dl class="app-dc-details">
     <div class="app-dc-details__row">
       <dt class="app-dc-details__key">Development type</dt>
@@ -115,6 +92,13 @@
         </dl>
       </dd>
     </div>
+    {# Key guidance is guidance rather than a code, so its text is in the Guidance tab #}
+    {% if rule.type == "code" %}
+      <div class="app-dc-details__row">
+        <dt class="app-dc-details__key">Design code</dt>
+        <dd class="app-dc-details__value">{{ rule.requirementText | designCodeText }}</dd>
+      </div>
+    {% endif %}
   </dl>
 {% endset %}
 
@@ -212,7 +196,6 @@
 {% if rule.tables.length %}
   {% set tabs = (tabs.push({ label: "Table", id: "table", panel: { html: tableHtml } }), tabs) %}
 {% endif %}
-{% set tabs = (tabs.push({ label: "Development type", id: "development-type", panel: { html: developmentTypeHtml } }), tabs) %}
 {% if rule.supportingDocuments.length or rule.section.introText %}
   {% set tabs = (tabs.push({ label: "Supporting materials", id: "supporting-materials", panel: { html: documentsHtml } }), tabs) %}
 {% endif %}
