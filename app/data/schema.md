@@ -366,7 +366,6 @@ From the national design code structure, so every council's design code uses the
 
 | Value | Name |
 |---|---|
-| `liveability` | Liveability |
 | `climate` | Climate |
 | `nature` | Nature |
 | `movement` | Movement |

@@ -12,8 +12,7 @@ const DESIGN_FEATURES = [
   { value: 'movement', text: 'Movement' },
   { value: 'built-form', text: 'Built form' },
   { value: 'public-space', text: 'Public space' },
-  { value: 'identity', text: 'Identity' },
-  { value: 'liveability', text: 'Liveability' }
+  { value: 'identity', text: 'Identity' }
 ]
 
 const DESIGN_CODE_TYPES = [

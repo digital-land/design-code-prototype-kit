@@ -3,7 +3,6 @@
 // every council's design code. Each council's own place types point to an area type here.
 //
 const FEATURES = [
-  { value: 'liveability', text: 'Liveability' },
   { value: 'climate', text: 'Climate' },
   { value: 'nature', text: 'Nature' },
   { value: 'movement', text: 'Movement' },

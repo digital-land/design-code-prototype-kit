@@ -23,7 +23,7 @@ const COLUMN_TYPES = ['text', 'list', 'dot']
 const CROSS_REFERENCE_TYPES = ['chapter', 'section', 'rule', 'table', 'figure']
 const DOCUMENT_CATEGORIES = ['general-guidance', 'supporting-document']
 // National values (schema.md, "National values")
-const FEATURES = ['liveability', 'climate', 'nature', 'movement', 'built-form', 'public-space', 'identity']
+const FEATURES = ['climate', 'nature', 'movement', 'built-form', 'public-space', 'identity']
 const AREA_TYPES = ['town-or-city-centre', 'local-centre', 'urban-neighbourhood', 'suburbs', 'industrial-area', 'rural-settlements']
 const DESIGN_CODE_TYPES = ['authority-wide', 'area-specific', 'site-specific']
 
