@@ -1,29 +1,33 @@
 //
-// Checks the extracted design code data in app/data/design-codes/east-riding.json
-// against app/data/schema.md.
+// Checks the design code data in app/data/design-codes/ against app/data/schema.md.
 //
 // Run with: node scripts/validate-data.js [path to JSON]
+// With no path, every JSON file in app/data/design-codes/ is checked.
 // Exits with code 1 if anything fails, so it can be used in CI.
 //
-// To check more chapters as they're extracted, add a line to EXPECTED below.
+// To check more chapters as they're extracted, add a line to EXPECTED below. Each line only
+// applies to its own design code.
 //
 
 const fs = require('fs')
 const path = require('path')
 
-// What each chapter should contain, as inclusive ranges
-const EXPECTED = [
-  { chapter: '3', codes: 'C1-C6', keyGuidance: 'G1-G4', tables: '3-4', figures: '19-24' }
-]
+// What each chapter should contain, as inclusive ranges, such as
+//   { designCode: 'east-riding-design-code', chapter: '3', codes: 'C1-C6', keyGuidance: 'G1-G4', tables: '3-4', figures: '19-24' }
+// East Riding's chapter 3 was checked like this when it was extracted by hand. Its data now comes
+// from the spreadsheet (scripts/csv-to-json.js), which uses the spreadsheet's references.
+const EXPECTED = []
 
-const DEFAULT_FILE = path.join(__dirname, '..', 'app', 'data', 'design-codes', 'east-riding.json')
+const DATA_DIR = path.join(__dirname, '..', 'app', 'data', 'design-codes')
 
 const OUTLINE_MATTERS = ['appearance', 'means-of-access', 'landscaping', 'layout', 'scale']
 const COLUMN_TYPES = ['text', 'list', 'dot']
 const CROSS_REFERENCE_TYPES = ['chapter', 'section', 'rule', 'table', 'figure']
 const DOCUMENT_CATEGORIES = ['general-guidance', 'supporting-document']
 // National values (schema.md, "National values")
-const FEATURES = ['climate', 'nature', 'movement', 'built-form', 'public-space', 'identity']
+const FEATURES = ['climate', 'nature', 'movement', 'built-form', 'public-space', 'identity',
+  // From the National Model Design Code's characteristics, used by the design code spreadsheets
+  'context', 'uses', 'homes-and-buildings', 'resources', 'lifespan']
 const AREA_TYPES = ['town-or-city-centre', 'local-centre', 'urban-neighbourhood', 'suburbs', 'industrial-area', 'rural-settlements']
 const DESIGN_CODE_TYPES = ['authority-wide', 'area-specific', 'site-specific']
 
@@ -43,6 +47,8 @@ const isPage = value => Number.isInteger(value) && value > 0
 function validate (data) {
   const errors = []
   const warnings = []
+  // The chapters expected in this design code, if any are listed
+  const expected = EXPECTED.filter(item => item.designCode === (data['design-code'] || {}).reference)
   const fail = (label, message) => errors.push(`${label}: ${message}`)
 
   const list = key => Array.isArray(data[key]) ? data[key] : []
@@ -128,7 +134,7 @@ function validate (data) {
   }
 
   // Every expected code, key guidance item, table and figure is present
-  for (const { chapter, codes, keyGuidance, tables: tableRange, figures: figureRange } of EXPECTED) {
+  for (const { chapter, codes, keyGuidance, tables: tableRange, figures: figureRange } of expected) {
     for (const reference of expandRange(codes)) {
       const rule = rules.find(item => item.reference === reference)
       if (!rule) fail(`Chapter ${chapter}`, `${reference} is missing`)
@@ -326,8 +332,9 @@ function validate (data) {
   for (const document of documents) if (!usedDocuments.has(document.reference)) warnings.push(`Supporting document ${document.reference}: nothing refers to it`)
 
   // Items no expected range covers, so new chapters aren't missed
-  const expectedReferences = new Set(EXPECTED.flatMap(({ codes, keyGuidance }) => [...expandRange(codes), ...expandRange(keyGuidance)]))
-  const unexpected = rules.map(rule => rule.reference).filter(reference => !expectedReferences.has(reference))
+  // Only design codes with expected chapters are checked for items outside them
+  const expectedReferences = new Set(expected.flatMap(({ codes, keyGuidance }) => [...expandRange(codes), ...expandRange(keyGuidance)]))
+  const unexpected = expected.length ? rules.map(rule => rule.reference).filter(reference => !expectedReferences.has(reference)) : []
 
   const counts = {
     'codes and key guidance': rules.length,
@@ -343,31 +350,38 @@ function validate (data) {
     'local plan policies': policies.length
   }
 
-  return { errors, warnings, unexpected, counts }
+  return { errors, warnings, unexpected, counts, expected }
 }
 
-const file = process.argv[2] || DEFAULT_FILE
-const data = JSON.parse(fs.readFileSync(file, 'utf8'))
-const { errors, warnings, unexpected, counts } = validate(data)
+const files = process.argv[2]
+  ? [process.argv[2]]
+  : fs.readdirSync(DATA_DIR).filter(file => file.endsWith('.json')).sort().map(file => path.join(DATA_DIR, file))
 
-console.log(`Checked ${path.relative(process.cwd(), file)}`)
-console.log(Object.entries(counts).map(([name, count]) => `  ${count} ${name}`).join('\n'))
-console.log(`Expected: ${EXPECTED.map(({ chapter, codes, keyGuidance, tables, figures }) => `chapter ${chapter} (${codes}, ${keyGuidance}, tables ${tables}, figures ${figures})`).join('; ')}`)
+for (const file of files) {
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'))
+  const { errors, warnings, unexpected, counts, expected } = validate(data)
 
-if (unexpected.length) {
-  console.log(`\nWarning: ${unexpected.length} item(s) not in any expected range: ${unexpected.join(', ')}`)
-  console.log('Add their chapter to EXPECTED in scripts/validate-data.js to check them.')
-}
+  console.log(`\nChecked ${path.relative(process.cwd(), file)}`)
+  console.log(Object.entries(counts).map(([name, count]) => `  ${count} ${name}`).join('\n'))
+  if (expected.length) {
+    console.log(`Expected: ${expected.map(({ chapter, codes, keyGuidance, tables, figures }) => `chapter ${chapter} (${codes}, ${keyGuidance}, tables ${tables}, figures ${figures})`).join('; ')}`)
+  }
 
-if (warnings.length) {
-  console.log(`\n${warnings.length} warning(s):`)
-  for (const warning of warnings) console.log(`  - ${warning}`)
-}
+  if (unexpected.length) {
+    console.log(`\nWarning: ${unexpected.length} item(s) not in any expected range: ${unexpected.join(', ')}`)
+    console.log('Add their chapter to EXPECTED in scripts/validate-data.js to check them.')
+  }
 
-if (errors.length) {
-  console.log(`\n${errors.length} problem(s) found:`)
-  for (const error of errors) console.log(`  - ${error}`)
-  process.exitCode = 1
-} else {
-  console.log('\nNo problems found.')
+  if (warnings.length) {
+    console.log(`\n${warnings.length} warning(s):`)
+    for (const warning of warnings) console.log(`  - ${warning}`)
+  }
+
+  if (errors.length) {
+    console.log(`\n${errors.length} problem(s) found:`)
+    for (const error of errors) console.log(`  - ${error}`)
+    process.exitCode = 1
+  } else {
+    console.log('\nNo problems found.')
+  }
 }

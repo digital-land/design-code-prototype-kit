@@ -19,7 +19,10 @@ const DESIGN_CODES_DIR = path.join(__dirname, 'design-codes')
 // Organisation names, keyed by planning.data.gov.uk CURIE.
 // The data stores only the CURIE; add councils here as their design codes are added.
 const ORGANISATIONS = {
-  'local-authority:ERY': 'East Riding of Yorkshire Council'
+  'local-authority:BDG': 'London Borough of Barking and Dagenham',
+  'local-authority:ERY': 'East Riding of Yorkshire Council',
+  'local-authority:MDW': 'Medway Council',
+  'local-authority:REI': 'Reigate and Banstead Borough Council'
 }
 
 // GOV.UK tag colour for each status
@@ -80,6 +83,7 @@ function toViewModel (data) {
   const tables = data['design-code-tables'] || []
   const figures = data['design-code-figures'] || []
   const documents = new Map((data['supporting-documents'] || []).map(document => [document.reference, document]))
+  const policies = new Map((data['local-plan-policies'] || []).map(policy => [policy.reference, policy]))
 
   // A supporting document from Appendix B, for listing under a section or rule
   const documentViewModel = reference => {
@@ -90,7 +94,11 @@ function toViewModel (data) {
       title: document.title,
       publisher: document.publisher,
       date: formatPartialDate(document['publication-date']),
-      url: document['document-url']
+      url: document['document-url'],
+      // Such as "Volume 3, Part A". Only in spreadsheet data, such as Chatham Centre's.
+      volume: document.volume || '',
+      // It's (part of) the design code itself, so a rule's pages in it can be given
+      isDesignCode: Boolean(document['design-code-document'])
     }
   }
 
@@ -146,8 +154,12 @@ function toViewModel (data) {
 
   const ruleViewModel = rule => ({
     reference: rule.reference,
+    // The reference as the design code prints it. The spreadsheets give some rules the same
+    // reference, so the data adds -1, -2… to make them unique.
+    printedReference: rule['printed-reference'] || rule.reference,
     type: rule.type,
-    typeName: rule.type === 'code' ? 'Code' : 'Key guidance',
+    // "Recommendation" is key guidance that the design code calls a recommendation
+    typeName: rule['type-name'] || (rule.type === 'code' ? 'Code' : 'Key guidance'),
     title: rule.title,
     requirementText: rule['requirement-text'],
     guidanceText: rule['guidance-text'],
@@ -167,7 +179,24 @@ function toViewModel (data) {
     features: rule.features || [],
     outlineMatters: (rule['outline-application-matters'] || []).map(matter => OUTLINE_MATTERS[matter] || matter),
     localPlanPolicies: (rule['local-plan-policies'] || []).map(policy => policy.replace('-', ' ')),
-    pageNumber: rule['page-number']
+    // Each policy with its name, plan and link, where the data has them
+    localPlanPolicyDetails: (rule['local-plan-policies'] || []).map(reference => {
+      const policy = policies.get(reference) || {}
+      return { reference: reference.replace('-', ' '), name: policy.name || '', plan: policy['local-plan'] || '', url: policy['documentation-url'] || '' }
+    }),
+    // Such as "Movement – Footways". Only in spreadsheet data, such as Chatham Centre's.
+    nationalDesignIssue: rule['national-design-issue'],
+    // The rest are only in spreadsheet data:
+    // where the rule applies, as the spreadsheet words it ("Becontree Estate… House types: …")
+    areaText: rule['area-text'] || '',
+    // other supporting information, such as a materials palette
+    supportingNotes: rule['supporting-notes'] || [],
+    // whole plans the rule points to, rather than single policies
+    localPlanDocuments: rule['local-plan-documents'] || [],
+    // the web page or document the rule is on
+    documentUrl: rule['document-url'] || '',
+    pageNumber: rule['page-number'],
+    endPageNumber: rule['end-page-number']
   })
 
   // Chapters, each with its sections, each with its rules. Only extracted content is included.
@@ -189,7 +218,13 @@ function toViewModel (data) {
           .filter(rule => rule['design-code-section'] === section.reference)
           .map(rule => ({
             ...ruleViewModel(rule),
-            section: { reference: section.reference, name: section.name, introText: section['intro-text'] },
+            section: {
+              reference: section.reference,
+              name: section.name,
+              introText: section['intro-text'],
+              pageNumber: section['page-number'],
+              endPageNumber: section['end-page-number']
+            },
             tables: tablesFor(rule),
             figure: figureFor(section.reference),
             supportingDocuments: documentsFor(section, rule)
@@ -224,6 +259,8 @@ function toViewModel (data) {
     preparedBy: [].concat(meta['prepared-by'] || []),
     localPlan: meta['local-plan'],
     documentUrl: meta['document-url'],
+    // How the design code is adopted, such as "Supplementary Planning Document (SPD) – …"
+    localDevelopmentDocument: meta['local-development-document'] || '',
     chapters: chapterViewModels,
     extractedChapters: chapters.map(chapter => `Chapter ${chapter.reference}: ${chapter.name}`),
     codeCount: rules.filter(rule => rule.type === 'code').length,

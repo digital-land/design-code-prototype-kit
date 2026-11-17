@@ -220,6 +220,14 @@ Codes and key guidance share one record type, told apart by `type`. Both have th
 | `design-code-tables` | No | Tables the rule refers to | `table-9` |
 | `cross-references` | No | Other chapters, sections, rules, tables or figures the text points to | `{type: section, reference: 3.2, listed-as: see section 3.2 Biodiversity}` |
 | `glossary-terms` | No | Glossary terms in the requirement and guidance text | `public-realm;green-infrastructure` |
+| `national-design-issue` | No | *Proposed.* The national design issue, from the design code spreadsheets | Movement – Footways |
+| `printed-reference` | No | *Proposed.* The reference as the design code prints it, where `reference` has had -1, -2… added because the spreadsheet gives several rules the same one | `3.3.3` |
+| `type-name` | No | *Proposed.* What the design code calls a key guidance rule, if it isn't "Key guidance" | Recommendation |
+| `area-text` | No | *Proposed.* Where the rule applies, as the spreadsheet words it. `place-types` is read from it | Becontree Estate (non-designated heritage asset). House types: Type A, Type B. Location: Mid terrace. |
+| `supporting-notes` | No | *Proposed.* Other supporting information, each `{label, text}` | `{label: Suggested materials palette, text: Brick slips…}` |
+| `local-plan-documents` | No | *Proposed.* Whole plans the rule points to, rather than single policies, each `{name, url}` | `{name: London Plan 2021, url: …}` |
+| `document-url` | No | *Proposed.* The web page or document the rule is on | |
+| `end-page-number` | No | Last printed page, if the rule runs over several pages | `31` |
 | `page-number` | No | Printed page number | `87` |
 
 In C28, `development-types`, `outline-application-matters` and `local-plan-policies` are illustrative only, because they need reading from the visual keys (see below).
@@ -372,6 +380,13 @@ From the national design code structure, so every council's design code uses the
 | `built-form` | Built form |
 | `public-space` | Public space |
 | `identity` | Identity |
+| `context` | Context |
+| `uses` | Uses |
+| `homes-and-buildings` | Homes and buildings |
+| `resources` | Resources |
+| `lifespan` | Lifespan |
+
+The last five are National Model Design Code characteristics that the Chatham Centre spreadsheet uses.
 
 **Area types** (`area-type` on place types):
 
@@ -401,3 +416,13 @@ These are the area types East Riding's place types map to. The national list may
 7. **Topics in the prototype.** The v2 prototype's "Topic" filter (Biodiversity, Green, Layout) would map to sections. Note that C1 is in 3.3 Trees and Hedgerows, not 3.2 Biodiversity, where the Figma design shows it.
 8. **Figure images.** Figures 20 and 22 have images, cropped from the PDF; the rest don't yet. Should the rest be cropped the same way, or requested from the council as separate files?
 9. **Appendix D links.** The "Policy" links in each section's footer box, and the code numbers on each box, link to a separate file, *Appendix D Policy Matrix April 2025 2a.pdf*, which isn't in this repository. Do we have a public URL for it?
+
+## Spreadsheet data
+
+`scripts/csv-to-json.js` (`npm run data`) converts the spreadsheets in `app/data/Sources/Design codes/`:
+
+- each list of rules into a design code file here (Chatham Centre, East Riding, Becontree, A23 Great Street). East Riding's design code details, place types and development types come from `scripts/design-codes/east-riding.json`, kept from the hand-extracted file, as the spreadsheet doesn't have them
+- "Development types" into `app/data/national/development-types.json`, the national list (major, minor and other), which gives design codes' development types their descriptions
+- "Overview" into `app/data/national/design-code-fields.json` (the fields of a rule, with the team's notes and open questions) and `app/data/national/use-classes.json`
+
+Supporting documents also have two *proposed* fields: `volume` ("Volume 3, Part A") and `design-code-document` (true when the document is the design code itself, so a rule's pages in it can be given). A design code has a *proposed* `local-development-document`: how it is adopted, as the spreadsheet words it.

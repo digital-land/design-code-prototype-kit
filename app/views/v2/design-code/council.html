@@ -148,7 +148,7 @@
                 {{ govukTag({ text: item.status, classes: "govuk-tag--turquoise app-design-code__reference" }) }}
               </div>
             </div>
-            <a class="govuk-link app-dc-result__title" href="{{ baseUrl }}/design-code/{{ code }}/{{ item.reference | lower }}">{{ item.title or item.section }}<span class="govuk-visually-hidden"> ({{ item.reference }})</span></a>
+            <a class="govuk-link app-dc-result__title" href="{{ baseUrl }}/design-code/{{ code }}/{{ item.reference | lower | urlencode }}">{{ item.title or item.section }}<span class="govuk-visually-hidden"> ({{ item.reference }})</span></a>
             {# Figma node 407:15665: with filters applied, what in the code matched each one #}
             {% if item.filterRows.length %}
               <p class="app-dc-result__details-label">Applied filters</p>

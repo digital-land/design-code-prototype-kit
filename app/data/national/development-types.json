@@ -1,0 +1,107 @@
+{
+  "source": "app/data/Sources/Design codes/Design code rules - Development types.csv",
+  "development-types": [
+    {
+      "reference": "major-homes",
+      "group": "major",
+      "name": "Homes",
+      "description": "10 or more homes. If the number of homes is not known, a site of 0.5 hectares or more."
+    },
+    {
+      "reference": "major-offices-light-industry-or-research-and-development",
+      "group": "major",
+      "name": "Offices, light industry or research and development",
+      "description": "1,000 square metres or more of new floor space, or a site of at least 1 hectare."
+    },
+    {
+      "reference": "major-general-industry-storage-and-warehousing",
+      "group": "major",
+      "name": "General industry, storage and warehousing",
+      "description": "1,000 square metres or more of new floor space, or a site of at least 1 hectare."
+    },
+    {
+      "reference": "major-retail-and-service",
+      "group": "major",
+      "name": "Retail and service",
+      "description": "1,000 square metres or more of new floor space, or a site of at least 1 hectare."
+    },
+    {
+      "reference": "major-other",
+      "group": "major",
+      "name": "Other",
+      "description": "1,000 square metres or more of new floor space, or a site of at least 1 hectare."
+    },
+    {
+      "reference": "major-public-service-infrastructure",
+      "group": "major",
+      "name": "Public service infrastructure",
+      "description": ""
+    },
+    {
+      "reference": "minor-homes",
+      "group": "minor",
+      "name": "Homes",
+      "description": "1 to 9 homes on a site smaller than 1 hectare. If the number of homes is not known, a site smaller than 0.5 hectares."
+    },
+    {
+      "reference": "minor-offices-light-industry-or-research-and-development",
+      "group": "minor",
+      "name": "Offices, light industry or research and development",
+      "description": "Less than 1,000 square metres of new floor space, on a site smaller than 1 hectare."
+    },
+    {
+      "reference": "minor-general-industry-storage-and-warehousing",
+      "group": "minor",
+      "name": "General industry, storage and warehousing",
+      "description": "Less than 1,000 square metres of new floor space, on a site smaller than 1 hectare."
+    },
+    {
+      "reference": "minor-retail-and-service",
+      "group": "minor",
+      "name": "Retail and service",
+      "description": "Less than 1,000 square metres of new floor space, on a site smaller than 1 hectare."
+    },
+    {
+      "reference": "minor-other",
+      "group": "minor",
+      "name": "Other",
+      "description": "Less than 1,000 square metres of new floor space, on a site smaller than 1 hectare."
+    },
+    {
+      "reference": "change-of-use",
+      "group": "other",
+      "name": "Change of use",
+      "description": "A change to how a building or land is used with either:\n- no building or engineering work\n- work that would not need planning permission on its own\n\nA change of use on a site larger than 1 hectare counts as major development."
+    },
+    {
+      "reference": "householder",
+      "group": "other",
+      "name": "Householder",
+      "description": "Work to a house or the land that belongs to it. This includes work that needs planning permission and not a change of use."
+    },
+    {
+      "reference": "advertisements",
+      "group": "other",
+      "name": "Advertisements",
+      "description": ""
+    },
+    {
+      "reference": "permission-in-principle",
+      "group": "other",
+      "name": "Permission in principle",
+      "description": ""
+    },
+    {
+      "reference": "technical-details-consent-minor-housing-led",
+      "group": "other",
+      "name": "Technical details consent (minor housing-led)",
+      "description": ""
+    },
+    {
+      "reference": "technical-details-consent-major",
+      "group": "other",
+      "name": "Technical details consent (major)",
+      "description": ""
+    }
+  ]
+}

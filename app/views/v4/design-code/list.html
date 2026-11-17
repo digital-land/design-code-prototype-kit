@@ -1,0 +1,170 @@
+{% extends "v4/layouts/main.html" %}
+
+{#
+  v4: the rules as a list, without a map, laid out like v3's results (filters on the left, 10 rules
+  to a page). "View all design requirements" on the search page lists every design code's rules;
+  "View as a list" on the map lists one area's, with "View on map" to go back. See the list route
+  in app/routes/v4.js.
+#}
+
+{% set heading = "Design code rules for " + area.council if area else "All design requirements" %}
+{% set pageName = heading %}
+{% set mainClasses = "app-dc-page__main" %}
+
+{# A collapsible filter group, open when it has a selection #}
+{% macro filterGroup(params) %}
+  <details class="app-dc-filter" {% if params.open %}open{% endif %}>
+    <summary class="app-dc-filter__summary">
+      <span class="app-dc-filter__title">{{ params.title }}{% if params.count %} ({{ params.count }}<span class="govuk-visually-hidden"> selected</span>){% endif %}</span>
+    </summary>
+    <div class="app-dc-filter__body">
+      {{ caller() }}
+    </div>
+  </details>
+{% endmacro %}
+
+{# Switches between the map and the list of the same area #}
+{% macro viewToggle(current) %}
+  <nav class="app-v4-view-toggle" aria-label="How to view the rules">
+    <ul class="app-v4-view-toggle__list">
+      <li class="app-v4-view-toggle__item">
+        {% if current == "map" %}<span class="app-v4-view-toggle__link app-v4-view-toggle__link--current" aria-current="page">View on map</span>
+        {% else %}<a class="govuk-link app-v4-view-toggle__link" href="{{ mapHref }}">View on map</a>{% endif %}
+      </li>
+      <li class="app-v4-view-toggle__item">
+        {% if current == "list" %}<span class="app-v4-view-toggle__link app-v4-view-toggle__link--current" aria-current="page">View as a list</span>
+        {% else %}<a class="govuk-link app-v4-view-toggle__link" href="{{ listHref }}">View as a list</a>{% endif %}
+      </li>
+    </ul>
+  </nav>
+{% endmacro %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: mapHref if area else baseUrl + "/design-code/find", classes: "app-dc-page__back-link" }) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l app-v4-list__title">{{ heading }}</h1>
+
+{% if area %}{{ viewToggle("list") }}{% endif %}
+
+<div class="app-v3-layout">
+
+  <form class="app-dc-page__filters app-v3-filters" id="v4-list-filters" action="{{ baseUrl }}/design-code/find/list" method="get" novalidate>
+    {% if area %}<input type="hidden" name="area" value="{{ area.id }}">{% endif %}
+    <h2 class="govuk-heading-m app-dc-page__filters-heading">Filters</h2>
+
+    <div class="app-dc-search">
+      <label class="govuk-label app-label--secondary app-dc-search__label" for="v4-list-search">Search</label>
+      <div class="app-dc-search__wrapper">
+        <input class="govuk-input app-dc-search__input" id="v4-list-search" name="q" type="search" value="{{ filters.search }}" autocomplete="off">
+        <button class="app-dc-search__button" type="submit">
+          <span class="govuk-visually-hidden">Search rules</span>
+          <svg class="app-dc-search__icon" width="12" height="12" viewBox="0 0 27 27" aria-hidden="true" focusable="false">
+            <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" fill="none"></circle>
+            <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {# A tag for each filter in use, which removes it #}
+    {% if appliedFilters.length %}
+      <h3 class="govuk-visually-hidden">Applied filters</h3>
+      <ul class="app-dc-tags">
+        {% for filter in appliedFilters %}
+          <li>
+            <a class="app-dc-tag" href="{{ filter.href }}">
+              <span class="govuk-visually-hidden">Remove filter: </span>{{ filter.label }}
+              <svg class="app-dc-tag__icon" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% for group in filterGroups %}
+      {% call filterGroup({ title: group.title, open: group.count, count: group.count }) %}
+        {{ govukCheckboxes({
+          idPrefix: "v4-list-" + group.name,
+          name: group.name,
+          classes: "govuk-checkboxes--small",
+          formGroup: { classes: "govuk-!-margin-bottom-0" },
+          fieldset: { legend: { text: group.title, classes: "govuk-visually-hidden" } },
+          hint: { text: group.hint, classes: "app-dc-filter__hint" } if group.hint,
+          items: group.items
+        }) }}
+      {% endcall %}
+    {% endfor %}
+
+    {% if questionsHref %}
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        <a href="{{ questionsHref }}" class="govuk-link">Not sure what I am looking for?</a>
+      </p>
+    {% endif %}
+
+    <div class="govuk-button-group govuk-!-margin-bottom-0">
+      {# Filters apply as they're ticked, so the button is only needed without JavaScript #}
+      {{ govukButton({ text: "Apply filter", classes: "govuk-!-margin-bottom-0 app-v3-filters__submit" }) }}
+      {% if hasFilters %}
+        <a href="{{ clearHref }}" class="govuk-link">Clear filters</a>
+      {% endif %}
+    </div>
+  </form>
+
+  <section class="app-v3-results" aria-labelledby="v4-list-results-heading">
+    <h2 class="govuk-heading-m app-v3-results__heading" id="v4-list-results-heading">Design codes</h2>
+
+    <p class="govuk-body app-dc-page__result-count" id="v4-list-count" tabindex="-1">
+      {% if resultCount == total %}Showing all codes and key guidance{% else %}Showing {{ resultCount }} of {{ total }} codes and key guidance{% endif %}
+    </p>
+
+    {% if results.length %}
+      <ul class="govuk-list app-v3-codes">
+        {% for item in results %}
+          <li class="app-v3-code">
+            <div class="app-v3-code__header">
+              <a class="govuk-link app-v3-code__title" href="{{ item.href }}">{{ item.title }}</a>
+              {{ govukTag({ text: item.status, classes: "govuk-tag--turquoise app-design-code__reference app-v3-code__status" }) }}
+            </div>
+            {# Which design code it's from, when more than one is listed #}
+            {% if not area %}<p class="app-v4-list__code">{{ item.designCode }}</p>{% endif %}
+            {% if item.description %}<p class="app-v3-code__description">{{ item.description }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      {% if pagination %}
+        {{ govukPagination({ previous: pagination.previous, next: pagination.next, items: pagination.items, classes: "app-v3-pagination" }) }}
+      {% endif %}
+    {% else %}
+      <p class="govuk-body">No codes or key guidance match your filters. Try removing some filters.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    // Filters apply as soon as one is ticked or unticked. The page reloads, so focus goes back to
+    // the checkbox afterwards.
+    (function () {
+      var form = document.getElementById('v4-list-filters')
+      if (!form) return
+      var KEY = 'v4-list-focus'
+      try {
+        var id = window.sessionStorage.getItem(KEY)
+        window.sessionStorage.removeItem(KEY)
+        var input = id && document.getElementById(id)
+        if (input) input.focus()
+      } catch (error) {}
+      form.addEventListener('change', function (event) {
+        if (!event.target.matches('input[type="checkbox"]')) return
+        try { window.sessionStorage.setItem(KEY, event.target.id) } catch (error) {}
+        form.submit()
+      })
+    })()
+  </script>
+{% endblock %}

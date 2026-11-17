@@ -8,7 +8,7 @@
   the ticked councils selected.
 #}
 
-{% set pageName = "Find design codes for an area" %}
+{% set pageName = "Find design code rules" %}
 
 {% block stylesheets %}
   {{ super() }}
@@ -23,8 +23,7 @@
 {% block content %}
 <h1 class="govuk-heading-l app-dc-finder__title">{{ pageName }}</h1>
 <p class="govuk-body app-dc-finder__description">
-  Design codes set out the rules new development must follow, such as building height, street layout and green space.
-  Search for a council or postcode, or select an area on the map, to see its design codes.
+  Check what rules new development must follow in an area. For example, building height, street layout and green space.
 </p>
 
 <div class="app-dc-finder app-dc-finder--v2" data-module="app-dc-finder">
@@ -32,8 +31,8 @@
   <form class="app-dc-areas app-dc-areas--v2" action="{{ baseUrl }}/design-code/find" method="get" id="area-form" novalidate>
     {# Search by council name or postcode. As a postcode is typed, matching postcodes are suggested below #}
     <div class="app-dc-search app-dc-search--suggest" role="search">
-      <label class="govuk-label app-label--secondary app-dc-search__label" for="area-search">Search</label>
-      <div class="govuk-hint app-dc-search__hint" id="area-search-hint">Council name or postcode</div>
+      <label class="govuk-label app-label--secondary app-dc-search__label" for="area-search">Search for an area</label>
+      <div class="govuk-hint app-dc-search__hint" id="area-search-hint">Enter an area, postcode or local authority.</div>
       <div class="app-dc-search__wrapper">
         <input class="govuk-input app-dc-search__input" id="area-search" name="q" type="search" value="{{ search }}" autocomplete="off" aria-describedby="area-search-hint">
         <button class="app-dc-search__button" type="submit">
@@ -50,8 +49,9 @@
 
     <hr class="app-dc-areas__divider">
 
-    <fieldset class="govuk-fieldset app-dc-areas__fieldset">
-      <legend class="govuk-fieldset__legend app-label--secondary app-dc-areas__legend">Or select an area from list below</legend>
+    <fieldset class="govuk-fieldset app-dc-areas__fieldset" aria-describedby="area-list-hint">
+      <legend class="govuk-fieldset__legend app-label--secondary app-dc-areas__legend">Local authority</legend>
+      <div class="govuk-hint app-dc-search__hint" id="area-list-hint">Select a local authority.</div>
       {# The list scrolls on its own, so it ends level with the bottom of the map #}
       <div class="govuk-checkboxes govuk-checkboxes--small app-dc-areas__list" data-module="govuk-checkboxes">
         {% for area in areas %}

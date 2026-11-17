@@ -1,0 +1,98 @@
+{
+  "source": "app/data/Sources/Design codes/Design code rules - Overview.csv",
+  "_comment": "The fields a design code rule has, grouped as the tabs of a rule's page, with the team's notes and open questions on each",
+  "groups": [
+    {
+      "name": "Design code rule",
+      "fields": [
+        {
+          "name": "Name",
+          "notes": "Do we need to establish naming conventions? Some existing design code rules prefix with the reference number and others don't."
+        },
+        {
+          "name": "Description",
+          "notes": "The rule itself."
+        },
+        {
+          "name": "Type",
+          "notes": "Rule vs. guidance"
+        },
+        {
+          "name": "Design code status",
+          "notes": "Adopted etc."
+        },
+        {
+          "name": "National design issue",
+          "notes": "Can we combine the code ref and full name here?"
+        },
+        {
+          "name": "National design feature",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Where the rule applies",
+      "fields": [
+        {
+          "name": "Area",
+          "notes": ""
+        },
+        {
+          "name": "Project type",
+          "notes": "Do we have a source list for this? Some mention of the PlanX list across research, as well as 'Use class'."
+        },
+        {
+          "name": "Development type",
+          "notes": ""
+        },
+        {
+          "name": "Land use",
+          "notes": "Residential\nCommercial\nRetail\nOther"
+        }
+      ]
+    },
+    {
+      "name": "Guidance",
+      "fields": []
+    },
+    {
+      "name": "Source",
+      "fields": [
+        {
+          "name": "Design code rule reference",
+          "notes": "Add explanatory text for what a reference means"
+        },
+        {
+          "name": "Design code",
+          "notes": ""
+        },
+        {
+          "name": "Design code link",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Supporting information",
+      "fields": [
+        {
+          "name": "Planning policy",
+          "notes": "Is this different to supporting information or the same thing?"
+        },
+        {
+          "name": "Local plan policy",
+          "notes": "Can we combine with the links below as simple hyperlinks?"
+        },
+        {
+          "name": "Local plan policy links",
+          "notes": ""
+        },
+        {
+          "name": "Local development document",
+          "notes": "Ask Matt/Sirdeep more about the options here and whether this is the correct label\n\nFrom UR: a reference to local plan policies on the initial page incorrectly implied the design rule carried the weight of a local plan policy rather than supplementary guidance\n\nLegal adoption status and document type (local plan policy, guidance document, or supplementary planning document)"
+        }
+      ]
+    }
+  ]
+}

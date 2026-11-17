@@ -83,7 +83,7 @@
           {% for type in rule.developmentTypeDetails %}
             <div class="app-dc-types__row">
               <dt class="app-dc-types__term">
-                <span class="app-dc-key app-dc-key--{{ type.code | lower }}" aria-hidden="true">{{ type.code }}</span>
+                {% if type.code %}<span class="app-dc-key app-dc-key--{{ type.code | lower }}" aria-hidden="true">{{ type.code }}</span>{% endif %}
                 <span class="app-dc-types__name">{{ type.name }}</span>
               </dt>
               <dd class="app-dc-types__description">{{ type.description }}</dd>

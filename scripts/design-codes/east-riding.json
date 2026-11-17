@@ -1,0 +1,175 @@
+{
+  "_comment": "East Riding facts the spreadsheet does not hold, kept from the hand-extracted east-riding.json: the design code details, its place types (with their national area types, used by the filters and the \"Not sure what I am looking for?\" questions) and its development types (with their keys and Table 1 descriptions). Used by scripts/csv-to-json.js.",
+  "design-code": {
+    "reference": "east-riding-design-code",
+    "name": "East Riding Design Code",
+    "organisation": "local-authority:ERY",
+    "description": "The East Riding Design Code has been prepared to clarify design expectations and improve the quality of new development across the whole of the East Riding of Yorkshire.",
+    "vision": "Green, inclusive and distinctive places, which connect landscape, people, place and nature. New development in the East Riding will celebrate the diversity of the built and natural environment and its heritage to create healthy and sustainable places for the communities of today and tomorrow.",
+    "status": "adopted",
+    "document-type": "supplementary-planning-document",
+    "adopted-date": "2025-04",
+    "last-updated-date": "2025-09",
+    "version": "2a",
+    "coverage": "The whole of the East Riding of Yorkshire",
+    "coverage-geography": "statistical-geography:E06000011",
+    "prepared-by": [
+      "AECOM"
+    ],
+    "credits": "Illustrations by Harper Perry Ltd; Illustrations by Joseph Cox, FORM Studio",
+    "local-plan": "East Riding Local Plan 2025",
+    "document-url": "",
+    "documentation-url": "",
+    "design-code-type": "authority-wide"
+  },
+  "place-types": [
+    {
+      "reference": "east-riding-design-code:town-centre",
+      "design-code": "east-riding-design-code",
+      "code": "TC",
+      "local-name": "Town centre",
+      "area-type": "town-or-city-centre",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:inner-neighbourhood",
+      "design-code": "east-riding-design-code",
+      "code": "IN",
+      "local-name": "Inner neighbourhood",
+      "area-type": "urban-neighbourhood",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:outer-neighbourhood",
+      "design-code": "east-riding-design-code",
+      "code": "ON",
+      "local-name": "Outer neighbourhood",
+      "area-type": "suburbs",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:neighbourhood-centre",
+      "design-code": "east-riding-design-code",
+      "code": "NC",
+      "local-name": "Neighbourhood centre",
+      "area-type": "local-centre",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:village",
+      "design-code": "east-riding-design-code",
+      "code": "V",
+      "local-name": "Village",
+      "area-type": "rural-settlements",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:countryside",
+      "design-code": "east-riding-design-code",
+      "code": "C",
+      "local-name": "Countryside",
+      "area-type": "",
+      "extraction-notes": "area-type is empty because the national area types have no match for this place type, so it is local-only, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    },
+    {
+      "reference": "east-riding-design-code:business-and-industrial",
+      "design-code": "east-riding-design-code",
+      "code": "SD",
+      "local-name": "Business and industrial",
+      "area-type": "industrial-area",
+      "extraction-notes": "area-type maps this place type to the national area type, from the content designer on 2026-10-30. local-name is written in sentence case as in the prototype; check it against the place type pages from page 26."
+    }
+  ],
+  "development-types": [
+    {
+      "reference": "east-riding-design-code:householder",
+      "code": "H",
+      "name": "Householder Development",
+      "description": "Extensions, or minor works requiring planning permission, to a single existing housing unit.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Development types come from Table 1 in Chapter 1, included so that rule references resolve. Names are written in sentence case here; Table 1 prints them in capitals (for example \"H HOUSEHOLDER DEVELOPMENT\")."
+    },
+    {
+      "reference": "east-riding-design-code:1-2-units",
+      "code": "1",
+      "name": "1-2 Units",
+      "description": "New housing units. Please note a seperate checklist exists for residential conversions.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Table 1 gives one shared description for codes 1, 2 and 3. \"seperate\" is as printed."
+    },
+    {
+      "reference": "east-riding-design-code:3-9-units",
+      "code": "2",
+      "name": "3-9 Units",
+      "description": "New housing units. Please note a seperate checklist exists for residential conversions.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Table 1 gives one shared description for codes 1, 2 and 3. \"seperate\" is as printed."
+    },
+    {
+      "reference": "east-riding-design-code:10-plus-units",
+      "code": "3",
+      "name": "10+ Units",
+      "description": "New housing units. Please note a seperate checklist exists for residential conversions.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": "Table 1 gives one shared description for codes 1, 2 and 3. \"seperate\" is as printed."
+    },
+    {
+      "reference": "east-riding-design-code:mixed-use",
+      "code": "4",
+      "name": "Mixed Use",
+      "description": "Residential and commercial mixed use sites.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:flats",
+      "code": "F",
+      "name": "Flats",
+      "description": "New-build flats, or the conversion of existing premises to flats where requiring planning permission.",
+      "category": "residential-scale",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:agricultural",
+      "code": "A",
+      "name": "Agricultural",
+      "description": "New-build development on agricultural land (not including changes of use to non-agricultural development or development not supporting an existing agricultural function).",
+      "category": "non-residential",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:industrial-storage-and-distribution",
+      "code": "B",
+      "name": "Industrial, Storage and Distribution (B Class Uses)",
+      "description": "Development intended for B Class uses including general industrial and storage and distribution.",
+      "category": "non-residential",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:commercial",
+      "code": "C",
+      "name": "Commercial",
+      "description": "All forms of new-build development intended for commercial use, including offices, bars and eateries, and community spaces.",
+      "category": "non-residential",
+      "design-code": "east-riding-design-code",
+      "notes": ""
+    },
+    {
+      "reference": "east-riding-design-code:advertisement-consent",
+      "code": "",
+      "name": "Advertisement Consent",
+      "description": "",
+      "category": "non-residential",
+      "notes": "Not in Table 1. Name from Table 2 (Form 17 Advertisement Consent); Appendix D heads the column \"Adv Consent\". No description is given. No Chapter 3 item applies to it.",
+      "design-code": "east-riding-design-code"
+    }
+  ]
+}

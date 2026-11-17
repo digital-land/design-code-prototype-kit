@@ -13,6 +13,18 @@
       "designCode": "medway"
     },
     {
+      "id": "barking-and-dagenham",
+      "name": "Barking and Dagenham",
+      "council": "London Borough of Barking and Dagenham",
+      "designCode": "becontree"
+    },
+    {
+      "id": "reigate-and-banstead",
+      "name": "Reigate and Banstead",
+      "council": "Reigate and Banstead Borough Council",
+      "designCode": "a23"
+    },
+    {
       "id": "birmingham",
       "name": "Birmingham",
       "council": "Birmingham City Council",
@@ -106,6 +118,20 @@
       "pageTitle": "Newcastle City Council",
       "status": "Status",
       "area": "newcastle"
+    },
+    "becontree": {
+      "name": "Becontree Design Code",
+      "council": "London Borough of Barking and Dagenham",
+      "pageTitle": "London Borough of Barking and Dagenham",
+      "status": "Status",
+      "area": "barking-and-dagenham"
+    },
+    "a23": {
+      "name": "A23 Great Street Design Code",
+      "council": "Reigate and Banstead Borough Council",
+      "pageTitle": "Reigate and Banstead Borough Council",
+      "status": "Status",
+      "area": "reigate-and-banstead"
     }
   }
 }

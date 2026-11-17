@@ -196,7 +196,8 @@
     </p>
 
     <div class="govuk-button-group govuk-!-margin-bottom-0">
-      {{ govukButton({ text: "Apply filter", classes: "govuk-!-margin-bottom-0" }) }}
+      {# Filters apply as they're ticked, so the button is only needed without JavaScript #}
+      {{ govukButton({ text: "Apply filter", classes: "govuk-!-margin-bottom-0 app-v3-filters__submit" }) }}
       {% if hasFilters %}
         <a href="{{ baseUrl }}/design-code/{{ code }}?design-code=none" class="govuk-link" data-drill data-focus="count">Clear filters</a>
       {% endif %}
@@ -222,8 +223,8 @@
     {% endif %}
     </div>
 
-    {# Updated in place. After "Apply filter" focus moves here, so screen readers read the new count;
-       when the map changes it, the live region announces it. #}
+    {# Updated in place. When a filter is ticked or the map changes, the live region announces the
+       new count. After a search, or removing a filter's tag, focus moves here. #}
     <p class="govuk-body app-dc-page__result-count" id="dc-result-count" aria-live="polite" tabindex="-1">
       {% if filters.narrows %}Showing {{ resultCount }} {{ "code or key guidance" if resultCount == 1 else "codes and key guidance" }}{% else %}Showing all codes and key guidance{% endif %}
     </p>
@@ -235,10 +236,12 @@
           {# Hovering or focusing a code highlights where it applies on the map #}
           <li class="app-v3-code" data-reference="{{ item.reference }}" data-place-types="{{ item.placeTypeIds | join(' ') }}">
             <div class="app-v3-code__header">
-              {{ govukTag({ text: item.reference, classes: "app-dc-result__reference" }) }}
-              <a class="govuk-link app-v3-code__title" href="{{ baseUrl }}/design-code/{{ code }}/{{ item.reference | lower }}">{{ item.title or item.section }}<span class="govuk-visually-hidden"> ({{ item.reference }})</span></a>
+              <a class="govuk-link app-v3-code__title" href="{{ baseUrl }}/design-code/{{ code }}/{{ item.reference | lower | urlencode }}">{{ item.title or item.section }}<span class="govuk-visually-hidden"> ({{ item.reference }})</span></a>
               {{ govukTag({ text: item.status, classes: "govuk-tag--turquoise app-design-code__reference app-v3-code__status" }) }}
             </div>
+            {% if item.description %}
+              <p class="app-v3-code__description">{{ item.description }}</p>
+            {% endif %}
             {% if item.filterRows.length %}
               <p class="app-dc-result__details-label">Applied filters</p>
               <dl class="app-dc-result__details">

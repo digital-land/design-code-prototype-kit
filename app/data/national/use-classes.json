@@ -1,0 +1,159 @@
+{
+  "source": "app/data/Sources/Design codes/Design code rules - Overview.csv",
+  "use-classes": [
+    {
+      "name": "Class B",
+      "uses": [
+        {
+          "value": "B2",
+          "description": "Industrial processes not covered by E(g), excluding incineration, chemical treatment, landfill, or hazardous waste."
+        },
+        {
+          "value": "B8",
+          "description": "Storage or distribution, including open-air storage."
+        }
+      ]
+    },
+    {
+      "name": "Class C",
+      "uses": [
+        {
+          "value": "C1",
+          "description": "Hotels, boarding houses, and guest houses without a significant care element. Excludes hostels."
+        },
+        {
+          "value": "C2",
+          "description": "Residential care homes, hospitals, nursing homes, boarding schools, residential colleges, and training centres."
+        },
+        {
+          "value": "C2A",
+          "description": "Secure accommodation such as prisons, young offenders’ institutions, detention and secure training centres, custody and short-term holding centres, secure hospitals, secure local authority accommodation, and military barracks."
+        },
+        {
+          "value": "C3(a)",
+          "description": "Use by a single person or a family"
+        },
+        {
+          "value": "C3(b)",
+          "description": "Up to six people living together as one household and receiving care, such as supported housing."
+        },
+        {
+          "value": "C3(c)",
+          "description": "Up to six people living together as one household, outside the C4 definition."
+        },
+        {
+          "value": "C4",
+          "description": "Small shared houses occupied by three to six unrelated people as their only or main residence, sharing basic amenities such as a kitchen or bathroom."
+        }
+      ]
+    },
+    {
+      "name": "Class E: commercial, business and service",
+      "uses": [
+        {
+          "value": "E(a)",
+          "description": "Display or retail sale of goods, other than hot food."
+        },
+        {
+          "value": "E(b)",
+          "description": "Sale of food and drink mostly consumed on the premises."
+        },
+        {
+          "value": "E(c)(i)",
+          "description": "Financial services."
+        },
+        {
+          "value": "E(c)(ii)",
+          "description": "Professional services (other than health or medical)."
+        },
+        {
+          "value": "E(d)",
+          "description": "Other appropriate services in a commercial, business, or service locality."
+        },
+        {
+          "value": "E(e)",
+          "description": "Medical or health services"
+        },
+        {
+          "value": "E(f)",
+          "description": "Crèche, day nursery, or day centre, excluding residential use."
+        },
+        {
+          "value": "E(g)(i)",
+          "description": "Offices for operational or administrative functions."
+        },
+        {
+          "value": "E(g)(ii)",
+          "description": "Research and development of products or processes."
+        },
+        {
+          "value": "E(g)(iii)",
+          "description": "Industrial processes."
+        }
+      ]
+    },
+    {
+      "name": "Class F1: learning and non-residential institutions",
+      "uses": [
+        {
+          "value": "F1(a)",
+          "description": "Provision of education."
+        },
+        {
+          "value": "F1(b)",
+          "description": "Display of art, not for sale or hire."
+        },
+        {
+          "value": "F1(c)",
+          "description": "Museums."
+        },
+        {
+          "value": "F1(d)",
+          "description": "Public libraries or public reading rooms."
+        },
+        {
+          "value": "F1(e)",
+          "description": "Public halls or exhibition halls."
+        },
+        {
+          "value": "F1(f)",
+          "description": "Public worship or religious instruction."
+        },
+        {
+          "value": "F1(g)",
+          "description": "Law courts."
+        }
+      ]
+    },
+    {
+      "name": "Class F2: local community",
+      "uses": [
+        {
+          "value": "F2(a)",
+          "description": "Shops mostly selling essential goods, including food, where the premises do not exceed 280 square metres and no similar facility is within 1,000 metres."
+        },
+        {
+          "value": "F2(b)",
+          "description": "Halls or meeting places for the local community."
+        },
+        {
+          "value": "F2(c)",
+          "description": "Outdoor sport or recreation areas, excluding motorised vehicles and firearms."
+        },
+        {
+          "value": "F2(d)",
+          "description": "Indoor or outdoor swimming pools or skating rinks."
+        }
+      ]
+    },
+    {
+      "name": "Sui generis",
+      "uses": [
+        {
+          "value": "",
+          "description": "means “in a class of its own”. These uses are named in the legislation: theatres; amusement arcades, amusement centres, or funfairs; launderettes; fuel stations; hiring, selling, or displaying motor vehicles; taxi businesses; scrap yards, or yards for storing or distributing minerals or breaking motor vehicles; alkali works; hostels with no significant care element; waste disposal installations for incinerating, chemically treating, or landfilling hazardous waste; retail warehouse clubs; nightclubs; casinos; betting offices or shops; pay day loan shops; public houses, wine bars, or drinking establishments; drinking establishments with expanded food provision; hot food takeaways; venues for live music performance; cinemas; concert halls; bingo halls; dance halls."
+        }
+      ]
+    }
+  ]
+}

@@ -803,7 +803,7 @@
     go(link.href, { push: true, focus: link.hasAttribute('data-focus') ? 'count' : 'areas' })
   })
 
-  // Filters apply only when the form is sent, with "Apply filter" or the search button
+  // Filters apply as soon as one is ticked or unticked, and when the search is sent
   function formUrl (form) {
     var params = new URLSearchParams()
     new FormData(form).forEach(function (value, key) {
@@ -813,10 +813,7 @@
     return form.action + (search ? '?' + search : '')
   }
 
-  document.addEventListener('submit', function (event) {
-    var form = event.target
-    if (form.id !== 'dc-filters') return
-    event.preventDefault()
+  function applyFilters (form, options) {
     // A change of area types is a new map level, so leave the example site
     var chosen = Array.prototype.map.call(form.querySelectorAll('input[name="area-type"]:checked'), function (input) { return input.value })
     var current = new URLSearchParams(window.location.search).getAll('area-type')
@@ -824,7 +821,22 @@
       var site = form.querySelector('[data-site]')
       if (site) site.remove()
     }
-    go(formUrl(form), { push: true, focus: 'count' })
+    go(formUrl(form), options)
+  }
+
+  document.addEventListener('submit', function (event) {
+    var form = event.target
+    if (form.id !== 'dc-filters') return
+    event.preventDefault()
+    applyFilters(form, { push: true, focus: 'count' })
+  })
+
+  // Ticking a filter applies it straight away. Focus stays on the checkbox, and the result count's
+  // live region announces the new count.
+  document.addEventListener('change', function (event) {
+    var input = event.target
+    if (!input.matches('#dc-filters input[type="checkbox"]')) return
+    applyFilters(input.form, { push: true })
   })
 
   // Back and forward buttons

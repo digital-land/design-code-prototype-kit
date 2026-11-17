@@ -64,14 +64,19 @@ const RULE_TYPES = [
 
 // The councils' own development types (short references) that each option matches. Major
 // development is 10 or more homes. East Riding doesn't split commercial or mixed use development
-// by size, so they match both commercial options.
+// by size, so they match both commercial options. Medway's (Chatham Centre) types are split into
+// minor and major. Becontree's new dwellings are infill on small sites. A23's types ("Street and
+// public realm design", "Development on plots") don't match any option.
 const DEVELOPMENT_TYPE_MATCHES = {
   householder: ['householder'],
-  'minor-residential': ['1-2-units', '3-9-units'],
-  'major-residential': ['10-plus-units', 'flats'],
-  'minor-commercial-or-retail': ['commercial', 'mixed-use'],
-  'major-commercial-or-retail': ['commercial', 'mixed-use'],
-  other: ['agricultural', 'industrial-storage-and-distribution', 'advertisement-consent']
+  'minor-residential': ['1-2-units', '3-9-units', 'minor-homes', 'new-dwelling-infill-small-site'],
+  'major-residential': ['10-plus-units', 'flats', 'major-homes'],
+  'minor-commercial-or-retail': ['commercial', 'mixed-use',
+    'minor-offices-light-industry-or-research-and-development', 'minor-retail-and-service'],
+  'major-commercial-or-retail': ['commercial', 'mixed-use',
+    'major-offices-light-industry-or-research-and-development', 'major-retail-and-service'],
+  other: ['agricultural', 'industrial-storage-and-distribution', 'advertisement-consent',
+    'minor-other', 'major-other', 'major-public-service-infrastructure', 'change-of-use', 'advertisements']
 }
 
 // The development type options that one of the council's own development types matches

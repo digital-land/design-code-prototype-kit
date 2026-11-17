@@ -8,3 +8,4 @@
 
 require('./routes/v2')
 require('./routes/v3')
+require('./routes/v4')

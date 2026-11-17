@@ -279,6 +279,21 @@ function firstSentence (text) {
   return match ? match[0] : paragraph
 }
 
+// The start of a code's text, for the short description under its title in the results (as in v4):
+// whole sentences up to about 160 characters. A full stop only ends a sentence before a space or
+// the end, so "Figure 4.1" and "1.5m" stay whole.
+function shortText (text, limit = 160) {
+  const firstParagraph = String(text || '').split(/\n|\s-\s/)[0].trim()
+  const sentences = firstParagraph.match(/(?:[^.!?]|[.!?](?!\s|$))+[.!?]*(?:\s+|$)/g) || [firstParagraph]
+  let summary = ''
+  for (const sentence of sentences) {
+    if (summary && (summary + sentence).length > limit) break
+    summary += sentence
+  }
+  summary = summary.trim()
+  return summary.length < String(text || '').trim().length ? summary.replace(/[:;,]$/, '') + ' …' : summary
+}
+
 // A council's design code page: its codes and key guidance, filtered
 function extractedPage (placeholder, extracted, filters) {
   const mapArea = designCodeData.areas.find(area => area.id === placeholder.area)
@@ -313,6 +328,8 @@ function extractedPage (placeholder, extracted, filters) {
       developmentTypes: rule.developmentTypeCodes.map((key, index) => ({ key, name: rule.developmentTypes[index] })),
       section: `${rule.section.reference} ${rule.section.name}`,
       summary: firstSentence(rule.requirementText),
+      // A sentence or so about it, under its title
+      description: shortText(rule.requirementText),
       // The data has no status for each code, so each one shows the design code's status
       status: extracted.status.text
     }))
@@ -350,7 +367,8 @@ const path = require('path')
 const mapLevels = require('../data/v3/map-levels.json')
 const designCodeAreaBoundaries = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'assets', 'data', 'design-code-areas.geojson'), 'utf8'))
 const MAP_PARAMS = ['map', 'settlement', 'site']
-const RESULTS_PAGE_SIZE = 5
+// At least 10 results before needing "Next"
+const RESULTS_PAGE_SIZE = 10
 
 // The illustrative example site: a 16:10 rectangle inside the chosen place type zone. Ring-shaped
 // zones (inner and outer neighbourhood) put it part way out from the centre, so it sits in the ring.
@@ -629,7 +647,7 @@ router.get('/design-code/:code', (req, res, next) => {
       (filter.param === 'area-type' && key === 'site')))
   }))
 
-  // 5 results to a page (Figma node 445:28314)
+  // 10 results to a page
   const totalPages = Math.max(1, Math.ceil(page.results.length / RESULTS_PAGE_SIZE))
   const currentPage = Math.min(Math.max(parseInt(req.query.page, 10) || 1, 1), totalPages)
   const pageHref = number => {
@@ -639,7 +657,14 @@ router.get('/design-code/:code', (req, res, next) => {
   const pagination = totalPages > 1 && {
     previous: currentPage > 1 ? { href: pageHref(currentPage - 1) } : null,
     next: currentPage < totalPages ? { href: pageHref(currentPage + 1) } : null,
-    items: Array.from({ length: totalPages }, (_, index) => ({ number: index + 1, href: pageHref(index + 1), current: index + 1 === currentPage }))
+    // Not every page number, so it fits on one line (as in v4): the first, the last, and the ones
+    // either side of this one, with "…" for the gaps
+    items: Array.from({ length: totalPages }, (_, index) => index + 1)
+      .filter(number => number === 1 || number === totalPages || Math.abs(number - currentPage) <= 1)
+      .flatMap((number, index, numbers) => [
+        ...(index && number - numbers[index - 1] > 1 ? [{ ellipsis: true }] : []),
+        { number, href: pageHref(number), current: number === currentPage }
+      ])
   }
 
   res.render(`${VIEWS}/design-code/council`, {
@@ -874,7 +899,66 @@ router.get('/design-code/:code/questions/result/speak-to-the-council', (req, res
   })
 })
 
-// One code or piece of key guidance in full, linked from "Open full design code"
+// "homes-and-buildings" -> "Homes and buildings"
+function featureName (value) {
+  const text = filterOptions.optionText(filterOptions.DESIGN_FEATURES, value)
+  return text !== value ? text : value.charAt(0).toUpperCase() + value.slice(1).replace(/-/g, ' ')
+}
+
+// Guidance written as a heading and its text on each line, as in the spreadsheets:
+// "Area type vision – 3.3.4: Prioritise pedestrians…" -> { heading: 'Area type vision', text: 'Prioritise pedestrians…' }
+// The section reference after the dash is left out, as in the Figma design (node 1270:40253). Guidance
+// written as prose (such as East Riding's) gives an empty list, so it's shown as it is.
+function guidanceSections (text) {
+  const lines = String(text || '').split('\n').map(line => line.trim()).filter(Boolean)
+  const sections = lines.map(line => /^([^:]{3,90}):\s+(.+)$/.exec(line))
+  if (!lines.length || sections.some(match => !match)) return []
+  return sections.map(([, heading, body]) => ({ heading: heading.replace(/\s+[–-]\s+[\d.]+$/, ''), text: body }))
+}
+
+// The development types a rule applies to, grouped as in the Figma design (node 1270:39842):
+// "Major – Homes" goes under "Major development". Types with a description (such as East Riding's)
+// are listed with it.
+function developmentTypeGroups (rule) {
+  const groups = []
+  const group = key => {
+    let found = groups.find(item => item.key === key)
+    if (!found) groups.push(found = { key, values: [] })
+    return found
+  }
+  for (const type of rule.developmentTypeDetails) {
+    const sized = /^(Major|Minor)\s+[–-]\s+(.+)$/.exec(type.name)
+    if (sized) group(`${sized[1]} development`).values.push(sized[2])
+    else if (type.description) groups.push({ key: type.name, values: [type.description] })
+    else group('Other development').values.push(type.name)
+  }
+  return groups
+}
+
+// Where a rule applies, as rows of the "Where the rule applies" tab: the places its "Area" names,
+// then any details after them.
+//   "Becontree Estate (…). House types: Type A, Type B. Location: Mid terrace."
+//     -> Becontree Estate (…); House types: Type A, Type B; Location: Mid terrace
+//   "Central urban area; Edge of centre urban area. Sites: R2 …; R3 …"
+//     -> Central urban area; Edge of centre urban area; Sites: [R2 …, R3 …]
+// Without the spreadsheet's text, it's the rule's place types, or "All area types".
+function areaRows (rule, placeNames) {
+  if (!rule.areaText) return (placeNames.length ? placeNames : ['All area types']).map(name => ({ key: name, values: [] }))
+  const [first, ...rest] = rule.areaText.split(/\.\s+(?=[A-Z][^.:]{0,40}:)/)
+  const names = first.replace(/\.$/, '').split(';').map(name => name.trim()).filter(Boolean)
+  const details = rest.map(part => /^([^:]+):\s*(.*)$/.exec(part.replace(/\.$/, ''))).filter(Boolean)
+  return [
+    ...names.map(name => ({ key: name, values: [] })),
+    ...details.map(([, label, text]) => ({
+      key: label,
+      // A list of sites is one per line
+      values: /^sites$/i.test(label) ? text.split(';').map(item => item.trim()).filter(Boolean) : [text]
+    }))
+  ]
+}
+
+// One code or piece of key guidance in full, linked from the council's design code page. Laid out as in v4 (Figma nodes
+// 1270:39842, 1270:40253, 1270:39985 and 1270:40123)
 router.get('/design-code/:code/:reference', (req, res, next) => {
   const placeholder = designCodeData.designCodes[req.params.code]
   const extracted = placeholder && extractedFor(req.params.code)
@@ -886,14 +970,53 @@ router.get('/design-code/:code/:reference', (req, res, next) => {
     .find(item => item.reference.toLowerCase() === req.params.reference.toLowerCase())
   if (!rule) return next()
 
-  const area = designCodeData.areas.find(item => item.id === placeholder.area)
+  const placeNames = rule.placeTypeIds
+    .map(id => (extracted.placeTypes.find(placeType => placeType.id === id) || {}).localName)
+    .filter(Boolean)
+  const guidanceText = rule.guidanceText || ''
+  // The pages the rule is on, for the design code's own document: "Pages 27 to 31"
+  const rulePages = rule.pageNumber
+    ? (rule.endPageNumber ? `Pages ${rule.pageNumber} to ${rule.endPageNumber}` : `Page ${rule.pageNumber}`)
+    : ''
+  const section = rule.section
+
+  // Back to the council's design code page, as it was (with its filters) if that's where they came from
+  let backHref = `${BASE_URL}/design-code/${req.params.code}`
+  try {
+    const referrer = new URL(req.get('Referer') || '')
+    if (referrer.pathname === backHref) backHref = `${referrer.pathname}${referrer.search}`
+  } catch (error) {}
 
   res.render(`${VIEWS}/design-code/rule`, {
-    code: req.params.code,
-    // The area's short name, such as "East Riding", for the caption
-    areaName: area ? area.name : extracted.council,
-    designCode: { name: extracted.title, pageTitle: extracted.council, status: extracted.status },
-    rule
+    designCode: {
+      name: extracted.title,
+      status: extracted.status,
+      // The page or document the rule is on, if the data has one
+      url: rule.documentUrl || extracted.documentUrl,
+      localDevelopmentDocument: extracted.localDevelopmentDocument
+    },
+    rule,
+    typeText: rule.type === 'code' ? 'Rule' : rule.typeName === 'Recommendation' ? 'Recommendation' : 'Guidance',
+    features: rule.features.map(featureName).join(', '),
+    areas: areaRows(rule, placeNames),
+    developmentTypes: developmentTypeGroups(rule),
+    guidanceText,
+    guidanceSections: guidanceSections(guidanceText),
+    // Where in the design code the rule is: "Chatham Cross, Movement – Public Transport"
+    location: [section.name, rule.nationalDesignIssue].filter(Boolean).join(', '),
+    // "Volume 3, Part A (pages 80 to 95). Medway Council, 2024"
+    documents: rule.supportingDocuments.map(document => {
+      const pages = document.volume && section.pageNumber
+        ? ` (pages ${section.pageNumber}${section.endPageNumber ? ` to ${section.endPageNumber}` : ''})`
+        : ''
+      const published = [document.publisher, document.date].filter(Boolean).join(', ')
+      const where = document.volume ? document.volume + pages : document.isDesignCode ? rulePages : ''
+      return {
+        ...document,
+        details: [where, published].filter(Boolean).join('. ')
+      }
+    }),
+    backHref
   })
 })
 
