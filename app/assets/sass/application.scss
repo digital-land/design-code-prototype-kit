@@ -2363,6 +2363,35 @@ summary.app-dc-applied__summary {
   cursor: crosshair;
 }
 
+// While drawing, a red dot over the pointer that trails it slightly (see v4-map.js)
+.app-v4-draw-dot {
+  position: absolute;
+  z-index: 650; // Over the drawn lines and points, under the map's controls
+  top: -7px;
+  left: -7px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid govuk-colour("white");
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: govuk-colour("red");
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .3);
+  pointer-events: none;
+  transition: transform .12s ease-out;
+
+  &[hidden] {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.app-v4-draw-dot--still {
+  transition: none;
+}
+
 // "Add location boundary", over the top middle of the map
 .app-v4-draw {
   position: absolute;
@@ -2477,13 +2506,26 @@ summary.app-dc-applied__summary {
   }
 }
 
-// What kind of place was selected, between the search and the list
+// What kind of place was selected, above the search, with "Remove" under it
 .app-v4-side__place {
   @include govuk-font($size: 16);
-  margin: 15px 0 0;
+  margin: 10px 0 0;
   padding: 10px 15px;
   border-left: 5px solid govuk-functional-colour("link");
   background-color: govuk-colour("light-grey");
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.app-v4-side__place-text {
+  margin: 0;
+}
+
+.app-v4-side__remove {
+  display: block;
+  margin-top: 5px;
 }
 
 // A button that looks like a link, inside text

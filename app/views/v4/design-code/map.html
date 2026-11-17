@@ -60,7 +60,7 @@
             <h3 class="app-label--secondary app-v4-applied__heading">Applied filters</h3>
             <ul class="app-dc-tags app-v4-applied__tags">
               {% for filter in appliedFilters %}
-                <li>
+                <li{% if filter.search %} data-search-tag{% endif %}>
                   <a class="app-dc-tag" href="{{ filter.href }}">
                     <span class="govuk-visually-hidden">Remove filter: </span>{{ filter.label }}
                     <svg class="app-dc-tag__icon" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -171,7 +171,12 @@
             </button>
           </div>
 
-          {# Searches the area's rules. It's part of the filters' form, so it keeps them. #}
+          {# What kind of place was selected, such as "This looks like a street…", and "Remove" to
+             clear the selection. Above the search, which searches within it. #}
+          <div class="app-v4-side__place" id="v4-place" aria-live="polite" hidden></div>
+
+          {# Searches the area's rules, or with a place selected, the rules for that place. It's part
+             of the filters' form, so it keeps them. #}
           <div class="app-dc-search app-v4-list-search">
             <label class="govuk-label app-label--secondary app-dc-search__label" for="v4-search">Search</label>
             <div class="app-dc-search__wrapper">
@@ -185,9 +190,6 @@
               </button>
             </div>
           </div>
-
-          {# What kind of place was selected, such as "This looks like a park or green space…" #}
-          <p class="app-v4-side__place" id="v4-place" aria-live="polite" hidden></p>
 
           <div id="v4-rules"></div>
         </div>

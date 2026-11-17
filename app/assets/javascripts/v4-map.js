@@ -185,8 +185,12 @@
   var rulesBox = document.getElementById('v4-rules')
   var count = document.getElementById('v4-count')
   var listHeading = document.getElementById('v4-side-heading')
-  var filtered = designCode.rules.filter(function (rule) { return rule.matches }) // Match the filters
+  // The rules that match the filters, leaving out the search, which is applied after (see listRules)
+  var filtered = designCode.rules.filter(function (rule) { return rule.matchesFilters })
+  var search = String(designCode.search || '').trim()
+  var searchInput = document.getElementById('v4-search')
   var rules = filtered // What the list shows: those, or the ones for the kind of place selected
+  var narrowed = false // Whether the list is just the rules for the kind of place selected
   var page = 1
   var outside = false // The selected place isn't in the area
   var placeNote = document.getElementById('v4-place')
@@ -408,17 +412,32 @@
     return score >= 3
   }
 
-  // The rules the list shows: those for the kind of place selected, unless all are asked for
-  function listRules () {
-    if (!place || !place.kind || place.showAll) return filtered
-    var forKind = filtered.filter(function (rule) { return fitsKind(rule, place.kind) })
-    return forKind.length ? forKind : filtered
+  function matchesSearch (rule) {
+    return !search || rule.searchText.indexOf(search.toLowerCase()) !== -1
   }
 
-  // What the list says about the place: what kind it looks like, with a way to see all the rules
+  // The rules the list shows: those for the kind of place selected, unless all are asked for, then
+  // the ones that match the search. So with a place selected, the search is within its rules.
+  function listRules () {
+    var scope = filtered
+    narrowed = false
+    if (place && place.kind && !place.showAll) {
+      var forKind = filtered.filter(function (rule) { return fitsKind(rule, place.kind) })
+      if (forKind.length) {
+        scope = forKind
+        narrowed = true
+      }
+    }
+    return scope.filter(matchesSearch)
+  }
+
+  // What the list says about the place: what kind it looks like, with a way to see all the rules,
+  // and "Remove" under it to clear the selection
   function showPlaceNote () {
     var html = ''
-    if (place && !outside) {
+    if (outside) {
+      html = 'This place is outside ' + escapeHtml(designCode.name) + '. Select a place in the area outlined on the map.'
+    } else if (place) {
       var details = place.kind && KINDS[place.kind]
       if (place.checking) {
         html = 'Checking what kind of place this is…'
@@ -427,19 +446,23 @@
       } else if (place.showAll) {
         html = 'This looks like ' + details.label + '. Showing all codes and key guidance. ' +
           '<button type="button" class="app-v4-side__inline-link" data-kind-only>Show only those for ' + details.plural + '</button>'
-      } else if (rules === filtered) {
+      } else if (!narrowed) {
         html = 'This looks like ' + details.label + ', but no codes or key guidance are just for ' + details.plural + ', so all are shown.'
       } else {
         html = 'This looks like ' + details.label + ', so these are the codes and key guidance for ' + details.plural + '. ' +
           '<button type="button" class="app-v4-side__inline-link" data-kind-all>Show all codes and key guidance</button>'
       }
     }
-    placeNote.innerHTML = html
+    placeNote.innerHTML = html && '<p class="app-v4-side__place-text">' + html + '</p>' +
+      '<button type="button" class="app-v4-side__inline-link app-v4-side__remove" data-remove>' +
+      'Remove<span class="govuk-visually-hidden"> selected place</span></button>'
     placeNote.hidden = !html
+    var remove = placeNote.querySelector('[data-remove]')
+    if (remove) remove.addEventListener('click', clearSelection)
     var all = placeNote.querySelector('[data-kind-all]')
     var only = placeNote.querySelector('[data-kind-only]')
-    if (all) all.addEventListener('click', function () { place.showAll = true; page = 1; showList(); placeNote.querySelector('button').focus() })
-    if (only) only.addEventListener('click', function () { place.showAll = false; page = 1; showList(); placeNote.querySelector('button').focus() })
+    if (all) all.addEventListener('click', function () { place.showAll = true; page = 1; showList(); placeNote.querySelector('[data-kind-only]').focus() })
+    if (only) only.addEventListener('click', function () { place.showAll = false; page = 1; showList(); placeNote.querySelector('[data-kind-all]').focus() })
   }
 
   // Work out the kind of place at some points, then show its rules
@@ -515,11 +538,14 @@
     showPlaceNote()
 
     if (outside) {
-      rulesBox.innerHTML = '<p class="app-v4-side__text app-v4-side__empty">This place is outside ' + escapeHtml(designCode.name) + '. Select a place in the area outlined on the map.</p>'
+      rulesBox.innerHTML = '' // The note above the search says so
       return
     }
     if (!rules.length) {
-      rulesBox.innerHTML = '<p class="app-v4-side__text app-v4-side__empty">No codes or key guidance match your filters. Try removing some filters.</p>'
+      var kind = narrowed && KINDS[place.kind]
+      rulesBox.innerHTML = '<p class="app-v4-side__text app-v4-side__empty">' + (search
+        ? 'No codes or key guidance ' + (kind ? 'for ' + escapeHtml(kind.plural) + ' ' : '') + 'match ‘' + escapeHtml(search) + '’. Try a different search.'
+        : 'No codes or key guidance match your filters. Try removing some filters.') + '</p>'
       return
     }
     var total = Math.ceil(rules.length / PAGE_SIZE)
@@ -609,6 +635,53 @@
     selectPlace(event.latlng, inArea(event.latlng))
   })
 
+  // "Remove": take away the pin, or the drawn area, and list all the area's rules again
+  function clearSelection () {
+    if (boundary) {
+      map.removeLayer(boundary)
+      boundary = null
+      setEditing(false)
+    }
+    if (pin) { map.removeLayer(pin); pin = null }
+    // A searched-for place is kept in the form, so it would come back when the filters change
+    form.querySelectorAll('input[name="lat"], input[name="lng"], input[name="place"]').forEach(function (input) {
+      input.parentNode.removeChild(input)
+    })
+    outside = false
+    place = null
+    lookup++
+    page = 1
+    showList()
+    searchInput.focus()
+  }
+
+  // ---- Searching ----
+  //
+  // With a place selected, the search runs here, within the rules for that place, so the selection
+  // stays. Without one, the form is sent and the page comes back with the search applied.
+
+  form.addEventListener('submit', function (event) {
+    if (!place && !outside) return
+    event.preventDefault()
+    search = searchInput.value.trim()
+    // Keep the page's address, and the "Search:" tag in the filters, in step with the search
+    try {
+      var url = new URL(window.location.href)
+      if (search) url.searchParams.set('q', search)
+      else url.searchParams.delete('q')
+      window.history.replaceState(null, '', url)
+    } catch (error) {}
+    var tag = document.querySelector('[data-search-tag]')
+    if (tag) {
+      tag.hidden = !search
+      Array.prototype.forEach.call(tag.querySelector('a').childNodes, function (node) {
+        if (node.nodeType === 3 && node.textContent.trim()) node.textContent = 'Search: ' + search
+      })
+    }
+    page = 1
+    showList()
+  })
+
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape' || side.hidden) return
     if (!ruleView.hidden) backToList()
@@ -672,6 +745,32 @@
     return L.divIcon({ className: 'app-v3-handle app-v3-handle--' + kind, iconSize: [size, size] })
   }
 
+  // While drawing, a red dot follows the pointer, a little behind it, to show drawing is on. The
+  // delay is a CSS transition, so it's left out for people who prefer reduced motion.
+  var drawDot = document.createElement('div')
+  drawDot.className = 'app-v4-draw-dot'
+  drawDot.setAttribute('aria-hidden', 'true')
+  drawDot.hidden = true
+  mapElement.appendChild(drawDot)
+
+  mapElement.addEventListener('mousemove', function (event) {
+    if (!sketch) return
+    var box = mapElement.getBoundingClientRect()
+    var x = event.clientX - box.left
+    var y = event.clientY - box.top
+    // Starts where the pointer is, rather than sliding in from where it was last seen
+    if (drawDot.hidden) {
+      drawDot.classList.add('app-v4-draw-dot--still')
+      drawDot.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+      drawDot.hidden = false
+      drawDot.offsetWidth // eslint-disable-line no-unused-expressions
+      drawDot.classList.remove('app-v4-draw-dot--still')
+      return
+    }
+    drawDot.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+  })
+  mapElement.addEventListener('mouseleave', function () { drawDot.hidden = true })
+
   function startDrawing (mode) {
     stopDrawing()
     sketch = { mode: mode, points: [], group: L.layerGroup().addTo(map), closed: false }
@@ -688,6 +787,7 @@
     if (!sketch) return
     map.removeLayer(sketch.group)
     sketch = null
+    drawDot.hidden = true
     mapElement.classList.remove('app-v4-map--drawing')
     map.doubleClickZoom.enable()
     showDrawError('')
@@ -776,15 +876,7 @@
   }
 
   function deleteBoundary () {
-    if (boundary) map.removeLayer(boundary)
-    boundary = null
-    setEditing(false)
-    if (pin) { map.removeLayer(pin); pin = null }
-    outside = false
-    place = null
-    lookup++
-    page = 1
-    showList()
+    clearSelection()
   }
 
   window.addEventListener('resize', function () { map.invalidateSize() })

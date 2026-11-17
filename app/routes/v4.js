@@ -338,7 +338,7 @@ router.get('/design-code/find/map', (req, res) => {
     return `${BASE_URL}/design-code/find/map?${params}`
   }
   const appliedFilters = [
-    ...(filters.search ? [{ label: `Search: ${filters.search}`, href: without('q') }] : []),
+    ...(filters.search ? [{ label: `Search: ${filters.search}`, href: without('q'), search: true }] : []),
     ...groups.flatMap(group => group.items.filter(option => option.checked)
       .map(option => ({ label: option.text, href: without(group.name, option.value) })))
   ]
@@ -354,10 +354,19 @@ router.get('/design-code/find/map', (req, res) => {
     slug: area.designCode,
     area: area.id,
     name: extracted.title,
-    rules: allRules.map(rule => ({
-      ...ruleSummary(area.designCode, extracted, rule),
-      matches: filterOptions.ruleMatches(rule, filters, extracted) && filterOptions.hasFeature(rule, filters.features)
-    }))
+    rules: allRules.map(rule => {
+      const matchesFilters = filterOptions.ruleMatches(rule, { ...filters, search: '' }, extracted) &&
+        filterOptions.hasFeature(rule, filters.features)
+      return {
+        ...ruleSummary(area.designCode, extracted, rule),
+        matches: matchesFilters && filterOptions.ruleMatches(rule, filters, extracted),
+        // With a place selected, the map's search runs in the browser, within the rules for that
+        // place, so it needs the filters' answer without the search, and the text it searches
+        matchesFilters,
+        searchText: [rule.reference, rule.requirementText, rule.guidanceText].join(' ').toLowerCase()
+      }
+    }),
+    search: filters.search
   }
 
   res.render(`${VIEWS}/design-code/map`, {

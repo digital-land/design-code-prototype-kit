@@ -171,5 +171,164 @@
       "notes": "Not in Table 1. Name from Table 2 (Form 17 Advertisement Consent); Appendix D heads the column \"Adv Consent\". No description is given. No Chapter 3 item applies to it.",
       "design-code": "east-riding-design-code"
     }
+  ],
+  "design-code-figures": [
+    {
+      "reference": "figure-19",
+      "design-code-section": "3.1",
+      "number": 19,
+      "caption": "Examples of green infrastructure opportunities",
+      "panel-headings": [],
+      "labels": [
+        {
+          "text": "street trees"
+        },
+        {
+          "text": "connection with edge"
+        },
+        {
+          "text": "SuDS at movement network"
+        },
+        {
+          "text": "connected wooded area"
+        },
+        {
+          "text": "green public open space"
+        }
+      ],
+      "glossary-terms": [
+        "east-riding-design-code:sustainable-drainage-systems",
+        "east-riding-design-code:movement-network",
+        "east-riding-design-code:public-open-space"
+      ],
+      "image": "",
+      "page-number": 36
+    },
+    {
+      "reference": "figure-20",
+      "design-code-section": "3.2",
+      "number": 20,
+      "caption": "Before and after development highlighting biodiversity enhancements",
+      "panel-headings": [
+        "BEFORE",
+        "AFTER"
+      ],
+      "labels": [
+        {
+          "text": "species rich hedge",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "native tree",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "existing field",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "natural pond",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "existing hedge",
+          "panel": "BEFORE"
+        },
+        {
+          "text": "protected hedge",
+          "panel": "AFTER"
+        },
+        {
+          "text": "enhanced field wildflower meadow",
+          "panel": "AFTER"
+        },
+        {
+          "text": "retained tree",
+          "panel": "AFTER"
+        },
+        {
+          "text": "enhanced pond",
+          "panel": "AFTER"
+        },
+        {
+          "text": "retained hedge",
+          "panel": "AFTER"
+        }
+      ],
+      "glossary-terms": [],
+      "image": "/public/images/design-codes/east-riding-biodiversity-before-after.png",
+      "page-number": 38,
+      "extraction-notes": "\"enhanced field wildflower meadow\" is one label printed over two lines."
+    },
+    {
+      "reference": "figure-21",
+      "design-code-section": "3.3",
+      "number": 21,
+      "caption": "Youth Photography Competition winning entry ‘Reflective Walk’ by Katie Thompson",
+      "panel-headings": [],
+      "labels": [],
+      "glossary-terms": [],
+      "image": "",
+      "page-number": 40,
+      "extraction-notes": "A photograph with no labels."
+    },
+    {
+      "reference": "figure-22",
+      "design-code-section": "3.4",
+      "number": 22,
+      "caption": "Potential SuDS methods for new development",
+      "panel-headings": [],
+      "labels": [
+        {
+          "text": "GREEN ROOF"
+        },
+        {
+          "text": "POND"
+        },
+        {
+          "text": "SWALE"
+        },
+        {
+          "text": "BIORETENTION"
+        }
+      ],
+      "glossary-terms": [],
+      "image": "/public/images/design-codes/east-riding-figure-22.png",
+      "page-number": 42,
+      "extraction-notes": "Appendix C gives the caption with a full stop (\"…for new development.\"); the caption on the page has none."
+    },
+    {
+      "reference": "figure-23",
+      "design-code-section": "3.5",
+      "number": 23,
+      "caption": "Potential on-site renewable energy options",
+      "panel-headings": [],
+      "labels": [
+        {
+          "text": "back roof - PV panels"
+        },
+        {
+          "text": "water butt"
+        },
+        {
+          "text": "heat pump"
+        }
+      ],
+      "glossary-terms": [],
+      "image": "",
+      "page-number": 46
+    },
+    {
+      "reference": "figure-24",
+      "design-code-section": "3.5",
+      "number": 24,
+      "caption": "Precedent images illustrating on-site renewable energy incorporation",
+      "panel-headings": [],
+      "labels": [],
+      "glossary-terms": [],
+      "image": "",
+      "page-number": 46,
+      "extraction-notes": "Two photographs (a heat pump and roof solar panels) with no labels."
+    }
   ]
 }

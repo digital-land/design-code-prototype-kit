@@ -685,6 +685,8 @@ function buildDesignCode (name, rows, sourceFiles, nationalTypes) {
     'design-code-chapters': chapters,
     'design-code-sections': sections,
     'design-code-rules': rules,
+    // Figures aren't in the spreadsheets, so they're kept from the hand-extracted file, if it has any
+    ...(base['design-code-figures'] ? { 'design-code-figures': base['design-code-figures'] } : {}),
     'place-types': placeTypes,
     'development-types': developmentTypes,
     'local-plan-policies': policies,
