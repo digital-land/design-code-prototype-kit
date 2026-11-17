@@ -45,7 +45,13 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="govuk-heading-l app-v4-list__title">{{ heading }}</h1>
+{% if area %}
+  <h1 class="govuk-heading-l app-v4-list__title">{{ heading }}</h1>
+{% else %}
+  {# Every design code's rules: a smaller visible heading. The page still has an h1 for screen readers. #}
+  <h1 class="govuk-visually-hidden">{{ heading }}</h1>
+  <h2 class="govuk-heading-m app-v4-list__title">Showing all design requirements</h2>
+{% endif %}
 
 {% if area %}{{ viewToggle("list") }}{% endif %}
 
