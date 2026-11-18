@@ -2244,6 +2244,9 @@ summary.app-dc-applied__summary {
     width: 300px;
     padding: 24px 13px;
     overflow-y: auto;
+    // Sits on top of the map: the same shadow as the container on the right (.app-v4-card), cast
+    // to the right
+    box-shadow: 2px 0 6px rgba(11, 12, 12, .2);
   }
 }
 
@@ -2987,4 +2990,177 @@ summary.app-dc-applied__summary {
   .app-v4-view-toggle__link--current {
     font-weight: $govuk-font-weight-bold;
   }
+}
+
+// ---- v4 service navigation: "Data" sub-menu, as on planning.data.gov.uk ----
+
+.govuk-service-navigation__item--toggle .app-subnav-toggle {
+  @include govuk-font($size: 19);
+  @include govuk-link-common;
+  @include govuk-link-style-no-visited-state;
+  @include govuk-link-style-no-underline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+
+  // The link colours, which a button doesn't get from the link styles
+  &:not(:hover):not(:focus) {
+    color: govuk-functional-colour("link");
+  }
+
+  &:hover {
+    color: govuk-functional-colour("link-hover");
+  }
+}
+
+.app-subnav-toggle__icon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  transition: transform .2s;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .app-subnav-toggle[aria-expanded="false"] & {
+    transform: rotate(180deg);
+  }
+}
+
+@include govuk-media-query($until: tablet) {
+  .app-subnav {
+    padding: 15px 0 0 20px;
+  }
+}
+
+@include govuk-media-query($from: tablet) {
+  .govuk-service-navigation__item--toggle {
+    position: relative;
+  }
+
+  .app-subnav {
+    position: absolute;
+    z-index: 1100; // Over the v4 map and its controls
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    padding: 15px;
+    border: 1px solid govuk-functional-colour("border");
+    background-color: #f4f8fb;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .15);
+
+    .govuk-service-navigation__list {
+      display: block;
+      margin: 0;
+    }
+
+    .govuk-service-navigation__item {
+      position: relative;
+      display: block;
+      margin: 0;
+      padding: 10px 0;
+      border: 0;
+
+      &:not(:last-child) {
+        margin-right: 0;
+        border-bottom: 1px solid govuk-functional-colour("border");
+      }
+    }
+
+    .govuk-service-navigation__item--active::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -15px;
+      width: 5px;
+      background-color: #1a65a6;
+    }
+  }
+}
+
+// ---- v4 home page: the hero, as on planning.data.gov.uk ----
+
+.app-hero {
+  @include govuk-font($size: false);
+  padding-top: 0;
+  padding-bottom: 25px;
+  color: govuk-functional-colour("inverse-text");
+  background-color: govuk-functional-colour("brand");
+
+  @include govuk-media-query($from: tablet) {
+    padding-bottom: 40px;
+  }
+}
+
+.app-hero__title {
+  @include govuk-font($size: 36, $weight: bold);
+  margin-top: 0;
+  padding-top: 20px;
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: 30px;
+  }
+
+  .app-hero--large & {
+    @include govuk-font($size: 48, $weight: bold);
+  }
+}
+
+.app-hero__description {
+  @include govuk-font($size: 19);
+  margin-bottom: 0;
+  color: inherit;
+
+  .app-hero--large & {
+    @include govuk-font($size: 24);
+  }
+
+  a:not(:focus) {
+    color: inherit;
+  }
+
+  & + & {
+    margin-top: govuk-spacing(4);
+  }
+}
+
+.app-hero__image {
+  padding-top: 20px;
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: 30px;
+  }
+
+  @include govuk-media-query($until: desktop) {
+    display: none;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+// The beta banner on the blue hero
+.app-phase-banner--inverse {
+  border-bottom-color: rgba(255, 255, 255, .3);
+
+  .govuk-phase-banner__text,
+  .govuk-link:not(:focus) {
+    color: govuk-functional-colour("inverse-text");
+  }
+}
+
+.app-tag--inverse {
+  color: govuk-functional-colour("brand");
+  background-color: govuk-functional-colour("body-background");
+}
+
+.app-max-width--100 {
+  max-width: 100%;
 }

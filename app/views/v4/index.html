@@ -1,20 +1,106 @@
 {% extends "v4/layouts/main.html" %}
 
-{% set pageName="Home" %}
+{#
+  v4 home page, copied from the home page of https://www.planning.data.gov.uk (its markup, text and
+  illustrations, from app/assets/images/planning-data). The start page opens v4 here, so research
+  can see whether people find Design code (under Data in the navigation) by themselves: the page
+  doesn't mention design codes. The live page's "Important" notice about an outage is left out, and
+  its links go to v4's own pages.
+#}
 
-{% block content %}
+{% set pageName = "Home" %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+{% set features = [
+  {
+    id: "explore-data-on-a-map",
+    title: "Explore data on a map",
+    description: "View planning and housing datasets with geographic location data on an interactive map.",
+    link: { text: "Explore the map of planning data for England", href: baseUrl + "/map" },
+    image: "explore.svg"
+  },
+  {
+    id: "search-and-filter-data",
+    title: "Search and filter data",
+    description: "Find and download the data you want in bulk.",
+    link: { text: "Search planning and housing data", href: baseUrl + "/search" },
+    image: "search.svg"
+  },
+  {
+    id: "provide-planning-data",
+    title: "Provide planning data",
+    description: "The platform makes it easier for organisations to provide authoritative, trustworthy data and keep it up-to-date.",
+    link: { text: "Check and provide planning data", href: baseUrl + "/provide-data" },
+    image: "providers-dashboard.svg"
+  },
+  {
+    id: "help-identify-and-co-design-planning-data",
+    title: "Help identify and co-design planning data",
+    description: "We speak to planners, policy-makers and people building services to identify and co-design data for a range of use cases.",
+    link: { text: "View and contribute to data design", href: baseUrl + "/design-data" },
+    image: "data-design.svg"
+  },
+  {
+    id: "understand-the-data",
+    title: "Understand the data",
+    description: "Read about why data is important to planning and how the data is created.",
+    link: { text: "Find planning and housing datasets", href: baseUrl + "/dataset" },
+    image: "datasets.svg"
+  },
+  {
+    id: "use-the-data",
+    title: "Use the data",
+    description: "Integrate the Planning Data API with your web application or back office system.",
+    link: { text: "View the API documentation", href: baseUrl + "/api" },
+    image: "api.svg"
+  }
+] %}
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
-
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+{# The hero runs the full width of the page, so the page has no width container #}
+{% block container %}
+<main id="main-content">
+  <div class="app-hero app-hero--large govuk-!-margin-bottom-9">
+    <div class="govuk-width-container">
+      {{ govukPhaseBanner({
+        tag: { text: "Beta", classes: "app-tag--inverse" },
+        html: 'This is a new service - your <a href="#" class="govuk-link">feedback (opens in new tab)</a> will help us to improve it.',
+        classes: "app-phase-banner--inverse",
+        attributes: { role: "region", "aria-label": "Phase banner" }
+      }) }}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+          <h1 class="app-hero__title">Find planning and housing data that is easy to use and trust</h1>
+          <p class="app-hero__description">A platform to help you create services to inform planning and housing decisions in England.</p>
+          <p class="app-hero__description">
+            Learn more <a href="{{ baseUrl }}/about" class="govuk-link app-hero__cta-link">about the platform</a>
+          </p>
+        </div>
+        <div class="govuk-grid-column-one-third-from-desktop">
+          <div class="app-hero__image">
+            <img src="/public/images/planning-data/proposition-image.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
+  <div id="feature-list" class="govuk-width-container">
+    {% for feature in features %}
+      <section aria-label="{{ feature.title }}" class="govuk-grid-row govuk-!-margin-bottom-8" id="{{ feature.id }}">
+        <div class="govuk-grid-column-one-half">
+          <h2 class="govuk-heading-m">{{ feature.title }}</h2>
+          <p class="govuk-body">{{ feature.description }}</p>
+          <p class="govuk-body">
+            <a href="{{ feature.link.href }}" class="govuk-link">{{ feature.link.text }}</a>
+          </p>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <img src="/public/images/planning-data/{{ feature.image }}" alt="" class="app-max-width--100">
+        </div>
+      </section>
+      {% if not loop.last %}
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+      {% endif %}
+    {% endfor %}
+  </div>
+</main>
 {% endblock %}

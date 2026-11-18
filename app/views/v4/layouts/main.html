@@ -5,30 +5,83 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
+{#
+  The service navigation, as on planning.data.gov.uk: "Data" opens a sub-menu (Datasets,
+  Organisations, Local plans), and in v4 Design code is in it rather than a link of its own. Its
+  markup, styles (.app-subnav in application.scss) and script (javascripts/v4-navigation.js) follow
+  the live site's.
+#}
 {% set navigationLinks = [
   { href: baseUrl + "/about", text: "About" },
   { href: baseUrl + "/search", text: "Search" },
-  { href: baseUrl + "/data", text: "Data" },
+  { text: "Data", id: "data", items: [
+    { href: baseUrl + "/dataset", text: "Datasets" },
+    { href: baseUrl + "/organisation", text: "Organisations" },
+    { href: baseUrl + "/local-plans", text: "Local plans" },
+    { href: baseUrl + "/design-code", text: "Design code" }
+  ] },
   { href: baseUrl + "/map", text: "Map" },
   { href: baseUrl + "/api", text: "API" },
   { href: baseUrl + "/design-data", text: "Design data" },
-  { href: baseUrl + "/design-code", text: "Design code" },
   { href: baseUrl + "/provide-data", text: "Provide data" }
 ] %}
 
-{% block govukServiceNavigation %}
-  {% set navigationItems = [] %}
-  {% for link in navigationLinks %}
-    {% set navigationItems = (navigationItems.push({
-      href: link.href,
-      text: link.text,
-      active: currentPath == link.href or (currentPath | string).startsWith(link.href + "/")
-    }), navigationItems) %}
-  {% endfor %}
 
-  {{ govukServiceNavigation({
-    serviceName: serviceName,
-    serviceUrl: "/",
-    navigation: navigationItems
-  }) }}
+{% block govukServiceNavigation %}
+<section aria-label="Service information" class="govuk-service-navigation" data-module="govuk-service-navigation">
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <span class="govuk-service-navigation__service-name">
+        <a href="/" class="govuk-service-navigation__link">{{ serviceName }}</a>
+      </span>
+      <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+        <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>Menu</button>
+        <ul class="govuk-service-navigation__list" id="navigation">
+          {% for link in navigationLinks %}
+            {% if link.items %}
+              {# A set inside a loop doesn't last beyond it, so the active items are collected in a list #}
+              {% set activeItems = [] %}
+              {% for item in link.items %}{% if currentPath == item.href or (currentPath | string).startsWith(item.href + "/") %}{% set activeItems = (activeItems.push(item), activeItems) %}{% endif %}{% endfor %}
+              {% set groupActive = activeItems.length > 0 %}
+              <li class="govuk-service-navigation__item govuk-service-navigation__item--toggle{% if groupActive %} govuk-service-navigation__item--active{% endif %}">
+                <button type="button" class="govuk-service-navigation__link app-subnav-toggle" aria-expanded="false" aria-controls="app-subnav-{{ link.id }}">
+                  {% if groupActive %}<strong class="govuk-service-navigation__active-fallback">{{ link.text }}</strong>{% else %}{{ link.text }}{% endif %}
+                  <span class="app-subnav-toggle__icon">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9999 10.5177L17.7928 16.3105L19.207 14.8963L11.9999 7.68923L4.79282 14.8963L6.20703 16.3105L11.9999 10.5177Z" fill="currentColor"></path>
+                    </svg>
+                  </span>
+                </button>
+                <div class="app-subnav" id="app-subnav-{{ link.id }}">
+                  <nav aria-label="{{ link.text }} sub-menu">
+                    <ul class="govuk-service-navigation__list">
+                      {% for item in link.items %}
+                        {% set active = currentPath == item.href or (currentPath | string).startsWith(item.href + "/") %}
+                        <li class="govuk-service-navigation__item{% if active %} govuk-service-navigation__item--active{% endif %}">
+                          <a class="govuk-service-navigation__link" href="{{ item.href }}"{% if active %} aria-current="{{ 'page' if currentPath == item.href else 'true' }}"{% endif %}>{{ item.text }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                </div>
+              </li>
+            {% else %}
+              {% set active = currentPath == link.href or (currentPath | string).startsWith(link.href + "/") %}
+              <li class="govuk-service-navigation__item{% if active %} govuk-service-navigation__item--active{% endif %}">
+                <a class="govuk-service-navigation__link" href="{{ link.href }}"{% if active %} aria-current="{{ 'page' if currentPath == link.href else 'true' }}"{% endif %}>
+                  {% if active %}<strong class="govuk-service-navigation__active-fallback">{{ link.text }}</strong>{% else %}{{ link.text }}{% endif %}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="/public/javascripts/v4-navigation.js"></script>
 {% endblock %}
