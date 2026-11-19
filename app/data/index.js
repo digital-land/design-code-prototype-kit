@@ -126,8 +126,24 @@ function toViewModel (data) {
       (table['design-code-section'] === rule['design-code-section'] && !(table['design-code-rules'] || []).length))
     .map(tableViewModel)
 
-  // The first figure in a section that has an image
-  const figureFor = sectionReference => {
+  // The rule's own figure (from the spreadsheet's "Image" column), with the rule's alt text, or
+  // else the first figure in its section that has an image
+  const figureFor = (sectionReference, rule) => {
+    const own = rule['design-code-figure'] && figures.find(item => item.reference === rule['design-code-figure'])
+    if (own && own.image) {
+      return {
+        number: own.number,
+        caption: own.number ? `Figure ${own.number}` : '',
+        src: own.image,
+        alt: rule['figure-alt-text'] || '',
+        // "Chatham Centre Design Code SPD (Medway Council), PDF page 84, Figure 84" -> where it is,
+        // without the figure number, which is the caption
+        description: String(own.source || '').replace(/,?\s*Figure\s+[\w.]+$/i, '').replace(/\bPDF page\b/g, 'page'),
+        // Such as "The rule's own page (PDF page 85) has no figure, so this is the closest related
+        // figure from the same section."
+        note: String(rule['figure-note'] || '').replace(/\bPDF page\b/g, 'page')
+      }
+    }
     const figure = figures.find(item => item['design-code-section'] === sectionReference && item.image)
     if (!figure) return undefined
     // Describe the figure from its callout labels, grouped by panel where it has them
@@ -226,7 +242,7 @@ function toViewModel (data) {
               endPageNumber: section['end-page-number']
             },
             tables: tablesFor(rule),
-            figure: figureFor(section.reference),
+            figure: figureFor(section.reference, rule),
             supportingDocuments: documentsFor(section, rule)
           }))
       }))

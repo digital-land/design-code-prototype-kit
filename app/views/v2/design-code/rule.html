@@ -58,7 +58,7 @@
 
   {% if rule.figure %}
     <figure class="app-dc-rule__figure">
-      <img class="app-dc-rule__figure-image" src="{{ rule.figure.src }}" alt="Figure {{ rule.figure.number }}: {{ rule.figure.caption }}">
+      <img class="app-dc-rule__figure-image" src="{{ rule.figure.src }}" alt="{{ rule.figure.alt if rule.figure.alt else 'Figure ' + rule.figure.number + ': ' + rule.figure.caption }}">
       <figcaption class="app-dc-rule__figure-text">
         <span class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ rule.figure.caption }}</span>
         {% if rule.figure.description %}

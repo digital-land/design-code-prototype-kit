@@ -1,7 +1,7 @@
 {
   "extraction": {
-    "source": "app/data/Sources/Design codes/Design code rules - Becontree.csv",
-    "extracted-date": "2026-11-16",
+    "source": "app/data/Sources/Design codes/East riding.xlsx (Becontree sheet)",
+    "extracted-date": "2026-11-18",
     "method": "Converted from the spreadsheet export by scripts/csv-to-json.js. Sections come from the rule references (4.2.1 is in section 4.2), named after their national design issue. Chapters are the first number of the reference, named after their rules' most common national design feature, as the spreadsheet does not name them. "
   },
   "design-code": {
@@ -166,7 +166,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-458adc6e6e",
+      "figure-alt-text": "Street view and axonometric drawing of a Becontree terrace where neighbouring homes use a mix of brick and render, with a note that the altered front façade can be brick or render."
     },
     {
       "reference": "5.1.3 (b)",
@@ -227,7 +229,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-458adc6e6e",
+      "figure-alt-text": "Street view and axonometric drawing of a Becontree terrace where neighbouring homes use a mix of brick and render, with a note that the altered front façade can be brick or render."
     },
     {
       "reference": "5.1.3 (c)",
@@ -288,7 +292,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-0a8859cadd",
+      "figure-alt-text": "Street view and axonometric drawing of a Becontree terrace where neighbouring homes are all brick, with a note that the altered front façade should match the prevailing brick."
     },
     {
       "reference": "5.1.4 (a)",
@@ -349,7 +355,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-92c17eb217",
+      "figure-alt-text": "Plan diagram of a crossroads with numbered homes from 1 to 12, showing which nearby dwellings to count when judging the prevailing material for a corner house."
     },
     {
       "reference": "5.1.4 (b)",
@@ -410,7 +418,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-0a8859cadd",
+      "figure-alt-text": "Street view and axonometric drawing of a Becontree terrace where neighbouring homes are all brick, with a note that the altered front façade should match the prevailing brick."
     },
     {
       "reference": "5.1.5 (a)",
@@ -471,7 +481,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e820a115df",
+      "figure-alt-text": "Line drawing of a mid-terrace Becontree house with the front façade shaded as the primary elevation, with a 300mm dimension marked at the party wall."
     },
     {
       "reference": "5.1.5 (b)",
@@ -532,7 +544,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e820a115df",
+      "figure-alt-text": "Line drawing of a mid-terrace Becontree house with the front façade shaded as the primary elevation, with a 300mm dimension marked at the party wall."
     },
     {
       "reference": "5.1.5 (c)",
@@ -593,7 +607,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e820a115df",
+      "figure-alt-text": "Line drawing of a mid-terrace Becontree house with the front façade shaded as the primary elevation, with a 300mm dimension marked at the party wall."
     },
     {
       "reference": "5.1.5 (d)",
@@ -654,7 +670,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e820a115df",
+      "figure-alt-text": "Line drawing of a mid-terrace Becontree house with the front façade shaded as the primary elevation, with a 300mm dimension marked at the party wall."
     },
     {
       "reference": "5.1.5 (e)",
@@ -715,7 +733,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-d731e481d1",
+      "figure-alt-text": "Line drawing of an end-of-terrace or semi-detached Becontree house with the front façade shaded, showing that the primary elevation wraps 300mm around the corner onto the side wall."
     },
     {
       "reference": "5.1.5 (f)",
@@ -776,7 +796,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e72c4bd6c6",
+      "figure-alt-text": "Code page extract with an illustrative eaves and external wall insulation detail, four photos of precedent houses with insulated, rendered or brick-slip fronts, and a suggested materials palette."
     },
     {
       "reference": "5.1.5 (g)",
@@ -837,7 +859,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e72c4bd6c6",
+      "figure-alt-text": "Code page extract with an illustrative eaves and external wall insulation detail, four photos of precedent houses with insulated, rendered or brick-slip fronts, and a suggested materials palette."
     },
     {
       "reference": "5.1.5 (h)",
@@ -898,7 +922,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 27,
       "end-page-number": 31,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e72c4bd6c6",
+      "figure-alt-text": "Code page extract with an illustrative eaves and external wall insulation detail, four photos of precedent houses with insulated, rendered or brick-slip fronts, and a suggested materials palette."
     },
     {
       "reference": "5.2.3 (a)",
@@ -959,7 +985,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-868b0d50dc",
+      "figure-alt-text": "Axonometric line drawing of a Becontree house with a street-facing porch shown in red, marked at up to 3000mm high, 2500mm wide and 1500mm deep."
     },
     {
       "reference": "5.2.3 (b)",
@@ -1020,7 +1048,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-868b0d50dc",
+      "figure-alt-text": "Axonometric line drawing of a Becontree house with a street-facing porch shown in red, marked at up to 3000mm high, 2500mm wide and 1500mm deep."
     },
     {
       "reference": "5.2.3 (c)",
@@ -1081,7 +1111,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-868b0d50dc",
+      "figure-alt-text": "Axonometric line drawing of a Becontree house with a street-facing porch shown in red, marked at up to 3000mm high, 2500mm wide and 1500mm deep."
     },
     {
       "reference": "5.2.3 (d)",
@@ -1142,7 +1174,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a248838e5e",
+      "figure-alt-text": "Axonometric line drawing of a Becontree house with a side-facing porch shown in red, with its maximum height, width and depth marked in millimetres."
     },
     {
       "reference": "5.2.3 (e)",
@@ -1203,7 +1237,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-868b0d50dc",
+      "figure-alt-text": "Axonometric line drawing of a Becontree house with a street-facing porch shown in red, marked at up to 3000mm high, 2500mm wide and 1500mm deep."
     },
     {
       "reference": "5.2.3 (f)",
@@ -1264,7 +1300,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-868b0d50dc",
+      "figure-alt-text": "Axonometric line drawing of a Becontree house with a street-facing porch shown in red, marked at up to 3000mm high, 2500mm wide and 1500mm deep."
     },
     {
       "reference": "5.2.3 (g)",
@@ -1325,7 +1363,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-94ff37e8e6",
+      "figure-alt-text": "Single entrance porch detail with dimensions and zones for the door, windows and drainage, four photos of precedent porches, and a suggested materials palette."
     },
     {
       "reference": "5.2.3 (h)",
@@ -1386,7 +1426,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-94ff37e8e6",
+      "figure-alt-text": "Single entrance porch detail with dimensions and zones for the door, windows and drainage, four photos of precedent porches, and a suggested materials palette."
     },
     {
       "reference": "5.2.3 (i)",
@@ -1447,7 +1489,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-94ff37e8e6",
+      "figure-alt-text": "Single entrance porch detail with dimensions and zones for the door, windows and drainage, four photos of precedent porches, and a suggested materials palette."
     },
     {
       "reference": "5.2.3 (j)",
@@ -1508,7 +1552,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 32,
       "end-page-number": 35,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-94ff37e8e6",
+      "figure-alt-text": "Single entrance porch detail with dimensions and zones for the door, windows and drainage, four photos of precedent porches, and a suggested materials palette."
     },
     {
       "reference": "5.3.3 (a)",
@@ -1569,7 +1615,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.3.3 (b)",
@@ -1630,7 +1678,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.3.3 (c)",
@@ -1691,7 +1741,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.3.3 (d)",
@@ -1752,7 +1804,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.3.3 (e)",
@@ -1813,7 +1867,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.3.3 (f)",
@@ -1874,7 +1930,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.3.3 (g)",
@@ -1935,7 +1993,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.3.3 (h)",
@@ -1996,7 +2056,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 36,
       "end-page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-fb25e23bcc",
+      "figure-alt-text": "Axonometric line drawing of a semi-detached Becontree house with a two-storey side extension shown in red, set back from the front wall and below the main roof ridge, with dimensions."
     },
     {
       "reference": "5.4.3 (a)",
@@ -2057,7 +2119,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b53588daba",
+      "figure-alt-text": "Two axonometric line drawings of Becontree front gardens with green-shaded planting and paved paths, showing suggested zones for bins, bikes, an EV charger and a heat pump, with dimensions."
     },
     {
       "reference": "5.4.3 (b)",
@@ -2118,7 +2182,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b53588daba",
+      "figure-alt-text": "Two axonometric line drawings of Becontree front gardens with green-shaded planting and paved paths, showing suggested zones for bins, bikes, an EV charger and a heat pump, with dimensions."
     },
     {
       "reference": "5.4.3 (c)",
@@ -2179,7 +2245,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b53588daba",
+      "figure-alt-text": "Two axonometric line drawings of Becontree front gardens with green-shaded planting and paved paths, showing suggested zones for bins, bikes, an EV charger and a heat pump, with dimensions."
     },
     {
       "reference": "5.4.3 (d)",
@@ -2240,7 +2308,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b53588daba",
+      "figure-alt-text": "Two axonometric line drawings of Becontree front gardens with green-shaded planting and paved paths, showing suggested zones for bins, bikes, an EV charger and a heat pump, with dimensions."
     },
     {
       "reference": "5.4.3 (e)",
@@ -2301,7 +2371,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b53588daba",
+      "figure-alt-text": "Two axonometric line drawings of Becontree front gardens with green-shaded planting and paved paths, showing suggested zones for bins, bikes, an EV charger and a heat pump, with dimensions."
     },
     {
       "reference": "5.4.3 (f)",
@@ -2362,7 +2434,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-21cdcd6af2",
+      "figure-alt-text": "Code page extract with example front garden layouts in plan, a permeable surface detail, photos of precedent front gardens, and a palette of permeable surfacing materials."
     },
     {
       "reference": "5.4.3 (g)",
@@ -2423,7 +2497,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-21cdcd6af2",
+      "figure-alt-text": "Code page extract with example front garden layouts in plan, a permeable surface detail, photos of precedent front gardens, and a palette of permeable surfacing materials."
     },
     {
       "reference": "5.4.3 (h)",
@@ -2484,7 +2560,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-21cdcd6af2",
+      "figure-alt-text": "Code page extract with example front garden layouts in plan, a permeable surface detail, photos of precedent front gardens, and a palette of permeable surfacing materials."
     },
     {
       "reference": "5.4.3 (i)",
@@ -2545,7 +2623,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-21cdcd6af2",
+      "figure-alt-text": "Code page extract with example front garden layouts in plan, a permeable surface detail, photos of precedent front gardens, and a palette of permeable surfacing materials."
     },
     {
       "reference": "5.4.3 (j)",
@@ -2606,7 +2686,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-c26d96b358",
+      "figure-alt-text": "Plan of a front garden showing an EV charging cable routed along the boundary to a parked car, with two photos of wall-mounted chargers fixed low on the side of a house."
     },
     {
       "reference": "5.4.3 (k)",
@@ -2667,7 +2749,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-c26d96b358",
+      "figure-alt-text": "Plan of a front garden showing an EV charging cable routed along the boundary to a parked car, with two photos of wall-mounted chargers fixed low on the side of a house."
     },
     {
       "reference": "5.4.3 (l)",
@@ -2728,7 +2812,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 39,
       "end-page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-21cdcd6af2",
+      "figure-alt-text": "Code page extract with example front garden layouts in plan, a permeable surface detail, photos of precedent front gardens, and a palette of permeable surfacing materials."
     },
     {
       "reference": "5.5.3 (a)",
@@ -2789,7 +2875,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (b)",
@@ -2850,7 +2938,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (c)",
@@ -2911,7 +3001,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (d)",
@@ -2972,7 +3064,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (e)",
@@ -3033,7 +3127,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (f)",
@@ -3094,7 +3190,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (g)",
@@ -3155,7 +3253,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (h)",
@@ -3216,7 +3316,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (i)",
@@ -3277,7 +3379,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (j)",
@@ -3338,7 +3442,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (k)",
@@ -3399,7 +3505,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (l)",
@@ -3460,7 +3568,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-994284433f",
+      "figure-alt-text": "Two photos of precedent dormers, one contemporary dormer set back from the eaves and one clad to match the existing roof tiles, each with a green tick and notes."
     },
     {
       "reference": "5.5.3 (m)",
@@ -3521,7 +3631,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-994284433f",
+      "figure-alt-text": "Two photos of precedent dormers, one contemporary dormer set back from the eaves and one clad to match the existing roof tiles, each with a green tick and notes."
     },
     {
       "reference": "5.5.3 (n)",
@@ -3582,7 +3694,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-994284433f",
+      "figure-alt-text": "Two photos of precedent dormers, one contemporary dormer set back from the eaves and one clad to match the existing roof tiles, each with a green tick and notes."
     },
     {
       "reference": "5.5.3 (o)",
@@ -3643,7 +3757,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (p)",
@@ -3704,7 +3820,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-994284433f",
+      "figure-alt-text": "Two photos of precedent dormers, one contemporary dormer set back from the eaves and one clad to match the existing roof tiles, each with a green tick and notes."
     },
     {
       "reference": "5.5.3 (q)",
@@ -3765,7 +3883,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-85bdd6f644",
+      "figure-alt-text": "Axonometric drawings of semi-detached Becontree homes comparing roof alterations and solar panels: hip-to-gable changes and panel layouts marked with red crosses as not acceptable and green ticks as acceptable."
     },
     {
       "reference": "5.5.3 (r)",
@@ -3826,7 +3946,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 44,
       "end-page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-39b027fa72",
+      "figure-alt-text": "Two circular graphics comparing embodied carbon: zinc cladding at 2.9 kg CO2 per kg, and integrated solar roof panels at 1.0 kg CO2 per kg."
     },
     {
       "reference": "5.6.3 (a)",
@@ -3887,7 +4009,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-1fc4e01954",
+      "figure-alt-text": "Two axonometric line drawings of Becontree houses with single-storey rear extensions shaded purple, showing the permitted depth and height."
     },
     {
       "reference": "5.6.3 (b)",
@@ -3948,7 +4072,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-1fc4e01954",
+      "figure-alt-text": "Two axonometric line drawings of Becontree houses with single-storey rear extensions shaded purple, showing the permitted depth and height."
     },
     {
       "reference": "5.6.3 (c)",
@@ -4009,7 +4135,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-1fc4e01954",
+      "figure-alt-text": "Two axonometric line drawings of Becontree houses with single-storey rear extensions shaded purple, showing the permitted depth and height."
     },
     {
       "reference": "5.6.3 (d)",
@@ -4070,7 +4198,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-1fc4e01954",
+      "figure-alt-text": "Two axonometric line drawings of Becontree houses with single-storey rear extensions shaded purple, showing the permitted depth and height."
     },
     {
       "reference": "5.6.3 (e)",
@@ -4131,7 +4261,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-1fc4e01954",
+      "figure-alt-text": "Two axonometric line drawings of Becontree houses with single-storey rear extensions shaded purple, showing the permitted depth and height."
     },
     {
       "reference": "5.6.3 (f)",
@@ -4192,7 +4324,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-1fc4e01954",
+      "figure-alt-text": "Two axonometric line drawings of Becontree houses with single-storey rear extensions shaded purple, showing the permitted depth and height."
     },
     {
       "reference": "5.6.3 (g)",
@@ -4253,7 +4387,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (h)",
@@ -4314,7 +4450,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (i)",
@@ -4375,7 +4513,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (j)",
@@ -4436,7 +4576,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (k)",
@@ -4497,7 +4639,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (l)",
@@ -4558,7 +4702,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-78770344c4",
+      "figure-alt-text": "Axonometric drawing of a Type A or B Becontree house with two-storey rear extension zones shaded purple, labelled with a pitched roof of up to 2000mm ridge height, the maximum ground floor depth and the potential future dormer."
     },
     {
       "reference": "5.6.3 (m)",
@@ -4619,7 +4765,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (n)",
@@ -4680,7 +4828,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (o)",
@@ -4741,7 +4891,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (p)",
@@ -4802,7 +4954,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-de93888160",
+      "figure-alt-text": "Axonometric drawing of a Type C Becontree house with two-storey rear extension zones shaded purple, labelled with the flat roof design, the maximum ground floor depth and the potential future dormer position."
     },
     {
       "reference": "5.6.3 (q)",
@@ -4863,7 +5017,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-06a7276334",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a code-compliant wraparound infill extension and rear dormer shaded purple, with dimensions."
     },
     {
       "reference": "5.6.3 (r)",
@@ -4924,7 +5080,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-06a7276334",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a code-compliant wraparound infill extension and rear dormer shaded purple, with dimensions."
     },
     {
       "reference": "5.6.3 (s)",
@@ -4985,7 +5143,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "The source refers to \"5.3.4\" for side extensions; the side extension code is at 5.3.3. Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "The source refers to \"5.3.4\" for side extensions; the side extension code is at 5.3.3. Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-0dea4350c3",
+      "figure-alt-text": "Axonometric drawing, marked with a red cross, of a Becontree house with oversized wraparound and rear extensions shaded purple, showing maxed-out infill development that is not permitted."
     },
     {
       "reference": "5.6.3 (t)",
@@ -5046,7 +5206,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-06a7276334",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a code-compliant wraparound infill extension and rear dormer shaded purple, with dimensions."
     },
     {
       "reference": "5.6.3 (u)",
@@ -5107,7 +5269,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-8be418a28a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a flat-roofed single-storey rear extension shaded purple, with a green sedum roof and a parapet 300mm high, plus a photo of a sedum roof."
     },
     {
       "reference": "5.6.3 (v)",
@@ -5168,7 +5332,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-8be418a28a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a flat-roofed single-storey rear extension shaded purple, with a green sedum roof and a parapet 300mm high, plus a photo of a sedum roof."
     },
     {
       "reference": "5.6.3 (w)",
@@ -5229,7 +5395,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-1fc4e01954",
+      "figure-alt-text": "Two axonometric line drawings of Becontree houses with single-storey rear extensions shaded purple, showing the permitted depth and height."
     },
     {
       "reference": "5.6.3 (x)",
@@ -5290,7 +5458,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-8be418a28a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a flat-roofed single-storey rear extension shaded purple, with a green sedum roof and a parapet 300mm high, plus a photo of a sedum roof."
     },
     {
       "reference": "5.6.3 (y)",
@@ -5351,7 +5521,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-8be418a28a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a flat-roofed single-storey rear extension shaded purple, with a green sedum roof and a parapet 300mm high, plus a photo of a sedum roof."
     },
     {
       "reference": "5.6.3 (z)",
@@ -5412,7 +5584,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 48,
       "end-page-number": 53,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-8be418a28a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with a flat-roofed single-storey rear extension shaded purple, with a green sedum roof and a parapet 300mm high, plus a photo of a sedum roof."
     },
     {
       "reference": "5.7.3 (a)",
@@ -5473,7 +5647,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.7.3 (b)",
@@ -5534,7 +5710,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.7.3 (c)",
@@ -5595,7 +5773,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.7.3 (d)",
@@ -5656,7 +5836,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.7.3 (e)",
@@ -5717,7 +5899,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.7.3 (f)",
@@ -5778,7 +5962,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.7.3 (g)",
@@ -5839,7 +6025,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.7.3 (h)",
@@ -5900,7 +6088,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 54,
       "end-page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-a32c5c734a",
+      "figure-alt-text": "Axonometric drawing of a Becontree house with an outbuilding in the rear garden shaded blue-grey, marked up to 2500mm high, with distances from the house and boundaries."
     },
     {
       "reference": "5.8.3 (a)",
@@ -5961,7 +6151,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (b)",
@@ -6022,7 +6214,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (c)",
@@ -6083,7 +6277,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (d)",
@@ -6144,7 +6340,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (e)",
@@ -6205,7 +6403,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (f)",
@@ -6266,7 +6466,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (g)",
@@ -6327,7 +6529,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (h)",
@@ -6388,7 +6592,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e205439abc",
+      "figure-alt-text": "Axonometric drawing, marked with a green tick, of a front corner plot Becontree house with a porch and a side addition shaded green, compliant with the code, and a shaded corner garden."
     },
     {
       "reference": "5.8.3 (i)",
@@ -6449,7 +6655,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (j)",
@@ -6510,7 +6718,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b63d6a1844",
+      "figure-alt-text": "Two axonometric drawings of a corner green between Becontree homes, outside the property boundary, with trees and planting, comparing front-facing and side-facing entrances."
     },
     {
       "reference": "5.8.3 (k)",
@@ -6571,7 +6781,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b3953ebc82",
+      "figure-alt-text": "Axonometric drawings, marked with a red cross, of front and rear Becontree corner plots with non-compliant side and roof extensions shaded green."
     },
     {
       "reference": "5.8.3 (l)",
@@ -6632,7 +6844,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "The source labels this \"Code 5.5.3\" in one figure; the rear extension code is at 5.6.3. Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "The source labels this \"Code 5.5.3\" in one figure; the rear extension code is at 5.6.3. Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-e205439abc",
+      "figure-alt-text": "Axonometric drawing, marked with a green tick, of a front corner plot Becontree house with a porch and a side addition shaded green, compliant with the code, and a shaded corner garden."
     },
     {
       "reference": "5.8.3 (m)",
@@ -6693,7 +6907,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-477aae3b8b",
+      "figure-alt-text": "Plan drawing of two corner plots on a junction, with green-shaded garden areas, hedges along the boundaries and trees."
     },
     {
       "reference": "5.8.3 (n)",
@@ -6754,7 +6970,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-477aae3b8b",
+      "figure-alt-text": "Plan drawing of two corner plots on a junction, with green-shaded garden areas, hedges along the boundaries and trees."
     },
     {
       "reference": "5.8.3 (o)",
@@ -6815,7 +7033,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 57,
       "end-page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-477aae3b8b",
+      "figure-alt-text": "Plan drawing of two corner plots on a junction, with green-shaded garden areas, hedges along the boundaries and trees."
     },
     {
       "reference": "5.9.3 (a)",
@@ -6883,7 +7103,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-778d12dfd9",
+      "figure-alt-text": "Axonometric line drawing in gold of an infill plot behind existing homes, with an access route from the street leading to a highlighted building footprint."
     },
     {
       "reference": "5.9.3 (b)",
@@ -6951,7 +7173,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-778d12dfd9",
+      "figure-alt-text": "Axonometric line drawing in gold of an infill plot behind existing homes, with an access route from the street leading to a highlighted building footprint."
     },
     {
       "reference": "5.9.3 (c)",
@@ -7019,7 +7243,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-778d12dfd9",
+      "figure-alt-text": "Axonometric line drawing in gold of an infill plot behind existing homes, with an access route from the street leading to a highlighted building footprint."
     },
     {
       "reference": "5.9.3 (d)",
@@ -7087,7 +7313,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-778d12dfd9",
+      "figure-alt-text": "Axonometric line drawing in gold of an infill plot behind existing homes, with an access route from the street leading to a highlighted building footprint."
     },
     {
       "reference": "5.9.3 (e)",
@@ -7155,7 +7383,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-778d12dfd9",
+      "figure-alt-text": "Axonometric line drawing in gold of an infill plot behind existing homes, with an access route from the street leading to a highlighted building footprint."
     },
     {
       "reference": "5.9.3 (f)",
@@ -7223,7 +7453,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-778d12dfd9",
+      "figure-alt-text": "Axonometric line drawing in gold of an infill plot behind existing homes, with an access route from the street leading to a highlighted building footprint."
     },
     {
       "reference": "5.9.6 (a)",
@@ -7291,7 +7523,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (b)",
@@ -7359,7 +7593,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (c)",
@@ -7427,7 +7663,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (d)",
@@ -7495,7 +7733,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (e)",
@@ -7563,7 +7803,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (f)",
@@ -7631,7 +7873,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (g)",
@@ -7699,7 +7943,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (h)",
@@ -7767,7 +8013,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (i)",
@@ -7835,7 +8083,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (j)",
@@ -7903,7 +8153,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (k)",
@@ -7971,7 +8223,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (l)",
@@ -8039,7 +8293,9 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
     },
     {
       "reference": "5.9.6 (m)",
@@ -8107,7 +8363,211 @@
       "document-url": "https://www.oneboroughvoice.lbbd.gov.uk/becontree-estate-spd/widgets/153051/documents",
       "page-number": 62,
       "end-page-number": 67,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and diagrams.",
+      "design-code-figure": "figure-b6d2b9aa89",
+      "figure-alt-text": "Axonometric line drawing of a short Becontree terrace with a new infill house shaded gold, matching the height, roof form and building line of its neighbours."
+    }
+  ],
+  "design-code-figures": [
+    {
+      "reference": "figure-458adc6e6e",
+      "number": "20",
+      "image": "/public/images/design-codes/becontree/figure-458adc6e6e.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 29, Figure 20",
+      "page-number": 29
+    },
+    {
+      "reference": "figure-0a8859cadd",
+      "number": "19",
+      "image": "/public/images/design-codes/becontree/figure-0a8859cadd.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 29, Figure 19",
+      "page-number": 29
+    },
+    {
+      "reference": "figure-92c17eb217",
+      "number": "23",
+      "image": "/public/images/design-codes/becontree/figure-92c17eb217.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 29, Figure 23",
+      "page-number": 29
+    },
+    {
+      "reference": "figure-e820a115df",
+      "number": "24",
+      "image": "/public/images/design-codes/becontree/figure-e820a115df.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 30, Figure 24",
+      "page-number": 30
+    },
+    {
+      "reference": "figure-d731e481d1",
+      "number": "25",
+      "image": "/public/images/design-codes/becontree/figure-d731e481d1.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 30, Figure 25",
+      "page-number": 30
+    },
+    {
+      "reference": "figure-e72c4bd6c6",
+      "number": "26",
+      "image": "/public/images/design-codes/becontree/figure-e72c4bd6c6.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 31, Figure 26",
+      "page-number": 31
+    },
+    {
+      "reference": "figure-868b0d50dc",
+      "number": "27",
+      "image": "/public/images/design-codes/becontree/figure-868b0d50dc.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 34, Figure 27",
+      "page-number": 34
+    },
+    {
+      "reference": "figure-a248838e5e",
+      "number": "27",
+      "image": "/public/images/design-codes/becontree/figure-a248838e5e.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 34, Figure 27",
+      "page-number": 34
+    },
+    {
+      "reference": "figure-94ff37e8e6",
+      "number": "29",
+      "image": "/public/images/design-codes/becontree/figure-94ff37e8e6.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 35, Figure 29",
+      "page-number": 35
+    },
+    {
+      "reference": "figure-fb25e23bcc",
+      "number": "30",
+      "image": "/public/images/design-codes/becontree/figure-fb25e23bcc.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 38, Figure 30",
+      "page-number": 38
+    },
+    {
+      "reference": "figure-b53588daba",
+      "number": "31",
+      "image": "/public/images/design-codes/becontree/figure-b53588daba.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 41, Figure 31",
+      "page-number": 41
+    },
+    {
+      "reference": "figure-21cdcd6af2",
+      "number": "34",
+      "image": "/public/images/design-codes/becontree/figure-21cdcd6af2.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 42, Figure 34",
+      "page-number": 42
+    },
+    {
+      "reference": "figure-c26d96b358",
+      "number": "35",
+      "image": "/public/images/design-codes/becontree/figure-c26d96b358.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 43, Figure 35",
+      "page-number": 43
+    },
+    {
+      "reference": "figure-85bdd6f644",
+      "number": "37",
+      "image": "/public/images/design-codes/becontree/figure-85bdd6f644.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 46, Figure 37",
+      "page-number": 46
+    },
+    {
+      "reference": "figure-994284433f",
+      "image": "/public/images/design-codes/becontree/figure-994284433f.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 47",
+      "page-number": 47
+    },
+    {
+      "reference": "figure-39b027fa72",
+      "image": "/public/images/design-codes/becontree/figure-39b027fa72.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 47",
+      "page-number": 47
+    },
+    {
+      "reference": "figure-1fc4e01954",
+      "number": "41",
+      "image": "/public/images/design-codes/becontree/figure-1fc4e01954.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 50, Figure 41",
+      "page-number": 50
+    },
+    {
+      "reference": "figure-de93888160",
+      "number": "45",
+      "image": "/public/images/design-codes/becontree/figure-de93888160.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 51, Figure 45",
+      "page-number": 51
+    },
+    {
+      "reference": "figure-78770344c4",
+      "number": "44",
+      "image": "/public/images/design-codes/becontree/figure-78770344c4.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 51, Figure 44",
+      "page-number": 51
+    },
+    {
+      "reference": "figure-06a7276334",
+      "number": "46",
+      "image": "/public/images/design-codes/becontree/figure-06a7276334.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 52, Figure 46",
+      "page-number": 52
+    },
+    {
+      "reference": "figure-0dea4350c3",
+      "number": "47",
+      "image": "/public/images/design-codes/becontree/figure-0dea4350c3.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 52, Figure 47",
+      "page-number": 52
+    },
+    {
+      "reference": "figure-8be418a28a",
+      "number": "48",
+      "image": "/public/images/design-codes/becontree/figure-8be418a28a.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 53, Figure 48",
+      "page-number": 53
+    },
+    {
+      "reference": "figure-a32c5c734a",
+      "number": "49",
+      "image": "/public/images/design-codes/becontree/figure-a32c5c734a.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 56, Figure 49",
+      "page-number": 56
+    },
+    {
+      "reference": "figure-b63d6a1844",
+      "number": "50",
+      "image": "/public/images/design-codes/becontree/figure-b63d6a1844.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 59, Figure 50",
+      "page-number": 59
+    },
+    {
+      "reference": "figure-e205439abc",
+      "number": "54",
+      "image": "/public/images/design-codes/becontree/figure-e205439abc.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 61, Figure 54",
+      "page-number": 61
+    },
+    {
+      "reference": "figure-b3953ebc82",
+      "number": "55",
+      "image": "/public/images/design-codes/becontree/figure-b3953ebc82.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 61, Figure 55",
+      "page-number": 61
+    },
+    {
+      "reference": "figure-477aae3b8b",
+      "number": "52",
+      "image": "/public/images/design-codes/becontree/figure-477aae3b8b.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 60, Figure 52",
+      "page-number": 60
+    },
+    {
+      "reference": "figure-778d12dfd9",
+      "image": "/public/images/design-codes/becontree/figure-778d12dfd9.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 65",
+      "page-number": 65
+    },
+    {
+      "reference": "figure-b6d2b9aa89",
+      "number": "58",
+      "image": "/public/images/design-codes/becontree/figure-b6d2b9aa89.jpg",
+      "source": "Becontree Estate SPD and Design Code (LB Barking and Dagenham), PDF page 67, Figure 58",
+      "page-number": 67
     }
   ],
   "place-types": [

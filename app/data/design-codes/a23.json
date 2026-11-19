@@ -1,7 +1,7 @@
 {
   "extraction": {
-    "source": "app/data/Sources/Design codes/Design code rules - A23.csv",
-    "extracted-date": "2026-11-16",
+    "source": "app/data/Sources/Design codes/East riding.xlsx (A23 sheet)",
+    "extracted-date": "2026-11-18",
     "method": "Converted from the spreadsheet export by scripts/csv-to-json.js. Sections come from the rule references (4.2.1 is in section 4.2), named after their national design issue. Chapters are the first number of the reference, named after their rules' most common national design feature, as the spreadsheet does not name them. The spreadsheet gives some rules the same reference, so those have -1, -2… added; printed-reference keeps the spreadsheet's. \"Recommendation\" rules are key guidance, with type-name \"Recommendation\". "
   },
   "design-code": {
@@ -242,7 +242,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 36,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-fcbbf9246a",
+      "figure-alt-text": "Map of the A23 corridor from Redhill to Gatwick Airport, marking the design code route through Earlswood, Salfords and Horley and the strategic crossing points along it."
     },
     {
       "reference": "4.2.1-1",
@@ -299,7 +301,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 37,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ea685b317d",
+      "figure-alt-text": "Photo of a wide, uncluttered paved footway in front of shopfronts, with people walking and a row of parked hire bikes along the kerb edge."
     },
     {
       "reference": "4.2.1-2",
@@ -356,7 +360,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 37,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ea685b317d",
+      "figure-alt-text": "Photo of a wide, uncluttered paved footway in front of shopfronts, with people walking and a row of parked hire bikes along the kerb edge."
     },
     {
       "reference": "4.2.1-3",
@@ -413,7 +419,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 37,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ea685b317d",
+      "figure-alt-text": "Photo of a wide, uncluttered paved footway in front of shopfronts, with people walking and a row of parked hire bikes along the kerb edge."
     },
     {
       "reference": "4.2.1-4",
@@ -470,7 +478,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 37,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ea685b317d",
+      "figure-alt-text": "Photo of a wide, uncluttered paved footway in front of shopfronts, with people walking and a row of parked hire bikes along the kerb edge."
     },
     {
       "reference": "4.2.2-1",
@@ -527,7 +537,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a184228f55",
+      "figure-alt-text": "Axonometric drawing of a street with a blue-highlighted bi-directional cycle track running along one side between the footway and carriageway, with a magnified inset of cyclists on the track."
     },
     {
       "reference": "4.2.2-2",
@@ -584,7 +596,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a184228f55",
+      "figure-alt-text": "Axonometric drawing of a street with a blue-highlighted bi-directional cycle track running along one side between the footway and carriageway, with a magnified inset of cyclists on the track."
     },
     {
       "reference": "4.2.2-3",
@@ -641,7 +655,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a184228f55",
+      "figure-alt-text": "Axonometric drawing of a street with a blue-highlighted bi-directional cycle track running along one side between the footway and carriageway, with a magnified inset of cyclists on the track."
     },
     {
       "reference": "4.2.2-4",
@@ -698,7 +714,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a184228f55",
+      "figure-alt-text": "Axonometric drawing of a street with a blue-highlighted bi-directional cycle track running along one side between the footway and carriageway, with a magnified inset of cyclists on the track."
     },
     {
       "reference": "4.2.2-5",
@@ -755,7 +773,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a184228f55",
+      "figure-alt-text": "Axonometric drawing of a street with a blue-highlighted bi-directional cycle track running along one side between the footway and carriageway, with a magnified inset of cyclists on the track."
     },
     {
       "reference": "4.2.2-6",
@@ -812,7 +832,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 38,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a184228f55",
+      "figure-alt-text": "Axonometric drawing of a street with a blue-highlighted bi-directional cycle track running along one side between the footway and carriageway, with a magnified inset of cyclists on the track."
     },
     {
       "reference": "4.2.3-1",
@@ -869,7 +891,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 40,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-b9b7cca373",
+      "figure-alt-text": "Axonometric drawing of a street with the furniture zone highlighted in blue between the footway and carriageway, with a magnified inset showing benches and planting in that zone."
     },
     {
       "reference": "4.2.3-2",
@@ -926,7 +950,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 40,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-b9b7cca373",
+      "figure-alt-text": "Axonometric drawing of a street with the furniture zone highlighted in blue between the footway and carriageway, with a magnified inset showing benches and planting in that zone."
     },
     {
       "reference": "4.2.3-3",
@@ -986,7 +1012,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 40,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-b9b7cca373",
+      "figure-alt-text": "Axonometric drawing of a street with the furniture zone highlighted in blue between the footway and carriageway, with a magnified inset showing benches and planting in that zone."
     },
     {
       "reference": "4.2.3-4",
@@ -1045,7 +1073,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 40,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-b9b7cca373",
+      "figure-alt-text": "Axonometric drawing of a street with the furniture zone highlighted in blue between the footway and carriageway, with a magnified inset showing benches and planting in that zone."
     },
     {
       "reference": "4.2.4-1",
@@ -1102,7 +1132,10 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 41,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-c8f689072b",
+      "figure-alt-text": "Worked example for South Horley: a plan of the corridor, a photo of the existing road, and a sketch of the same street with a cycle track, planted verges, trees and people walking.",
+      "figure-note": "The rule's own page (PDF page 41) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "4.2.4-2",
@@ -1159,7 +1192,10 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 41,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-842f9d9b44",
+      "figure-alt-text": "Map of the A23 corridor from Redhill to Gatwick Airport, with a red line marking the sections proposed for a 20mph speed limit.",
+      "figure-note": "The rule's own page (PDF page 41) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "4.2.4-3",
@@ -1216,7 +1252,10 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 41,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-c8f689072b",
+      "figure-alt-text": "Worked example for South Horley: a plan of the corridor, a photo of the existing road, and a sketch of the same street with a cycle track, planted verges, trees and people walking.",
+      "figure-note": "The rule's own page (PDF page 41) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "4.2.4-4",
@@ -1273,7 +1312,10 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 41,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-c8f689072b",
+      "figure-alt-text": "Worked example for South Horley: a plan of the corridor, a photo of the existing road, and a sketch of the same street with a cycle track, planted verges, trees and people walking.",
+      "figure-note": "The rule's own page (PDF page 41) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "4.2.4-5",
@@ -1330,7 +1372,10 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 41,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-c8f689072b",
+      "figure-alt-text": "Worked example for South Horley: a plan of the corridor, a photo of the existing road, and a sketch of the same street with a cycle track, planted verges, trees and people walking.",
+      "figure-note": "The rule's own page (PDF page 41) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "4.2.5-1",
@@ -1387,7 +1432,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 42,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-842f9d9b44",
+      "figure-alt-text": "Map of the A23 corridor from Redhill to Gatwick Airport, with a red line marking the sections proposed for a 20mph speed limit."
     },
     {
       "reference": "4.2.5-2",
@@ -1444,7 +1491,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 42,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-842f9d9b44",
+      "figure-alt-text": "Map of the A23 corridor from Redhill to Gatwick Airport, with a red line marking the sections proposed for a 20mph speed limit."
     },
     {
       "reference": "4.2.6-1",
@@ -1501,7 +1550,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cfb4f77ef5",
+      "figure-alt-text": "Axonometric drawing of a street with blue-highlighted continuous crossings where the footway and cycle track run across the mouths of side streets, with a magnified inset of one junction."
     },
     {
       "reference": "4.2.6-2",
@@ -1558,7 +1609,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cfb4f77ef5",
+      "figure-alt-text": "Axonometric drawing of a street with blue-highlighted continuous crossings where the footway and cycle track run across the mouths of side streets, with a magnified inset of one junction."
     },
     {
       "reference": "4.2.6-3",
@@ -1615,7 +1668,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cfb4f77ef5",
+      "figure-alt-text": "Axonometric drawing of a street with blue-highlighted continuous crossings where the footway and cycle track run across the mouths of side streets, with a magnified inset of one junction."
     },
     {
       "reference": "4.2.6-4",
@@ -1676,7 +1731,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cfb4f77ef5",
+      "figure-alt-text": "Axonometric drawing of a street with blue-highlighted continuous crossings where the footway and cycle track run across the mouths of side streets, with a magnified inset of one junction."
     },
     {
       "reference": "4.2.6-5",
@@ -1733,7 +1790,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 43,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0602ab08bc",
+      "figure-alt-text": "Photo of a side-street junction where the road is narrowed with bollards and the paved footway continues across, with parked cars and houses behind."
     },
     {
       "reference": "4.2.7-1",
@@ -1790,7 +1849,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 45,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-d698d30b90",
+      "figure-alt-text": "Axonometric drawing of a street with blue-highlighted vehicle crossovers where driveways cross the cycle lane and footway, with a magnified inset of one crossover."
     },
     {
       "reference": "4.2.7-2",
@@ -1847,7 +1908,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 45,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-d698d30b90",
+      "figure-alt-text": "Axonometric drawing of a street with blue-highlighted vehicle crossovers where driveways cross the cycle lane and footway, with a magnified inset of one crossover."
     },
     {
       "reference": "4.2.8-1",
@@ -1904,7 +1967,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 45,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0fb9b9e615",
+      "figure-alt-text": "Axonometric drawing of a street with pedestrian crossings highlighted in blue, with a magnified inset showing a zebra crossing and a raised informal crossing."
     },
     {
       "reference": "4.2.8-2",
@@ -1961,7 +2026,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 45,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0fb9b9e615",
+      "figure-alt-text": "Axonometric drawing of a street with pedestrian crossings highlighted in blue, with a magnified inset showing a zebra crossing and a raised informal crossing."
     },
     {
       "reference": "4.2.8-3",
@@ -2022,7 +2089,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 45,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0fb9b9e615",
+      "figure-alt-text": "Axonometric drawing of a street with pedestrian crossings highlighted in blue, with a magnified inset showing a zebra crossing and a raised informal crossing."
     },
     {
       "reference": "4.3.1-1",
@@ -2079,7 +2148,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 46,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-70711dca13",
+      "figure-alt-text": "Photo of a modern glass bus shelter with a long timber bench, a timetable panel and an advertising panel, beside a bus stop marking on the road."
     },
     {
       "reference": "4.3.1-2",
@@ -2136,7 +2207,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 46,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-70711dca13",
+      "figure-alt-text": "Photo of a modern glass bus shelter with a long timber bench, a timetable panel and an advertising panel, beside a bus stop marking on the road."
     },
     {
       "reference": "4.4.1-1",
@@ -2193,7 +2266,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ba2b64cbda",
+      "figure-alt-text": "Axonometric drawing of on-street EV charging points in parking bays, with a magnified inset, plus a short text extract and a photo of a taxi using a kerbside charging post."
     },
     {
       "reference": "4.4.1-2",
@@ -2250,7 +2325,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ba2b64cbda",
+      "figure-alt-text": "Axonometric drawing of on-street EV charging points in parking bays, with a magnified inset, plus a short text extract and a photo of a taxi using a kerbside charging post."
     },
     {
       "reference": "4.4.2",
@@ -2307,7 +2384,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 47,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ba2b64cbda",
+      "figure-alt-text": "Axonometric drawing of on-street EV charging points in parking bays, with a magnified inset, plus a short text extract and a photo of a taxi using a kerbside charging post."
     },
     {
       "reference": "4.5.1",
@@ -2363,7 +2442,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 48,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-5fee9eab86",
+      "figure-alt-text": "Photo of coordinated on-street cycle parking: a row of cycle stands with bikes in a former parking space, protected by a planted tree pit, next to a painted cycle lane."
     },
     {
       "reference": "4.6.1-1",
@@ -2420,7 +2501,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 49,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-bf2037f524",
+      "figure-alt-text": "Two photos of loading in a busy high street: one of a footway-level loading pad being used by a van, and one of the street after a loading pad was added, with people walking."
     },
     {
       "reference": "4.6.1-2",
@@ -2477,7 +2560,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 49,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-bf2037f524",
+      "figure-alt-text": "Two photos of loading in a busy high street: one of a footway-level loading pad being used by a van, and one of the street after a loading pad was added, with people walking."
     },
     {
       "reference": "5.1.1-1",
@@ -2535,7 +2620,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 54,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-fbbe815e96",
+      "figure-alt-text": "Map of the existing green network along the A23 corridor from Redhill to Gatwick Airport, showing parks, green spaces, woodland and green links in shades of green."
     },
     {
       "reference": "5.1.1-2",
@@ -2593,7 +2680,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 54,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-fbbe815e96",
+      "figure-alt-text": "Map of the existing green network along the A23 corridor from Redhill to Gatwick Airport, showing parks, green spaces, woodland and green links in shades of green."
     },
     {
       "reference": "5.1.1-3",
@@ -2651,7 +2740,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 54,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-fbbe815e96",
+      "figure-alt-text": "Map of the existing green network along the A23 corridor from Redhill to Gatwick Airport, showing parks, green spaces, woodland and green links in shades of green."
     },
     {
       "reference": "5.2.1-1",
@@ -2709,7 +2800,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 55,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-9690dc6860",
+      "figure-alt-text": "Photo of mature trees with spreading canopies on a grassed open space, with fallen leaves on the ground."
     },
     {
       "reference": "5.2.1-2",
@@ -2767,7 +2860,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 55,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-9690dc6860",
+      "figure-alt-text": "Photo of mature trees with spreading canopies on a grassed open space, with fallen leaves on the ground."
     },
     {
       "reference": "5.2.2-1",
@@ -2824,7 +2919,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cc8c80c49d",
+      "figure-alt-text": "Axonometric drawing of a street with planted and grass verges highlighted in green along the footway edge, with a magnified inset of the verges."
     },
     {
       "reference": "5.2.2-2",
@@ -2881,7 +2978,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 56,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cc8c80c49d",
+      "figure-alt-text": "Axonometric drawing of a street with planted and grass verges highlighted in green along the footway edge, with a magnified inset of the verges."
     },
     {
       "reference": "5.2.3-1",
@@ -2939,7 +3038,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 57,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-6b64f52917",
+      "figure-alt-text": "Photo of a shopping street with awnings over shopfronts, a wide footway and a long planted bed of flowers and shrubs separating it from a path and grass verge."
     },
     {
       "reference": "5.2.3-2",
@@ -2997,7 +3098,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 57,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-6b64f52917",
+      "figure-alt-text": "Photo of a shopping street with awnings over shopfronts, a wide footway and a long planted bed of flowers and shrubs separating it from a path and grass verge."
     },
     {
       "reference": "5.2.3-3",
@@ -3055,7 +3158,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 57,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-6b64f52917",
+      "figure-alt-text": "Photo of a shopping street with awnings over shopfronts, a wide footway and a long planted bed of flowers and shrubs separating it from a path and grass verge."
     },
     {
       "reference": "5.2.3-4",
@@ -3113,7 +3218,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 57,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-6b64f52917",
+      "figure-alt-text": "Photo of a shopping street with awnings over shopfronts, a wide footway and a long planted bed of flowers and shrubs separating it from a path and grass verge."
     },
     {
       "reference": "5.2.4-1",
@@ -3171,7 +3278,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 58,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-757fa7de49",
+      "figure-alt-text": "Axonometric drawing of a street with new street trees, shown in teal, planted at regular intervals along both sides of the carriageway."
     },
     {
       "reference": "5.2.4-2",
@@ -3229,7 +3338,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 58,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-757fa7de49",
+      "figure-alt-text": "Axonometric drawing of a street with new street trees, shown in teal, planted at regular intervals along both sides of the carriageway."
     },
     {
       "reference": "5.2.4-3",
@@ -3287,7 +3398,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 58,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-757fa7de49",
+      "figure-alt-text": "Axonometric drawing of a street with new street trees, shown in teal, planted at regular intervals along both sides of the carriageway."
     },
     {
       "reference": "5.2.4-4",
@@ -3345,7 +3458,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 58,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-757fa7de49",
+      "figure-alt-text": "Axonometric drawing of a street with new street trees, shown in teal, planted at regular intervals along both sides of the carriageway."
     },
     {
       "reference": "5.2.4-5",
@@ -3403,7 +3518,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 58,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-757fa7de49",
+      "figure-alt-text": "Axonometric drawing of a street with new street trees, shown in teal, planted at regular intervals along both sides of the carriageway."
     },
     {
       "reference": "5.2.5-1",
@@ -3461,7 +3578,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-2",
@@ -3519,7 +3638,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-3",
@@ -3577,7 +3698,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-4",
@@ -3635,7 +3758,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-5",
@@ -3693,7 +3818,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-6",
@@ -3751,7 +3878,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-7",
@@ -3809,7 +3938,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-8",
@@ -3867,7 +3998,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-9",
@@ -3925,7 +4058,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-10",
@@ -3983,7 +4118,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-11",
@@ -4041,7 +4178,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.2.5-12",
@@ -4099,7 +4238,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 59,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-06224d1070",
+      "figure-alt-text": "Photo of a residential street lined with tall, mature street trees in grassed verges, with cars parked between the trees."
     },
     {
       "reference": "5.3.1-1",
@@ -4157,7 +4298,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 60,
-      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-1135b1c711",
+      "figure-alt-text": "Axonometric drawing of a street with soft verges highlighted in teal along the kerb, acting as rain gardens, with a magnified inset of the planted verges."
     },
     {
       "reference": "5.3.1-2",
@@ -4215,7 +4358,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 60,
-      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-07fe4690e9",
+      "figure-alt-text": "Map of water and flooding along the A23 corridor from Redhill to Gatwick Airport, showing watercourses and flood zones in blue either side of the route."
     },
     {
       "reference": "5.3.1-3",
@@ -4273,7 +4418,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 60,
-      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-07fe4690e9",
+      "figure-alt-text": "Map of water and flooding along the A23 corridor from Redhill to Gatwick Airport, showing watercourses and flood zones in blue either side of the route."
     },
     {
       "reference": "5.3.1-4",
@@ -4331,7 +4478,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 60,
-      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-07fe4690e9",
+      "figure-alt-text": "Map of water and flooding along the A23 corridor from Redhill to Gatwick Airport, showing watercourses and flood zones in blue either side of the route."
     },
     {
       "reference": "5.3.1-5",
@@ -4389,7 +4538,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 60,
-      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The checklist calls this code \"Incorporating SuDS in street design\"; the code itself is titled \"Blue infrastructure\". Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-07fe4690e9",
+      "figure-alt-text": "Map of water and flooding along the A23 corridor from Redhill to Gatwick Airport, showing watercourses and flood zones in blue either side of the route."
     },
     {
       "reference": "5.4.1-1",
@@ -4446,7 +4597,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-f685fda11d",
+      "figure-alt-text": "Photo of a steep bank densely planted with orange wildflowers and grasses beside a flight of public steps with handrails."
     },
     {
       "reference": "5.4.1-2",
@@ -4503,7 +4656,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 61,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-f685fda11d",
+      "figure-alt-text": "Photo of a steep bank densely planted with orange wildflowers and grasses beside a flight of public steps with handrails."
     },
     {
       "reference": "5.5.1-1",
@@ -4561,7 +4716,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 63,
-      "extraction-notes": "The source cites \"Policy NEH4\" for this code, which appears to be a typo for NHE4. Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The source cites \"Policy NEH4\" for this code, which appears to be a typo for NHE4. Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-bb3db134bb",
+      "figure-alt-text": "Photo of well-kept, densely planted beds of low shrubs and ground cover along the edge of a paved path."
     },
     {
       "reference": "5.5.1-2",
@@ -4620,7 +4777,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 63,
-      "extraction-notes": "The source cites \"Policy NEH4\" for this code, which appears to be a typo for NHE4. Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The source cites \"Policy NEH4\" for this code, which appears to be a typo for NHE4. Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-bb3db134bb",
+      "figure-alt-text": "Photo of well-kept, densely planted beds of low shrubs and ground cover along the edge of a paved path."
     },
     {
       "reference": "6.2.1-1",
@@ -4673,7 +4832,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.1-2",
@@ -4726,7 +4887,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.1-3",
@@ -4779,7 +4942,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.1-4",
@@ -4832,7 +4997,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.1-5",
@@ -4887,7 +5054,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.1-6",
@@ -4942,7 +5111,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.1-7",
@@ -4995,7 +5166,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.1-8",
@@ -5051,7 +5224,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 71,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a283830097",
+      "figure-alt-text": "Three axonometric drawings of a consistent building line, highlighted in purple, in a suburban street, an edge-of-centre street and an urban street."
     },
     {
       "reference": "6.2.2-1",
@@ -5107,7 +5282,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 72,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2c3af1ca89",
+      "figure-alt-text": "The active frontages code text, a photo of an evening street with outdoor café seating and people walking, and two axonometric drawings with active ground floors highlighted in purple."
     },
     {
       "reference": "6.2.2-2",
@@ -5163,7 +5340,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 72,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2c3af1ca89",
+      "figure-alt-text": "The active frontages code text, a photo of an evening street with outdoor café seating and people walking, and two axonometric drawings with active ground floors highlighted in purple."
     },
     {
       "reference": "6.2.2-3",
@@ -5216,7 +5395,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 72,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2c3af1ca89",
+      "figure-alt-text": "The active frontages code text, a photo of an evening street with outdoor café seating and people walking, and two axonometric drawings with active ground floors highlighted in purple."
     },
     {
       "reference": "6.2.3-1",
@@ -5273,7 +5454,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 74,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-24b785c808",
+      "figure-alt-text": "Three axonometric drawings showing how the scale and massing of new buildings, highlighted in purple, should step up from suburban to edge-of-centre to urban settings."
     },
     {
       "reference": "6.2.3-2",
@@ -5331,7 +5514,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 74,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-24b785c808",
+      "figure-alt-text": "Three axonometric drawings showing how the scale and massing of new buildings, highlighted in purple, should step up from suburban to edge-of-centre to urban settings."
     },
     {
       "reference": "6.2.3-3",
@@ -5390,7 +5575,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 74,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-24b785c808",
+      "figure-alt-text": "Three axonometric drawings showing how the scale and massing of new buildings, highlighted in purple, should step up from suburban to edge-of-centre to urban settings."
     },
     {
       "reference": "6.2.3-4",
@@ -5449,7 +5636,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 74,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-24b785c808",
+      "figure-alt-text": "Three axonometric drawings showing how the scale and massing of new buildings, highlighted in purple, should step up from suburban to edge-of-centre to urban settings."
     },
     {
       "reference": "6.2.3-5",
@@ -5508,7 +5697,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 74,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-24b785c808",
+      "figure-alt-text": "Three axonometric drawings showing how the scale and massing of new buildings, highlighted in purple, should step up from suburban to edge-of-centre to urban settings."
     },
     {
       "reference": "6.2.3-6",
@@ -5565,7 +5756,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 74,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-24b785c808",
+      "figure-alt-text": "Three axonometric drawings showing how the scale and massing of new buildings, highlighted in purple, should step up from suburban to edge-of-centre to urban settings."
     },
     {
       "reference": "6.2.3-7",
@@ -5622,7 +5815,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 74,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-24b785c808",
+      "figure-alt-text": "Three axonometric drawings showing how the scale and massing of new buildings, highlighted in purple, should step up from suburban to edge-of-centre to urban settings."
     },
     {
       "reference": "6.2.4-1",
@@ -5675,7 +5870,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-71bba4a76f",
+      "figure-alt-text": "Axonometric drawing of a street with corner buildings, highlighted in purple, designed to turn the corner with frontages to both streets."
     },
     {
       "reference": "6.2.4-2",
@@ -5728,7 +5925,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2e349d3826",
+      "figure-alt-text": "Axonometric drawing of a street with plot boundaries and the interface between building fronts and footway highlighted in purple, with a magnified inset of front boundaries."
     },
     {
       "reference": "6.2.4-3",
@@ -5782,7 +5981,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-71bba4a76f",
+      "figure-alt-text": "Axonometric drawing of a street with corner buildings, highlighted in purple, designed to turn the corner with frontages to both streets."
     },
     {
       "reference": "6.2.5-1",
@@ -5835,7 +6036,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2e349d3826",
+      "figure-alt-text": "Axonometric drawing of a street with plot boundaries and the interface between building fronts and footway highlighted in purple, with a magnified inset of front boundaries."
     },
     {
       "reference": "6.2.5-2",
@@ -5888,7 +6091,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2e349d3826",
+      "figure-alt-text": "Axonometric drawing of a street with plot boundaries and the interface between building fronts and footway highlighted in purple, with a magnified inset of front boundaries."
     },
     {
       "reference": "6.2.5-3",
@@ -5946,7 +6151,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2e349d3826",
+      "figure-alt-text": "Axonometric drawing of a street with plot boundaries and the interface between building fronts and footway highlighted in purple, with a magnified inset of front boundaries."
     },
     {
       "reference": "6.2.5-4",
@@ -6001,7 +6208,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2e349d3826",
+      "figure-alt-text": "Axonometric drawing of a street with plot boundaries and the interface between building fronts and footway highlighted in purple, with a magnified inset of front boundaries."
     },
     {
       "reference": "6.2.5-5",
@@ -6054,7 +6263,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2e349d3826",
+      "figure-alt-text": "Axonometric drawing of a street with plot boundaries and the interface between building fronts and footway highlighted in purple, with a magnified inset of front boundaries."
     },
     {
       "reference": "6.2.5-6",
@@ -6107,7 +6318,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 75,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2e349d3826",
+      "figure-alt-text": "Axonometric drawing of a street with plot boundaries and the interface between building fronts and footway highlighted in purple, with a magnified inset of front boundaries."
     },
     {
       "reference": "6.2.6-1",
@@ -6160,7 +6373,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 77,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0e7a84f6c7",
+      "figure-alt-text": "Axonometric drawing of a terraced street with building entrances highlighted in purple, facing directly onto the street."
     },
     {
       "reference": "6.2.6-2",
@@ -6213,7 +6428,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 77,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0e7a84f6c7",
+      "figure-alt-text": "Axonometric drawing of a terraced street with building entrances highlighted in purple, facing directly onto the street."
     },
     {
       "reference": "6.2.6-3",
@@ -6266,7 +6483,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 77,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0e7a84f6c7",
+      "figure-alt-text": "Axonometric drawing of a terraced street with building entrances highlighted in purple, facing directly onto the street."
     },
     {
       "reference": "6.2.6-4",
@@ -6319,7 +6538,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 77,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0e7a84f6c7",
+      "figure-alt-text": "Axonometric drawing of a terraced street with building entrances highlighted in purple, facing directly onto the street."
     },
     {
       "reference": "6.2.7-1",
@@ -6378,7 +6599,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 78,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-1fc1e3ad20",
+      "figure-alt-text": "Photo of a modern light-industrial or business building with blue cladding, seen across a meadow of red poppies."
     },
     {
       "reference": "6.2.7-2",
@@ -6437,7 +6660,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 78,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-1fc1e3ad20",
+      "figure-alt-text": "Photo of a modern light-industrial or business building with blue cladding, seen across a meadow of red poppies."
     },
     {
       "reference": "6.2.7-3",
@@ -6496,7 +6721,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 78,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-1fc1e3ad20",
+      "figure-alt-text": "Photo of a modern light-industrial or business building with blue cladding, seen across a meadow of red poppies."
     },
     {
       "reference": "6.2.7-4",
@@ -6555,7 +6782,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 78,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-1fc1e3ad20",
+      "figure-alt-text": "Photo of a modern light-industrial or business building with blue cladding, seen across a meadow of red poppies."
     },
     {
       "reference": "6.2.7-5",
@@ -6614,7 +6843,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 78,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-1fc1e3ad20",
+      "figure-alt-text": "Photo of a modern light-industrial or business building with blue cladding, seen across a meadow of red poppies."
     },
     {
       "reference": "6.3.1",
@@ -6669,7 +6900,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 79,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-f581338f5c",
+      "figure-alt-text": "Axonometric drawing of a perimeter street block, highlighted in purple, with buildings fronting the surrounding streets and a private courtyard in the middle."
     },
     {
       "reference": "6.3.2-1",
@@ -6722,7 +6955,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 80,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7b90ace9d3",
+      "figure-alt-text": "Two axonometric drawings of on-plot parking: parking to the side of houses in suburban areas, and an undercroft car park within an urban block."
     },
     {
       "reference": "6.3.2-2",
@@ -6777,7 +7012,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 80,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7b90ace9d3",
+      "figure-alt-text": "Two axonometric drawings of on-plot parking: parking to the side of houses in suburban areas, and an undercroft car park within an urban block."
     },
     {
       "reference": "6.3.2-3",
@@ -6833,7 +7070,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 80,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7b90ace9d3",
+      "figure-alt-text": "Two axonometric drawings of on-plot parking: parking to the side of houses in suburban areas, and an undercroft car park within an urban block."
     },
     {
       "reference": "6.3.2-4",
@@ -6886,7 +7125,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 80,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7b90ace9d3",
+      "figure-alt-text": "Two axonometric drawings of on-plot parking: parking to the side of houses in suburban areas, and an undercroft car park within an urban block."
     },
     {
       "reference": "6.3.3-1",
@@ -6944,7 +7185,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 81,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cd4f3fb1e7",
+      "figure-alt-text": "Axonometric drawing of an urban block with amenity space highlighted in purple: balconies, roof terraces and a shared courtyard garden in the middle of the block."
     },
     {
       "reference": "6.3.3-2",
@@ -7002,7 +7245,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 81,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cd4f3fb1e7",
+      "figure-alt-text": "Axonometric drawing of an urban block with amenity space highlighted in purple: balconies, roof terraces and a shared courtyard garden in the middle of the block."
     },
     {
       "reference": "6.3.3-3",
@@ -7060,7 +7305,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 81,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cd4f3fb1e7",
+      "figure-alt-text": "Axonometric drawing of an urban block with amenity space highlighted in purple: balconies, roof terraces and a shared courtyard garden in the middle of the block."
     },
     {
       "reference": "6.3.3-4",
@@ -7118,7 +7365,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 81,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cd4f3fb1e7",
+      "figure-alt-text": "Axonometric drawing of an urban block with amenity space highlighted in purple: balconies, roof terraces and a shared courtyard garden in the middle of the block."
     },
     {
       "reference": "6.3.3-5",
@@ -7178,7 +7427,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 81,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-cd4f3fb1e7",
+      "figure-alt-text": "Axonometric drawing of an urban block with amenity space highlighted in purple: balconies, roof terraces and a shared courtyard garden in the middle of the block."
     },
     {
       "reference": "6.3.4-1",
@@ -7237,7 +7488,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 82,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0edc04f484",
+      "figure-alt-text": "Photo of a modern brick terrace of town houses with timber-clad bin and cycle stores at the front, discreetly placed either side of a front path."
     },
     {
       "reference": "6.3.4-2",
@@ -7296,7 +7549,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 82,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0edc04f484",
+      "figure-alt-text": "Photo of a modern brick terrace of town houses with timber-clad bin and cycle stores at the front, discreetly placed either side of a front path."
     },
     {
       "reference": "6.3.4-3",
@@ -7355,7 +7610,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 82,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0edc04f484",
+      "figure-alt-text": "Photo of a modern brick terrace of town houses with timber-clad bin and cycle stores at the front, discreetly placed either side of a front path."
     },
     {
       "reference": "6.3.4-4",
@@ -7414,7 +7671,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 82,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-0edc04f484",
+      "figure-alt-text": "Photo of a modern brick terrace of town houses with timber-clad bin and cycle stores at the front, discreetly placed either side of a front path."
     },
     {
       "reference": "6.4.1-1",
@@ -7472,7 +7731,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 83,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2cb981c202",
+      "figure-alt-text": "Axonometric drawing of a street of buildings with sustainable design features highlighted in purple, including solar panels on the roofs."
     },
     {
       "reference": "6.4.1-2",
@@ -7530,7 +7791,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 83,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2cb981c202",
+      "figure-alt-text": "Axonometric drawing of a street of buildings with sustainable design features highlighted in purple, including solar panels on the roofs."
     },
     {
       "reference": "6.4.1-3",
@@ -7588,7 +7851,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 83,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2cb981c202",
+      "figure-alt-text": "Axonometric drawing of a street of buildings with sustainable design features highlighted in purple, including solar panels on the roofs."
     },
     {
       "reference": "6.4.1-4",
@@ -7646,7 +7911,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 83,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2cb981c202",
+      "figure-alt-text": "Axonometric drawing of a street of buildings with sustainable design features highlighted in purple, including solar panels on the roofs."
     },
     {
       "reference": "7.1.1-1",
@@ -7703,7 +7970,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 88,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ffe3a3faed",
+      "figure-alt-text": "Three street elevation diagrams in grey and blue showing how new development should follow the existing urban grain and how a larger building's mass should be broken down to suit its neighbours."
     },
     {
       "reference": "7.1.1-2",
@@ -7763,7 +8032,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 88,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ffe3a3faed",
+      "figure-alt-text": "Three street elevation diagrams in grey and blue showing how new development should follow the existing urban grain and how a larger building's mass should be broken down to suit its neighbours."
     },
     {
       "reference": "7.1.1-3",
@@ -7821,7 +8092,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 88,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ffe3a3faed",
+      "figure-alt-text": "Three street elevation diagrams in grey and blue showing how new development should follow the existing urban grain and how a larger building's mass should be broken down to suit its neighbours."
     },
     {
       "reference": "7.1.2-1",
@@ -7878,7 +8151,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 90,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-aa388bb94d",
+      "figure-alt-text": "Photo of a traditional Surrey vernacular house with tall brick chimneys, red clay tile-hung upper walls, steep tiled roofs and white bay windows."
     },
     {
       "reference": "7.1.2-2",
@@ -7935,7 +8210,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 90,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-aa388bb94d",
+      "figure-alt-text": "Photo of a traditional Surrey vernacular house with tall brick chimneys, red clay tile-hung upper walls, steep tiled roofs and white bay windows."
     },
     {
       "reference": "7.1.2-3",
@@ -7992,7 +8269,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 90,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-aa388bb94d",
+      "figure-alt-text": "Photo of a traditional Surrey vernacular house with tall brick chimneys, red clay tile-hung upper walls, steep tiled roofs and white bay windows."
     },
     {
       "reference": "7.1.2-4",
@@ -8049,7 +8328,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 90,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-aa388bb94d",
+      "figure-alt-text": "Photo of a traditional Surrey vernacular house with tall brick chimneys, red clay tile-hung upper walls, steep tiled roofs and white bay windows."
     },
     {
       "reference": "7.2.1-1",
@@ -8106,7 +8387,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 92,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-d3beff201b",
+      "figure-alt-text": "Map of the A23 corridor from Redhill to Gatwick Airport with circles marking the key nodes along the route where high-quality, distinctive design is needed."
     },
     {
       "reference": "7.2.1-2",
@@ -8164,7 +8447,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 92,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-d3beff201b",
+      "figure-alt-text": "Map of the A23 corridor from Redhill to Gatwick Airport with circles marking the key nodes along the route where high-quality, distinctive design is needed."
     },
     {
       "reference": "7.2.1-3",
@@ -8221,7 +8506,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 92,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-d3beff201b",
+      "figure-alt-text": "Map of the A23 corridor from Redhill to Gatwick Airport with circles marking the key nodes along the route where high-quality, distinctive design is needed."
     },
     {
       "reference": "8.2.1",
@@ -8277,7 +8564,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 101,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7f0aa7be74",
+      "figure-alt-text": "Street cross-section for street type S1: a narrow street between buildings, with people walking on a shared footway and cycle route, two cars on the carriageway, street lights and labelled zones along the bottom."
     },
     {
       "reference": "8.2.2-1",
@@ -8334,7 +8623,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 102,
-      "extraction-notes": "The source gives S2 a width range of 14.4m to 14.6m, while the flowchart in Figure 8.9 groups 14.4m to 15.3m. Check which applies. Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The source gives S2 a width range of 14.4m to 14.6m, while the flowchart in Figure 8.9 groups 14.4m to 15.3m. Check which applies. Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-9912529ca2",
+      "figure-alt-text": "Street cross-section for street type S2: footway, segregated cycle lane, carriageway with two cars, street lights and labelled zones between the building fronts."
     },
     {
       "reference": "8.2.2-2",
@@ -8391,7 +8682,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 102,
-      "extraction-notes": "The source gives S2 a width range of 14.4m to 14.6m, while the flowchart in Figure 8.9 groups 14.4m to 15.3m. Check which applies. Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "The source gives S2 a width range of 14.4m to 14.6m, while the flowchart in Figure 8.9 groups 14.4m to 15.3m. Check which applies. Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-a26f75efb6",
+      "figure-alt-text": "Axonometric drawing of street type S2: a narrow street lined with terraced houses, with an orange segregated cycle route and footway running beside the grey carriageway."
     },
     {
       "reference": "8.2.3-1",
@@ -8448,7 +8741,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 103,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ac0a4bdaf6",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S3: a narrow street with on-street parking, street trees and houses set back behind front gardens."
     },
     {
       "reference": "8.2.3-2",
@@ -8505,7 +8800,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 103,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-ac0a4bdaf6",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S3: a narrow street with on-street parking, street trees and houses set back behind front gardens."
     },
     {
       "reference": "8.2.4-1",
@@ -8562,7 +8859,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 104,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7ca82727a9",
+      "figure-alt-text": "Street cross-section for street type S4: footway, cycle lane, tree verge, carriageway with cars and a second footway between the building fronts."
     },
     {
       "reference": "8.2.4-2",
@@ -8619,7 +8918,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 104,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-d314d2d721",
+      "figure-alt-text": "Axonometric drawing of street type S4: a street with a segregated cycle route and footway, street trees and detached houses with front gardens."
     },
     {
       "reference": "8.2.4-3",
@@ -8676,7 +8977,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 104,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-d314d2d721",
+      "figure-alt-text": "Axonometric drawing of street type S4: a street with a segregated cycle route and footway, street trees and detached houses with front gardens."
     },
     {
       "reference": "8.2.5-1",
@@ -8733,7 +9036,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 105,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-da6269add7",
+      "figure-alt-text": "Street cross-section for street type S5: two large street trees in verges either side of the carriageway, with footways, a cycle lane and people walking."
     },
     {
       "reference": "8.2.5-2",
@@ -8790,7 +9095,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 105,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-76b12398cc",
+      "figure-alt-text": "Axonometric drawing of street type S5: an avenue of trees in planted verges on both sides of the carriageway, with a cycle track and terraced houses."
     },
     {
       "reference": "8.2.6-1",
@@ -8847,7 +9154,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 106,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-f3bb5870c7",
+      "figure-alt-text": "Street cross-section for street type S6: footway, cycle lane, tree and parking zone, carriageway with cars and a second parking and tree zone."
     },
     {
       "reference": "8.2.6-2",
@@ -8904,7 +9213,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 106,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-f3306e80f0",
+      "figure-alt-text": "Axonometric drawing of street type S6: on-street parking bays set between street trees, with a cycle track, footways and semi-detached houses."
     },
     {
       "reference": "8.2.6-3",
@@ -8961,7 +9272,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 106,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-f3306e80f0",
+      "figure-alt-text": "Axonometric drawing of street type S6: on-street parking bays set between street trees, with a cycle track, footways and semi-detached houses."
     },
     {
       "reference": "8.2.7-1",
@@ -9018,7 +9331,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 107,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7c0a103e8a",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S7: a wide street with on-street parking, street trees, a cycle track and three-storey town houses."
     },
     {
       "reference": "8.2.7-2",
@@ -9075,7 +9390,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 107,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-7c0a103e8a",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S7: a wide street with on-street parking, street trees, a cycle track and three-storey town houses."
     },
     {
       "reference": "8.2.8-1",
@@ -9132,7 +9449,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 108,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-70147c4367",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S8: a street with a dedicated bus lane, a red bus, a cycle track, a street tree and taller terraced buildings."
     },
     {
       "reference": "8.2.8-2",
@@ -9189,7 +9508,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 108,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-70147c4367",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S8: a street with a dedicated bus lane, a red bus, a cycle track, a street tree and taller terraced buildings."
     },
     {
       "reference": "8.2.9-1",
@@ -9248,7 +9569,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 109,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-e50e621e28",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S9: a street near Redhill town centre with tall apartment blocks, street trees, parking and a cycle track."
     },
     {
       "reference": "8.2.9-2",
@@ -9307,7 +9630,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 109,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-e50e621e28",
+      "figure-alt-text": "Axonometric drawing and cross-section of street type S9: a street near Redhill town centre with tall apartment blocks, street trees, parking and a cycle track."
     },
     {
       "reference": "8.2.10-1",
@@ -9364,7 +9689,9 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 110,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-1ca9f28e42",
+      "figure-alt-text": "Street cross-section for street type S10: groups of trees in green verges on both sides, footways, a cycle lane and a carriageway with two cars."
     },
     {
       "reference": "8.2.10-2",
@@ -9421,7 +9748,374 @@
       ],
       "document-url": "https://www.reigate-banstead.gov.uk/downloads/file/7352/adopted_a23_great_street_design_code_spd_june_2024",
       "page-number": 110,
-      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures."
+      "extraction-notes": "Rule wording summarised from the source – check for exact wording and figures.",
+      "design-code-figure": "figure-2d950e65b4",
+      "figure-alt-text": "Axonometric drawing of street type S10: a street through Earlswood lined on both sides by trees in wide green verges, with a cycle track and footway."
+    }
+  ],
+  "design-code-figures": [
+    {
+      "reference": "figure-fcbbf9246a",
+      "number": "4.1",
+      "image": "/public/images/design-codes/a23/figure-fcbbf9246a.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 36, Figure 4.1",
+      "page-number": 36
+    },
+    {
+      "reference": "figure-ea685b317d",
+      "image": "/public/images/design-codes/a23/figure-ea685b317d.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 37",
+      "page-number": 37
+    },
+    {
+      "reference": "figure-a184228f55",
+      "number": "4.2",
+      "image": "/public/images/design-codes/a23/figure-a184228f55.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 38, Figure 4.2",
+      "page-number": 38
+    },
+    {
+      "reference": "figure-b9b7cca373",
+      "number": "4.5",
+      "image": "/public/images/design-codes/a23/figure-b9b7cca373.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 40, Figure 4.5",
+      "page-number": 40
+    },
+    {
+      "reference": "figure-c8f689072b",
+      "number": "4.3",
+      "image": "/public/images/design-codes/a23/figure-c8f689072b.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 39, Figure 4.3",
+      "page-number": 39
+    },
+    {
+      "reference": "figure-842f9d9b44",
+      "number": "4.6",
+      "image": "/public/images/design-codes/a23/figure-842f9d9b44.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 42, Figure 4.6",
+      "page-number": 42
+    },
+    {
+      "reference": "figure-cfb4f77ef5",
+      "number": "4.7",
+      "image": "/public/images/design-codes/a23/figure-cfb4f77ef5.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 43, Figure 4.7",
+      "page-number": 43
+    },
+    {
+      "reference": "figure-0602ab08bc",
+      "image": "/public/images/design-codes/a23/figure-0602ab08bc.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 44",
+      "page-number": 44
+    },
+    {
+      "reference": "figure-d698d30b90",
+      "number": "4.8",
+      "image": "/public/images/design-codes/a23/figure-d698d30b90.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 45, Figure 4.8",
+      "page-number": 45
+    },
+    {
+      "reference": "figure-0fb9b9e615",
+      "number": "4.9",
+      "image": "/public/images/design-codes/a23/figure-0fb9b9e615.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 45, Figure 4.9",
+      "page-number": 45
+    },
+    {
+      "reference": "figure-70711dca13",
+      "image": "/public/images/design-codes/a23/figure-70711dca13.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 46",
+      "page-number": 46
+    },
+    {
+      "reference": "figure-ba2b64cbda",
+      "number": "4.10",
+      "image": "/public/images/design-codes/a23/figure-ba2b64cbda.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 47, Figure 4.10",
+      "page-number": 47
+    },
+    {
+      "reference": "figure-5fee9eab86",
+      "image": "/public/images/design-codes/a23/figure-5fee9eab86.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 48",
+      "page-number": 48
+    },
+    {
+      "reference": "figure-bf2037f524",
+      "image": "/public/images/design-codes/a23/figure-bf2037f524.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 49",
+      "page-number": 49
+    },
+    {
+      "reference": "figure-fbbe815e96",
+      "number": "5.1",
+      "image": "/public/images/design-codes/a23/figure-fbbe815e96.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 54, Figure 5.1",
+      "page-number": 54
+    },
+    {
+      "reference": "figure-9690dc6860",
+      "image": "/public/images/design-codes/a23/figure-9690dc6860.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 55",
+      "page-number": 55
+    },
+    {
+      "reference": "figure-cc8c80c49d",
+      "number": "5.2",
+      "image": "/public/images/design-codes/a23/figure-cc8c80c49d.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 56, Figure 5.2",
+      "page-number": 56
+    },
+    {
+      "reference": "figure-6b64f52917",
+      "image": "/public/images/design-codes/a23/figure-6b64f52917.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 57",
+      "page-number": 57
+    },
+    {
+      "reference": "figure-757fa7de49",
+      "number": "5.3",
+      "image": "/public/images/design-codes/a23/figure-757fa7de49.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 58, Figure 5.3",
+      "page-number": 58
+    },
+    {
+      "reference": "figure-06224d1070",
+      "image": "/public/images/design-codes/a23/figure-06224d1070.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 59",
+      "page-number": 59
+    },
+    {
+      "reference": "figure-1135b1c711",
+      "number": "5.4",
+      "image": "/public/images/design-codes/a23/figure-1135b1c711.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 60, Figure 5.4",
+      "page-number": 60
+    },
+    {
+      "reference": "figure-07fe4690e9",
+      "number": "5.5",
+      "image": "/public/images/design-codes/a23/figure-07fe4690e9.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 60, Figure 5.5",
+      "page-number": 60
+    },
+    {
+      "reference": "figure-f685fda11d",
+      "image": "/public/images/design-codes/a23/figure-f685fda11d.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 61",
+      "page-number": 61
+    },
+    {
+      "reference": "figure-bb3db134bb",
+      "image": "/public/images/design-codes/a23/figure-bb3db134bb.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 63",
+      "page-number": 63
+    },
+    {
+      "reference": "figure-a283830097",
+      "image": "/public/images/design-codes/a23/figure-a283830097.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 71",
+      "page-number": 71
+    },
+    {
+      "reference": "figure-2c3af1ca89",
+      "number": "6.6",
+      "image": "/public/images/design-codes/a23/figure-2c3af1ca89.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 72, Figure 6.6",
+      "page-number": 72
+    },
+    {
+      "reference": "figure-24b785c808",
+      "number": "6.9",
+      "image": "/public/images/design-codes/a23/figure-24b785c808.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 74, Figure 6.9",
+      "page-number": 74
+    },
+    {
+      "reference": "figure-71bba4a76f",
+      "number": "6.11",
+      "image": "/public/images/design-codes/a23/figure-71bba4a76f.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 75, Figure 6.11",
+      "page-number": 75
+    },
+    {
+      "reference": "figure-2e349d3826",
+      "number": "6.10",
+      "image": "/public/images/design-codes/a23/figure-2e349d3826.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 75, Figure 6.10",
+      "page-number": 75
+    },
+    {
+      "reference": "figure-0e7a84f6c7",
+      "number": "6.12",
+      "image": "/public/images/design-codes/a23/figure-0e7a84f6c7.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 77, Figure 6.12",
+      "page-number": 77
+    },
+    {
+      "reference": "figure-1fc1e3ad20",
+      "image": "/public/images/design-codes/a23/figure-1fc1e3ad20.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 78",
+      "page-number": 78
+    },
+    {
+      "reference": "figure-f581338f5c",
+      "image": "/public/images/design-codes/a23/figure-f581338f5c.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 79",
+      "page-number": 79
+    },
+    {
+      "reference": "figure-7b90ace9d3",
+      "number": "6.14",
+      "image": "/public/images/design-codes/a23/figure-7b90ace9d3.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 80, Figure 6.14",
+      "page-number": 80
+    },
+    {
+      "reference": "figure-cd4f3fb1e7",
+      "number": "6.16",
+      "image": "/public/images/design-codes/a23/figure-cd4f3fb1e7.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 81, Figure 6.16",
+      "page-number": 81
+    },
+    {
+      "reference": "figure-0edc04f484",
+      "image": "/public/images/design-codes/a23/figure-0edc04f484.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 82",
+      "page-number": 82
+    },
+    {
+      "reference": "figure-2cb981c202",
+      "number": "6.17",
+      "image": "/public/images/design-codes/a23/figure-2cb981c202.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 83, Figure 6.17",
+      "page-number": 83
+    },
+    {
+      "reference": "figure-ffe3a3faed",
+      "number": "7.3",
+      "image": "/public/images/design-codes/a23/figure-ffe3a3faed.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 88, Figure 7.3",
+      "page-number": 88
+    },
+    {
+      "reference": "figure-aa388bb94d",
+      "image": "/public/images/design-codes/a23/figure-aa388bb94d.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 90",
+      "page-number": 90
+    },
+    {
+      "reference": "figure-d3beff201b",
+      "number": "7.6",
+      "image": "/public/images/design-codes/a23/figure-d3beff201b.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 92, Figure 7.6",
+      "page-number": 92
+    },
+    {
+      "reference": "figure-7f0aa7be74",
+      "number": "8.11",
+      "image": "/public/images/design-codes/a23/figure-7f0aa7be74.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 101, Figure 8.11",
+      "page-number": 101
+    },
+    {
+      "reference": "figure-9912529ca2",
+      "number": "8.13",
+      "image": "/public/images/design-codes/a23/figure-9912529ca2.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 102, Figure 8.13",
+      "page-number": 102
+    },
+    {
+      "reference": "figure-a26f75efb6",
+      "number": "8.12",
+      "image": "/public/images/design-codes/a23/figure-a26f75efb6.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 102, Figure 8.12",
+      "page-number": 102
+    },
+    {
+      "reference": "figure-ac0a4bdaf6",
+      "number": "8.15",
+      "image": "/public/images/design-codes/a23/figure-ac0a4bdaf6.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 103, Figure 8.15",
+      "page-number": 103
+    },
+    {
+      "reference": "figure-7ca82727a9",
+      "number": "8.17",
+      "image": "/public/images/design-codes/a23/figure-7ca82727a9.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 104, Figure 8.17",
+      "page-number": 104
+    },
+    {
+      "reference": "figure-d314d2d721",
+      "number": "8.16",
+      "image": "/public/images/design-codes/a23/figure-d314d2d721.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 104, Figure 8.16",
+      "page-number": 104
+    },
+    {
+      "reference": "figure-da6269add7",
+      "number": "8.19",
+      "image": "/public/images/design-codes/a23/figure-da6269add7.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 105, Figure 8.19",
+      "page-number": 105
+    },
+    {
+      "reference": "figure-76b12398cc",
+      "number": "8.18",
+      "image": "/public/images/design-codes/a23/figure-76b12398cc.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 105, Figure 8.18",
+      "page-number": 105
+    },
+    {
+      "reference": "figure-f3bb5870c7",
+      "number": "8.21",
+      "image": "/public/images/design-codes/a23/figure-f3bb5870c7.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 106, Figure 8.21",
+      "page-number": 106
+    },
+    {
+      "reference": "figure-f3306e80f0",
+      "number": "8.20",
+      "image": "/public/images/design-codes/a23/figure-f3306e80f0.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 106, Figure 8.20",
+      "page-number": 106
+    },
+    {
+      "reference": "figure-7c0a103e8a",
+      "number": "8.23",
+      "image": "/public/images/design-codes/a23/figure-7c0a103e8a.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 107, Figure 8.23",
+      "page-number": 107
+    },
+    {
+      "reference": "figure-70147c4367",
+      "number": "8.25",
+      "image": "/public/images/design-codes/a23/figure-70147c4367.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 108, Figure 8.25",
+      "page-number": 108
+    },
+    {
+      "reference": "figure-e50e621e28",
+      "number": "8.27",
+      "image": "/public/images/design-codes/a23/figure-e50e621e28.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 109, Figure 8.27",
+      "page-number": 109
+    },
+    {
+      "reference": "figure-1ca9f28e42",
+      "number": "8.29",
+      "image": "/public/images/design-codes/a23/figure-1ca9f28e42.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 110, Figure 8.29",
+      "page-number": 110
+    },
+    {
+      "reference": "figure-2d950e65b4",
+      "number": "8.28",
+      "image": "/public/images/design-codes/a23/figure-2d950e65b4.jpg",
+      "source": "A23 Great Street Design Code, Redhill to Horley corridor (Reigate and Banstead), PDF page 110, Figure 8.28",
+      "page-number": 110
     }
   ],
   "place-types": [

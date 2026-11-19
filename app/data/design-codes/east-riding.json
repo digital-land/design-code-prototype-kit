@@ -1,7 +1,7 @@
 {
   "extraction": {
-    "source": "app/data/Sources/Design codes/Design code rules - East Riding.csv",
-    "extracted-date": "2026-11-16",
+    "source": "app/data/Sources/Design codes/East riding.xlsx (East Riding sheet)",
+    "extracted-date": "2026-11-18",
     "method": "Converted from the spreadsheet export by scripts/csv-to-json.js. Sections come from the web page each rule links to (…entry=3_3_… is section 3.3), named after their national design issue; chapters are named after the issue's group. The spreadsheet gives some rules the same reference, so those have -1, -2… added; printed-reference keeps the spreadsheet's. Place types and development types are kept from the hand-extracted file (scripts/design-codes/east-riding.json) and matched to the spreadsheet's text. "
   },
   "design-code": {
@@ -374,7 +374,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_1_green_infrastructure",
-      "extraction-notes": "Rule wording appears only in a figure image (Figure 19) on the web page – text here is summarised from the surrounding guidance. Applies-to list from figure caption."
+      "extraction-notes": "Rule wording appears only in a figure image (Figure 19) on the web page – text here is summarised from the surrounding guidance. Applies-to list from figure caption.",
+      "design-code-figure": "figure-7203afa6f7",
+      "figure-alt-text": "Axonometric drawing of a housing layout with green infrastructure highlighted, with circular close-ups of a connected wooded area, street trees and SuDS along the movement network."
     },
     {
       "reference": "3.3.2",
@@ -468,7 +470,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows",
-      "extraction-notes": "Tree categories per BS5837 arboricultural survey."
+      "extraction-notes": "Tree categories per BS5837 arboricultural survey.",
+      "design-code-figure": "figure-91c6e3ad74",
+      "figure-alt-text": "Photo of a large bare tree silhouetted against a low winter sun, reflected in still water."
     },
     {
       "reference": "3.3.3-2",
@@ -516,7 +520,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows",
+      "design-code-figure": "figure-91c6e3ad74",
+      "figure-alt-text": "Photo of a large bare tree silhouetted against a low winter sun, reflected in still water."
     },
     {
       "reference": "3.3.3-3",
@@ -561,7 +567,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows",
+      "design-code-figure": "figure-91c6e3ad74",
+      "figure-alt-text": "Photo of a large bare tree silhouetted against a low winter sun, reflected in still water."
     },
     {
       "reference": "3.3.3-4",
@@ -603,7 +611,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows",
+      "design-code-figure": "figure-91c6e3ad74",
+      "figure-alt-text": "Photo of a large bare tree silhouetted against a low winter sun, reflected in still water."
     },
     {
       "reference": "3.3.3-5",
@@ -650,7 +660,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_3_trees_and_hedgerows",
+      "design-code-figure": "figure-91c6e3ad74",
+      "figure-alt-text": "Photo of a large bare tree silhouetted against a low winter sun, reflected in still water."
     },
     {
       "reference": "3.3.4",
@@ -753,7 +765,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_5_renewable_energy",
-      "extraction-notes": "Alt text lists '1-2 units, 10+ units, Mixed Use, 25+ units…' (3-9 units not listed – likely a source error). Image file named g5.png."
+      "extraction-notes": "Alt text lists '1-2 units, 10+ units, Mixed Use, 25+ units…' (3-9 units not listed – likely a source error). Image file named g5.png.",
+      "design-code-figure": "figure-c2bfa2e59d",
+      "figure-alt-text": "Cut-away axonometric drawing of a house with renewable energy features: solar panels on the back roof, a water butt and a heat pump, plus a note that some retrofit measures are not suitable for listed buildings or conservation areas."
     },
     {
       "reference": "3.3.5-2",
@@ -798,7 +812,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=3_5_renewable_energy",
-      "extraction-notes": "G4 is labelled only in image alt text – no separate rule text on the web page; summarised from guidance. Heritage buildings: see Historic England guidance."
+      "extraction-notes": "G4 is labelled only in image alt text – no separate rule text on the web page; summarised from guidance. Heritage buildings: see Historic England guidance.",
+      "design-code-figure": "figure-c2bfa2e59d",
+      "figure-alt-text": "Cut-away axonometric drawing of a house with renewable energy features: solar panels on the back roof, a water butt and a heat pump, plus a note that some retrofit measures are not suitable for listed buildings or conservation areas."
     },
     {
       "reference": "4.4.1-1",
@@ -848,7 +864,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_1_respecting_the_local_context",
-      "extraction-notes": "Shown as 'C07' on page; remainder of rule abridged."
+      "extraction-notes": "Shown as 'C07' on page; remainder of rule abridged.",
+      "design-code-figure": "figure-85edbcbc20",
+      "figure-alt-text": "Two circular street-level views, A and B, along streets towards a church tower highlighted in blue, showing views to the landmark being preserved."
     },
     {
       "reference": "4.4.1-2",
@@ -901,7 +919,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_1_respecting_the_local_context",
-      "extraction-notes": "Labelled in alt text only; no separate rule statement."
+      "extraction-notes": "Labelled in alt text only; no separate rule statement.",
+      "design-code-figure": "figure-fdb2c4271a",
+      "figure-alt-text": "Axonometric drawing of a settlement layout with a church highlighted in blue as a landmark, labelled with increasing density where appropriate, the landmark staying prominent, sightlines preserved and established scale respected."
     },
     {
       "reference": "4.4.2-1",
@@ -945,7 +965,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_2_legibility",
-      "extraction-notes": "Shown as 'C08'."
+      "extraction-notes": "Shown as 'C08'.",
+      "design-code-figure": "figure-cb6212ed6b",
+      "figure-alt-text": "Axonometric drawings of corner buildings highlighted in blue, showing options such as greater decoration and detailing, open space setbacks and a curved corner plot."
     },
     {
       "reference": "4.4.2-2",
@@ -993,7 +1015,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_2_legibility",
-      "extraction-notes": "Shown as 'G06'; no separate rule statement."
+      "extraction-notes": "Shown as 'G06'; no separate rule statement.",
+      "design-code-figure": "figure-50f5d89b2f",
+      "figure-alt-text": "Axonometric drawing of a corner house highlighted in blue with windows on both street-facing sides, labelled 'avoid blank elevations'."
     },
     {
       "reference": "4.4.3-1",
@@ -1036,7 +1060,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_3_street_hierarchy"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_3_street_hierarchy",
+      "design-code-figure": "figure-fac2d75814",
+      "figure-alt-text": "Diagram of an interconnecting street network in blue and grey, with primary and secondary streets labelled within a grid of blocks."
     },
     {
       "reference": "4.4.3-2",
@@ -1092,7 +1118,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_3_street_hierarchy",
-      "extraction-notes": "Alt text lists 3-9, 10-24, 25+ units, Flats, ISD, Commercial (mapped to standard types here)."
+      "extraction-notes": "Alt text lists 3-9, 10-24, 25+ units, Flats, ISD, Commercial (mapped to standard types here).",
+      "design-code-figure": "figure-fac2d75814",
+      "figure-alt-text": "Diagram of an interconnecting street network in blue and grey, with primary and secondary streets labelled within a grid of blocks."
     },
     {
       "reference": "4.4.4-1",
@@ -1154,7 +1182,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_4_connectivity"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_4_connectivity",
+      "design-code-figure": "figure-367bc0e380",
+      "figure-alt-text": "Axonometric drawing of a housing layout with circular close-ups showing good connectivity: through routes, footpaths and links to the existing street network."
     },
     {
       "reference": "4.4.4-2",
@@ -1214,7 +1244,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_4_connectivity"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_4_connectivity",
+      "design-code-figure": "figure-367bc0e380",
+      "figure-alt-text": "Axonometric drawing of a housing layout with circular close-ups showing good connectivity: through routes, footpaths and links to the existing street network."
     },
     {
       "reference": "4.4.5-1",
@@ -1250,7 +1282,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_5_development_mix"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_5_development_mix",
+      "design-code-figure": "figure-2eee4c9cc8",
+      "figure-alt-text": "Axonometric drawing of a neighbourhood layout with circular close-ups labelled good pedestrian connections and integration of uses, plus cycle parking and suitable car parking provision."
     },
     {
       "reference": "4.4.5-2",
@@ -1290,7 +1324,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=4_5_development_mix",
-      "extraction-notes": "No separate rule statement on page."
+      "extraction-notes": "No separate rule statement on page.",
+      "design-code-figure": "figure-2eee4c9cc8",
+      "figure-alt-text": "Axonometric drawing of a neighbourhood layout with circular close-ups labelled good pedestrian connections and integration of uses, plus cycle parking and suitable car parking provision."
     },
     {
       "reference": "5.5.1",
@@ -1338,7 +1374,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_1_public_open_space_character",
-      "extraction-notes": "Flats listed in alt text."
+      "extraction-notes": "Flats listed in alt text.",
+      "design-code-figure": "figure-2847274b96",
+      "figure-alt-text": "Three circular photos of public spaces with different characters in the East Riding: a busy market place, a green with a large pine tree, and a crescent-shaped lawn in front of a terrace."
     },
     {
       "reference": "5.5.2-1",
@@ -1383,7 +1421,10 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_2_design_for_all"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_2_design_for_all",
+      "design-code-figure": "figure-84f79fb933",
+      "figure-alt-text": "Axonometric drawing of a formal town centre public space shaded purple, labelled with a formal arrangement of trees and benches and no boundaries.",
+      "figure-note": "The rule's own page (PDF page 37) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "5.5.2-2",
@@ -1429,7 +1470,10 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_2_design_for_all"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_2_design_for_all",
+      "design-code-figure": "figure-37b5ef7d1c",
+      "figure-alt-text": "Axonometric drawing of a public open space overlooked by surrounding buildings, labelled doors and windows facing the space, no fences for more visibility, and shops fronting the public space.",
+      "figure-note": "The rule's own page (PDF page 37) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "5.5.2-3",
@@ -1481,7 +1525,10 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_2_design_for_all"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_2_design_for_all",
+      "design-code-figure": "figure-6d3af42c33",
+      "figure-alt-text": "Axonometric drawing of a public open space with features highlighted in purple and circular close-ups: links to places beyond the site, a cycle path, a retained mature tree, a welcoming entrance, benches along paths and spaces for gathering.",
+      "figure-note": "The rule's own page (PDF page 37) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "5.5.3-1",
@@ -1537,7 +1584,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_3_play_facilities",
-      "extraction-notes": "Presented as 'Key guidance' – no separate rule statement."
+      "extraction-notes": "Presented as 'Key guidance' – no separate rule statement.",
+      "design-code-figure": "figure-a9e9adc80b",
+      "figure-alt-text": "Three circular photos of play facilities in the East Riding: a playground on a green, play equipment beside new houses, and a fenced natural play area."
     },
     {
       "reference": "5.5.3-2",
@@ -1593,7 +1642,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_3_play_facilities",
-      "extraction-notes": "Presented as 'Key guidance'."
+      "extraction-notes": "Presented as 'Key guidance'.",
+      "design-code-figure": "figure-a9e9adc80b",
+      "figure-alt-text": "Three circular photos of play facilities in the East Riding: a playground on a green, play equipment beside new houses, and a fenced natural play area."
     },
     {
       "reference": "5.5.4",
@@ -1639,7 +1690,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_4_safety_and_surveillance"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=5_4_safety_and_surveillance",
+      "design-code-figure": "figure-37b5ef7d1c",
+      "figure-alt-text": "Axonometric drawing of a public open space overlooked by surrounding buildings, labelled doors and windows facing the space, no fences for more visibility, and shops fronting the public space."
     },
     {
       "reference": "6.6.1",
@@ -1686,7 +1739,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=6_1_block_form_and_typologies",
-      "extraction-notes": "Table 8 tick marks not readable from web page text – check source."
+      "extraction-notes": "Table 8 tick marks not readable from web page text – check source.",
+      "design-code-figure": "figure-3efd18b68b",
+      "figure-alt-text": "Axonometric drawing of a perimeter block of terraced houses round a central space, labelled with the transition from inner neighbourhood to neighbourhood centre place types."
     },
     {
       "reference": "6.6.2-1",
@@ -1730,7 +1785,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=6_2_block_size"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=6_2_block_size",
+      "design-code-figure": "figure-5b9d044282",
+      "figure-alt-text": "Axonometric drawing of an urban block with its length and width marked, and passive surveillance of a break in the block, with a circular street-level view through the gap."
     },
     {
       "reference": "6.6.2-2",
@@ -1770,7 +1827,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=6_2_block_size"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=6_2_block_size",
+      "design-code-figure": "figure-5b9d044282",
+      "figure-alt-text": "Axonometric drawing of an urban block with its length and width marked, and passive surveillance of a break in the block, with a circular street-level view through the gap."
     },
     {
       "reference": "6.6.2-3",
@@ -1811,7 +1870,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=6_2_block_size"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=6_2_block_size",
+      "design-code-figure": "figure-5b9d044282",
+      "figure-alt-text": "Axonometric drawing of an urban block with its length and width marked, and passive surveillance of a break in the block, with a circular street-level view through the gap."
     },
     {
       "reference": "7.7.1",
@@ -1849,7 +1910,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_1_active_frontages"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_1_active_frontages",
+      "design-code-figure": "figure-8d7ce5233a",
+      "figure-alt-text": "Two circular photos of active frontages: a covered arcade with café tables, and a shopfront with large windows and a bench outside."
     },
     {
       "reference": "7.7.2-1",
@@ -1914,7 +1977,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_2_footways_footpaths_and_crossings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_2_footways_footpaths_and_crossings",
+      "design-code-figure": "figure-36e0a888cd",
+      "figure-alt-text": "Axonometric drawing of a street junction labelled with level footways, accessible footpaths, cycle path integration and priorities, and continuous crossings in red paving across side roads."
     },
     {
       "reference": "7.7.2-2",
@@ -1979,7 +2044,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_2_footways_footpaths_and_crossings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_2_footways_footpaths_and_crossings",
+      "design-code-figure": "figure-36e0a888cd",
+      "figure-alt-text": "Axonometric drawing of a street junction labelled with level footways, accessible footpaths, cycle path integration and priorities, and continuous crossings in red paving across side roads."
     },
     {
       "reference": "7.7.2-3",
@@ -2047,7 +2114,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_2_footways_footpaths_and_crossings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_2_footways_footpaths_and_crossings",
+      "design-code-figure": "figure-36e0a888cd",
+      "figure-alt-text": "Axonometric drawing of a street junction labelled with level footways, accessible footpaths, cycle path integration and priorities, and continuous crossings in red paving across side roads."
     },
     {
       "reference": "7.7.3-1",
@@ -2095,7 +2164,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_3_resting_points_and_street_furniture"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_3_resting_points_and_street_furniture",
+      "design-code-figure": "figure-26c4c8da02",
+      "figure-alt-text": "Axonometric drawing of a street with resting points and street furniture, with circular close-ups of benches, planters and seating along the footway."
     },
     {
       "reference": "7.7.3-2",
@@ -2139,7 +2210,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_3_resting_points_and_street_furniture"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_3_resting_points_and_street_furniture",
+      "design-code-figure": "figure-ebee3329cb",
+      "figure-alt-text": "Three circular photos of street furniture: benches and planters in a market square, an information sign and seating in a wet street, and timber benches beside planting."
     },
     {
       "reference": "7.7.4",
@@ -2176,7 +2249,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_4_enclosure"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_4_enclosure",
+      "design-code-figure": "figure-06b2a8276a",
+      "figure-alt-text": "Three circular photos of historic street enclosure in East Riding towns: narrow streets lined continuously with two- and three-storey brick buildings."
     },
     {
       "reference": "7.7.5-1",
@@ -2219,7 +2294,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_5_building_line"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_5_building_line",
+      "design-code-figure": "figure-af5f6e0d49",
+      "figure-alt-text": "Axonometric drawing of a terraced street with one new house shaded red that follows the universal building line of its neighbours."
     },
     {
       "reference": "7.7.5-2",
@@ -2268,7 +2345,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_5_building_line"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_5_building_line",
+      "design-code-figure": "figure-af5f6e0d49",
+      "figure-alt-text": "Axonometric drawing of a terraced street with one new house shaded red that follows the universal building line of its neighbours."
     },
     {
       "reference": "7.7.5-3",
@@ -2317,7 +2396,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_5_building_line"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_5_building_line",
+      "design-code-figure": "figure-af5f6e0d49",
+      "figure-alt-text": "Axonometric drawing of a terraced street with one new house shaded red that follows the universal building line of its neighbours."
     },
     {
       "reference": "7.7.6-1",
@@ -2370,7 +2451,10 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_6_carriageways",
-      "extraction-notes": "Exceptions must be justified in the compliance checklist."
+      "extraction-notes": "Exceptions must be justified in the compliance checklist.",
+      "design-code-figure": "figure-b2af42dff4",
+      "figure-alt-text": "Street section with a cycle lane integrated into the carriageway, between buildings on both sides.",
+      "figure-note": "The rule's own page (PDF page 48) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "7.7.6-2",
@@ -2422,7 +2506,10 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_6_carriageways"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_6_carriageways",
+      "design-code-figure": "figure-3665cd01c3",
+      "figure-alt-text": "Street section with one-way segregated cycle lanes either side of the carriageway, separated by SuDS planting buffers.",
+      "figure-note": "The rule's own page (PDF page 48) has no figure, so this is the closest related figure from the same section."
     },
     {
       "reference": "7.7.7",
@@ -2474,7 +2561,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_7_methods_of_reducing_speed"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_7_methods_of_reducing_speed",
+      "design-code-figure": "figure-061b06060f",
+      "figure-alt-text": "Axonometric drawing of a street with speed reduction features, including build-outs for trees and SuDS, raised tables and open space and landscaping, with circular close-ups."
     },
     {
       "reference": "7.7.8-1",
@@ -2532,7 +2621,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-4783e4d20a",
+      "figure-alt-text": "Axonometric drawings of non-residential parking bay types with their minimum dimensions: standard bays, electric vehicle bays with charging points, motorcycle bays and on-street bays, with landscaping breaking up the parking."
     },
     {
       "reference": "7.7.8-2",
@@ -2584,7 +2675,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-11d2406a7b",
+      "figure-alt-text": "Photo of Sheffield cycle stands with bicycles locked to them under a tree, beside a planted bed in Goole town centre."
     },
     {
       "reference": "7.7.8-3",
@@ -2635,7 +2728,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-4783e4d20a",
+      "figure-alt-text": "Axonometric drawings of non-residential parking bay types with their minimum dimensions: standard bays, electric vehicle bays with charging points, motorcycle bays and on-street bays, with landscaping breaking up the parking."
     },
     {
       "reference": "7.7.8-4",
@@ -2682,7 +2777,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-4783e4d20a",
+      "figure-alt-text": "Axonometric drawings of non-residential parking bay types with their minimum dimensions: standard bays, electric vehicle bays with charging points, motorcycle bays and on-street bays, with landscaping breaking up the parking."
     },
     {
       "reference": "7.7.8-5",
@@ -2731,7 +2828,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-4783e4d20a",
+      "figure-alt-text": "Axonometric drawings of non-residential parking bay types with their minimum dimensions: standard bays, electric vehicle bays with charging points, motorcycle bays and on-street bays, with landscaping breaking up the parking."
     },
     {
       "reference": "7.7.8-6",
@@ -2783,7 +2882,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-4783e4d20a",
+      "figure-alt-text": "Axonometric drawings of non-residential parking bay types with their minimum dimensions: standard bays, electric vehicle bays with charging points, motorcycle bays and on-street bays, with landscaping breaking up the parking."
     },
     {
       "reference": "7.7.8-7",
@@ -2832,7 +2933,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-11d2406a7b",
+      "figure-alt-text": "Photo of Sheffield cycle stands with bicycles locked to them under a tree, beside a planted bed in Goole town centre."
     },
     {
       "reference": "7.7.8-8",
@@ -2881,7 +2984,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-11d2406a7b",
+      "figure-alt-text": "Photo of Sheffield cycle stands with bicycles locked to them under a tree, beside a planted bed in Goole town centre."
     },
     {
       "reference": "7.7.8-9",
@@ -2931,7 +3036,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_8_parking",
+      "design-code-figure": "figure-11d2406a7b",
+      "figure-alt-text": "Photo of Sheffield cycle stands with bicycles locked to them under a tree, beside a planted bed in Goole town centre."
     },
     {
       "reference": "7.7.9-1",
@@ -2981,7 +3088,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions",
+      "design-code-figure": "figure-923e579fde",
+      "figure-alt-text": "Axonometric drawings of residential parking options: detached and integral garages, parking to the side of or in front of the house, and rear parking courts, labelled with driveway widths and landscaping between bays."
     },
     {
       "reference": "7.7.9-2",
@@ -3031,7 +3140,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions",
+      "design-code-figure": "figure-923e579fde",
+      "figure-alt-text": "Axonometric drawings of residential parking options: detached and integral garages, parking to the side of or in front of the house, and rear parking courts, labelled with driveway widths and landscaping between bays."
     },
     {
       "reference": "7.7.9-3",
@@ -3082,7 +3193,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions",
+      "design-code-figure": "figure-923e579fde",
+      "figure-alt-text": "Axonometric drawings of residential parking options: detached and integral garages, parking to the side of or in front of the house, and rear parking courts, labelled with driveway widths and landscaping between bays."
     },
     {
       "reference": "7.7.9-4",
@@ -3132,7 +3245,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=7_9_residential_parking_solutions",
+      "design-code-figure": "figure-923e579fde",
+      "figure-alt-text": "Axonometric drawings of residential parking options: detached and integral garages, parking to the side of or in front of the house, and rear parking courts, labelled with driveway widths and landscaping between bays."
     },
     {
       "reference": "8.8.1-1",
@@ -3172,7 +3287,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements",
+      "design-code-figure": "figure-cdaed5af81",
+      "figure-alt-text": "Axonometric drawing of a single-storey side extension shaded orange on a terraced house, marked with a maximum height of 4 metres, a maximum depth of 3.5 metres and the distance to the boundary."
     },
     {
       "reference": "8.8.1-2",
@@ -3218,7 +3335,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements",
+      "design-code-figure": "figure-cdaed5af81",
+      "figure-alt-text": "Axonometric drawing of a single-storey side extension shaded orange on a terraced house, marked with a maximum height of 4 metres, a maximum depth of 3.5 metres and the distance to the boundary."
     },
     {
       "reference": "8.8.1-3",
@@ -3256,7 +3375,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements",
+      "design-code-figure": "figure-cdaed5af81",
+      "figure-alt-text": "Axonometric drawing of a single-storey side extension shaded orange on a terraced house, marked with a maximum height of 4 metres, a maximum depth of 3.5 metres and the distance to the boundary."
     },
     {
       "reference": "8.8.1-4",
@@ -3297,7 +3418,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements",
-      "extraction-notes": "Guidance only – no separate rule statement."
+      "extraction-notes": "Guidance only – no separate rule statement.",
+      "design-code-figure": "figure-db1cea924e",
+      "figure-alt-text": "Four small axonometric drawings of house plots of different sizes, showing lines of sight, low fencing, back-to-back distances, and increased distances where ground levels change."
     },
     {
       "reference": "8.8.1-5",
@@ -3336,7 +3459,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-db1cea924e",
+      "figure-alt-text": "Four small axonometric drawings of house plots of different sizes, showing lines of sight, low fencing, back-to-back distances, and increased distances where ground levels change."
     },
     {
       "reference": "8.8.1-6",
@@ -3376,7 +3501,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_1_plot_measurements",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-db1cea924e",
+      "figure-alt-text": "Four small axonometric drawings of house plots of different sizes, showing lines of sight, low fencing, back-to-back distances, and increased distances where ground levels change."
     },
     {
       "reference": "8.8.2-1",
@@ -3412,7 +3539,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_2_scale_of_extensions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_2_scale_of_extensions",
+      "design-code-figure": "figure-176399f939",
+      "figure-alt-text": "Circular drawings of single-storey rear, two-storey rear and garage extensions, each with orange notes on ridge and eaves heights, matching materials and space to the side boundary."
     },
     {
       "reference": "8.8.2-2",
@@ -3448,7 +3577,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_2_scale_of_extensions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_2_scale_of_extensions",
+      "design-code-figure": "figure-58b97afcea",
+      "figure-alt-text": "Circular drawings of flat-roof rear, side and wraparound extensions, each with orange notes on parapets, keeping below the original ridge and eaves, and keeping 0.9 metres of space for access."
     },
     {
       "reference": "8.8.3-1",
@@ -3488,7 +3619,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_3_boundary_treatments"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_3_boundary_treatments",
+      "design-code-figure": "figure-179295150b",
+      "figure-alt-text": "Cut-away drawing of a house front with a low brick and metal railing boundary, shaded orange, between the front garden and the footway."
     },
     {
       "reference": "8.8.3-2",
@@ -3527,7 +3660,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_3_boundary_treatments",
-      "extraction-notes": "Guidance shown as an image."
+      "extraction-notes": "Guidance shown as an image.",
+      "design-code-figure": "figure-179295150b",
+      "figure-alt-text": "Cut-away drawing of a house front with a low brick and metal railing boundary, shaded orange, between the front garden and the footway."
     },
     {
       "reference": "8.8.3-3",
@@ -3566,7 +3701,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_3_boundary_treatments",
-      "extraction-notes": "Guidance shown as an image."
+      "extraction-notes": "Guidance shown as an image.",
+      "design-code-figure": "figure-26a83ad29f",
+      "figure-alt-text": "Cut-away drawing of a three-storey town house with stacked balconies above a raised front deck and a boundary, shaded orange."
     },
     {
       "reference": "8.8.4-1",
@@ -3603,7 +3740,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_4_private_gardens"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_4_private_gardens",
+      "design-code-figure": "figure-5fda1ab939",
+      "figure-alt-text": "Cut-away axonometric drawing of a house and back garden labelled with space sufficient for multiple uses, a vegetable garden and a permeable surface, with solar panels on the roof."
     },
     {
       "reference": "8.8.4-2",
@@ -3637,7 +3776,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_4_private_gardens"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_4_private_gardens",
+      "design-code-figure": "figure-5fda1ab939",
+      "figure-alt-text": "Cut-away axonometric drawing of a house and back garden labelled with space sufficient for multiple uses, a vegetable garden and a permeable surface, with solar panels on the roof."
     },
     {
       "reference": "8.8.4-3",
@@ -3676,7 +3817,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_4_private_gardens"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_4_private_gardens",
+      "design-code-figure": "figure-5fda1ab939",
+      "figure-alt-text": "Cut-away axonometric drawing of a house and back garden labelled with space sufficient for multiple uses, a vegetable garden and a permeable surface, with solar panels on the roof."
     },
     {
       "reference": "8.8.5-1",
@@ -3709,7 +3852,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_5_bin_storage"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_5_bin_storage",
+      "design-code-figure": "figure-51845c385b",
+      "figure-alt-text": "Axonometric drawing of a terrace with bin storage at least 1.5 metres from the front, a bin route at least 0.9 metres wide and a collection point at the kerb beside a refuse lorry."
     },
     {
       "reference": "8.8.5-2",
@@ -3742,7 +3887,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_5_bin_storage"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=8_5_bin_storage",
+      "design-code-figure": "figure-1dcd1dc612",
+      "figure-alt-text": "Axonometric drawing of a housing layout labelled with communal bins, collection points and households with individual bins."
     },
     {
       "reference": "9.9.1-1",
@@ -3784,7 +3931,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_1_materials",
-      "extraction-notes": "Non-compliance needs justification in the application."
+      "extraction-notes": "Non-compliance needs justification in the application.",
+      "design-code-figure": "figure-cd19044cdb",
+      "figure-alt-text": "Circular line drawing of a brick wall pattern showing a traditional brick bond."
     },
     {
       "reference": "9.9.1-2",
@@ -3828,7 +3977,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_1_materials"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_1_materials",
+      "design-code-figure": "figure-cd19044cdb",
+      "figure-alt-text": "Circular line drawing of a brick wall pattern showing a traditional brick bond."
     },
     {
       "reference": "9.9.2",
@@ -3865,7 +4016,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.2-1",
@@ -3902,7 +4055,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.2-2",
@@ -3940,7 +4095,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.2-3",
@@ -3978,7 +4135,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.3-1",
@@ -4012,7 +4171,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-46c3e0535b",
+      "figure-alt-text": "Four circular photos of porches and front extensions on brick and rendered houses, including pitched-roof canopies over front doors."
     },
     {
       "reference": "9.2.4-1",
@@ -4050,7 +4211,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-8e06c03217",
+      "figure-alt-text": "Two circular photos of 'shed roof' dormers with sloping roofs set into red pantile roofs on brick houses."
     },
     {
       "reference": "9.2.4-2",
@@ -4089,7 +4252,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "C60 appears on the 9.2 web page but is missing from the Appendix D code/policy table."
+      "extraction-notes": "C60 appears on the 9.2 web page but is missing from the Appendix D code/policy table.",
+      "design-code-figure": "figure-4c2b5e2102",
+      "figure-alt-text": "Three circular photos of dormer windows: gabled dormers on traditional brick houses and a contemporary dormer on an older roof."
     },
     {
       "reference": "9.2.4-3",
@@ -4127,7 +4292,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-8e06c03217",
+      "figure-alt-text": "Two circular photos of 'shed roof' dormers with sloping roofs set into red pantile roofs on brick houses."
     },
     {
       "reference": "9.2.4-4",
@@ -4165,7 +4332,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-4c2b5e2102",
+      "figure-alt-text": "Three circular photos of dormer windows: gabled dormers on traditional brick houses and a contemporary dormer on an older roof."
     },
     {
       "reference": "9.2.4-5",
@@ -4203,7 +4372,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
+      "design-code-figure": "figure-4c2b5e2102",
+      "figure-alt-text": "Three circular photos of dormer windows: gabled dormers on traditional brick houses and a contemporary dormer on an older roof."
     },
     {
       "reference": "9.2.1-1",
@@ -4246,7 +4417,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.1-2",
@@ -4285,7 +4458,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.1-3",
@@ -4327,7 +4502,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.2-4",
@@ -4362,7 +4539,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-bed825f1f7",
+      "figure-alt-text": "Three circular photos of traditional East Riding houses: brick fronts with vertically aligned sash windows, central doors and pitched tiled roofs."
     },
     {
       "reference": "9.2.3-2",
@@ -4394,7 +4573,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-46c3e0535b",
+      "figure-alt-text": "Four circular photos of porches and front extensions on brick and rendered houses, including pitched-roof canopies over front doors."
     },
     {
       "reference": "9.2.4-6",
@@ -4433,7 +4614,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-4c2b5e2102",
+      "figure-alt-text": "Three circular photos of dormer windows: gabled dormers on traditional brick houses and a contemporary dormer on an older roof."
     },
     {
       "reference": "9.2.4-7",
@@ -4472,7 +4655,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_2_elevational_features_and_proportions",
-      "extraction-notes": "Guidance only."
+      "extraction-notes": "Guidance only.",
+      "design-code-figure": "figure-4c2b5e2102",
+      "figure-alt-text": "Three circular photos of dormer windows: gabled dormers on traditional brick houses and a contemporary dormer on an older roof."
     },
     {
       "reference": "9.9.3-1",
@@ -4506,7 +4691,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries",
+      "design-code-figure": "figure-d01b9f5495",
+      "figure-alt-text": "Line drawing of a traditional shopfront with yellow glazing, labelling its parts: entablature, fascia, console brackets, projecting cornice, pilasters, capitals, transom and fan lights, sill, panelled stall riser and plinth."
     },
     {
       "reference": "9.9.3-2",
@@ -4540,7 +4727,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries",
+      "design-code-figure": "figure-d01b9f5495",
+      "figure-alt-text": "Line drawing of a traditional shopfront with yellow glazing, labelling its parts: entablature, fascia, console brackets, projecting cornice, pilasters, capitals, transom and fan lights, sill, panelled stall riser and plinth."
     },
     {
       "reference": "9.9.3-3",
@@ -4574,7 +4763,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries",
+      "design-code-figure": "figure-308c88fcbf",
+      "figure-alt-text": "Axonometric drawing of a shop with an activated frontage, labelled with active uses at first-floor level, a yellow fascia and awning, outdoor seating and intervisibility between inside and outside."
     },
     {
       "reference": "9.9.3-4",
@@ -4608,7 +4799,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries",
+      "design-code-figure": "figure-d01b9f5495",
+      "figure-alt-text": "Line drawing of a traditional shopfront with yellow glazing, labelling its parts: entablature, fascia, console brackets, projecting cornice, pilasters, capitals, transom and fan lights, sill, panelled stall riser and plinth."
     },
     {
       "reference": "9.9.3-5",
@@ -4642,7 +4835,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries",
+      "design-code-figure": "figure-d01b9f5495",
+      "figure-alt-text": "Line drawing of a traditional shopfront with yellow glazing, labelling its parts: entablature, fascia, console brackets, projecting cornice, pilasters, capitals, transom and fan lights, sill, panelled stall riser and plinth."
     },
     {
       "reference": "9.9.3-6",
@@ -4676,7 +4871,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries",
+      "design-code-figure": "figure-d01b9f5495",
+      "figure-alt-text": "Line drawing of a traditional shopfront with yellow glazing, labelling its parts: entablature, fascia, console brackets, projecting cornice, pilasters, capitals, transom and fan lights, sill, panelled stall riser and plinth."
     },
     {
       "reference": "9.9.3-7",
@@ -4710,7 +4907,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_3_frontages_shops_bars_and_eateries",
+      "design-code-figure": "figure-d01b9f5495",
+      "figure-alt-text": "Line drawing of a traditional shopfront with yellow glazing, labelling its parts: entablature, fascia, console brackets, projecting cornice, pilasters, capitals, transom and fan lights, sill, panelled stall riser and plinth."
     },
     {
       "reference": "9.9.4-1",
@@ -4749,7 +4948,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions",
+      "design-code-figure": "figure-d579f98b6c",
+      "figure-alt-text": "Cut-away drawings of a chapel converted to new use, labelled with new floor plates that do not compromise the original openings, and original openings retained."
     },
     {
       "reference": "9.9.4-2",
@@ -4789,7 +4990,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions",
+      "design-code-figure": "figure-d579f98b6c",
+      "figure-alt-text": "Cut-away drawings of a chapel converted to new use, labelled with new floor plates that do not compromise the original openings, and original openings retained."
     },
     {
       "reference": "9.9.4-3",
@@ -4829,7 +5032,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions",
+      "design-code-figure": "figure-f64a904347",
+      "figure-alt-text": "Axonometric drawing of a converted building with extensions, labelled with new boundary features that reflect the original and extensions using matching materials."
     },
     {
       "reference": "9.9.4-4",
@@ -4869,7 +5074,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions",
+      "design-code-figure": "figure-d579f98b6c",
+      "figure-alt-text": "Cut-away drawings of a chapel converted to new use, labelled with new floor plates that do not compromise the original openings, and original openings retained."
     },
     {
       "reference": "9.9.4-5",
@@ -4909,7 +5116,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_4_building_conversions",
+      "design-code-figure": "figure-f64a904347",
+      "figure-alt-text": "Axonometric drawing of a converted building with extensions, labelled with new boundary features that reflect the original and extensions using matching materials."
     },
     {
       "reference": "9.9.5-1",
@@ -4951,7 +5160,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_5_new_agricultural_buildings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_5_new_agricultural_buildings",
+      "design-code-figure": "figure-8298b91a28",
+      "figure-alt-text": "Axonometric drawing of new agricultural buildings arranged as a farmyard among fields, labelled with low-lying rooflines, landscape buffers and considered development around the original buildings."
     },
     {
       "reference": "9.9.5-2",
@@ -4986,7 +5197,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_5_new_agricultural_buildings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_5_new_agricultural_buildings",
+      "design-code-figure": "figure-8298b91a28",
+      "figure-alt-text": "Axonometric drawing of new agricultural buildings arranged as a farmyard among fields, labelled with low-lying rooflines, landscape buffers and considered development around the original buildings."
     },
     {
       "reference": "9.9.5-3",
@@ -5023,7 +5236,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_5_new_agricultural_buildings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_5_new_agricultural_buildings",
+      "design-code-figure": "figure-8298b91a28",
+      "figure-alt-text": "Axonometric drawing of new agricultural buildings arranged as a farmyard among fields, labelled with low-lying rooflines, landscape buffers and considered development around the original buildings."
     },
     {
       "reference": "9.9.5-4",
@@ -5059,7 +5274,9 @@
         }
       ],
       "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_5_new_agricultural_buildings",
-      "extraction-notes": "Section page links 'ENV1' to the ENV3 (heritage) URL – likely a link error."
+      "extraction-notes": "Section page links 'ENV1' to the ENV3 (heritage) URL – likely a link error.",
+      "design-code-figure": "figure-8298b91a28",
+      "figure-alt-text": "Axonometric drawing of new agricultural buildings arranged as a farmyard among fields, labelled with low-lying rooflines, landscape buffers and considered development around the original buildings."
     },
     {
       "reference": "9.9.6-1",
@@ -5105,7 +5322,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings",
+      "design-code-figure": "figure-2f55120db7",
+      "figure-alt-text": "Illustrated aerial view of a new industrial and commercial site set among fields and trees, labelled with clearly defined plot groupings, landscape buffers and renewable energy."
     },
     {
       "reference": "9.9.6-2",
@@ -5144,7 +5363,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings",
+      "design-code-figure": "figure-2f55120db7",
+      "figure-alt-text": "Illustrated aerial view of a new industrial and commercial site set among fields and trees, labelled with clearly defined plot groupings, landscape buffers and renewable energy."
     },
     {
       "reference": "9.9.6-3",
@@ -5185,7 +5406,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings",
+      "design-code-figure": "figure-2f55120db7",
+      "figure-alt-text": "Illustrated aerial view of a new industrial and commercial site set among fields and trees, labelled with clearly defined plot groupings, landscape buffers and renewable energy."
     },
     {
       "reference": "9.9.6-4",
@@ -5224,7 +5447,9 @@
           "listed-as": "Glossary of Design Code terms"
         }
       ],
-      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings"
+      "document-url": "https://www.eastriding.gov.uk/url-directory/local-plan-design-code-item/?entry=9_6_new_isdc_buildings",
+      "design-code-figure": "figure-2f55120db7",
+      "figure-alt-text": "Illustrated aerial view of a new industrial and commercial site set among fields and trees, labelled with clearly defined plot groupings, landscape buffers and renewable energy."
     }
   ],
   "design-code-figures": [
@@ -5384,6 +5609,341 @@
       "image": "",
       "page-number": 46,
       "extraction-notes": "Two photographs (a heat pump and roof solar panels) with no labels."
+    },
+    {
+      "reference": "figure-91c6e3ad74",
+      "number": "21",
+      "image": "/public/images/design-codes/east-riding/figure-91c6e3ad74.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 23, Figure 21",
+      "page-number": 23
+    },
+    {
+      "reference": "figure-fac2d75814",
+      "number": "29",
+      "image": "/public/images/design-codes/east-riding/figure-fac2d75814.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 30, Figure 29",
+      "page-number": 30
+    },
+    {
+      "reference": "figure-367bc0e380",
+      "number": "31",
+      "image": "/public/images/design-codes/east-riding/figure-367bc0e380.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 32, Figure 31",
+      "page-number": 32
+    },
+    {
+      "reference": "figure-2eee4c9cc8",
+      "number": "32",
+      "image": "/public/images/design-codes/east-riding/figure-2eee4c9cc8.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 33, Figure 32",
+      "page-number": 33
+    },
+    {
+      "reference": "figure-84f79fb933",
+      "image": "/public/images/design-codes/east-riding/figure-84f79fb933.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 36",
+      "page-number": 36
+    },
+    {
+      "reference": "figure-37b5ef7d1c",
+      "number": "37",
+      "image": "/public/images/design-codes/east-riding/figure-37b5ef7d1c.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 38, Figure 37",
+      "page-number": 38
+    },
+    {
+      "reference": "figure-3efd18b68b",
+      "number": "38",
+      "image": "/public/images/design-codes/east-riding/figure-3efd18b68b.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 40, Figure 38",
+      "page-number": 40
+    },
+    {
+      "reference": "figure-5b9d044282",
+      "number": "40",
+      "image": "/public/images/design-codes/east-riding/figure-5b9d044282.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 41, Figure 40",
+      "page-number": 41
+    },
+    {
+      "reference": "figure-8d7ce5233a",
+      "number": "41",
+      "image": "/public/images/design-codes/east-riding/figure-8d7ce5233a.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 43, Figure 41",
+      "page-number": 43
+    },
+    {
+      "reference": "figure-36e0a888cd",
+      "number": "43",
+      "image": "/public/images/design-codes/east-riding/figure-36e0a888cd.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 44, Figure 43",
+      "page-number": 44
+    },
+    {
+      "reference": "figure-26c4c8da02",
+      "number": "46",
+      "image": "/public/images/design-codes/east-riding/figure-26c4c8da02.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 45, Figure 46",
+      "page-number": 45
+    },
+    {
+      "reference": "figure-ebee3329cb",
+      "number": "45",
+      "image": "/public/images/design-codes/east-riding/figure-ebee3329cb.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 45, Figure 45",
+      "page-number": 45
+    },
+    {
+      "reference": "figure-af5f6e0d49",
+      "image": "/public/images/design-codes/east-riding/figure-af5f6e0d49.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 47",
+      "page-number": 47
+    },
+    {
+      "reference": "figure-b2af42dff4",
+      "number": "50",
+      "image": "/public/images/design-codes/east-riding/figure-b2af42dff4.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 49, Figure 50",
+      "page-number": 49
+    },
+    {
+      "reference": "figure-3665cd01c3",
+      "image": "/public/images/design-codes/east-riding/figure-3665cd01c3.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 49",
+      "page-number": 49
+    },
+    {
+      "reference": "figure-061b06060f",
+      "number": "52",
+      "image": "/public/images/design-codes/east-riding/figure-061b06060f.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 50, Figure 52",
+      "page-number": 50
+    },
+    {
+      "reference": "figure-4783e4d20a",
+      "number": "53",
+      "image": "/public/images/design-codes/east-riding/figure-4783e4d20a.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 52, Figure 53",
+      "page-number": 52
+    },
+    {
+      "reference": "figure-11d2406a7b",
+      "number": "54",
+      "image": "/public/images/design-codes/east-riding/figure-11d2406a7b.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 53, Figure 54",
+      "page-number": 53
+    },
+    {
+      "reference": "figure-923e579fde",
+      "number": "55",
+      "image": "/public/images/design-codes/east-riding/figure-923e579fde.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 54, Figure 55",
+      "page-number": 54
+    },
+    {
+      "reference": "figure-cdaed5af81",
+      "number": "57",
+      "image": "/public/images/design-codes/east-riding/figure-cdaed5af81.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 57, Figure 57",
+      "page-number": 57
+    },
+    {
+      "reference": "figure-179295150b",
+      "image": "/public/images/design-codes/east-riding/figure-179295150b.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 59",
+      "page-number": 59
+    },
+    {
+      "reference": "figure-5fda1ab939",
+      "number": "60",
+      "image": "/public/images/design-codes/east-riding/figure-5fda1ab939.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 60, Figure 60",
+      "page-number": 60
+    },
+    {
+      "reference": "figure-51845c385b",
+      "image": "/public/images/design-codes/east-riding/figure-51845c385b.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 61",
+      "page-number": 61
+    },
+    {
+      "reference": "figure-1dcd1dc612",
+      "number": "62",
+      "image": "/public/images/design-codes/east-riding/figure-1dcd1dc612.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 61, Figure 62",
+      "page-number": 61
+    },
+    {
+      "reference": "figure-cd19044cdb",
+      "image": "/public/images/design-codes/east-riding/figure-cd19044cdb.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 63",
+      "page-number": 63
+    },
+    {
+      "reference": "figure-bed825f1f7",
+      "number": "64",
+      "image": "/public/images/design-codes/east-riding/figure-bed825f1f7.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 64, Figure 64",
+      "page-number": 64
+    },
+    {
+      "reference": "figure-46c3e0535b",
+      "number": "65",
+      "image": "/public/images/design-codes/east-riding/figure-46c3e0535b.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 65, Figure 65",
+      "page-number": 65
+    },
+    {
+      "reference": "figure-8e06c03217",
+      "number": "68",
+      "image": "/public/images/design-codes/east-riding/figure-8e06c03217.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 66, Figure 68",
+      "page-number": 66
+    },
+    {
+      "reference": "figure-c2bfa2e59d",
+      "number": "23",
+      "image": "/public/images/design-codes/east-riding/figure-c2bfa2e59d.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 26, Figure 23",
+      "page-number": 26
+    },
+    {
+      "reference": "figure-4c2b5e2102",
+      "number": "67",
+      "image": "/public/images/design-codes/east-riding/figure-4c2b5e2102.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 66, Figure 67",
+      "page-number": 66
+    },
+    {
+      "reference": "figure-d01b9f5495",
+      "number": "70",
+      "image": "/public/images/design-codes/east-riding/figure-d01b9f5495.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 67, Figure 70",
+      "page-number": 67
+    },
+    {
+      "reference": "figure-308c88fcbf",
+      "number": "69",
+      "image": "/public/images/design-codes/east-riding/figure-308c88fcbf.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 67, Figure 69",
+      "page-number": 67
+    },
+    {
+      "reference": "figure-85edbcbc20",
+      "number": "26",
+      "image": "/public/images/design-codes/east-riding/figure-85edbcbc20.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 28, Figure 26",
+      "page-number": 28
+    },
+    {
+      "reference": "figure-d579f98b6c",
+      "image": "/public/images/design-codes/east-riding/figure-d579f98b6c.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 68",
+      "page-number": 68
+    },
+    {
+      "reference": "figure-f64a904347",
+      "number": "71",
+      "image": "/public/images/design-codes/east-riding/figure-f64a904347.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 68, Figure 71",
+      "page-number": 68
+    },
+    {
+      "reference": "figure-cb6212ed6b",
+      "number": "28",
+      "image": "/public/images/design-codes/east-riding/figure-cb6212ed6b.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 29, Figure 28",
+      "page-number": 29
+    },
+    {
+      "reference": "figure-7203afa6f7",
+      "number": "19",
+      "image": "/public/images/design-codes/east-riding/figure-7203afa6f7.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 21, Figure 19",
+      "page-number": 21
+    },
+    {
+      "reference": "figure-a9e9adc80b",
+      "number": "36",
+      "image": "/public/images/design-codes/east-riding/figure-a9e9adc80b.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 38, Figure 36",
+      "page-number": 38
+    },
+    {
+      "reference": "figure-06b2a8276a",
+      "number": "47",
+      "image": "/public/images/design-codes/east-riding/figure-06b2a8276a.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 46, Figure 47",
+      "page-number": 46
+    },
+    {
+      "reference": "figure-db1cea924e",
+      "number": "56",
+      "image": "/public/images/design-codes/east-riding/figure-db1cea924e.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 56, Figure 56",
+      "page-number": 56
+    },
+    {
+      "reference": "figure-176399f939",
+      "number": "58",
+      "image": "/public/images/design-codes/east-riding/figure-176399f939.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 58, Figure 58",
+      "page-number": 58
+    },
+    {
+      "reference": "figure-58b97afcea",
+      "image": "/public/images/design-codes/east-riding/figure-58b97afcea.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 58",
+      "page-number": 58
+    },
+    {
+      "reference": "figure-26a83ad29f",
+      "number": "59",
+      "image": "/public/images/design-codes/east-riding/figure-26a83ad29f.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 59, Figure 59",
+      "page-number": 59
+    },
+    {
+      "reference": "figure-8298b91a28",
+      "number": "72",
+      "image": "/public/images/design-codes/east-riding/figure-8298b91a28.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 69, Figure 72",
+      "page-number": 69
+    },
+    {
+      "reference": "figure-2f55120db7",
+      "number": "73",
+      "image": "/public/images/design-codes/east-riding/figure-2f55120db7.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 70, Figure 73",
+      "page-number": 70
+    },
+    {
+      "reference": "figure-fdb2c4271a",
+      "number": "25",
+      "image": "/public/images/design-codes/east-riding/figure-fdb2c4271a.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 28, Figure 25",
+      "page-number": 28
+    },
+    {
+      "reference": "figure-50f5d89b2f",
+      "number": "27",
+      "image": "/public/images/design-codes/east-riding/figure-50f5d89b2f.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 29, Figure 27",
+      "page-number": 29
+    },
+    {
+      "reference": "figure-2847274b96",
+      "number": "34",
+      "image": "/public/images/design-codes/east-riding/figure-2847274b96.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 36, Figure 34",
+      "page-number": 36
+    },
+    {
+      "reference": "figure-6d3af42c33",
+      "number": "33",
+      "image": "/public/images/design-codes/east-riding/figure-6d3af42c33.jpg",
+      "source": "East Riding Design Code (April 2025), PDF page 35, Figure 33",
+      "page-number": 35
     }
   ],
   "place-types": [

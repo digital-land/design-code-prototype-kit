@@ -8,7 +8,7 @@
     Guidance tab               - node 1270:40253
     Source tab                 - node 1270:39985
     Supporting information tab - node 1270:40123
-  The rule's title, text and summary list beside its section's figure (where the data has one),
+  The rule's title, text and summary list beside its figure (where the data has one),
   then tabs. A tab with nothing in it for this rule is left out. Content comes from the extracted
   data; see the rule route in app/routes/v4.js.
 #}
@@ -56,11 +56,20 @@
 
   {% if rule.figure %}
     <figure class="app-v4-rule__figure">
-      <img class="app-v4-rule__figure-image" src="{{ rule.figure.src }}" alt="Figure {{ rule.figure.number }}: {{ rule.figure.caption }}">
+      {# The spreadsheet gives each rule its own alt text for its figure #}
+      <img class="app-v4-rule__figure-image" src="{{ rule.figure.src }}" alt="{{ rule.figure.alt if rule.figure.alt else 'Figure ' + rule.figure.number + ': ' + rule.figure.caption }}">
+      {# The figures are small on the page, so they can be opened at full size #}
+      <p class="govuk-body-s app-v4-rule__figure-link">
+        <a class="govuk-link" href="{{ rule.figure.src }}" target="_blank" rel="noopener noreferrer">Open figure in new tab to see in full size</a>
+      </p>
       <figcaption class="app-v4-rule__figure-text">
-        <span class="app-v4-rule__figure-caption">{{ rule.figure.caption }}</span>
+        {% if rule.figure.caption %}<span class="app-v4-rule__figure-caption">{{ rule.figure.caption }}</span>{% endif %}
         {% if rule.figure.description %}
           <span>{{ rule.figure.description }}</span>
+        {% endif %}
+        {# Where the rule's own page has no figure, the closest one from its section #}
+        {% if rule.figure.note %}
+          <span class="app-v4-rule__figure-note">{{ rule.figure.note }}</span>
         {% endif %}
       </figcaption>
     </figure>

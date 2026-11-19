@@ -1,0 +1,119 @@
+{% extends "v5/layouts/main.html" %}
+
+{#
+  v5: "Add a location boundary", from the Figma frame (node 1367:41746). After searching for an
+  area, its map, where a polygon or square can be drawn round a specific part of it. The counts say
+  how many design requirements there are: for the whole area, or once a boundary is drawn, for the
+  kind of place it is. Drawing is optional. Continue goes to the list of design requirements
+  (results.html). See the boundary route in app/routes/v5.js and javascripts/v5-boundary.js.
+#}
+
+{% set pageName = "Add a location boundary - " + area.council %}
+{% set mainClasses = "app-dc-page__main" %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: baseUrl + "/design-code/find", classes: "app-dc-page__back-link" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="app-v5-boundary">
+  <div class="app-v5-boundary__details">
+    <div>
+      <span class="govuk-caption-m app-v5-boundary__caption">{{ area.council }}</span>
+      <h1 class="govuk-heading-l app-v5-boundary__title">Add a location boundary</h1>
+      <p class="govuk-body">You can add a location boundary for a specific area using a polygon or square.</p>
+
+      {{ govukSummaryList({
+        classes: "app-v5-counts",
+        rows: [
+          { key: { text: "Local authorities" }, value: { text: counts.localAuthorities } },
+          { key: { text: "Design codes" }, value: { text: counts.designCodes } },
+          { key: { text: "Design requirements" }, value: { html: '<span id="v5-count-requirements">' + counts.requirements + '</span>' } }
+        ]
+      }) }}
+
+      {# What kind of place the boundary looks like, once one is drawn #}
+      <p class="govuk-body-s app-v5-boundary__place" id="v5-place" aria-live="polite" hidden></p>
+    </div>
+
+    <form class="app-v5-boundary__actions" id="v5-continue" action="{{ baseUrl }}/design-code/find/results" method="get" novalidate>
+      <input type="hidden" name="area" value="{{ area.id }}">
+      {% if pin %}
+        <input type="hidden" name="lat" value="{{ pin.lat }}">
+        <input type="hidden" name="lng" value="{{ pin.lng }}">
+        <input type="hidden" name="place" value="{{ pin.label }}">
+      {% endif %}
+      {# Filled in by v5-boundary.js once a boundary is drawn #}
+      <input type="hidden" name="boundary" value="">
+      <input type="hidden" name="kind" value="">
+      {{ govukButton({ text: "Continue", classes: "govuk-!-margin-bottom-0" }) }}
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        <a class="govuk-link" href="{{ baseUrl }}/design-code/find">Search for design requirements in a different area</a>
+      </p>
+    </form>
+  </div>
+
+  <div class="app-v5-boundary__map-area">
+    <div id="v5-map" class="app-v5-boundary__map" role="region" aria-label="Map of {{ area.council }}. Add a location boundary to see the design requirements for a specific area."></div>
+
+    {# Draw a polygon or square (as in v4). Drawing needs the map, so this only shows with JavaScript. #}
+    <div class="app-v3-draw app-v5-draw" id="v5-draw" hidden>
+      <button type="button" class="govuk-button govuk-button--secondary app-v3-draw__toggle" id="v5-draw-toggle" aria-expanded="false" aria-controls="v5-draw-menu">
+        <span id="v5-draw-label">Add location boundary</span>
+        <img class="app-v3-draw__chevron" src="/public/images/design-codes/map/arrow-forward-ios.svg" width="16" height="16" alt="">
+      </button>
+      <ul class="app-v3-draw__menu" id="v5-draw-menu" hidden>
+        <li>
+          <button type="button" class="app-v3-draw__item" data-draw="polygon">
+            <img src="/public/images/design-codes/map/format-shapes.svg" width="24" height="24" alt="">
+            Add polygon
+          </button>
+        </li>
+        <li>
+          <button type="button" class="app-v3-draw__item" data-draw="square">
+            <img src="/public/images/design-codes/map/check-box-outline-blank.svg" width="24" height="24" alt="">
+            Add a square
+          </button>
+        </li>
+        <li id="v5-draw-delete" hidden>
+          <button type="button" class="app-v3-draw__item" data-draw="delete">
+            <img src="/public/images/design-codes/map/delete.svg" width="24" height="24" alt="">
+            Delete shape
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    {# While drawing: keep the boundary or throw it away #}
+    <div class="app-v3-draw__status app-v5-draw__status" id="v5-draw-status" hidden>
+      <p class="govuk-visually-hidden" id="v5-draw-instructions" aria-live="polite"></p>
+      <p class="govuk-error-message app-v3-draw__error" id="v5-draw-error" hidden></p>
+      <div class="app-v3-draw__actions">
+        <button type="button" class="govuk-button app-v3-draw__button" id="v5-draw-done">Done</button>
+        <button type="button" class="govuk-button govuk-button--secondary app-v3-draw__button" id="v5-draw-cancel">Cancel<span class="govuk-visually-hidden"> drawing</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    window.v5BoundaryData = {
+      designCode: {{ designCode | dump | safe }},
+      pin: {{ pin | dump | safe }},
+      boundary: {{ boundary | dump | safe }},
+      kind: {{ kind | dump | safe }},
+      boundaries: '/public/data/v2/design-code-areas.geojson'
+    }
+  </script>
+  <script src="/public/javascripts/place-kinds.js"></script>
+  <script src="/public/javascripts/v5-boundary.js"></script>
+{% endblock %}

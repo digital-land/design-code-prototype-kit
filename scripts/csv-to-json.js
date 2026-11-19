@@ -1,7 +1,9 @@
 //
-// Turns the design code spreadsheets exported as CSV into JSON for the prototype.
+// Turns the design code spreadsheets into JSON for the prototype.
 //
-// Reads every CSV in app/data/Sources/Design codes/:
+// Reads the spreadsheet in app/data/Sources/Design codes/: the newest Excel workbook (.xlsx) if
+// there is one, which has every sheet and the rules' pictures, or else every CSV (one sheet each,
+// without pictures):
 //   - each list of rules ("Design code rules - Chatham.csv" and so on) becomes one JSON file per
 //     design code in app/data/design-codes/, in the shape described in app/data/schema.md, so the
 //     data loader (app/data/index.js) picks it up
@@ -9,6 +11,12 @@
 //     with what each type means. Design codes' development types take their descriptions from it.
 //   - "Overview" becomes app/data/national/design-code-fields.json (the fields a rule has, with
 //     the team's notes on each) and app/data/national/use-classes.json (its use class table)
+//   - the picture in each rule's "Image" cell (Excel only) is saved in
+//     app/assets/images/design-codes/<design code>/, with the rule's "Image alt text" and
+//     "Image source", as the figure on the rule's page
+//
+// Where two CSVs hold the same design code (such as an older and a newer Chatham), the newer
+// file is used.
 //
 // Run with: npm run data
 //
@@ -23,11 +31,15 @@
 
 const fs = require('fs')
 const path = require('path')
+const zlib = require('zlib')
+const crypto = require('crypto')
 
 const ROOT = path.join(__dirname, '..')
 const SOURCE_DIR = path.join(ROOT, 'app', 'data', 'Sources', 'Design codes')
 const OUTPUT_DIR = path.join(ROOT, 'app', 'data', 'design-codes')
 const NATIONAL_DIR = path.join(ROOT, 'app', 'data', 'national')
+const IMAGES_DIR = path.join(ROOT, 'app', 'assets', 'images', 'design-codes')
+const IMAGES_URL = '/public/images/design-codes'
 
 // Facts about each design code that the spreadsheet doesn't hold, keyed by its "Design code"
 // column. The reference is what the prototype's routes look up: "medway-design-code" shows on
@@ -149,13 +161,121 @@ function parseCsv (text) {
 
 const readCsv = file => parseCsv(fs.readFileSync(file, 'utf8').replace(/^﻿/, ''))
 
-// Each data row as an object keyed by column name, with spaces trimmed. Empty rows are skipped.
-function readRows (file) {
-  const [, names = [], ...rows] = readCsv(file)
+// ---- Reading the Excel workbook ----
+//
+// An .xlsx file is a zip of XML files: the sheets' cells, the text they share, and for pictures,
+// a drawing per sheet that anchors each picture to a cell. Node has no Excel reader, so this reads
+// just those parts.
+
+// The files in a zip, by name
+function readZip (file) {
+  const zip = fs.readFileSync(file)
+  // The central directory, found from the record at the end of the file
+  let end = zip.length - 22
+  while (end >= 0 && zip.readUInt32LE(end) !== 0x06054b50) end--
+  if (end < 0) throw new Error(`${file} isn't a zip file`)
+  const count = zip.readUInt16LE(end + 10)
+  let at = zip.readUInt32LE(end + 16)
+  const entries = new Map()
+  for (let i = 0; i < count; i++) {
+    const method = zip.readUInt16LE(at + 10)
+    const size = zip.readUInt32LE(at + 20)
+    const nameLength = zip.readUInt16LE(at + 28)
+    const extraLength = zip.readUInt16LE(at + 30)
+    const commentLength = zip.readUInt16LE(at + 32)
+    const local = zip.readUInt32LE(at + 42)
+    const name = zip.toString('utf8', at + 46, at + 46 + nameLength)
+    entries.set(name, () => {
+      const start = local + 30 + zip.readUInt16LE(local + 26) + zip.readUInt16LE(local + 28)
+      const data = zip.subarray(start, start + size)
+      return method === 8 ? zlib.inflateRawSync(data) : data
+    })
+    at += 46 + nameLength + extraLength + commentLength
+  }
+  return {
+    has: name => entries.has(name),
+    read: name => entries.get(name)(),
+    text: name => entries.has(name) ? entries.get(name)().toString('utf8') : ''
+  }
+}
+
+const unescapeXml = text => text.replace(/&(lt|gt|quot|apos|amp|#(\d+)|#x([0-9a-f]+));/gi, (match, name, decimal, hex) =>
+  decimal ? String.fromCodePoint(Number(decimal)) : hex ? String.fromCodePoint(parseInt(hex, 16))
+    : { lt: '<', gt: '>', quot: '"', apos: "'", amp: '&' }[name])
+
+// The text of every <t> in some XML, joined: a cell's rich text comes in runs
+const xmlText = xml => [...xml.matchAll(/<t(?:\s[^>]*)?>([\s\S]*?)<\/t>/g)].map(match => unescapeXml(match[1])).join('')
+
+// The relationships of a part, by id: which file each one points to
+function readRelationships (book, part) {
+  const folder = path.posix.dirname(part)
+  const relsFile = `${folder}/_rels/${path.posix.basename(part)}.rels`
+  const relationships = new Map()
+  for (const [tag] of book.text(relsFile).matchAll(/<Relationship\s[^>]*>/g)) {
+    const id = /Id="([^"]+)"/.exec(tag)[1]
+    const target = unescapeXml(/Target="([^"]+)"/.exec(tag)[1])
+    const external = /TargetMode="External"/.test(tag)
+    relationships.set(id, { type: /Type="([^"]+)"/.exec(tag)[1], target: external ? target : path.posix.normalize(target.startsWith('/') ? target.slice(1) : `${folder}/${target}`) })
+  }
+  return relationships
+}
+
+// "AB" -> 27
+const columnNumber = letters => [...letters].reduce((number, letter) => number * 26 + letter.charCodeAt(0) - 64, 0)
+
+// Each sheet: its name, its rows of cell text (as readCsv gives them), and the picture in each
+// row, by row (0 is the first)
+function readWorkbook (file) {
+  const book = readZip(file)
+  const shared = [...book.text('xl/sharedStrings.xml').matchAll(/<si>([\s\S]*?)<\/si>/g)].map(match => xmlText(match[1]))
+  const workbookRelationships = readRelationships(book, 'xl/workbook.xml')
+  return [...book.text('xl/workbook.xml').matchAll(/<sheet\s[^>]*>/g)].map(([tag]) => {
+    const name = unescapeXml(/name="([^"]+)"/.exec(tag)[1])
+    const part = workbookRelationships.get(/r:id="([^"]+)"/.exec(tag)[1]).target
+    const xml = book.text(part)
+
+    const table = []
+    for (const [, rowNumber, cells] of xml.matchAll(/<row\s[^>]*?r="(\d+)"[^>]*?(?:\/>|>([\s\S]*?)<\/row>)/g)) {
+      const row = []
+      for (const [, letters, attributes, inner = ''] of (cells || '').matchAll(/<c\s+r="([A-Z]+)\d+"([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)) {
+        const type = (/\st="([^"]+)"/.exec(attributes) || [])[1]
+        const value = (/<v>([\s\S]*?)<\/v>/.exec(inner) || [])[1]
+        row[columnNumber(letters) - 1] = type === 's' ? shared[Number(value)]
+          : type === 'inlineStr' ? xmlText(inner)
+            : value === undefined ? '' : unescapeXml(value)
+      }
+      table[Number(rowNumber) - 1] = Array.from(row, cell => cell || '')
+    }
+
+    // Pictures: the drawing's anchors say which row each sits in
+    const images = new Map()
+    for (const relationship of readRelationships(book, part).values()) {
+      if (!/\/drawing$/.test(relationship.type)) continue
+      const drawingRelationships = readRelationships(book, relationship.target)
+      for (const [, anchor] of book.text(relationship.target).matchAll(/<xdr:(?:oneCellAnchor|twoCellAnchor)[^>]*>([\s\S]*?)<\/xdr:(?:oneCellAnchor|twoCellAnchor)>/g)) {
+        const row = /<xdr:from>[\s\S]*?<xdr:row>(\d+)<\/xdr:row>/.exec(anchor)
+        const embed = /r:embed="([^"]+)"/.exec(anchor)
+        const target = embed && drawingRelationships.get(embed[1])
+        if (!row || !target || !book.has(target.target) || images.has(Number(row[1]))) continue
+        images.set(Number(row[1]), { data: book.read(target.target), extension: path.posix.extname(target.target).toLowerCase() })
+      }
+    }
+    return { name, table: Array.from(table, row => row || []), images }
+  })
+}
+
+// Each data row as an object keyed by column name, with spaces trimmed, and the row's picture (from
+// a workbook) as _image. Empty rows are skipped.
+function readRows (table, images = new Map()) {
+  const [, names = [], ...rows] = table
   const columns = names.map(name => name.trim())
   return rows
-    .filter(row => row.some(cell => cell.trim() !== ''))
-    .map(row => Object.fromEntries(columns.map((name, index) => [name, (row[index] || '').trim()])))
+    .map((row, index) => ({ row, image: images.get(index + 2) }))
+    .filter(({ row }) => row.some(cell => cell.trim() !== ''))
+    .map(({ row, image }) => ({
+      ...Object.fromEntries(columns.map((name, index) => [name, (row[index] || '').trim()]).filter(([name]) => name)),
+      ...(image ? { _image: image } : {})
+    }))
 }
 
 // ---- Shaping the values ----
@@ -312,8 +432,8 @@ function compareReferences (a, b) {
 
 // "Development types" has a column each for major, minor and other development. Each cell is a
 // type's name, then what it means.
-function readDevelopmentTypes (file) {
-  const [header, ...rows] = readCsv(file)
+function readDevelopmentTypes (table) {
+  const [header, ...rows] = table
   const types = []
   header.forEach((heading, column) => {
     if (!heading.trim() || column === 0) return
@@ -344,8 +464,7 @@ function nationalType (nationalTypes, name) {
 
 // "Overview" has the fields of a rule in groups (one group per tab of a rule's page), each with
 // the team's notes, then a table of use classes
-function readOverview (file) {
-  const rows = readCsv(file)
+function readOverview (rows) {
   const header = rows[0]
   const tableStart = rows.findIndex(row => row[1] === 'Use class')
 
@@ -581,6 +700,53 @@ function buildDesignCode (name, rows, sourceFiles, nationalTypes) {
 
   // ---- The rules ----
 
+  // ---- Figures: the picture in each rule's "Image" cell (from the Excel workbook) ----
+  //
+  // Each picture is saved once, named after its contents, in app/assets/images/design-codes/<design
+  // code>/ (emptied first, so pictures no longer used go). Rules that share a picture share its
+  // figure, but each keeps its own alt text, and the note on where the figure comes from.
+
+  // Sections with a figure in the hand-extracted file (East Riding's figures 20 and 22) keep it:
+  // their rules don't take the spreadsheet's picture
+  const baseFigures = (base['design-code-figures'] || []).filter(figure => figure.image)
+  const keptSections = new Set(baseFigures.map(figure => figure['design-code-section']))
+
+  const imagesFolder = path.basename(config.file, '.json')
+  const imagesDir = path.join(IMAGES_DIR, imagesFolder)
+  const figures = new Map()
+  if (rows.some(row => row._image)) {
+    fs.rmSync(imagesDir, { recursive: true, force: true })
+    fs.mkdirSync(imagesDir, { recursive: true })
+  }
+  const figureFor = row => {
+    if (!row._image) return {}
+    const { data, extension } = row._image
+    const reference = `figure-${crypto.createHash('sha1').update(data).digest('hex').slice(0, 10)}`
+    const source = row['Image source'] || ''
+    if (!figures.has(reference)) {
+      fs.writeFileSync(path.join(imagesDir, reference + extension), data)
+      const number = (/\bFigure\s+(\d+(?:\.\d+)*[a-z]?)/i.exec(source) || [])[1]
+      const page = (/PDF page (\d+)/i.exec(source) || [])[1]
+      figures.set(reference, {
+        reference,
+        ...(number ? { number } : {}),
+        image: `${IMAGES_URL}/${imagesFolder}/${reference}${extension}`,
+        // Where the figure is in the design code, such as "Chatham Centre Design Code SPD (Medway
+        // Council), PDF page 84, Figure 84"
+        source: source.split(/\.\s/)[0].replace(/\.$/, ''),
+        ...(page ? { 'page-number': Number(page) } : {})
+      })
+    }
+    return {
+      // Not in the schema yet: the rule's figure, and how to describe it for this rule
+      'design-code-figure': reference,
+      ...(row['Image alt text'] ? { 'figure-alt-text': row['Image alt text'] } : {}),
+      // Such as "The rule's own page (PDF page 85) has no figure, so this is the closest related
+      // figure from the same section."
+      ...(/\.\s/.test(source) ? { 'figure-note': source.split(/\.\s/).slice(1).join('. ') } : {})
+    }
+  }
+
   let rules = rows.map((row, index) => {
     const reference = references[index]
     const printed = row['Design code requirement reference']
@@ -635,7 +801,8 @@ function buildDesignCode (name, rows, sourceFiles, nationalTypes) {
       // Not in the schema yet: the web page or document the rule is on
       ...(row['Design code link'] ? { 'document-url': row['Design code link'] } : {}),
       ...(pages ? { 'page-number': pages[0], ...(pages[1] !== pages[0] ? { 'end-page-number': pages[1] } : {}) } : {}),
-      ...(supporting.notes.length ? { 'extraction-notes': supporting.notes.join(' ') } : {})
+      ...(supporting.notes.length ? { 'extraction-notes': supporting.notes.join(' ') } : {}),
+      ...(keptSections.has(sectionOfRow(row, index)) ? {} : figureFor(row))
     }
   })
   if (config.sort) {
@@ -654,7 +821,7 @@ function buildDesignCode (name, rows, sourceFiles, nationalTypes) {
 
   return {
     extraction: {
-      source: sourceFiles.map(file => path.relative(ROOT, file)).join('; '),
+      source: sourceFiles.map(file => path.relative(ROOT, path.join(SOURCE_DIR, file))).join('; '),
       'extracted-date': new Date().toISOString().slice(0, 10),
       method: 'Converted from the spreadsheet export by scripts/csv-to-json.js. ' +
         (config.chapters === 'volume'
@@ -685,8 +852,10 @@ function buildDesignCode (name, rows, sourceFiles, nationalTypes) {
     'design-code-chapters': chapters,
     'design-code-sections': sections,
     'design-code-rules': rules,
-    // Figures aren't in the spreadsheets, so they're kept from the hand-extracted file, if it has any
-    ...(base['design-code-figures'] ? { 'design-code-figures': base['design-code-figures'] } : {}),
+    // Any figures in the hand-extracted file, then the rules' pictures from the spreadsheet
+    ...(base['design-code-figures'] || figures.size
+      ? { 'design-code-figures': [...(base['design-code-figures'] || []), ...figures.values()] }
+      : {}),
     'place-types': placeTypes,
     'development-types': developmentTypes,
     'local-plan-policies': policies,
@@ -696,10 +865,23 @@ function buildDesignCode (name, rows, sourceFiles, nationalTypes) {
 
 // ---- Running it ----
 
-const files = fs.readdirSync(SOURCE_DIR).filter(file => file.toLowerCase().endsWith('.csv'))
-if (!files.length) {
-  console.error(`No CSV files found in ${path.relative(ROOT, SOURCE_DIR)}`)
+// The sheets to read: the newest workbook's, or else one per CSV, each with its rows of cell text
+// and (from a workbook) the picture in each row
+const sourceFiles = fs.readdirSync(SOURCE_DIR)
+  .filter(file => /\.(csv|xlsx)$/i.test(file) && !file.startsWith('~$'))
+  .map(file => ({ file, path: path.join(SOURCE_DIR, file), modified: fs.statSync(path.join(SOURCE_DIR, file)).mtimeMs }))
+  .sort((a, b) => b.modified - a.modified)
+const workbook = sourceFiles.find(source => /\.xlsx$/i.test(source.file))
+const sheets = workbook
+  ? readWorkbook(workbook.path).map(sheet => ({ ...sheet, label: `${workbook.file} (${sheet.name} sheet)`, source: workbook.path }))
+  : sourceFiles.map(source => ({ name: source.file, label: source.file, source: source.path, table: readCsv(source.path), images: new Map() }))
+if (!sheets.length) {
+  console.error(`No spreadsheet (.xlsx or .csv) found in ${path.relative(ROOT, SOURCE_DIR)}`)
   process.exit(1)
+}
+if (workbook) {
+  const others = sourceFiles.filter(source => source !== workbook).map(source => source.file)
+  console.log(`Reading ${workbook.file}, the newest workbook${others.length ? `. Left out: ${others.join(', ')}` : ''}`)
 }
 
 const writeJson = (file, data) => {
@@ -709,21 +891,21 @@ const writeJson = (file, data) => {
 
 // The national sheets first, as the design codes use them
 let nationalTypes = []
-const typesFile = files.find(file => /development types/i.test(file))
-if (typesFile) {
-  nationalTypes = readDevelopmentTypes(path.join(SOURCE_DIR, typesFile))
+const typesSheet = sheets.find(sheet => /development types/i.test(sheet.name))
+if (typesSheet) {
+  nationalTypes = readDevelopmentTypes(typesSheet.table)
   const output = path.join(NATIONAL_DIR, 'development-types.json')
   writeJson(output, {
-    source: path.relative(ROOT, path.join(SOURCE_DIR, typesFile)),
+    source: path.relative(ROOT, typesSheet.source) + (workbook ? ` (${typesSheet.name} sheet)` : ''),
     'development-types': nationalTypes
   })
   console.log(`Development types: ${nationalTypes.length} types -> ${path.relative(ROOT, output)}`)
 }
 
-const overviewFile = files.find(file => /overview/i.test(file))
-if (overviewFile) {
-  const overview = readOverview(path.join(SOURCE_DIR, overviewFile))
-  const source = path.relative(ROOT, path.join(SOURCE_DIR, overviewFile))
+const overviewSheet = sheets.find(sheet => /overview/i.test(sheet.name))
+if (overviewSheet) {
+  const overview = readOverview(overviewSheet.table)
+  const source = path.relative(ROOT, overviewSheet.source) + (workbook ? ` (${overviewSheet.name} sheet)` : '')
   const fieldsOutput = path.join(NATIONAL_DIR, 'design-code-fields.json')
   writeJson(fieldsOutput, {
     source,
@@ -736,35 +918,41 @@ if (overviewFile) {
     `${overview.useClasses.length} use classes -> ${path.relative(ROOT, useClassesOutput)}`)
 }
 
-// Group every rule CSV's rows by design code, so one design code can span several files. Design
-// codes that aren't in DESIGN_CODES yet are skipped.
+// Group every rule sheet's rows by design code, so one design code can span several sheets.
+// Sheets are newest first: where a newer CSV has a design code, an older one's rows for it are
+// left out. Design codes that aren't in DESIGN_CODES yet are skipped.
 const byDesignCode = new Map()
 const skipped = new Map()
-for (const file of files) {
-  if (file === typesFile || file === overviewFile) continue
-  const source = path.join(SOURCE_DIR, file)
-  const rows = readRows(source)
+const replaced = new Set()
+for (const sheet of sheets) {
+  if (sheet === typesSheet || sheet === overviewSheet) continue
+  const rows = readRows(sheet.table, sheet.images)
   if (!rows.length || !('Design code requirement reference' in rows[0])) {
-    console.warn(`Skipped ${file}: it has no "Design code requirement reference" column, so it isn't a list of rules`)
+    console.warn(`Skipped ${sheet.label}: it has no "Design code requirement reference" column, so it isn't a list of rules`)
     continue
   }
   for (const row of rows) {
     const name = row['Design code']
     if (!DESIGN_CODES[name]) {
-      skipped.set(name, file)
+      skipped.set(name, sheet.label)
       continue
     }
-    if (!byDesignCode.has(name)) byDesignCode.set(name, { sources: new Set(), rows: [] })
-    byDesignCode.get(name).sources.add(source)
+    const entry = byDesignCode.get(name)
+    if (entry && entry.sheet !== sheet.label) {
+      replaced.add(`Left out ${name} in ${sheet.label}, as ${entry.sheet} is newer`)
+      continue
+    }
+    if (!entry) byDesignCode.set(name, { sheet: sheet.label, rows: [] })
     byDesignCode.get(name).rows.push(row)
   }
 }
+replaced.forEach(message => console.warn(message))
 for (const [name, file] of skipped) {
   console.warn(`Skipped "${name}" in ${file}: add its reference and council to DESIGN_CODES in scripts/csv-to-json.js to convert it`)
 }
 
-for (const [name, { sources, rows }] of byDesignCode) {
-  const data = buildDesignCode(name, rows, [...sources], nationalTypes)
+for (const [name, { sheet, rows }] of byDesignCode) {
+  const data = buildDesignCode(name, rows, [sheet], nationalTypes)
   const output = path.join(OUTPUT_DIR, DESIGN_CODES[name].file)
   writeJson(output, data)
   console.log(`${name}: ${rows.length} rules, ${data['design-code-sections'].length} sections, ` +

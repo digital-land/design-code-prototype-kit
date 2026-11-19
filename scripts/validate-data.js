@@ -184,6 +184,10 @@ function validate (data) {
   }
 
   for (const rule of rules) {
+    if (rule['design-code-figure'] && !figures.some(figure => figure.reference === rule['design-code-figure'])) {
+      fail(`Rule ${rule.reference}`, `figure "${rule['design-code-figure']}" is not defined`)
+    }
+    if (rule['design-code-figure'] && !isText(rule['figure-alt-text'])) fail(`Rule ${rule.reference}`, 'has a figure with no alt text')
     const label = rule.reference || '(rule with no reference)'
     checkSection(label, rule)
     checkPages(label, rule)
@@ -266,7 +270,17 @@ function validate (data) {
   }
 
   for (const figure of figures) {
-    const label = `Figure ${figure.number}`
+    const label = `Figure ${figure.number || figure.reference}`
+    // /public/... is served from app/assets/...
+    const imageExists = image => fs.existsSync(path.join(__dirname, '..', 'app', 'assets', image.replace(/^\/public\//, '')))
+    // A rule's picture from the spreadsheet's "Image" column: its rules link to it, and it has an
+    // image and where it is in the design code, but no section, caption or labels
+    if (rules.some(rule => rule['design-code-figure'] === figure.reference)) {
+      if (!isText(figure.image)) fail(label, 'has no image')
+      else if (!imageExists(figure.image)) fail(label, `image "${figure.image}" does not exist`)
+      if (!isText(figure.source)) fail(label, 'has no source')
+      continue
+    }
     checkSection(label, figure)
     checkPages(label, figure)
     checkGlossaryTerms(label, figure)

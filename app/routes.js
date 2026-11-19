@@ -9,3 +9,4 @@
 require('./routes/v2')
 require('./routes/v3')
 require('./routes/v4')
+require('./routes/v5')

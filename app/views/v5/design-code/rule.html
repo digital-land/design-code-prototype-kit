@@ -1,0 +1,273 @@
+{% extends "v5/layouts/main.html" %}
+
+{#
+  One code or piece of key guidance in full, linked from the list of design requirements.
+  Layout from the Figma frames:
+    Where the rule applies tab - node 1270:39842
+    Guidance tab               - node 1270:40253
+    Source tab                 - node 1270:39985
+    Supporting information tab - node 1270:40123
+  The rule's title, text and summary list beside its figure (where the data has one),
+  then tabs. A tab with nothing in it for this rule is left out. Content comes from the extracted
+  data; see the rule route in app/routes/v5.js.
+#}
+
+{% set pageName = rule.title + " (" + rule.printedReference + ") - " + designCode.name %}
+{% set mainClasses = "app-dc-page__main" %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {# Back to the list of design requirements #}
+  {{ govukBackLink({ text: "Back", href: backHref, classes: "app-dc-page__back-link" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="app-v4-rule__top{% if not rule.figure %} app-v4-rule__top--no-figure{% endif %}">
+  <div class="app-v4-rule__summary">
+    <span class="govuk-caption-m app-v4-rule__caption">{{ designCode.name }}</span>
+    <h1 class="govuk-heading-l app-v4-rule__title">{{ rule.title }}</h1>
+    {# Key guidance's text is guidance, so it's shown here as well as the rule's #}
+    <div class="app-v4-rule__text">{{ rule.requirementText | designCodeText }}</div>
+
+    <dl class="app-dc-details app-dc-details--summary app-v4-rule__details">
+      <div class="app-dc-details__row">
+        <dt class="app-dc-details__key">Status</dt>
+        <dd class="app-dc-details__value">{{ govukTag({ text: designCode.status.text, classes: "govuk-tag--turquoise app-design-code__reference" }) }}</dd>
+      </div>
+      {% if features %}
+        <div class="app-dc-details__row">
+          <dt class="app-dc-details__key">Design feature</dt>
+          <dd class="app-dc-details__value">{{ features }}</dd>
+        </div>
+      {% endif %}
+      {% if rule.nationalDesignIssue %}
+        <div class="app-dc-details__row">
+          <dt class="app-dc-details__key">Design issue</dt>
+          <dd class="app-dc-details__value">{{ rule.nationalDesignIssue }}</dd>
+        </div>
+      {% endif %}
+      <div class="app-dc-details__row">
+        <dt class="app-dc-details__key">Type</dt>
+        <dd class="app-dc-details__value">{{ typeText }}</dd>
+      </div>
+    </dl>
+  </div>
+
+  {% if rule.figure %}
+    <figure class="app-v4-rule__figure">
+      {# The spreadsheet gives each rule its own alt text for its figure #}
+      <img class="app-v4-rule__figure-image" src="{{ rule.figure.src }}" alt="{{ rule.figure.alt if rule.figure.alt else 'Figure ' + rule.figure.number + ': ' + rule.figure.caption }}">
+      {# The figures are small on the page, so they can be opened at full size #}
+      <p class="govuk-body-s app-v4-rule__figure-link">
+        <a class="govuk-link" href="{{ rule.figure.src }}" target="_blank" rel="noopener noreferrer">Open figure in new tab to see in full size</a>
+      </p>
+      <figcaption class="app-v4-rule__figure-text">
+        {% if rule.figure.caption %}<span class="app-v4-rule__figure-caption">{{ rule.figure.caption }}</span>{% endif %}
+        {% if rule.figure.description %}
+          <span>{{ rule.figure.description }}</span>
+        {% endif %}
+        {# Where the rule's own page has no figure, the closest one from its section #}
+        {% if rule.figure.note %}
+          <span class="app-v4-rule__figure-note">{{ rule.figure.note }}</span>
+        {% endif %}
+      </figcaption>
+    </figure>
+  {% endif %}
+</div>
+
+{# A key, and its value beside it, as in the Figma design's nested rows #}
+{% macro subRow(key, values) %}
+  <div class="app-v4-rule__sub-row">
+    <dt class="app-v4-rule__sub-key">{{ key }}</dt>
+    <dd class="app-v4-rule__sub-value">
+      {% if values.length > 1 %}
+        <ul class="govuk-list govuk-list--bullet app-v4-rule__bullets">
+          {% for value in values %}<li>{{ value }}</li>{% endfor %}
+        </ul>
+      {% elif values.length %}
+        {{ values[0] }}
+      {% endif %}
+    </dd>
+  </div>
+{% endmacro %}
+
+{% set appliesHtml %}
+  <h2 class="govuk-visually-hidden">Where the rule applies</h2>
+  {# The rows say what they are ("Chatham Cross", "Major development"), so "Area" and "Development
+     type" are only there for screen readers #}
+  <div class="app-v4-rule__rows">
+    <h3 class="govuk-visually-hidden">Area</h3>
+    <dl class="app-v4-rule__value">
+      {% for row in areas %}{{ subRow(row.key, row.values) }}{% endfor %}
+    </dl>
+    {% if developmentTypes.length %}
+      <h3 class="govuk-visually-hidden">Development type</h3>
+      <dl class="app-v4-rule__value">
+        {% for group in developmentTypes %}{{ subRow(group.key, group.values) }}{% endfor %}
+      </dl>
+    {% endif %}
+  </div>
+{% endset %}
+
+{% set guidanceHtml %}
+  <h2 class="govuk-visually-hidden">Guidance</h2>
+  {% if guidanceSections.length %}
+    {% for section in guidanceSections %}
+      <h3 class="app-v4-rule__guidance-heading">{{ section.heading }}</h3>
+      <p class="govuk-body app-v4-rule__guidance-text">{{ section.text }}</p>
+    {% endfor %}
+  {% else %}
+    <div class="app-dc-rule__guidance">{{ guidanceText | designCodeText }}</div>
+  {% endif %}
+{% endset %}
+
+{% set tableHtml %}
+  <h2 class="govuk-visually-hidden">{{ "Table" if rule.tables.length == 1 else "Tables" }}</h2>
+  {% for table in rule.tables %}
+    {# Scrolls sideways on its own on small screens, rather than the whole page #}
+    <div class="app-dc-data-table__wrapper" role="region" aria-label="Table {{ table.number }}" tabindex="0">
+    {% set hasDots = false %}
+    {% for column in table.columns %}{% if column.type == "dot" %}{% set hasDots = true %}{% endif %}{% endfor %}
+    <table class="govuk-table app-dc-data-table{% if hasDots %} app-dc-data-table--compact{% endif %}">
+      <caption class="govuk-table__caption govuk-table__caption--s">Table {{ table.number }} {{ table.name }}</caption>
+      <thead class="govuk-table__head">
+        {% if table.columnGroups.length %}
+          <tr class="govuk-table__row">
+            {% for group in table.columnGroups %}
+              {% if group.name %}
+                <th scope="colgroup" colspan="{{ group.span }}" class="govuk-table__header app-dc-data-table__group">{{ group.name }}</th>
+              {% else %}
+                <td colspan="{{ group.span }}" class="govuk-table__header"></td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        {% endif %}
+        <tr class="govuk-table__row">
+          {% for column in table.columns %}
+            <th scope="col" class="govuk-table__header{% if column.type == 'dot' %} app-dc-data-table__dot{% endif %}">{{ column.name }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for row in table.rows %}
+          <tr class="govuk-table__row">
+            {% for column in table.columns %}
+              {% set value = row[column.reference] %}
+              {% if loop.first %}
+                <th scope="row" class="govuk-table__header">{{ value }}</th>
+              {% elif column.type == "dot" %}
+                <td class="govuk-table__cell app-dc-data-table__dot">
+                  {% if value %}<span aria-hidden="true">●</span><span class="govuk-visually-hidden">Yes</span>{% else %}<span class="govuk-visually-hidden">No</span>{% endif %}
+                </td>
+              {% elif column.type == "list" %}
+                <td class="govuk-table__cell">
+                  <ul class="govuk-list govuk-list--bullet app-dc-data-table__list">
+                    {% for item in value %}<li>{{ item }}</li>{% endfor %}
+                  </ul>
+                </td>
+              {% else %}
+                <td class="govuk-table__cell">{{ value }}</td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  {% endfor %}
+{% endset %}
+
+{% set sourceHtml %}
+  <h2 class="govuk-visually-hidden">Source</h2>
+  <dl class="app-v4-rule__source">
+    <div class="app-v4-rule__sub-row">
+      <dt class="app-v4-rule__sub-key">Design code</dt>
+      <dd class="app-v4-rule__sub-value">
+        {% if designCode.url %}
+          <a class="govuk-link" href="{{ designCode.url }}" rel="noreferrer noopener" target="_blank">{{ designCode.name }} (opens in a new tab)</a>
+        {% else %}
+          {{ designCode.name }}
+        {% endif %}
+      </dd>
+    </div>
+    <div class="app-v4-rule__sub-row">
+      <dt class="app-v4-rule__sub-key">
+        Design code rule reference
+        <span class="app-v4-rule__secondary">The chapter, section and paragraph where you can find the rule</span>
+      </dt>
+      <dd class="app-v4-rule__sub-value">
+        {{ rule.printedReference }}
+        {% if location %}<span class="app-v4-rule__secondary">{{ location }}</span>{% endif %}
+      </dd>
+    </div>
+  </dl>
+{% endset %}
+
+{% set supportingHtml %}
+  <h2 class="govuk-visually-hidden">Supporting information</h2>
+  {% if documents.length %}
+    <h3 class="app-v4-rule__heading">Supporting information</h3>
+    <ul class="govuk-list app-v4-rule__documents">
+      {% for document in documents %}
+        <li>
+          {% if document.url %}
+            <a class="govuk-link" href="{{ document.url }}" rel="noreferrer noopener" target="_blank">{{ document.title }} (opens in new tab)</a>
+          {% else %}
+            {{ document.title }}
+          {% endif %}
+          {% if document.details %}<span class="app-v4-rule__secondary">{{ document.details }}</span>{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {# Other supporting information, such as a materials palette or where the compliance checklist is #}
+  {% for note in rule.supportingNotes %}
+    {% if note.label %}<h3 class="app-v4-rule__heading">{{ note.label }}</h3>{% endif %}
+    <p class="govuk-body app-v4-rule__note">{{ note.text }}</p>
+  {% endfor %}
+  {% if designCode.localDevelopmentDocument %}
+    <h3 class="app-v4-rule__heading">Local development document</h3>
+    <p class="govuk-body">{{ designCode.localDevelopmentDocument }}</p>
+  {% endif %}
+  {% if rule.localPlanPolicyDetails.length or rule.localPlanDocuments.length %}
+    <h3 class="app-v4-rule__heading">Local plan policy</h3>
+    <ul class="govuk-list app-v4-rule__policies">
+      {% for policy in rule.localPlanPolicyDetails %}
+        {% set policyText = policy.reference + (", " + policy.name if policy.name) + (" (" + policy.plan + ")" if policy.plan) %}
+        <li>
+          {% if policy.url %}
+            <a class="govuk-link" href="{{ policy.url }}" rel="noreferrer noopener" target="_blank">{{ policyText }} (opens in new tab)</a>
+          {% else %}
+            {{ policyText }}
+          {% endif %}
+        </li>
+      {% endfor %}
+      {# Whole plans, where the data links to them rather than to single policies #}
+      {% for plan in rule.localPlanDocuments %}
+        <li><a class="govuk-link" href="{{ plan.url }}" rel="noreferrer noopener" target="_blank">{{ plan.name }} (opens in new tab)</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% if rule.section.introText %}
+    <h3 class="app-v4-rule__heading">Additional information</h3>
+    <div class="app-dc-rule__guidance">{{ rule.section.introText | designCodeText }}</div>
+  {% endif %}
+{% endset %}
+
+{% set tabs = [{ label: "Where the rule applies", id: "where-the-rule-applies", panel: { html: appliesHtml } }] %}
+{% if guidanceText %}
+  {% set tabs = (tabs.push({ label: "Guidance", id: "guidance", panel: { html: guidanceHtml } }), tabs) %}
+{% endif %}
+{% if rule.tables.length %}
+  {% set tabs = (tabs.push({ label: "Table", id: "table", panel: { html: tableHtml } }), tabs) %}
+{% endif %}
+{% set tabs = (tabs.push({ label: "Source", id: "source", panel: { html: sourceHtml } }), tabs) %}
+{% if documents.length or rule.supportingNotes.length or designCode.localDevelopmentDocument or rule.localPlanPolicyDetails.length or rule.localPlanDocuments.length or rule.section.introText %}
+  {% set tabs = (tabs.push({ label: "Supporting information", id: "supporting-information", panel: { html: supportingHtml } }), tabs) %}
+{% endif %}
+
+{{ govukTabs({
+  classes: "app-design-code__tabs app-v4-rule__tabs",
+  items: tabs
+}) }}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "v5/layouts/main.html" %}
+
+{#
+  v5: search for the area to find design requirements for (Figma node 1268:39405). One match goes
+  straight to "Add a location boundary" (boundary.html); several are listed to choose from. See the
+  find route in app/routes/v5.js.
+#}
+
+{% set heading = "Find design requirements for an area" %}
+{% set pageName = ("Error: " if error else "") + heading %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: baseUrl + "/design-code" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if error %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [{ text: error, href: "#area-search" }]
+      }) }}
+    {% endif %}
+
+    <form action="{{ baseUrl }}/design-code/find" method="get" novalidate>
+      {{ govukInput({
+        id: "area-search",
+        name: "q",
+        value: search,
+        autocomplete: "off",
+        spellcheck: false,
+        label: { text: heading, classes: "govuk-label--l", isPageHeading: true },
+        hint: { html: '<span class="app-v4-search__lead">Enter a local authority, postcode or area</span> For example, ‘Medway Council’, ‘ME4 4TR’ or ‘Chatham’.' },
+        errorMessage: { text: error } if error else undefined
+      }) }}
+
+      {{ govukButton({ text: "Search", classes: "app-v4-search__button" }) }}
+    </form>
+
+    <p class="govuk-body"><a class="govuk-link" href="{{ baseUrl }}/design-code/find/results">View all design requirements</a></p>
+
+    {# Several areas match: choose one #}
+    {% if choices %}
+      <h2 class="govuk-heading-m">Choose an area</h2>
+      <ul class="govuk-list app-v4-search__choices">
+        {% for choice in choices %}
+          <li>
+            <a class="govuk-link" href="{{ choice.href }}">{{ choice.text }}</a>
+            {% if choice.hint %}<span class="app-v4-search__choice-hint">{{ choice.hint }}</span>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

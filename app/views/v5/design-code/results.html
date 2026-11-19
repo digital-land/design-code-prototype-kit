@@ -1,0 +1,133 @@
+{% extends "v5/layouts/main.html" %}
+
+{#
+  v5: the design requirements, from the Figma frame (node 1367:41275). Filters on the left, applied
+  with "Apply filter" as in the Figma design. Then a search, how many there are, sorted by name,
+  and 10 to a page. Each one links straight to its page (rule.html). See the results route in
+  app/routes/v5.js.
+#}
+
+{% set pageName = "Design requirements" + (" - " + area.council if area else "") %}
+{% set mainClasses = "app-dc-page__main" %}
+
+{# A collapsible filter group, open when it has a selection #}
+{% macro filterGroup(params) %}
+  <details class="app-dc-filter" {% if params.open %}open{% endif %}>
+    <summary class="app-dc-filter__summary">
+      <span class="app-dc-filter__title">{{ params.title }}{% if params.count %} ({{ params.count }}<span class="govuk-visually-hidden"> selected</span>){% endif %}</span>
+    </summary>
+    <div class="app-dc-filter__body">
+      {{ caller() }}
+    </div>
+  </details>
+{% endmacro %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({ text: "Back", href: backHref, classes: "app-dc-page__back-link" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="app-v3-layout app-v5-results">
+
+  <form class="app-dc-page__filters app-v3-filters app-v5-filters" id="v5-filters" action="{{ baseUrl }}/design-code/find/results" method="get" novalidate>
+    {# Keep the area, the place that was searched for and the boundary #}
+    {% for field in hiddenFields %}
+      <input type="hidden" name="{{ field.name }}" value="{{ field.value }}">
+    {% endfor %}
+    <h2 class="govuk-heading-m app-v5-filters__heading">Filter</h2>
+
+    <div class="app-v5-filters__actions">
+      {{ govukButton({ text: "Apply filter", classes: "govuk-!-margin-bottom-0 app-v5-filters__submit" }) }}
+      {% if hasFilters %}
+        <a href="{{ clearHref }}" class="govuk-link">Clear filters</a>
+      {% endif %}
+    </div>
+
+    {# A tag for each filter in use, which removes it #}
+    {% if appliedFilters.length %}
+      <h3 class="govuk-visually-hidden">Applied filters</h3>
+      <ul class="app-dc-tags">
+        {% for filter in appliedFilters %}
+          <li>
+            <a class="app-dc-tag" href="{{ filter.href }}">
+              <span class="govuk-visually-hidden">Remove filter: </span>{{ filter.label }}
+              <svg class="app-dc-tag__icon" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% for group in filterGroups %}
+      {% call filterGroup({ title: group.title, open: group.count, count: group.count }) %}
+        {{ govukCheckboxes({
+          idPrefix: "v5-" + group.name,
+          name: group.name,
+          classes: "govuk-checkboxes--small",
+          formGroup: { classes: "govuk-!-margin-bottom-0" },
+          fieldset: { legend: { text: group.title, classes: "govuk-visually-hidden" } },
+          hint: { text: group.hint, classes: "app-dc-filter__hint" } if group.hint,
+          items: group.items
+        }) }}
+      {% endcall %}
+    {% endfor %}
+
+    {% if questionsHref %}
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        <a href="{{ questionsHref }}" class="govuk-link">Not sure what I am looking for?</a>
+      </p>
+    {% endif %}
+  </form>
+
+  <section class="app-v3-results app-v5-results__list" aria-labelledby="v5-results-heading">
+    <h1 class="govuk-heading-l app-v5-results__heading" id="v5-results-heading">Design requirements</h1>
+
+    {# Part of the filters' form, so a search keeps them #}
+    <div class="app-dc-search app-v5-results__search">
+      <label class="govuk-label app-label--secondary app-dc-search__label" for="v5-search">Search</label>
+      <div class="app-dc-search__wrapper">
+        <input class="govuk-input app-dc-search__input" id="v5-search" name="q" type="search" value="{{ filters.search }}" autocomplete="off" form="v5-filters">
+        <button class="app-dc-search__button" type="submit" form="v5-filters">
+          <span class="govuk-visually-hidden">Search design requirements</span>
+          <svg class="app-dc-search__icon" width="12" height="12" viewBox="0 0 27 27" aria-hidden="true" focusable="false">
+            <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" fill="none"></circle>
+            <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="app-v5-results__bar">
+      <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0" id="v5-results-count">{{ resultCount }} {{ "result" if resultCount == 1 else "results" }}</p>
+      <p class="govuk-body govuk-!-margin-bottom-0">Sorted by: <strong>Name</strong></p>
+    </div>
+
+    {% if results.length %}
+      <ul class="govuk-list app-v5-requirements">
+        {% for item in results %}
+          <li class="app-v5-requirement">
+            <a class="govuk-link app-v5-requirement__title" href="{{ item.href }}">{{ item.title }}</a>
+            {% if item.description %}<p class="govuk-body app-v5-requirement__description">{{ item.description }}</p>{% endif %}
+            <dl class="app-v5-requirement__details">
+              {% for row in item.rows %}
+                <div class="app-v5-requirement__detail">
+                  <dt>{{ row.key }}:</dt>
+                  <dd>{{ row.value }}</dd>
+                </div>
+              {% endfor %}
+            </dl>
+          </li>
+        {% endfor %}
+      </ul>
+      {% if pagination %}
+        {{ govukPagination({ previous: pagination.previous, next: pagination.next, items: pagination.items, classes: "app-v5-pagination" }) }}
+      {% endif %}
+    {% else %}
+      <p class="govuk-body">No design requirements match your filters. Try removing some filters.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

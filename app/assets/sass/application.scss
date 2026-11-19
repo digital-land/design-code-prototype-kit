@@ -2828,6 +2828,16 @@ summary.app-dc-applied__summary {
   font-weight: $govuk-font-weight-bold;
 }
 
+// "Open figure in new tab to see in full size", under the figure
+.app-v4-rule__figure-link {
+  margin: govuk-spacing(2) 0 0;
+}
+
+// "This is the closest related figure…", where the rule's own page has none
+.app-v4-rule__figure-note {
+  color: govuk-functional-colour("secondary-text");
+}
+
 .app-v4-rule__tabs {
   margin-bottom: 0;
 
@@ -3163,4 +3173,203 @@ summary.app-dc-applied__summary {
 
 .app-max-width--100 {
   max-width: 100%;
+}
+
+// ---- v5: "Add a location boundary" (Figma node 1367:41746) ----
+
+// The area's name, the counts and Continue on the left; the map on the right
+.app-v5-boundary {
+  display: flex;
+  flex-direction: column;
+  gap: govuk-spacing(6);
+
+  @include govuk-media-query($from: desktop) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+}
+
+.app-v5-boundary__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: govuk-spacing(6);
+
+  @include govuk-media-query($from: desktop) {
+    flex: 0 0 377px;
+  }
+}
+
+.app-v5-boundary__caption {
+  margin-bottom: 20px;
+}
+
+.app-v5-boundary__title {
+  margin-bottom: 20px;
+}
+
+// Local authorities, design codes and design requirements, with the numbers on the right
+.app-v5-counts.govuk-summary-list {
+  margin: 20px 0 0;
+
+  .govuk-summary-list__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .govuk-summary-list__key,
+  .govuk-summary-list__value {
+    width: auto;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .govuk-summary-list__value {
+    @include govuk-font($size: 16);
+    text-align: right;
+  }
+}
+
+// "This looks like a street, so…", under the counts
+.app-v5-boundary__place {
+  margin: govuk-spacing(3) 0 0;
+  color: govuk-functional-colour("secondary-text");
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.app-v5-boundary__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.app-v5-boundary__map-area {
+  position: relative;
+
+  @include govuk-media-query($from: desktop) {
+    flex: 0 0 497px;
+  }
+}
+
+.app-v5-boundary__map {
+  box-sizing: border-box;
+  height: 400px;
+  border: 1px solid govuk-functional-colour("border");
+
+  @include govuk-media-query($from: desktop) {
+    height: 531px;
+  }
+}
+
+// "Add location boundary", over the top middle of the map
+.app-v5-draw {
+  position: absolute;
+  z-index: 1001;
+  top: 36px;
+  left: 50%;
+  min-width: 235px;
+  transform: translateX(-50%);
+}
+
+// While drawing: "Done" and "Cancel", at the bottom middle of the map
+.app-v5-draw__status.app-v3-draw__status {
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+}
+
+// ---- v5: the design requirements (Figma node 1367:41275) ----
+
+.app-v5-filters__heading.govuk-heading-m {
+  margin-bottom: 0;
+}
+
+// "Apply filter", the width of the filters, with "Clear filters" under it
+.app-v5-filters__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  .govuk-button {
+    width: 100%;
+  }
+}
+
+.app-v5-results__heading.govuk-heading-l {
+  margin-bottom: 20px;
+}
+
+.app-v5-results__search.app-dc-search {
+  margin-bottom: 20px;
+
+  .app-dc-search__wrapper {
+    width: 100%;
+  }
+}
+
+// "109 results" and "Sorted by: Name"
+.app-v5-results__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: govuk-spacing(2);
+  margin-bottom: 20px;
+}
+
+.app-v5-requirements {
+  margin: 0 0 govuk-spacing(6);
+}
+
+// A design requirement: its title, a sentence or so, then what it is
+.app-v5-requirement {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 20px 10px;
+  border-top: 1px solid govuk-functional-colour("border");
+
+  &:last-child {
+    border-bottom: 1px solid govuk-functional-colour("border");
+  }
+}
+
+.app-v5-requirement__title {
+  @include govuk-font($size: 19);
+}
+
+.app-v5-requirement__description.govuk-body {
+  margin: 0 0 10px;
+}
+
+.app-v5-requirement__details {
+  @include govuk-font($size: 16);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+}
+
+// "Design code: Chatham Centre Design Code": the key in grey
+.app-v5-requirement__detail {
+  dt {
+    display: inline;
+    color: govuk-functional-colour("secondary-text");
+  }
+
+  dd {
+    display: inline;
+    margin: 0;
+  }
+}
+
+.app-v5-pagination {
+  justify-content: center;
 }
